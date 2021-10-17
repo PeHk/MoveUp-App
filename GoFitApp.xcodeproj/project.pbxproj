@@ -8,24 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
-		E1660992271C9F4B0077DF6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1660991271C9F4B0077DF6E /* SceneDelegate.swift */; };
-		E1660994271C9F4B0077DF6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1660993271C9F4B0077DF6E /* ViewController.swift */; };
-		E1660997271C9F4B0077DF6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1660995271C9F4B0077DF6E /* Main.storyboard */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
 		E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E166099B271C9F4E0077DF6E /* Assets.xcassets */; };
 		E166099F271C9F4E0077DF6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E166099D271C9F4E0077DF6E /* LaunchScreen.storyboard */; };
+		E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609AA271C9FBE0077DF6E /* HomeCoordinator.swift */; };
+		E16609AD271C9FCD0077DF6E /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E16609AC271C9FCD0077DF6E /* HomeViewController.storyboard */; };
+		E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609AE271C9FDD0077DF6E /* HomeViewController.swift */; };
+		E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609B0271C9FE70077DF6E /* HomeViewModel.swift */; };
+		E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609B3271CA0230077DF6E /* AppCoordinator.swift */; };
+		E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609B6271CA0580077DF6E /* Coordinator.swift */; };
+		E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609B9271CA0A90077DF6E /* DependencyContainer.swift */; };
+		E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */; };
+		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
+		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
+		E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1660991271C9F4B0077DF6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1660993271C9F4B0077DF6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E1660996271C9F4B0077DF6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1660999271C9F4B0077DF6E /* GoFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoFitApp.xcdatamodel; sourceTree = "<group>"; };
 		E166099B271C9F4E0077DF6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E166099E271C9F4E0077DF6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E16609A0271C9F4E0077DF6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E16609AA271C9FBE0077DF6E /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		E16609AC271C9FCD0077DF6E /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		E16609AE271C9FDD0077DF6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E16609B0271C9FE70077DF6E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E16609B3271CA0230077DF6E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E16609B6271CA0580077DF6E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E16609B9271CA0A90077DF6E /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +74,96 @@
 		E166098E271C9F4B0077DF6E /* GoFitApp */ = {
 			isa = PBXGroup;
 			children = (
-				E166098F271C9F4B0077DF6E /* AppDelegate.swift */,
-				E1660991271C9F4B0077DF6E /* SceneDelegate.swift */,
-				E1660993271C9F4B0077DF6E /* ViewController.swift */,
-				E1660995271C9F4B0077DF6E /* Main.storyboard */,
+				E16609C0271CA75F0077DF6E /* Designs */,
+				E16609BB271CA2720077DF6E /* Extensions */,
+				E16609B8271CA09A0077DF6E /* Managers */,
+				E16609B5271CA0410077DF6E /* Protocols */,
+				E16609B2271CA0040077DF6E /* Application */,
+				E16609A6271C9F880077DF6E /* Modules */,
 				E166099B271C9F4E0077DF6E /* Assets.xcassets */,
 				E166099D271C9F4E0077DF6E /* LaunchScreen.storyboard */,
 				E16609A0271C9F4E0077DF6E /* Info.plist */,
 				E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */,
 			);
 			path = GoFitApp;
+			sourceTree = "<group>";
+		};
+		E16609A6271C9F880077DF6E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E16609A9271C9FA90077DF6E /* Login */,
+				E16609A8271C9FA00077DF6E /* Registration */,
+				E16609A7271C9F960077DF6E /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E16609A7271C9F960077DF6E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E16609AA271C9FBE0077DF6E /* HomeCoordinator.swift */,
+				E16609B0271C9FE70077DF6E /* HomeViewModel.swift */,
+				E16609AE271C9FDD0077DF6E /* HomeViewController.swift */,
+				E16609AC271C9FCD0077DF6E /* HomeViewController.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E16609A8271C9FA00077DF6E /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		E16609A9271C9FA90077DF6E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E16609B2271CA0040077DF6E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E166098F271C9F4B0077DF6E /* AppDelegate.swift */,
+				E16609B3271CA0230077DF6E /* AppCoordinator.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E16609B5271CA0410077DF6E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E16609B6271CA0580077DF6E /* Coordinator.swift */,
+				E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E16609B8271CA09A0077DF6E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E16609B9271CA0A90077DF6E /* DependencyContainer.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E16609BB271CA2720077DF6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */,
+				E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E16609C0271CA75F0077DF6E /* Designs */ = {
+			isa = PBXGroup;
+			children = (
+				E16609C1271CA7860077DF6E /* PrimaryButton.swift */,
+			);
+			path = Designs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +224,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16609AD271C9FCD0077DF6E /* HomeViewController.storyboard in Resources */,
 				E166099F271C9F4E0077DF6E /* LaunchScreen.storyboard in Resources */,
 				E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */,
-				E1660997271C9F4B0077DF6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +237,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1660994271C9F4B0077DF6E /* ViewController.swift in Sources */,
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
-				E1660992271C9F4B0077DF6E /* SceneDelegate.swift in Sources */,
+				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
+				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
+				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
+				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
+				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
+				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
+				E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */,
+				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
+				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
+				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1660995271C9F4B0077DF6E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1660996271C9F4B0077DF6E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E166099D271C9F4E0077DF6E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,7 +394,7 @@
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,7 +406,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -326,7 +422,7 @@
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -338,7 +434,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

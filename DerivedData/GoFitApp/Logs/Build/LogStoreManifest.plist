@@ -5,6 +5,143 @@
 	<key>logFormatVersion</key>
 	<integer>10</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>0267CC10-C3A8-4C9E-AEE1-46ACC51430BE</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0267CC10-C3A8-4C9E-AEE1-46ACC51430BE.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>GoFitApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>GoFitApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build GoFitApp</string>
+			<key>timeStartedRecording</key>
+			<real>656189029.86255097</real>
+			<key>timeStoppedRecording</key>
+			<real>656189033.97227097</real>
+			<key>title</key>
+			<string>Build GoFitApp</string>
+			<key>uniqueIdentifier</key>
+			<string>0267CC10-C3A8-4C9E-AEE1-46ACC51430BE</string>
+		</dict>
+		<key>91DEFF1A-9049-4A75-9036-4ABEF70BD879</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>91DEFF1A-9049-4A75-9036-4ABEF70BD879.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>GoFitApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>GoFitApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build GoFitApp</string>
+			<key>timeStartedRecording</key>
+			<real>656188811.16448402</real>
+			<key>timeStoppedRecording</key>
+			<real>656188817.17923605</real>
+			<key>title</key>
+			<string>Build GoFitApp</string>
+			<key>uniqueIdentifier</key>
+			<string>91DEFF1A-9049-4A75-9036-4ABEF70BD879</string>
+		</dict>
+		<key>CE0143A9-81D6-4C3B-A282-C9D208F492A9</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CE0143A9-81D6-4C3B-A282-C9D208F492A9.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>GoFitApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>GoFitApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build GoFitApp</string>
+			<key>timeStartedRecording</key>
+			<real>656188664.35517395</real>
+			<key>timeStoppedRecording</key>
+			<real>656188671.33194697</real>
+			<key>title</key>
+			<string>Build GoFitApp</string>
+			<key>uniqueIdentifier</key>
+			<string>CE0143A9-81D6-4C3B-A282-C9D208F492A9</string>
+		</dict>
+		<key>DEBA1E78-A7DA-4D6F-96CF-86EAF4EA624E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>DEBA1E78-A7DA-4D6F-96CF-86EAF4EA624E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>GoFitApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>GoFitApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build GoFitApp</string>
+			<key>timeStartedRecording</key>
+			<real>656188642.59097004</real>
+			<key>timeStoppedRecording</key>
+			<real>656188651.38711798</real>
+			<key>title</key>
+			<string>Build GoFitApp</string>
+			<key>uniqueIdentifier</key>
+			<string>DEBA1E78-A7DA-4D6F-96CF-86EAF4EA624E</string>
+		</dict>
+	</dict>
 </dict>
 </plist>
