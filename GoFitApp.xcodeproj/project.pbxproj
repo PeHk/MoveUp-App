@@ -44,6 +44,10 @@
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
 		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
 		E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EBC13D271DC2A0009E9939 /* RegistrationViewController.storyboard */; };
+		E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC140271DCE68009E9939 /* DetailsCoordinator.swift */; };
+		E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC142271DCEAB009E9939 /* DetailsViewModel.swift */; };
+		E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC144271DCEC1009E9939 /* DetailsViewController.swift */; };
+		E1EBC147271DCED0009E9939 /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +91,10 @@
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		E1EBC13D271DC2A0009E9939 /* RegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationViewController.storyboard; sourceTree = "<group>"; };
+		E1EBC140271DCE68009E9939 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
+		E1EBC142271DCEAB009E9939 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		E1EBC144271DCEC1009E9939 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
 		F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.debug.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +185,7 @@
 		E16609A6271C9F880077DF6E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E1EBC13F271DCE40009E9939 /* Details */,
 				E16609A9271C9FA90077DF6E /* Login */,
 				E16609A8271C9FA00077DF6E /* Registration */,
 				E16609A7271C9F960077DF6E /* Home */,
@@ -261,6 +270,17 @@
 			path = Designs;
 			sourceTree = "<group>";
 		};
+		E1EBC13F271DCE40009E9939 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				E1EBC140271DCE68009E9939 /* DetailsCoordinator.swift */,
+				E1EBC142271DCEAB009E9939 /* DetailsViewModel.swift */,
+				E1EBC144271DCEC1009E9939 /* DetailsViewController.swift */,
+				E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1EBC147271DCED0009E9939 /* DetailsViewController.storyboard in Resources */,
 				E10AA3F2271DB33D0096B032 /* Roboto-Medium.ttf in Resources */,
 				E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */,
 				E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */,
@@ -393,13 +414,16 @@
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
 				E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */,
+				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
+				E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */,
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
+				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
