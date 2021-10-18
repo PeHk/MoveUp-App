@@ -7,6 +7,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Thin.ttf">
+            <string>Roboto-Thin</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,20 +25,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yNS-jE-YkE">
-                                <rect key="frame" x="30" y="402.5" width="354" height="91"/>
+                                <rect key="frame" x="30" y="393" width="354" height="110"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQu-O2-jA6" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQu-O2-jA6" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Bse-zq-14h"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Get started"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Get started"/>
+                                        <connections>
+                                            <action selector="getStartedTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3xE-vd-EKI"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-l1-qit">
-                                        <rect key="frame" x="0.0" y="60" width="354" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="I already have an account"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-l1-qit" customClass="SecondaryButton" customModule="GoFitApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="a8F-FV-v0d"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="I already have an account"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xX9-NC-JSX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -40,17 +58,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2021 Peter Hlavatík" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-wK-lMy">
+                                <rect key="frame" x="107" y="829" width="200" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="xHJ-uS-4yB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="yNS-jE-YkE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Cbt-HR-W9r"/>
                             <constraint firstItem="FCU-ej-QCS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="DbS-I6-8cw"/>
+                            <constraint firstItem="9aL-wK-lMy" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="WAs-9H-A4P"/>
                             <constraint firstItem="FCU-ej-QCS" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-100" id="eny-GI-bcp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9aL-wK-lMy" secondAttribute="bottom" constant="15" id="gn6-q3-lkU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yNS-jE-YkE" secondAttribute="trailing" constant="30" id="mxX-Dc-bvo"/>
                             <constraint firstItem="yNS-jE-YkE" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="vYK-CQ-MqR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="getStarted" destination="gQu-O2-jA6" id="zxc-Hw-CZ2"/>
+                        <outlet property="login" destination="Mp0-l1-qit" id="xIm-Uz-Cay"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,7 +92,7 @@
     </scenes>
     <designables>
         <designable name="gQu-O2-jA6">
-            <size key="intrinsicContentSize" width="97.5" height="31"/>
+            <size key="intrinsicContentSize" width="86" height="32"/>
         </designable>
     </designables>
     <resources>

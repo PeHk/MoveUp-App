@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */; };
+		E10AA3EE271DB33D0096B032 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E4271DB33D0096B032 /* Roboto-MediumItalic.ttf */; };
+		E10AA3EF271DB33D0096B032 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E5271DB33D0096B032 /* Roboto-BoldItalic.ttf */; };
+		E10AA3F0271DB33D0096B032 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E6271DB33D0096B032 /* Roboto-Bold.ttf */; };
+		E10AA3F1271DB33D0096B032 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E7271DB33D0096B032 /* Roboto-BlackItalic.ttf */; };
+		E10AA3F2271DB33D0096B032 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E8271DB33D0096B032 /* Roboto-Medium.ttf */; };
+		E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3E9271DB33D0096B032 /* Roboto-Italic.ttf */; };
+		E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3EA271DB33D0096B032 /* Roboto-Regular.ttf */; };
+		E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3EB271DB33D0096B032 /* Roboto-LightItalic.ttf */; };
+		E10AA3F6271DB33D0096B032 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3EC271DB33D0096B032 /* Roboto-Black.ttf */; };
+		E10AA3F7271DB33D0096B032 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3ED271DB33D0096B032 /* Roboto-Thin.ttf */; };
+		E10AA3FA271DB3450096B032 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3F8271DB3450096B032 /* Roboto-ThinItalic.ttf */; };
+		E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E10AA3F9271DB3450096B032 /* Roboto-Light.ttf */; };
+		E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA3FC271DB42C0096B032 /* SecondaryButton.swift */; };
+		E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA3FE271DB7DF0096B032 /* LoginCoordinator.swift */; };
+		E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA400271DB7E80096B032 /* LoginViewModel.swift */; };
+		E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA402271DB7F30096B032 /* LoginViewController.swift */; };
+		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
 		E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E166099B271C9F4E0077DF6E /* Assets.xcassets */; };
@@ -22,9 +40,29 @@
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */; };
+		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		144C70A0EB50EE4838C57F0C /* Pods-GoFitApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.release.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.release.xcconfig"; sourceTree = "<group>"; };
+		73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoFitApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10AA3E4271DB33D0096B032 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		E10AA3E5271DB33D0096B032 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E10AA3E6271DB33D0096B032 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		E10AA3E7271DB33D0096B032 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		E10AA3E8271DB33D0096B032 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		E10AA3E9271DB33D0096B032 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		E10AA3EA271DB33D0096B032 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		E10AA3EB271DB33D0096B032 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		E10AA3EC271DB33D0096B032 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		E10AA3ED271DB33D0096B032 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		E10AA3F8271DB3450096B032 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		E10AA3F9271DB3450096B032 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		E10AA3FC271DB42C0096B032 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		E10AA3FE271DB7DF0096B032 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		E10AA400271DB7E80096B032 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E10AA402271DB7F30096B032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1660999271C9F4B0077DF6E /* GoFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoFitApp.xcdatamodel; sourceTree = "<group>"; };
@@ -42,6 +80,8 @@
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.debug.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +89,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		775E6C8804BA24CF37A9EA78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */,
+				144C70A0EB50EE4838C57F0C /* Pods-GoFitApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B7B973D4E6DB9A51C1EC28A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E10AA3E3271DB3270096B032 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				E10AA3EC271DB33D0096B032 /* Roboto-Black.ttf */,
+				E10AA3E7271DB33D0096B032 /* Roboto-BlackItalic.ttf */,
+				E10AA3E6271DB33D0096B032 /* Roboto-Bold.ttf */,
+				E10AA3E5271DB33D0096B032 /* Roboto-BoldItalic.ttf */,
+				E10AA3F9271DB3450096B032 /* Roboto-Light.ttf */,
+				E10AA3F8271DB3450096B032 /* Roboto-ThinItalic.ttf */,
+				E10AA3E9271DB33D0096B032 /* Roboto-Italic.ttf */,
+				E10AA3EB271DB33D0096B032 /* Roboto-LightItalic.ttf */,
+				E10AA3E8271DB33D0096B032 /* Roboto-Medium.ttf */,
+				E10AA3E4271DB33D0096B032 /* Roboto-MediumItalic.ttf */,
+				E10AA3EA271DB33D0096B032 /* Roboto-Regular.ttf */,
+				E10AA3ED271DB33D0096B032 /* Roboto-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		E1660983271C9F4B0077DF6E = {
 			isa = PBXGroup;
 			children = (
 				E166098E271C9F4B0077DF6E /* GoFitApp */,
 				E166098D271C9F4B0077DF6E /* Products */,
+				775E6C8804BA24CF37A9EA78 /* Pods */,
+				B7B973D4E6DB9A51C1EC28A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +153,7 @@
 		E166098E271C9F4B0077DF6E /* GoFitApp */ = {
 			isa = PBXGroup;
 			children = (
+				E10AA3E3271DB3270096B032 /* Font */,
 				E16609C0271CA75F0077DF6E /* Designs */,
 				E16609BB271CA2720077DF6E /* Extensions */,
 				E16609B8271CA09A0077DF6E /* Managers */,
@@ -112,6 +192,7 @@
 		E16609A8271C9FA00077DF6E /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -119,6 +200,10 @@
 		E16609A9271C9FA90077DF6E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E10AA3FE271DB7DF0096B032 /* LoginCoordinator.swift */,
+				E10AA400271DB7E80096B032 /* LoginViewModel.swift */,
+				E10AA402271DB7F30096B032 /* LoginViewController.swift */,
+				E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -162,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				E16609C1271CA7860077DF6E /* PrimaryButton.swift */,
+				E10AA3FC271DB42C0096B032 /* SecondaryButton.swift */,
 			);
 			path = Designs;
 			sourceTree = "<group>";
@@ -173,9 +259,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E16609A3271C9F4E0077DF6E /* Build configuration list for PBXNativeTarget "GoFitApp" */;
 			buildPhases = (
+				0F0E9F537EE4FAE6E4AF4031 /* [CP] Check Pods Manifest.lock */,
 				E1660988271C9F4B0077DF6E /* Sources */,
 				E1660989271C9F4B0077DF6E /* Frameworks */,
 				E166098A271C9F4B0077DF6E /* Resources */,
+				1BB529385384BEB7E3602FDF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,13 +312,68 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10AA3F2271DB33D0096B032 /* Roboto-Medium.ttf in Resources */,
+				E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */,
+				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
+				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
+				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
+				E10AA3EE271DB33D0096B032 /* Roboto-MediumItalic.ttf in Resources */,
 				E16609AD271C9FCD0077DF6E /* HomeViewController.storyboard in Resources */,
+				E10AA3F0271DB33D0096B032 /* Roboto-Bold.ttf in Resources */,
+				E10AA3F1271DB33D0096B032 /* Roboto-BlackItalic.ttf in Resources */,
 				E166099F271C9F4E0077DF6E /* LaunchScreen.storyboard in Resources */,
+				E10AA3EF271DB33D0096B032 /* Roboto-BoldItalic.ttf in Resources */,
+				E10AA3FA271DB3450096B032 /* Roboto-ThinItalic.ttf in Resources */,
 				E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */,
+				E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */,
+				E10AA3F7271DB33D0096B032 /* Roboto-Thin.ttf in Resources */,
+				E10AA3F6271DB33D0096B032 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F0E9F537EE4FAE6E4AF4031 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoFitApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1BB529385384BEB7E3602FDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoFitApp/Pods-GoFitApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoFitApp/Pods-GoFitApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoFitApp/Pods-GoFitApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E1660988271C9F4B0077DF6E /* Sources */ = {
@@ -239,13 +382,18 @@
 			files = (
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
+				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
+				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
+				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
+				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
 				E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
+				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
@@ -384,6 +532,7 @@
 		};
 		E16609A4271C9F4E0077DF6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -412,6 +561,7 @@
 		};
 		E16609A5271C9F4E0077DF6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 144C70A0EB50EE4838C57F0C /* Pods-GoFitApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

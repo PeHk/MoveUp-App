@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Combine
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,10 +20,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        IQKeyboardManager.shared.enable = true
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.dependencyContainer = DependencyContainer()
         
         let navigationController: UINavigationController = .init()
+        
+        if #available(iOS 13.0, *) {
+            let appearence = UINavigationBarAppearance()
+            appearence.configureWithOpaqueBackground()
+            appearence.backgroundColor = .backgroundColor
+            appearence.shadowColor = nil
+            appearence.shadowImage = nil
+            navigationController.navigationBar.standardAppearance = appearence
+            navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance
+        } else {
+            navigationController.navigationBar.isTranslucent = false
+            navigationController.navigationBar.barTintColor = .backgroundColor
+            navigationController.navigationBar.shadowImage = nil
+        }
+        
+        navigationController.navigationBar.tintColor = .primary
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

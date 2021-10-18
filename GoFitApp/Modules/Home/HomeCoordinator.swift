@@ -36,8 +36,18 @@ final class HomeCoordinator: NSObject, Coordinator  {
         print("Home deinit")
     }
     
-    func showRegistration() {
-        
+    private func showRegistration() {
+//        let registrationCoordinator = RegistrationCoordinator(navigationController, dependencyContainer)
+//        registrationCoordinator.finishDelegate = self
+//        registrationCoordinator.start()
+//        childCoordinators.append(registrationCoordinator)
+    }
+    
+    private func showLogin() {
+        let loginCoordinator = LoginCoordinator(navigationController, dependencyContainer)
+        loginCoordinator.finishDelegate = self
+        loginCoordinator.start()
+        childCoordinators.append(loginCoordinator)
     }
     
     func start() {
@@ -46,8 +56,13 @@ final class HomeCoordinator: NSObject, Coordinator  {
         homeViewController.viewModel = homeViewModel
         
         homeViewController.viewModel.stepper
-            .sink(receiveValue: { [weak self] _ in
-                self?.finish()
+            .sink(receiveValue: { [weak self] event in
+                switch event {
+                case .getStarted:
+                    self?.showRegistration()
+                case .login:
+                    self?.showLogin()
+                }
             })
             .store(in: &subscription)
         
@@ -82,10 +97,11 @@ extension HomeCoordinator: UINavigationControllerDelegate {
             return
         }
 
-//        if let registrationController = fromViewController as? RegistrationViewController {
-//            if let coordinator = registrationController.coordinator {
-//                coordinatorDidFinish(childCoordinator: coordinator)
-//            }
+        if let loginViewController = fromViewController as? LoginViewController {
+            if let coordinator = loginViewController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
+        }
 //        } else if let connectionTypeController = fromViewController as? ConnectionTypeViewController {
 //            if let coordinator = connectionTypeController.coordinator {
 //                coordinatorDidFinish(childCoordinator: coordinator)

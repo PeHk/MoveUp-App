@@ -1,14 +1,14 @@
 //
-//  HomeViewModel.swift
+//  LoginViewModel.swift
 //  GoFitApp
 //
-//  Created by Peter Hlavatík on 17/10/2021.
+//  Created by Peter Hlavatík on 18/10/2021.
 //
 
 import Foundation
 import Combine
 
-final class HomeViewModel: ViewModelProtocol {
+final class LoginViewModel: ViewModelProtocol {
 
     // MARK: - Enums
     enum Action {
@@ -16,8 +16,7 @@ final class HomeViewModel: ViewModelProtocol {
     }
     
     enum Step {
-        case getStarted
-        case login
+        
     }
     
     enum State {
@@ -62,5 +61,5 @@ final class HomeViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
-    } 
+    }
 }

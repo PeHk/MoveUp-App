@@ -9,23 +9,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var login: SecondaryButton!
+    @IBOutlet weak var getStarted: PrimaryButton!
     var viewModel: HomeViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func getStartedTapped(_ sender: Any) {
+        viewModel.stepper.send(.getStarted)
     }
-    */
-
+    
+    @IBAction func loginTapped(_ sender: Any) {
+        viewModel.stepper.send(.login)
+    }
 }

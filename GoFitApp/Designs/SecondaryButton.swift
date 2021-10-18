@@ -1,18 +1,18 @@
 //
-//  PrimaryButton.swift
+//  SecondaryButton.swift
 //  GoFitApp
 //
-//  Created by Peter Hlavatík on 17/10/2021.
+//  Created by Peter Hlavatík on 18/10/2021.
 //
 
 import Foundation
 import UIKit
 
-@IBDesignable class PrimaryButton: UIButton {
+@IBDesignable class SecondaryButton: UIButton {
     
     @IBInspectable var cornerRadius: CGFloat = 25
     @IBInspectable var backgroundColorDisabled: UIColor = UIColor.lightGray
-    @IBInspectable var backgroundColorEnabled: UIColor = .primary
+    @IBInspectable var backgroundColorEnabled: UIColor = .clear
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,8 +42,11 @@ import UIKit
     
     func setUpView() {
         self.backgroundColor = backgroundColorEnabled
-        self.setTitleColor(.white, for: .normal)
+        self.setTitleColor(UIColor.primary, for: .normal)
         self.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 17)
+        
+        self.layer.borderWidth = 4
+        self.layer.borderColor = UIColor.primary.cgColor
         
         if isEnabled {
             setEnabled()
@@ -61,5 +64,5 @@ import UIKit
         backgroundColor = backgroundColorDisabled
         isEnabled = false
     }
-}
 
+}
