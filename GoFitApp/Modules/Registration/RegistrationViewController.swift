@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  RegistrationViewController.swift
 //  GoFitApp
 //
 //  Created by Peter Hlavatík on 18/10/2021.
@@ -7,10 +7,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegistrationViewController: UIViewController {
     
-    var viewModel: LoginViewModel!
-    var coordinator: LoginCoordinator!
+    @IBOutlet weak var informationView: UIView! {
+        didSet {
+            informationView.layer.cornerRadius = 25
+        }
+    }
+    var viewModel: RegistrationViewModel!
+    var coordinator: RegistrationCoodrinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()

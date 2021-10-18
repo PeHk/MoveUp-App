@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Registration View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="RegistrationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="RegistrationViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Afh-dW-iWM">
+                                <rect key="frame" x="30" y="54" width="354" height="778"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="99c-F6-3fF">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="438"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="But first, we need more info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-KC-YI9">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="338"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
+                                                <color key="textColor" name="primary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if5-nZ-LvN">
+                                                <rect key="frame" x="0.0" y="348" width="354" height="90"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We need your registration to provide you personal recommendations. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J4-4p-BEU">
+                                                        <rect key="frame" x="20" y="10" width="314" height="70"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="70" id="vPs-si-Uvr"/>
+                                                        </constraints>
+                                                        <color key="textColor" name="primary"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" name="greenSoft"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="8J4-4p-BEU" secondAttribute="trailing" constant="20" id="2qJ-x1-Vpd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8J4-4p-BEU" secondAttribute="bottom" constant="10" id="D6Z-MW-rj8"/>
+                                                    <constraint firstItem="8J4-4p-BEU" firstAttribute="top" secondItem="if5-nZ-LvN" secondAttribute="top" constant="10" id="jWw-jt-Yux"/>
+                                                    <constraint firstItem="8J4-4p-BEU" firstAttribute="leading" secondItem="if5-nZ-LvN" secondAttribute="leading" constant="20" id="oIw-u5-aDk"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="if5-nZ-LvN" secondAttribute="trailing" id="NlM-TI-n63"/>
+                                            <constraint firstAttribute="trailing" secondItem="a8z-KC-YI9" secondAttribute="trailing" id="ih0-Sj-oN8"/>
+                                            <constraint firstItem="a8z-KC-YI9" firstAttribute="leading" secondItem="99c-F6-3fF" secondAttribute="leading" id="oZg-bO-2JP"/>
+                                            <constraint firstItem="if5-nZ-LvN" firstAttribute="leading" secondItem="99c-F6-3fF" secondAttribute="leading" id="wYr-dd-Db6"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vIe-Id-few">
+                                        <rect key="frame" x="0.0" y="468" width="354" height="230"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbB-v2-MKf" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="hmD-Em-wk9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Nickname"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Nickname:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Nickname:"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3a-SR-vGS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="EGH-T5-Y6Y"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail address"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail addres:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="E-mail address:"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R9g-6t-x4e" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="120" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="9Lf-gD-m3D"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password:"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atb-Wm-aee" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="180" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="EqL-Lc-CpQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Repeat password"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Repeat password:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Repeat password:"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="U3a-SR-vGS" firstAttribute="leading" secondItem="vIe-Id-few" secondAttribute="leading" id="1qO-br-xqO"/>
+                                            <constraint firstItem="atb-Wm-aee" firstAttribute="leading" secondItem="vIe-Id-few" secondAttribute="leading" id="23x-6J-gpw"/>
+                                            <constraint firstAttribute="trailing" secondItem="U3a-SR-vGS" secondAttribute="trailing" id="Kd9-qw-gbx"/>
+                                            <constraint firstItem="TbB-v2-MKf" firstAttribute="leading" secondItem="vIe-Id-few" secondAttribute="leading" id="Vbk-C4-AWG"/>
+                                            <constraint firstAttribute="trailing" secondItem="atb-Wm-aee" secondAttribute="trailing" id="Y53-iA-eDd"/>
+                                            <constraint firstItem="R9g-6t-x4e" firstAttribute="leading" secondItem="vIe-Id-few" secondAttribute="leading" id="gxa-1A-loX"/>
+                                            <constraint firstAttribute="trailing" secondItem="TbB-v2-MKf" secondAttribute="trailing" id="heD-Kf-KLm"/>
+                                            <constraint firstAttribute="trailing" secondItem="R9g-6t-x4e" secondAttribute="trailing" id="mQ1-Jb-0m9"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-7S-rfO" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="728" width="354" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="tDj-uY-fTZ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Sign up"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vIe-Id-few" firstAttribute="leading" secondItem="Afh-dW-iWM" secondAttribute="leading" id="6QW-1h-QUG"/>
+                                    <constraint firstAttribute="trailing" secondItem="xpd-7S-rfO" secondAttribute="trailing" id="L0p-vJ-XFJ"/>
+                                    <constraint firstItem="99c-F6-3fF" firstAttribute="leading" secondItem="Afh-dW-iWM" secondAttribute="leading" id="RlM-K4-597"/>
+                                    <constraint firstAttribute="trailing" secondItem="99c-F6-3fF" secondAttribute="trailing" id="UWr-qg-iJu"/>
+                                    <constraint firstAttribute="trailing" secondItem="vIe-Id-few" secondAttribute="trailing" id="b5Y-tI-oe1"/>
+                                    <constraint firstItem="xpd-7S-rfO" firstAttribute="leading" secondItem="Afh-dW-iWM" secondAttribute="leading" id="ipK-KH-gHO"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Afh-dW-iWM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="lnx-Yh-2TD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Afh-dW-iWM" secondAttribute="trailing" constant="30" id="muu-ud-tP1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Afh-dW-iWM" secondAttribute="bottom" constant="30" id="pfz-xv-QFz"/>
+                            <constraint firstItem="Afh-dW-iWM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="x56-7R-uSo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="informationView" destination="if5-nZ-LvN" id="uTU-VN-faQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="57"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="TbB-v2-MKf">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
+        <designable name="U3a-SR-vGS">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="backgroundColor">
+            <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="greenSoft">
+            <color red="0.80784313725490198" green="0.85098039215686272" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

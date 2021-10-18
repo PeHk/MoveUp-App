@@ -37,10 +37,10 @@ final class HomeCoordinator: NSObject, Coordinator  {
     }
     
     private func showRegistration() {
-//        let registrationCoordinator = RegistrationCoordinator(navigationController, dependencyContainer)
-//        registrationCoordinator.finishDelegate = self
-//        registrationCoordinator.start()
-//        childCoordinators.append(registrationCoordinator)
+        let registrationCoordinator = RegistrationCoodrinator(navigationController, dependencyContainer)
+        registrationCoordinator.finishDelegate = self
+        registrationCoordinator.start()
+        childCoordinators.append(registrationCoordinator)
     }
     
     private func showLogin() {
@@ -101,15 +101,10 @@ extension HomeCoordinator: UINavigationControllerDelegate {
             if let coordinator = loginViewController.coordinator {
                 coordinatorDidFinish(childCoordinator: coordinator)
             }
+        } else if let registrationViewController = fromViewController as? RegistrationViewController {
+            if let coordinator = registrationViewController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
         }
-//        } else if let connectionTypeController = fromViewController as? ConnectionTypeViewController {
-//            if let coordinator = connectionTypeController.coordinator {
-//                coordinatorDidFinish(childCoordinator: coordinator)
-//            }
-//        } else if let aboutPageController = fromViewController as? AboutPageViewController {
-//            if let coordinator = aboutPageController.coordinator {
-//                coordinatorDidFinish(childCoordinator: coordinator)
-//            }
-//        }
     }
 }

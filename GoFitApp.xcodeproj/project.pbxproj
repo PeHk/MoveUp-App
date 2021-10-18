@@ -41,6 +41,9 @@
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
+		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
+		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
+		E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EBC13D271DC2A0009E9939 /* RegistrationViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,9 @@
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		E1EBC13D271DC2A0009E9939 /* RegistrationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegistrationViewController.storyboard; sourceTree = "<group>"; };
 		F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.debug.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +199,9 @@
 			isa = PBXGroup;
 			children = (
 				E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */,
+				E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */,
+				E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */,
+				E1EBC13D271DC2A0009E9939 /* RegistrationViewController.storyboard */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -314,6 +323,7 @@
 			files = (
 				E10AA3F2271DB33D0096B032 /* Roboto-Medium.ttf in Resources */,
 				E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */,
+				E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */,
 				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
 				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
 				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
@@ -381,6 +391,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
+				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
+				E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
