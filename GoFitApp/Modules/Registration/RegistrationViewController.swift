@@ -9,13 +9,14 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
     
+    @IBOutlet weak var signUpButton: PrimaryButton!
     @IBOutlet weak var informationView: UIView! {
         didSet {
             informationView.layer.cornerRadius = 25
         }
     }
     var viewModel: RegistrationViewModel!
-    var coordinator: RegistrationCoodrinator!
+    var coordinator: RegistrationCoordinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,5 +30,9 @@ class RegistrationViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        viewModel.stepper.send(.signUp)
     }
 }

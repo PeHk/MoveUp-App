@@ -38,12 +38,12 @@ final class AppCoordinator: Coordinator {
         childCoordinators.append(homeCoordinator)
     }
     
-//    func showTabBar() {
-//        let tabBarCoordinator = TabBarCoordinator(navigationController, dependencyContainer)
-//        tabBarCoordinator.finishDelegate = self
-//        tabBarCoordinator.start()
-//        childCoordinators.append(tabBarCoordinator)
-//    }
+    func showMoreDetails() {
+        let detailsCoordinator = DetailsCoordinator(navigationController, dependencyContainer)
+        detailsCoordinator.finishDelegate = self
+        detailsCoordinator.start()
+        childCoordinators.append(detailsCoordinator)
+    }
 //
 //    func showLogin() {
 //        let downloadCoordinator = DownloadCoordinator(navigationController, dependencyContainer)
@@ -64,6 +64,15 @@ extension AppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
         switch childCoordinator.type {
+        case .home:
+            let coor = childCoordinator as! HomeCoordinator
+            
+            navigationController.viewControllers.removeAll()
+            
+            if coor.fromCoordinator == .registration {
+                showMoreDetails()
+            }
+            
 //        case .tab:
 //            navigationController.viewControllers.removeAll()
 //

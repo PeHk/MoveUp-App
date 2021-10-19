@@ -120,7 +120,7 @@
     </scenes>
     <designables>
         <designable name="Mp0-l1-qit">
-            <size key="intrinsicContentSize" width="174" height="30"/>
+            <size key="intrinsicContentSize" width="195" height="32"/>
         </designable>
         <designable name="gQu-O2-jA6">
             <size key="intrinsicContentSize" width="86" height="32"/>

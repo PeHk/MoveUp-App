@@ -16,7 +16,7 @@ final class RegistrationViewModel: ViewModelProtocol {
     }
     
     enum Step {
-        
+        case signUp
     }
     
     enum State {

@@ -7,6 +7,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+        <array key="Roboto-Thin.ttf">
+            <string>Roboto-Thin</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Details View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -15,8 +26,123 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Tis-IU-nWH">
+                                <rect key="frame" x="30" y="74" width="354" height="758"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eyh-Pj-f06">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The last step..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdF-DD-5r4">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="37.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
+                                                <color key="textColor" name="primary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give us more information about you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thb-jF-qdO">
+                                                <rect key="frame" x="0.0" y="47.5" width="354" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="20"/>
+                                                <color key="textColor" name="primary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="PdF-DD-5r4" firstAttribute="leading" secondItem="eyh-Pj-f06" secondAttribute="leading" id="2v5-yg-Ixl"/>
+                                            <constraint firstAttribute="trailing" secondItem="PdF-DD-5r4" secondAttribute="trailing" id="60Z-dJ-q6T"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Ld-N6-51Z">
+                                        <rect key="frame" x="0.0" y="299.5" width="354" height="170"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbU-zS-DfM" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="RET-fh-Fmt"/>
+                                                </constraints>
+                                                <color key="textColor" name="primary"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Height (cm)"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Height (cm):"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Height (cm):"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1L6-CW-ZQh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Lo1-b6-YP8"/>
+                                                </constraints>
+                                                <color key="textColor" name="primary"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Weight (kg)"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Weight (kg):"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Weight (kg):"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mED-NC-W6U" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="120" width="354" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="OAv-72-TwX"/>
+                                                </constraints>
+                                                <color key="textColor" name="primary"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Age"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Age:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Age:"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qbU-zS-DfM" secondAttribute="trailing" id="0X4-3i-Sss"/>
+                                            <constraint firstAttribute="trailing" secondItem="1L6-CW-ZQh" secondAttribute="trailing" id="6IZ-se-fzA"/>
+                                            <constraint firstItem="mED-NC-W6U" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="8Ca-gz-Enc"/>
+                                            <constraint firstItem="1L6-CW-ZQh" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="Er8-1X-1Oc"/>
+                                            <constraint firstAttribute="trailing" secondItem="mED-NC-W6U" secondAttribute="trailing" id="LZq-kY-32n"/>
+                                            <constraint firstItem="qbU-zS-DfM" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="e0m-wm-9sk"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-Rq-8R4" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="708" width="354" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="lVx-7x-mrK"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tis-IU-nWH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="cfH-bo-aKd"/>
+                            <constraint firstItem="Tis-IU-nWH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="dM5-VQ-5q5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tis-IU-nWH" secondAttribute="trailing" constant="30" id="e3Z-aE-5tQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Tis-IU-nWH" secondAttribute="bottom" constant="30" id="gNH-x2-1wK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -24,9 +150,26 @@
             <point key="canvasLocation" x="35" y="57"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="1L6-CW-ZQh">
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+        </designable>
+        <designable name="4ed-Rq-8R4">
+            <size key="intrinsicContentSize" width="39" height="34"/>
+        </designable>
+        <designable name="mED-NC-W6U">
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+        </designable>
+        <designable name="qbU-zS-DfM">
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="backgroundColor">
             <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

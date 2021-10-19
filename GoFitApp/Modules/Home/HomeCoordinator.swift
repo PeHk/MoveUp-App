@@ -22,6 +22,8 @@ final class HomeCoordinator: NSObject, Coordinator  {
     
     var subscription = Set<AnyCancellable>()
     
+    var fromCoordinator: CoordinatorType
+    
     var homeViewModel: HomeViewModel {
         let homeViewModel = HomeViewModel(dependencyContainer)
         return homeViewModel
@@ -37,7 +39,7 @@ final class HomeCoordinator: NSObject, Coordinator  {
     }
     
     private func showRegistration() {
-        let registrationCoordinator = RegistrationCoodrinator(navigationController, dependencyContainer)
+        let registrationCoordinator = RegistrationCoordinator(navigationController, dependencyContainer)
         registrationCoordinator.finishDelegate = self
         registrationCoordinator.start()
         childCoordinators.append(registrationCoordinator)
@@ -76,9 +78,23 @@ extension HomeCoordinator: CoordinatorFinishDelegate {
 
         switch childCoordinator.type {
         case .registration:
-            navigationController.setNavigationBarHidden(true, animated: true)
-            navigationController.popViewController(animated: true)
+            let coor = childCoordinator as! RegistrationCoordinator
+            
+            self.fromCoordinator = .registration
+            
+            if coor.registrationSuccessfull {
+                self.finish()
+                
+                navigationController.setNavigationBarHidden(true, animated: true)
+                navigationController.popViewController(animated: true)
+            } else {
+                navigationController.setNavigationBarHidden(true, animated: true)
+                navigationController.popViewController(animated: true)
+            }
         case .login:
+            
+            self.fromCoordinator = .login
+            
             navigationController.setNavigationBarHidden(true, animated: true)
             navigationController.popViewController(animated: true)
         default:

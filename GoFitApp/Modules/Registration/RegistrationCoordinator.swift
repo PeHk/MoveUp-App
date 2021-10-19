@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Combine
 
-final class RegistrationCoodrinator: Coordinator  {
+final class RegistrationCoordinator: Coordinator  {
     let dependencyContainer: DependencyContainer
     
     var finishDelegate: CoordinatorFinishDelegate?
@@ -19,6 +19,8 @@ final class RegistrationCoodrinator: Coordinator  {
     var type: CoordinatorType { .registration }
     
     var childCoordinators: [Coordinator] = []
+    
+    var registrationSuccessfull: Bool = false
     
     var subscription = Set<AnyCancellable>()
     
@@ -42,8 +44,13 @@ final class RegistrationCoodrinator: Coordinator  {
         registrationViewController.coordinator = self
         
         registrationViewController.viewModel.stepper
-            .sink { [weak self] _ in
-                self?.finish()
+            .sink { [weak self] event in
+                switch event {
+                case .signUp:
+                    self?.registrationSuccessfull = true
+                    self?.finish()
+                }
+                
             }
             .store(in: &subscription)
         

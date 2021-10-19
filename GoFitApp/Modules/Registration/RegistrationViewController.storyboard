@@ -160,6 +160,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Sign up"/>
+                                        <connections>
+                                            <action selector="signUpButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="P6m-PE-anJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -183,6 +186,7 @@
                     </view>
                     <connections>
                         <outlet property="informationView" destination="if5-nZ-LvN" id="uTU-VN-faQ"/>
+                        <outlet property="signUpButton" destination="xpd-7S-rfO" id="b49-Jw-82z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -191,11 +195,20 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="R9g-6t-x4e">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
         <designable name="TbB-v2-MKf">
             <size key="intrinsicContentSize" width="354" height="39.220703125"/>
         </designable>
         <designable name="U3a-SR-vGS">
             <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
+        <designable name="atb-Wm-aee">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
+        <designable name="xpd-7S-rfO">
+            <size key="intrinsicContentSize" width="61" height="34"/>
         </designable>
     </designables>
     <resources>
