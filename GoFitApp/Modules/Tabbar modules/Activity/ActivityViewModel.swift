@@ -27,9 +27,9 @@ class ActivityViewModel: ViewModelProtocol {
         switch state {
         case .initial:
             initializeView()
-        case .error(let error):
-            isLoading.send(false)
-            errorState.send(error)
+//        case .error(let error):
+//            isLoading.send(false)
+//            errorState.send(error)
         case .loading:
             isLoading.send(true)
         }

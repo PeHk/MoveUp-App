@@ -9,7 +9,7 @@ class ActivityCoordinator: NSObject, Coordinator {
     
     var navigationController: UINavigationController
     
-//    var type: CoordinatorType { .TODO }
+    var type: CoordinatorType { .activity }
     
     var childCoordinators: [Coordinator] = []
     

@@ -42,8 +42,11 @@ final class DetailsCoordinator: Coordinator  {
         detailsViewController.coordinator = self
         
         detailsViewController.viewModel.stepper
-            .sink { [weak self] _ in
-                self?.finish()
+            .sink { [weak self] event in
+                switch event {
+                case .save:
+                    self?.finish()
+                }
             }
             .store(in: &subscription)
         

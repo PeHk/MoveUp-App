@@ -153,6 +153,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="C3A-RW-pM8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -172,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="genderPicker" destination="uZ8-21-Di3" id="sAW-gM-CZB"/>
+                        <outlet property="saveButton" destination="4ed-Rq-8R4" id="c03-z2-Bdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,7 +188,7 @@
             <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="4ed-Rq-8R4">
-            <size key="intrinsicContentSize" width="39" height="34"/>
+            <size key="intrinsicContentSize" width="61.5" height="34"/>
         </designable>
         <designable name="mED-NC-W6U">
             <size key="intrinsicContentSize" width="354" height="38.919921875"/>

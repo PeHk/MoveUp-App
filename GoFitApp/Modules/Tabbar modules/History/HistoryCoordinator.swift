@@ -9,7 +9,7 @@ class HistoryCoordinator: NSObject, Coordinator {
     
     var navigationController: UINavigationController
     
-//    var type: CoordinatorType { .TODO }
+    var type: CoordinatorType { .history }
     
     var childCoordinators: [Coordinator] = []
     

@@ -3,8 +3,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let viewModel: ProfileViewModel!
-    let coordinator: ProfileCoordinator!
+    var viewModel: ProfileViewModel!
+    var coordinator: ProfileCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

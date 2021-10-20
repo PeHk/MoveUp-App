@@ -10,6 +10,7 @@ import CloudKit
 
 class DetailsViewController: UIViewController {
     
+    @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var genderPicker: UIView! {
         didSet {
             genderPicker.addBottomBorder(color: .lightGray, margins: 0, borderLineSize: 0.5)
@@ -20,5 +21,9 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        viewModel.stepper.send(.save)
     }
 }

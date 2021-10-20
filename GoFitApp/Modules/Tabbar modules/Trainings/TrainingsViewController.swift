@@ -3,8 +3,8 @@ import UIKit
 
 class TrainingsViewController: UIViewController {
     
-    let viewModel: TrainingsViewModel!
-    let coordinator: TrainingsCoordinator!
+    var viewModel: TrainingsViewModel!
+    var coordinator: TrainingsCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

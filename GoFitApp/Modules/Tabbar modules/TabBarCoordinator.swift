@@ -103,31 +103,28 @@ class TabBarCoordinator: NSObject, Coordinator {
         tabBarController.selectedIndex = TabBarPage.dashboard.pageOrderNumber()
         /// Styling
         
-//        if #available(iOS 13.0, *) {
-//            let appearance = UITabBarAppearance()
-//            appearance.configureWithOpaqueBackground()
-//            appearance.backgroundColor = .backgroundColor
-//            appearance.selectionIndicatorTintColor = .primary
-//            appearance.shadowImage = nil
-//            appearance.shadowColor = nil
-//            tabBarController.tabBar.standardAppearance = appearance
-//
-//        } else {
-//            tabBarController.tabBar.isTranslucent = false
-//            tabBarController.tabBar.tintColor = .primary
-//            tabBarController.tabBar.unselectedItemTintColor = .secondary
-//            tabBarController.tabBar.barTintColor = .backgroundColor
-//            tabBarController.tabBar.standardAppearance.shadowColor = nil
-//            tabBarController.tabBar.standardAppearance.shadowImage = nil
-//        }
-//
-//        if #available(iOS 15.0, *) {
-//            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
-//        }
-//
-//        tabBarController.tabBar.items?.first?.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -50)
-//        tabBarController.tabBar.items?.last?.imageInsets = UIEdgeInsets(top: 0, left: -50, bottom: 0, right: 0)
-    
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .backgroundColor
+            appearance.selectionIndicatorTintColor = .primary
+            appearance.shadowImage = nil
+            appearance.shadowColor = nil
+            tabBarController.tabBar.standardAppearance = appearance
+
+        } else {
+            tabBarController.tabBar.isTranslucent = false
+            tabBarController.tabBar.tintColor = .primary
+            tabBarController.tabBar.unselectedItemTintColor = .secondary
+            tabBarController.tabBar.barTintColor = .backgroundColor
+            tabBarController.tabBar.standardAppearance.shadowColor = nil
+            tabBarController.tabBar.standardAppearance.shadowImage = nil
+        }
+
+        if #available(iOS 15.0, *) {
+            tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
+        }
+        
         /// In this step, we attach tabBarController to navigation controller associated with this coordinator
         navigationController.viewControllers = [tabBarController]
     }

@@ -52,6 +52,7 @@
 		E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449727206DE30062C44B /* ProfileViewController.swift */; };
 		E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449827206DE30062C44B /* ProfileViewModel.swift */; };
 		E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449E27206E6C0062C44B /* TabBarCoordinator.swift */; };
+		E13B44A1272094950062C44B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B44A0272094950062C44B /* BaseViewController.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
 		E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E166099B271C9F4E0077DF6E /* Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		E13B449727206DE30062C44B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E13B449827206DE30062C44B /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		E13B449E27206E6C0062C44B /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		E13B44A0272094950062C44B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1660999271C9F4B0077DF6E /* GoFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoFitApp.xcdatamodel; sourceTree = "<group>"; };
@@ -203,10 +205,10 @@
 		E13B445D27206D290062C44B /* SetCalories */ = {
 			isa = PBXGroup;
 			children = (
-				E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */,
-				E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */,
 				E13B446027206D290062C44B /* SetCaloriesCoordinator.swift */,
+				E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */,
 				E13B446127206D290062C44B /* SetCaloriesViewController.swift */,
+				E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */,
 			);
 			path = SetCalories;
 			sourceTree = "<group>";
@@ -394,6 +396,7 @@
 				E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */,
 				E1065D95271F29FE002C575E /* UINavigationController+Extensions.swift */,
 				E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */,
+				E13B44A0272094950062C44B /* BaseViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */,
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
+				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
 				E13B449027206DD90062C44B /* TrainingsCoordinator.swift in Sources */,
 				E13B448027206DBF0062C44B /* ActivityViewModel.swift in Sources */,

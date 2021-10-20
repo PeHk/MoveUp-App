@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: BaseViewController {
     
     @IBOutlet weak var signUpButton: PrimaryButton!
     @IBOutlet weak var informationView: UIView! {

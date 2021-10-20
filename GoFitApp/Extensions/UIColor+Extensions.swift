@@ -20,4 +20,8 @@ extension UIColor {
     class var backgroundColor: UIColor {
         return UIColor(named: "backgroundColor") ?? .systemBackground
     }
+    
+    class var text: UIColor {
+        return UIColor(named: "text") ?? .systemBackground
+    }
 }

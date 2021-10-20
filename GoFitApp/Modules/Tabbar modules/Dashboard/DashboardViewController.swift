@@ -3,8 +3,8 @@ import UIKit
 
 class DashboardViewController: UIViewController {
     
-    let viewModel: DashboardViewModel!
-    let coordinator: DashboardCoordinator!
+    var viewModel: DashboardViewModel!
+    var coordinator: DashboardCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

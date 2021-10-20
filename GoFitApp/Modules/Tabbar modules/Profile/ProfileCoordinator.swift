@@ -9,7 +9,7 @@ class ProfileCoordinator: NSObject, Coordinator {
     
     var navigationController: UINavigationController
     
-//    var type: CoordinatorType { .TODO }
+    var type: CoordinatorType { .profile }
     
     var childCoordinators: [Coordinator] = []
     

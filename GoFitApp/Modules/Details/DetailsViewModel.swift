@@ -16,7 +16,7 @@ final class DetailsViewModel: ViewModelProtocol {
     }
     
     enum Step {
-        
+        case save
     }
     
     enum State {

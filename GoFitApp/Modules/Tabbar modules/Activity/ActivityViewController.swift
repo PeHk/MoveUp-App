@@ -3,8 +3,8 @@ import UIKit
 
 class ActivityViewController: UIViewController {
     
-    let viewModel: ActivityViewModel!
-    let coordinator: ActivityCoordinator!
+    var viewModel: ActivityViewModel!
+    var coordinator: ActivityCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

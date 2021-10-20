@@ -8,8 +8,17 @@
 import Foundation
 import UIKit
 
-extension UINavigationController {
+extension UINavigationController: UIGestureRecognizerDelegate {
     @objc func goBack(sender: Any?) {
         self.popViewController(animated: true)
+    }
+    
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }

@@ -9,7 +9,7 @@ class DashboardCoordinator: NSObject, Coordinator {
     
     var navigationController: UINavigationController
     
-//    var type: CoordinatorType { .TODO }
+    var type: CoordinatorType { .dashboard }
     
     var childCoordinators: [Coordinator] = []
     

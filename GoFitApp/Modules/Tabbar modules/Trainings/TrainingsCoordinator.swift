@@ -9,7 +9,7 @@ class TrainingsCoordinator: NSObject, Coordinator {
     
     var navigationController: UINavigationController
     
-//    var type: CoordinatorType { .TODO }
+    var type: CoordinatorType { .trainings }
     
     var childCoordinators: [Coordinator] = []
     

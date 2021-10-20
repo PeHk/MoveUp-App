@@ -3,8 +3,8 @@ import UIKit
 
 class HistoryViewController: UIViewController {
     
-    let viewModel: HistoryViewModel!
-    let coordinator: HistoryCoordinator!
+    var viewModel: HistoryViewModel!
+    var coordinator: HistoryCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

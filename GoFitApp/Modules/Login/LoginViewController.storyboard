@@ -80,7 +80,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QRK-0a-aDi">
                                         <rect key="frame" x="0.0" y="533" width="354" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-7s-nlS" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-7s-nlS" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Y8g-T0-PIL"/>
@@ -132,8 +132,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="7ZJ-fs-rh7">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
+        <designable name="qnJ-jt-qg0">
+            <size key="intrinsicContentSize" width="354" height="39.220703125"/>
+        </designable>
         <designable name="xHT-7s-nlS">
-            <size key="intrinsicContentSize" width="44" height="34"/>
+            <size key="intrinsicContentSize" width="67" height="34"/>
         </designable>
     </designables>
     <resources>

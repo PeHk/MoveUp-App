@@ -7,20 +7,13 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     var viewModel: LoginViewModel!
     var coordinator: LoginCoordinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "backButton"),
-            style: UIBarButtonItem.Style.done,
-            target: navigationController,
-            action: #selector(navigationController?.goBack))
     }
     
     override func viewWillAppear(_ animated: Bool) {
