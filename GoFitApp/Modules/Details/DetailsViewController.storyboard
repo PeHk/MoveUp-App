@@ -52,7 +52,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Ld-N6-51Z">
-                                        <rect key="frame" x="0.0" y="299.5" width="354" height="170"/>
+                                        <rect key="frame" x="0.0" y="269.5" width="354" height="230"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qbU-zS-DfM" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -114,6 +114,26 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Age:"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-21-Di3">
+                                                <rect key="frame" x="0.0" y="180" width="354" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2L-ws-XTo">
+                                                        <rect key="frame" x="0.0" y="15" width="354" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="bvd-Gj-i91"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="w2L-ws-XTo" firstAttribute="leading" secondItem="uZ8-21-Di3" secondAttribute="leading" id="OvF-pz-Dve"/>
+                                                    <constraint firstAttribute="height" constant="50" id="RMk-3t-bhP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="w2L-ws-XTo" secondAttribute="trailing" id="bJs-ku-fxk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="w2L-ws-XTo" secondAttribute="bottom" constant="5" id="fL9-bf-Zyr"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qbU-zS-DfM" secondAttribute="trailing" id="0X4-3i-Sss"/>
@@ -121,7 +141,9 @@
                                             <constraint firstItem="mED-NC-W6U" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="8Ca-gz-Enc"/>
                                             <constraint firstItem="1L6-CW-ZQh" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="Er8-1X-1Oc"/>
                                             <constraint firstAttribute="trailing" secondItem="mED-NC-W6U" secondAttribute="trailing" id="LZq-kY-32n"/>
+                                            <constraint firstAttribute="trailing" secondItem="uZ8-21-Di3" secondAttribute="trailing" id="Xa9-dF-IOI"/>
                                             <constraint firstItem="qbU-zS-DfM" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="e0m-wm-9sk"/>
+                                            <constraint firstItem="uZ8-21-Di3" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="jxj-RL-wWt"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-Rq-8R4" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
@@ -133,6 +155,10 @@
                                         <state key="normal" title="Save"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3Ld-N6-51Z" secondAttribute="trailing" id="9zU-ql-S93"/>
+                                    <constraint firstItem="3Ld-N6-51Z" firstAttribute="leading" secondItem="Tis-IU-nWH" secondAttribute="leading" id="Kvp-fJ-e8q"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -144,6 +170,9 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Tis-IU-nWH" secondAttribute="bottom" constant="30" id="gNH-x2-1wK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="genderPicker" destination="uZ8-21-Di3" id="sAW-gM-CZB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

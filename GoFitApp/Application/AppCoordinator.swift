@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import CloudKit
 
 final class AppCoordinator: Coordinator {
     var finishDelegate: CoordinatorFinishDelegate?
@@ -31,33 +32,33 @@ final class AppCoordinator: Coordinator {
         showHomePage()
     }
     
-    func showHomePage(_ fromInterceptor: Bool = false) {
+    private func showHomePage(_ fromInterceptor: Bool = false) {
         let homeCoordinator = HomeCoordinator(navigationController, dependencyContainer)
         homeCoordinator.finishDelegate = self
         homeCoordinator.start()
         childCoordinators.append(homeCoordinator)
     }
     
-    func showMoreDetails() {
+    private func showMoreDetails() {
         let detailsCoordinator = DetailsCoordinator(navigationController, dependencyContainer)
         detailsCoordinator.finishDelegate = self
         detailsCoordinator.start()
         childCoordinators.append(detailsCoordinator)
     }
-//
-//    func showLogin() {
-//        let downloadCoordinator = DownloadCoordinator(navigationController, dependencyContainer)
-//        downloadCoordinator.finishDelegate = self
-//        downloadCoordinator.start()
-//        childCoordinators.append(downloadCoordinator)
-//    }
-//
-//    func showRegistration() {
-//        let downloadCoordinator = DownloadCoordinator(navigationController, dependencyContainer)
-//        downloadCoordinator.finishDelegate = self
-//        downloadCoordinator.start()
-//        childCoordinators.append(downloadCoordinator)
-//    }
+    
+    private func showSetCalories() {
+        let setCaloriesCoordinator = SetCaloriesCoordinator(navigationController, dependencyContainer)
+        setCaloriesCoordinator.finishDelegate = self
+        setCaloriesCoordinator.start()
+        childCoordinators.append(setCaloriesCoordinator)
+    }
+    
+    private func showTabBar() {
+        let tabBarCoordinator = TabBarCoordinator(navigationController, dependencyContainer)
+        tabBarCoordinator.finishDelegate = self
+        tabBarCoordinator.start()
+        childCoordinators.append(tabBarCoordinator)
+    }
 }
 
 extension AppCoordinator: CoordinatorFinishDelegate {
@@ -73,26 +74,18 @@ extension AppCoordinator: CoordinatorFinishDelegate {
                 showMoreDetails()
             }
             
-//        case .tab:
-//            navigationController.viewControllers.removeAll()
-//
-//            showHomePage()
-//        case .animation:
-//            navigationController.viewControllers.removeAll()
-//
-//            showTutorial()
-//        case .tutorial:
-//            navigationController.viewControllers.removeAll()
-//
-//            showHomePage()
-//        case .home:
-//            navigationController.viewControllers.removeAll()
-//
-//            showDownloadPage()
-//        case .download:
-//            navigationController.viewControllers.removeAll()
-//
-//            showTabBar()
+        case .setCalories:
+            navigationController.viewControllers.removeAll()
+           
+            showTabBar()
+        case .details:
+            navigationController.viewControllers.removeAll()
+            
+            showSetCalories()
+        case .tab:
+            navigationController.viewControllers.removeAll()
+
+            showHomePage()
         default:
             break
         }

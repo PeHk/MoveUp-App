@@ -22,7 +22,7 @@ final class HomeCoordinator: NSObject, Coordinator  {
     
     var subscription = Set<AnyCancellable>()
     
-    var fromCoordinator: CoordinatorType
+    var fromCoordinator: CoordinatorType?
     
     var homeViewModel: HomeViewModel {
         let homeViewModel = HomeViewModel(dependencyContainer)
