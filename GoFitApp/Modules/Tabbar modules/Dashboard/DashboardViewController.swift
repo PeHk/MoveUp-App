@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UITableViewController {
     
     var viewModel: DashboardViewModel!
     var coordinator: DashboardCoordinator!
