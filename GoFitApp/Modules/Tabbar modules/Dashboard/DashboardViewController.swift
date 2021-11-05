@@ -3,6 +3,8 @@ import UIKit
 
 class DashboardViewController: UITableViewController {
     
+    @IBOutlet weak var caloriesView: UIView!
+    @IBOutlet weak var stepsView: UIView!
     var viewModel: DashboardViewModel!
     var coordinator: DashboardCoordinator!
     
@@ -13,7 +15,8 @@ class DashboardViewController: UITableViewController {
     }
     
     private func setupView() {
-        
+        caloriesView.layer.cornerRadius = 10
+        stepsView.layer.cornerRadius = 10
     }
     
     private func setupBindings() {
