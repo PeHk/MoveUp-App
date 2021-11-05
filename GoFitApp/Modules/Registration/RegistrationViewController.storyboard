@@ -31,18 +31,18 @@
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="438"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="But first, we need more info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-KC-YI9">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="338"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="348"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
                                                 <color key="textColor" name="primary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if5-nZ-LvN">
-                                                <rect key="frame" x="0.0" y="348" width="354" height="90"/>
+                                                <rect key="frame" x="0.0" y="358" width="354" height="80"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We need your registration to provide you personal recommendations. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J4-4p-BEU">
-                                                        <rect key="frame" x="20" y="10" width="314" height="70"/>
+                                                        <rect key="frame" x="5" y="10" width="344" height="60"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="70" id="vPs-si-Uvr"/>
+                                                            <constraint firstAttribute="height" constant="60" id="vPs-si-Uvr"/>
                                                         </constraints>
                                                         <color key="textColor" name="primary"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
@@ -51,10 +51,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="greenSoft"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="8J4-4p-BEU" secondAttribute="trailing" constant="20" id="2qJ-x1-Vpd"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8J4-4p-BEU" secondAttribute="trailing" constant="5" id="2qJ-x1-Vpd"/>
                                                     <constraint firstAttribute="bottom" secondItem="8J4-4p-BEU" secondAttribute="bottom" constant="10" id="D6Z-MW-rj8"/>
                                                     <constraint firstItem="8J4-4p-BEU" firstAttribute="top" secondItem="if5-nZ-LvN" secondAttribute="top" constant="10" id="jWw-jt-Yux"/>
-                                                    <constraint firstItem="8J4-4p-BEU" firstAttribute="leading" secondItem="if5-nZ-LvN" secondAttribute="leading" constant="20" id="oIw-u5-aDk"/>
+                                                    <constraint firstItem="8J4-4p-BEU" firstAttribute="leading" secondItem="if5-nZ-LvN" secondAttribute="leading" constant="5" id="oIw-u5-aDk"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -208,7 +208,7 @@
             <size key="intrinsicContentSize" width="354" height="39.220703125"/>
         </designable>
         <designable name="xpd-7S-rfO">
-            <size key="intrinsicContentSize" width="61" height="34"/>
+            <size key="intrinsicContentSize" width="81.5" height="34"/>
         </designable>
     </designables>
     <resources>

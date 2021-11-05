@@ -44,6 +44,8 @@ class SetCaloriesViewModel: ViewModelProtocol {
     
     var subscription = Set<AnyCancellable>()
     
+    let increaseNumber = 10
+    
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         action.sink(receiveValue: { [weak self] action in

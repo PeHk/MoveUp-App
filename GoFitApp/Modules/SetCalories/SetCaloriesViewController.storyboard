@@ -5,9 +5,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Set Calories View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -20,37 +27,62 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="L6k-Pb-gSq">
                                 <rect key="frame" x="30" y="74" width="354" height="758"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzn-4a-89R">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your daily goal for burnt calories" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzn-4a-89R">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="75"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
+                                        <color key="textColor" name="primary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X3i-C1-gJ8">
-                                        <rect key="frame" x="0.0" y="346.5" width="354" height="50"/>
+                                        <rect key="frame" x="0.0" y="360.5" width="354" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-20-mW4">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y43-Ne-EbS">
+                                                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="30"/>
+                                                        <color key="textColor" name="text"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="primary"/>
                                                 <constraints>
+                                                    <constraint firstItem="y43-Ne-EbS" firstAttribute="top" secondItem="3fk-20-mW4" secondAttribute="top" constant="5" id="GU4-eQ-9im"/>
+                                                    <constraint firstItem="y43-Ne-EbS" firstAttribute="leading" secondItem="3fk-20-mW4" secondAttribute="leading" constant="5" id="HWQ-pb-NHC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="y43-Ne-EbS" secondAttribute="trailing" constant="5" id="Jeq-oN-yMU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="y43-Ne-EbS" secondAttribute="bottom" constant="5" id="Scn-7k-IJi"/>
                                                     <constraint firstAttribute="height" constant="50" id="eOO-jB-soF"/>
                                                     <constraint firstAttribute="width" constant="50" id="rui-V1-2Ke"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qa2-Pp-akd">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="920" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qa2-Pp-akd">
                                                 <rect key="frame" x="70" y="0.0" width="214" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Vmz-Ec-3Pt"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <color key="textColor" name="primary"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="36"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-lT-WuN">
                                                 <rect key="frame" x="304" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQS-zz-rLs">
+                                                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="30"/>
+                                                        <color key="textColor" name="text"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="primary"/>
                                                 <constraints>
+                                                    <constraint firstItem="TQS-zz-rLs" firstAttribute="top" secondItem="N6i-lT-WuN" secondAttribute="top" constant="5" id="11O-85-YO8"/>
                                                     <constraint firstAttribute="height" constant="50" id="Smt-Fc-hWt"/>
                                                     <constraint firstAttribute="width" constant="50" id="Ulp-2X-sIE"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TQS-zz-rLs" secondAttribute="bottom" constant="5" id="cDR-ed-zSJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TQS-zz-rLs" secondAttribute="trailing" constant="5" id="keo-xc-xdf"/>
+                                                    <constraint firstItem="TQS-zz-rLs" firstAttribute="leading" secondItem="N6i-lT-WuN" secondAttribute="leading" constant="5" id="rTK-dp-ggL"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -83,6 +115,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="caloriesField" destination="Qa2-Pp-akd" id="sBQ-c4-thA"/>
+                        <outlet property="minusButtonView" destination="3fk-20-mW4" id="d1s-iv-xcU"/>
+                        <outlet property="plusButtonView" destination="N6i-lT-WuN" id="Moy-fh-2hx"/>
                         <outlet property="setButton" destination="QjY-Qn-6AT" id="FNZ-Wx-xad"/>
                     </connections>
                 </viewController>
@@ -91,12 +126,20 @@
             <point key="canvasLocation" x="35" y="66"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="QjY-Qn-6AT">
+            <size key="intrinsicContentSize" width="49.5" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="backgroundColor">
             <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="primary">
+            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -14,19 +14,16 @@ enum TabBarPage {
     case profile
     case activity
     case history
-    case trainings
 
     init?(index: Int) {
         switch index {
         case 0:
             self = .dashboard
         case 1:
-            self = .trainings
-        case 2:
             self = .activity
-        case 3:
+        case 2:
             self = .history
-        case 4:
+        case 3:
             self = .profile
         default:
             return nil
@@ -37,14 +34,12 @@ enum TabBarPage {
         switch self {
         case .dashboard:
             return 0
-        case .trainings:
-            return 1
         case .activity:
-            return 2
+            return 1
         case .history:
-            return 3
+            return 2
         case .profile:
-            return 4
+            return 3
         }
     }
 }
@@ -83,7 +78,7 @@ class TabBarCoordinator: NSObject, Coordinator {
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        let pages: [TabBarPage] = [.dashboard, .profile, .history, .activity, .trainings]
+        let pages: [TabBarPage] = [.dashboard, .profile, .history, .activity]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
         // Initialization of ViewControllers or these pages
@@ -157,12 +152,6 @@ class TabBarCoordinator: NSObject, Coordinator {
             dashboardCoordinator.finishDelegate = self
             dashboardCoordinator.start()
             childCoordinators.append(dashboardCoordinator)
-            
-        case .trainings:
-            let trainingsCoordinator = TrainingsCoordinator(navController, dependencyContainer)
-            trainingsCoordinator.finishDelegate = self
-            trainingsCoordinator.start()
-            childCoordinators.append(trainingsCoordinator)
             
         case .profile:
             let profileCoordinator = ProfileCoordinator(navController, dependencyContainer)

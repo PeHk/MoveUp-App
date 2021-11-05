@@ -43,10 +43,6 @@
 		E13B448827206DCE0062C44B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448427206DCE0062C44B /* HistoryViewController.swift */; };
 		E13B448927206DCE0062C44B /* HistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B448527206DCE0062C44B /* HistoryViewController.storyboard */; };
 		E13B448A27206DCE0062C44B /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448627206DCE0062C44B /* HistoryCoordinator.swift */; };
-		E13B449027206DD90062C44B /* TrainingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448C27206DD90062C44B /* TrainingsCoordinator.swift */; };
-		E13B449127206DD90062C44B /* TrainingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448D27206DD90062C44B /* TrainingsViewController.swift */; };
-		E13B449227206DD90062C44B /* TrainingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B448E27206DD90062C44B /* TrainingsViewController.storyboard */; };
-		E13B449327206DD90062C44B /* TrainingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448F27206DD90062C44B /* TrainingsViewModel.swift */; };
 		E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449527206DE30062C44B /* ProfileCoordinator.swift */; };
 		E13B449A27206DE30062C44B /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B449627206DE30062C44B /* ProfileViewController.storyboard */; };
 		E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449727206DE30062C44B /* ProfileViewController.swift */; };
@@ -116,10 +112,6 @@
 		E13B448427206DCE0062C44B /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E13B448527206DCE0062C44B /* HistoryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoryViewController.storyboard; sourceTree = "<group>"; };
 		E13B448627206DCE0062C44B /* HistoryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
-		E13B448C27206DD90062C44B /* TrainingsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsCoordinator.swift; sourceTree = "<group>"; };
-		E13B448D27206DD90062C44B /* TrainingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsViewController.swift; sourceTree = "<group>"; };
-		E13B448E27206DD90062C44B /* TrainingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainingsViewController.storyboard; sourceTree = "<group>"; };
-		E13B448F27206DD90062C44B /* TrainingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingsViewModel.swift; sourceTree = "<group>"; };
 		E13B449527206DE30062C44B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		E13B449627206DE30062C44B /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		E13B449727206DE30062C44B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -246,17 +238,6 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		E13B448B27206DD90062C44B /* Trainings */ = {
-			isa = PBXGroup;
-			children = (
-				E13B448C27206DD90062C44B /* TrainingsCoordinator.swift */,
-				E13B448D27206DD90062C44B /* TrainingsViewController.swift */,
-				E13B448E27206DD90062C44B /* TrainingsViewController.storyboard */,
-				E13B448F27206DD90062C44B /* TrainingsViewModel.swift */,
-			);
-			path = Trainings;
-			sourceTree = "<group>";
-		};
 		E13B449427206DE30062C44B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				E13B447027206DBF0062C44B /* Dashboard */,
-				E13B448B27206DD90062C44B /* Trainings */,
 				E13B447527206DBF0062C44B /* Activity */,
 				E13B448227206DCE0062C44B /* History */,
 				E13B449427206DE30062C44B /* Profile */,
@@ -492,7 +472,6 @@
 				E13B446327206D290062C44B /* SetCaloriesViewController.storyboard in Resources */,
 				E13B448927206DCE0062C44B /* HistoryViewController.storyboard in Resources */,
 				E16609AD271C9FCD0077DF6E /* HomeViewController.storyboard in Resources */,
-				E13B449227206DD90062C44B /* TrainingsViewController.storyboard in Resources */,
 				E13B449A27206DE30062C44B /* ProfileViewController.storyboard in Resources */,
 				E10AA3F0271DB33D0096B032 /* Roboto-Bold.ttf in Resources */,
 				E10AA3F1271DB33D0096B032 /* Roboto-BlackItalic.ttf in Resources */,
@@ -572,7 +551,6 @@
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
 				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
-				E13B449027206DD90062C44B /* TrainingsCoordinator.swift in Sources */,
 				E13B448027206DBF0062C44B /* ActivityViewModel.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
@@ -581,10 +559,8 @@
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
 				E13B446527206D290062C44B /* SetCaloriesViewController.swift in Sources */,
-				E13B449127206DD90062C44B /* TrainingsViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
-				E13B449327206DD90062C44B /* TrainingsViewModel.swift in Sources */,
 				E13B448727206DCE0062C44B /* HistoryViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
