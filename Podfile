@@ -7,5 +7,6 @@ target 'GoFitApp' do
   # Pods for GoFitApp
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'ALProgressView'
 
 end

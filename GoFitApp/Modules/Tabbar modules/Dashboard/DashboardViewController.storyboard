@@ -19,7 +19,7 @@
         <scene sceneID="I52-TK-pkP">
             <objects>
                 <tableViewController storyboardIdentifier="DashboardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RjW-d3-SsK" customClass="DashboardViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="h0l-Vw-O1O">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="h0l-Vw-O1O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgroundColor"/>
@@ -51,12 +51,32 @@
                                                             <color key="textColor" name="primary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHo-Pv-vJb" customClass="ALProgressRing" customModule="ALProgressView">
+                                                            <rect key="frame" x="30" y="50" width="127" height="110"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSF-0l-zrd">
+                                                                    <rect key="frame" x="44" y="45" width="39" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                                                    <color key="textColor" name="primary"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="greenSoft"/>
+                                                            <constraints>
+                                                                <constraint firstItem="hSF-0l-zrd" firstAttribute="centerX" secondItem="iHo-Pv-vJb" secondAttribute="centerX" id="0K5-Kc-AB1"/>
+                                                                <constraint firstItem="hSF-0l-zrd" firstAttribute="centerY" secondItem="iHo-Pv-vJb" secondAttribute="centerY" id="6mg-tU-Kvv"/>
+                                                                <constraint firstAttribute="height" constant="110" id="vym-h1-hzd"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" name="greenSoft"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="RI2-9y-rrw" secondAttribute="trailing" constant="10" id="9Ca-Yv-cGq"/>
-                                                        <constraint firstItem="RI2-9y-rrw" firstAttribute="leading" secondItem="DvZ-mb-xk9" secondAttribute="leading" constant="10" id="fSh-7m-g9I"/>
-                                                        <constraint firstItem="RI2-9y-rrw" firstAttribute="top" secondItem="DvZ-mb-xk9" secondAttribute="top" constant="10" id="y4B-zX-keV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="RI2-9y-rrw" secondAttribute="trailing" constant="10" id="7HT-gV-gst"/>
+                                                        <constraint firstItem="RI2-9y-rrw" firstAttribute="leading" secondItem="DvZ-mb-xk9" secondAttribute="leading" constant="10" id="8b4-9V-xyo"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iHo-Pv-vJb" secondAttribute="bottom" constant="20" id="D04-xF-vEE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iHo-Pv-vJb" secondAttribute="trailing" constant="30" id="Szu-ef-6Oi"/>
+                                                        <constraint firstItem="RI2-9y-rrw" firstAttribute="top" secondItem="DvZ-mb-xk9" secondAttribute="top" constant="10" id="ThD-mS-0qT"/>
+                                                        <constraint firstItem="iHo-Pv-vJb" firstAttribute="leading" secondItem="DvZ-mb-xk9" secondAttribute="leading" constant="30" id="wEm-Rc-2RK"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pae-7h-YNS">
@@ -107,7 +127,7 @@
                             <color key="backgroundColor" name="backgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wQV-WV-crA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recommendationCell" id="wQV-WV-crA">
                                 <rect key="frame" x="0.0" y="382.5" width="414" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wQV-WV-crA" id="Xd7-N1-3eX">
@@ -123,9 +143,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="icons8-overview-50" id="GBi-5K-Vsf"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="caloriesView" destination="pae-7h-YNS" id="d5h-dc-IM5"/>
+                        <outlet property="stepsRing" destination="iHo-Pv-vJb" id="UKP-jr-Dmy"/>
                         <outlet property="stepsView" destination="DvZ-mb-xk9" id="hMs-qG-vlH"/>
                     </connections>
                 </tableViewController>

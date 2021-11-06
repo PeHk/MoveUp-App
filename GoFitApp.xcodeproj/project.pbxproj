@@ -64,6 +64,7 @@
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */; };
+		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
 		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
@@ -135,6 +136,7 @@
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				E13B447227206DBF0062C44B /* DashboardViewModel.swift */,
 				E13B447327206DBF0062C44B /* DashboardCoordinator.swift */,
 				E13B447427206DBF0062C44B /* DashboardViewController.storyboard */,
+				E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
 				E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */,
+				E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */,
 				E13B448827206DCE0062C44B /* HistoryViewController.swift in Sources */,
 				E13B448127206DBF0062C44B /* ActivityCoordinator.swift in Sources */,
 			);
