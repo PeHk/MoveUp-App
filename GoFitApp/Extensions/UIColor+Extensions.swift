@@ -24,4 +24,8 @@ extension UIColor {
     class var text: UIColor {
         return UIColor(named: "text") ?? .systemBackground
     }
+    
+    class var greenSoft: UIColor {
+        return UIColor(named: "greenSoft") ?? .primary
+    }
 }

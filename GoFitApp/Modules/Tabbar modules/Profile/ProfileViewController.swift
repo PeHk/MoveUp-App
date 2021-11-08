@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UITableViewController {
     
     var viewModel: ProfileViewModel!
     var coordinator: ProfileCoordinator!
@@ -10,6 +10,16 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupBindings()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     private func setupView() {

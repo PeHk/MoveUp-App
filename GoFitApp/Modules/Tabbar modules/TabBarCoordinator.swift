@@ -13,7 +13,6 @@ enum TabBarPage {
     case dashboard
     case profile
     case activity
-    case history
 
     init?(index: Int) {
         switch index {
@@ -22,8 +21,6 @@ enum TabBarPage {
         case 1:
             self = .activity
         case 2:
-            self = .history
-        case 3:
             self = .profile
         default:
             return nil
@@ -36,10 +33,8 @@ enum TabBarPage {
             return 0
         case .activity:
             return 1
-        case .history:
-            return 2
         case .profile:
-            return 3
+            return 2
         }
     }
 }
@@ -78,7 +73,7 @@ class TabBarCoordinator: NSObject, Coordinator {
 
     func start() {
         // Let's define which pages do we want to add into tab bar
-        let pages: [TabBarPage] = [.dashboard, .profile, .history, .activity]
+        let pages: [TabBarPage] = [.dashboard, .profile, .activity]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
         // Initialization of ViewControllers or these pages
@@ -101,16 +96,15 @@ class TabBarCoordinator: NSObject, Coordinator {
         if #available(iOS 13.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .backgroundColor
-            appearance.selectionIndicatorTintColor = .primary
+            appearance.backgroundColor = .greenSoft
             appearance.shadowImage = nil
             appearance.shadowColor = nil
+            tabBarController.tabBar.tintColor = .primary
             tabBarController.tabBar.standardAppearance = appearance
 
         } else {
             tabBarController.tabBar.isTranslucent = false
             tabBarController.tabBar.tintColor = .primary
-            tabBarController.tabBar.unselectedItemTintColor = .secondary
             tabBarController.tabBar.barTintColor = .backgroundColor
             tabBarController.tabBar.standardAppearance.shadowColor = nil
             tabBarController.tabBar.standardAppearance.shadowImage = nil
@@ -142,7 +136,14 @@ class TabBarCoordinator: NSObject, Coordinator {
 //            navController.navigationBar.isTranslucent = false
 //            navController.navigationBar.barTintColor = .backgroundColor
 //        }
-//
+        
+        navController.navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.primary,
+            NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 32) ?? UIFont.systemFont(ofSize: 32)
+        ]
+        
+        navController.navigationBar.prefersLargeTitles = true
+
         navController.navigationBar.tintColor = .primary
         navController.setNavigationBarHidden(true, animated: false)
 
@@ -164,12 +165,6 @@ class TabBarCoordinator: NSObject, Coordinator {
             activityCoordinator.finishDelegate = self
             activityCoordinator.start()
             childCoordinators.append(activityCoordinator)
-            
-        case .history:
-            let historyCoordinator = HistoryCoordinator(navController, dependencyContainer)
-            historyCoordinator.finishDelegate = self
-            historyCoordinator.start()
-            childCoordinators.append(historyCoordinator)
         }
         
         

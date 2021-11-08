@@ -39,10 +39,6 @@
 		E13B447F27206DBF0062C44B /* ActivityViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B447727206DBF0062C44B /* ActivityViewController.storyboard */; };
 		E13B448027206DBF0062C44B /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B447827206DBF0062C44B /* ActivityViewModel.swift */; };
 		E13B448127206DBF0062C44B /* ActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B447927206DBF0062C44B /* ActivityCoordinator.swift */; };
-		E13B448727206DCE0062C44B /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448327206DCE0062C44B /* HistoryViewModel.swift */; };
-		E13B448827206DCE0062C44B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448427206DCE0062C44B /* HistoryViewController.swift */; };
-		E13B448927206DCE0062C44B /* HistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B448527206DCE0062C44B /* HistoryViewController.storyboard */; };
-		E13B448A27206DCE0062C44B /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B448627206DCE0062C44B /* HistoryCoordinator.swift */; };
 		E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449527206DE30062C44B /* ProfileCoordinator.swift */; };
 		E13B449A27206DE30062C44B /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B449627206DE30062C44B /* ProfileViewController.storyboard */; };
 		E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449727206DE30062C44B /* ProfileViewController.swift */; };
@@ -109,10 +105,6 @@
 		E13B447727206DBF0062C44B /* ActivityViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityViewController.storyboard; sourceTree = "<group>"; };
 		E13B447827206DBF0062C44B /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		E13B447927206DBF0062C44B /* ActivityCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCoordinator.swift; sourceTree = "<group>"; };
-		E13B448327206DCE0062C44B /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		E13B448427206DCE0062C44B /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		E13B448527206DCE0062C44B /* HistoryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoryViewController.storyboard; sourceTree = "<group>"; };
-		E13B448627206DCE0062C44B /* HistoryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
 		E13B449527206DE30062C44B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		E13B449627206DE30062C44B /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		E13B449727206DE30062C44B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -230,17 +222,6 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		E13B448227206DCE0062C44B /* History */ = {
-			isa = PBXGroup;
-			children = (
-				E13B448327206DCE0062C44B /* HistoryViewModel.swift */,
-				E13B448427206DCE0062C44B /* HistoryViewController.swift */,
-				E13B448527206DCE0062C44B /* HistoryViewController.storyboard */,
-				E13B448627206DCE0062C44B /* HistoryCoordinator.swift */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
 		E13B449427206DE30062C44B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,7 +238,6 @@
 			children = (
 				E13B447027206DBF0062C44B /* Dashboard */,
 				E13B447527206DBF0062C44B /* Activity */,
-				E13B448227206DCE0062C44B /* History */,
 				E13B449427206DE30062C44B /* Profile */,
 				E13B449E27206E6C0062C44B /* TabBarCoordinator.swift */,
 			);
@@ -473,7 +453,6 @@
 				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
 				E10AA3EE271DB33D0096B032 /* Roboto-MediumItalic.ttf in Resources */,
 				E13B446327206D290062C44B /* SetCaloriesViewController.storyboard in Resources */,
-				E13B448927206DCE0062C44B /* HistoryViewController.storyboard in Resources */,
 				E16609AD271C9FCD0077DF6E /* HomeViewController.storyboard in Resources */,
 				E13B449A27206DE30062C44B /* ProfileViewController.storyboard in Resources */,
 				E10AA3F0271DB33D0096B032 /* Roboto-Bold.ttf in Resources */,
@@ -564,7 +543,6 @@
 				E13B446527206D290062C44B /* SetCaloriesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
-				E13B448727206DCE0062C44B /* HistoryViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
@@ -572,14 +550,12 @@
 				E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
-				E13B448A27206DCE0062C44B /* HistoryCoordinator.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
 				E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */,
 				E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */,
-				E13B448827206DCE0062C44B /* HistoryViewController.swift in Sources */,
 				E13B448127206DBF0062C44B /* ActivityCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
