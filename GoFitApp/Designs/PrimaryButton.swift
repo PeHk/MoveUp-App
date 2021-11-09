@@ -42,22 +42,9 @@ import UIKit
     
     func setUpView() {
         
-        if #available(iOS 15.0, *) {
-            var configuration = UIButton.Configuration.plain()
-            configuration.cornerStyle = .capsule
-            configuration.baseForegroundColor = .text
-            configuration.baseBackgroundColor = backgroundColorEnabled
-            
-            var attrText = AttributedString(self.currentTitle ?? "")
-            attrText.font = UIFont(name: "Roboto-Bold", size: 17)
-            configuration.attributedTitle = attrText
-            
-            self.configuration = configuration
-        } else {
-            self.backgroundColor = backgroundColorEnabled
-            self.setTitleColor(.text, for: .normal)
-            self.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 17)
-        }
+        self.backgroundColor = backgroundColorEnabled
+        self.setTitleColor(.text, for: .normal)
+        self.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 17)
         
         if isEnabled {
             setEnabled()
