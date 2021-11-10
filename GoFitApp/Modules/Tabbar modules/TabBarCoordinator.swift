@@ -121,21 +121,19 @@ class TabBarCoordinator: NSObject, Coordinator {
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navController = UINavigationController()
         
-//        if #available(iOS 13.0, *) {
-//            let appearence = UINavigationBarAppearance()
-//            appearence.configureWithOpaqueBackground()
-//            appearence.backgroundColor = .backgroundColor
-//            appearence.shadowColor = nil
-//            appearence.shadowImage = nil
-//
-//            navController.navigationBar.standardAppearance = appearence
-//            navController.navigationBar.scrollEdgeAppearance = navController.navigationBar.standardAppearance
-//        } else {
-//            navController.navigationBar.shadowImage = nil
-//            navController.navigationBar.shadowColor = nil
-//            navController.navigationBar.isTranslucent = false
-//            navController.navigationBar.barTintColor = .backgroundColor
-//        }
+        if #available(iOS 13.0, *) {
+            let appearence = UINavigationBarAppearance()
+            appearence.configureWithOpaqueBackground()
+            appearence.backgroundColor = .backgroundColor
+            appearence.shadowColor = nil
+            appearence.shadowImage = nil
+            navigationController.navigationBar.standardAppearance = appearence
+            navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance
+        } else {
+            navigationController.navigationBar.isTranslucent = false
+            navigationController.navigationBar.barTintColor = .backgroundColor
+            navigationController.navigationBar.shadowImage = nil
+        }
         
         navController.navigationBar.largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.primary,
