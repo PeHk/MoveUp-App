@@ -70,6 +70,9 @@
 		E1E5108B274C039200C9C266 /* NetworkManager+ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */; };
 		E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */; };
 		E1E5108F274C053E00C9C266 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108E274C053E00C9C266 /* Constants.swift */; };
+		E1E51091274C066200C9C266 /* CredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51090274C066200C9C266 /* CredentialsManager.swift */; };
+		E1E51095274C06D200C9C266 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51094274C06D200C9C266 /* Credentials.swift */; };
+		E1E51098274C080500C9C266 /* GoodCache in Frameworks */ = {isa = PBXBuildFile; productRef = E1E51097274C080500C9C266 /* GoodCache */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
 		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
@@ -147,6 +150,8 @@
 		E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+ErrorHandler.swift"; sourceTree = "<group>"; };
 		E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E1E5108E274C053E00C9C266 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E1E51090274C066200C9C266 /* CredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManager.swift; sourceTree = "<group>"; };
+		E1E51094274C06D200C9C266 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E51098274C080500C9C266 /* GoodCache in Frameworks */,
 				3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +366,6 @@
 			children = (
 				E16609B6271CA0580077DF6E /* Coordinator.swift */,
 				E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */,
-				E1E51086274C014E00C9C266 /* ServerError.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -368,12 +373,10 @@
 		E16609B8271CA09A0077DF6E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E1E51092274C066A00C9C266 /* NetworkManager */,
 				E16609B9271CA0A90077DF6E /* DependencyContainer.swift */,
-				E1E51082274BFFEA00C9C266 /* NetworkManager.swift */,
-				E1E51084274C00D900C9C266 /* NetworkManager+Requests.swift */,
-				E1E51088274C020B00C9C266 /* NetworkManager+Interceptor.swift */,
-				E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */,
 				E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */,
+				E1E51090274C066200C9C266 /* CredentialsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -410,10 +413,31 @@
 		E1E51081274BFEF500C9C266 /* Static */ = {
 			isa = PBXGroup;
 			children = (
+				E1E51093274C06C300C9C266 /* Codables */,
 				E1E5107F274BFE5300C9C266 /* Endpoint.swift */,
 				E1E5108E274C053E00C9C266 /* Constants.swift */,
 			);
 			path = Static;
+			sourceTree = "<group>";
+		};
+		E1E51092274C066A00C9C266 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				E1E51082274BFFEA00C9C266 /* NetworkManager.swift */,
+				E1E51084274C00D900C9C266 /* NetworkManager+Requests.swift */,
+				E1E51088274C020B00C9C266 /* NetworkManager+Interceptor.swift */,
+				E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		E1E51093274C06C300C9C266 /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				E1E51086274C014E00C9C266 /* ServerError.swift */,
+				E1E51094274C06D200C9C266 /* Credentials.swift */,
+			);
+			path = Codables;
 			sourceTree = "<group>";
 		};
 		E1EBC13F271DCE40009E9939 /* Details */ = {
@@ -445,6 +469,9 @@
 			dependencies = (
 			);
 			name = GoFitApp;
+			packageProductDependencies = (
+				E1E51097274C080500C9C266 /* GoodCache */,
+			);
 			productName = GoFitApp;
 			productReference = E166098C271C9F4B0077DF6E /* GoFitApp.app */;
 			productType = "com.apple.product-type.application";
@@ -473,6 +500,9 @@
 				Base,
 			);
 			mainGroup = E1660983271C9F4B0077DF6E;
+			packageReferences = (
+				E1E51096274C080400C9C266 /* XCRemoteSwiftPackageReference "GoodIOSExtensions" */,
+			);
 			productRefGroup = E166098D271C9F4B0077DF6E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -563,6 +593,7 @@
 			files = (
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
+				E1E51095274C06D200C9C266 /* Credentials.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
 				E13B446227206D290062C44B /* SetCaloriesViewModel.swift in Sources */,
 				E1E5108B274C039200C9C266 /* NetworkManager+ErrorHandler.swift in Sources */,
@@ -609,6 +640,7 @@
 				E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */,
 				E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */,
 				E13B448127206DBF0062C44B /* ActivityCoordinator.swift in Sources */,
+				E1E51091274C066200C9C266 /* CredentialsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +854,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1E51096274C080400C9C266 /* XCRemoteSwiftPackageReference "GoodIOSExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GoodRequest/GoodIOSExtensions";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1E51097274C080500C9C266 /* GoodCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1E51096274C080400C9C266 /* XCRemoteSwiftPackageReference "GoodIOSExtensions" */;
+			productName = GoodCache;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */ = {

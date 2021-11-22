@@ -12,7 +12,7 @@ import Combine
 class NetworkManager {
     
     let dependencyContainer: DependencyContainer
-//    let credentialsManager: CredentialsManager
+    let credentialsManager: CredentialsManager
     let userDefaultsManager: UserDefaultsManager
 //    let logoutInterceptor: LogoutManager
     
@@ -25,7 +25,7 @@ class NetworkManager {
     
     init(_ dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
-//        self.credentialsManager = dependencyContainer.credentialsManager
+        self.credentialsManager = dependencyContainer.credentialsManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
 //        self.logoutInterceptor = dependencyContainer.logoutManager
     }

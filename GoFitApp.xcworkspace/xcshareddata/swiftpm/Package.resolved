@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "d120af1e8638c7da36c8481fd61a66c0c08dc4fc",
+          "version": "5.4.4"
+        }
+      },
+      {
+        "package": "CombineExt",
+        "repositoryURL": "https://github.com/CombineCommunity/CombineExt.git",
+        "state": {
+          "branch": null,
+          "revision": "0880829102152185190064fd17847a7c681d2127",
+          "version": "1.5.1"
+        }
+      },
+      {
+        "package": "GoodExtensions",
+        "repositoryURL": "https://github.com/GoodRequest/GoodIOSExtensions",
+        "state": {
+          "branch": "master",
+          "revision": "aa8f2fda4c5aa4c7e722142f20e41d3f4b9e394c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
