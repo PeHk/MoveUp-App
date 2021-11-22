@@ -30,18 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             let appearence = UINavigationBarAppearance()
             appearence.configureWithOpaqueBackground()
-            appearence.backgroundColor = .backgroundColor
+            appearence.backgroundColor = Asset.backgroundColor.color
             appearence.shadowColor = nil
             appearence.shadowImage = nil
             navigationController.navigationBar.standardAppearance = appearence
             navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance
         } else {
             navigationController.navigationBar.isTranslucent = false
-            navigationController.navigationBar.barTintColor = .backgroundColor
+            navigationController.navigationBar.barTintColor = Asset.backgroundColor.color
             navigationController.navigationBar.shadowImage = nil
         }
         
-        navigationController.navigationBar.tintColor = .primary
+        navigationController.navigationBar.tintColor = Asset.primary.color
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

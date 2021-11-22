@@ -59,8 +59,9 @@
 		E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */; };
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
-		E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */; };
 		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
+		E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9C274BF5D9006674E7 /* Assets.swift */; };
+		E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9D274BF5D9006674E7 /* Fonts.swift */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
 		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
@@ -127,8 +128,9 @@
 		E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
+		E1E41E9C274BF5D9006674E7 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		E1E41E9D274BF5D9006674E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		E166098E271C9F4B0077DF6E /* GoFitApp */ = {
 			isa = PBXGroup;
 			children = (
+				E1E41E9B274BF5D9006674E7 /* SwiftGen */,
 				E10AA3E3271DB3270096B032 /* Font */,
 				E16609C0271CA75F0077DF6E /* Designs */,
 				E16609BB271CA2720077DF6E /* Extensions */,
@@ -356,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */,
-				E16609C3271CA7F90077DF6E /* UIColor+Extensions.swift */,
 				E1065D95271F29FE002C575E /* UINavigationController+Extensions.swift */,
 				E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */,
 				E13B44A0272094950062C44B /* BaseViewController.swift */,
@@ -371,6 +373,15 @@
 				E10AA3FC271DB42C0096B032 /* SecondaryButton.swift */,
 			);
 			path = Designs;
+			sourceTree = "<group>";
+		};
+		E1E41E9B274BF5D9006674E7 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				E1E41E9C274BF5D9006674E7 /* Assets.swift */,
+				E1E41E9D274BF5D9006674E7 /* Fonts.swift */,
+			);
+			path = SwiftGen;
 			sourceTree = "<group>";
 		};
 		E1EBC13F271DCE40009E9939 /* Details */ = {
@@ -536,6 +547,8 @@
 				E13B448027206DBF0062C44B /* ActivityViewModel.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
+				E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */,
+				E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
 				E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */,
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
@@ -547,7 +560,6 @@
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
-				E16609C4271CA7F90077DF6E /* UIColor+Extensions.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,

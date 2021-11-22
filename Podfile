@@ -12,5 +12,6 @@ target 'GoFitApp' do
   pod 'SPPermissions/Notification'
   pod 'SPPermissions/LocationWhenInUse'
   pod 'SPPermissions/Calendar'
+  pod 'SwiftGen', '~> 6.0'
 
 end

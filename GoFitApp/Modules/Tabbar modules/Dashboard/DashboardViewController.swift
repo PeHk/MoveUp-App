@@ -32,11 +32,11 @@ class DashboardViewController: UITableViewController {
         caloriesView.layer.cornerRadius = 10
         stepsView.layer.cornerRadius = 10
         
-        stepsRing.startColor = .secondary
-        caloriesRing.startColor = .secondary
+        stepsRing.startColor = Asset.secondary.color
+        caloriesRing.startColor = Asset.secondary.color
         
-        stepsRing.endColor = .primary
-        caloriesRing.endColor = .primary
+        stepsRing.endColor = Asset.primary.color
+        caloriesRing.endColor = Asset.primary.color
         
         stepsRing.setProgress(0.9, animated: true)
         caloriesRing.setProgress(0.4, animated: true)

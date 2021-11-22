@@ -12,7 +12,7 @@ import UIKit
     
     @IBInspectable var cornerRadius: CGFloat = 25
     @IBInspectable var backgroundColorDisabled: UIColor = UIColor.lightGray
-    @IBInspectable var backgroundColorEnabled: UIColor = .primary
+    @IBInspectable var backgroundColorEnabled: UIColor = Asset.primary.color
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,8 +43,8 @@ import UIKit
     func setUpView() {
         
         self.backgroundColor = backgroundColorEnabled
-        self.setTitleColor(.text, for: .normal)
-        self.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 17)
+        self.setTitleColor(Asset.text.color, for: .normal)
+        self.titleLabel?.font = UIFont(font: FontFamily.Roboto.bold, size: 17)
         
         if isEnabled {
             setEnabled()

@@ -96,16 +96,16 @@ class TabBarCoordinator: NSObject, Coordinator {
         if #available(iOS 13.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .greenSoft
+            appearance.backgroundColor = Asset.greenSoft.color
             appearance.shadowImage = nil
             appearance.shadowColor = nil
-            tabBarController.tabBar.tintColor = .primary
+            tabBarController.tabBar.tintColor = Asset.primary.color
             tabBarController.tabBar.standardAppearance = appearance
 
         } else {
             tabBarController.tabBar.isTranslucent = false
-            tabBarController.tabBar.tintColor = .primary
-            tabBarController.tabBar.barTintColor = .backgroundColor
+            tabBarController.tabBar.tintColor = Asset.primary.color
+            tabBarController.tabBar.barTintColor = Asset.backgroundColor.color
             tabBarController.tabBar.standardAppearance.shadowColor = nil
             tabBarController.tabBar.standardAppearance.shadowImage = nil
         }
@@ -114,7 +114,6 @@ class TabBarCoordinator: NSObject, Coordinator {
             tabBarController.tabBar.scrollEdgeAppearance = tabBarController.tabBar.standardAppearance
         }
         
-        /// In this step, we attach tabBarController to navigation controller associated with this coordinator
         navigationController.viewControllers = [tabBarController]
     }
       
@@ -124,25 +123,25 @@ class TabBarCoordinator: NSObject, Coordinator {
         if #available(iOS 13.0, *) {
             let appearence = UINavigationBarAppearance()
             appearence.configureWithOpaqueBackground()
-            appearence.backgroundColor = .backgroundColor
+            appearence.backgroundColor = Asset.backgroundColor.color
             appearence.shadowColor = nil
             appearence.shadowImage = nil
             navigationController.navigationBar.standardAppearance = appearence
             navigationController.navigationBar.scrollEdgeAppearance = navigationController.navigationBar.standardAppearance
         } else {
             navigationController.navigationBar.isTranslucent = false
-            navigationController.navigationBar.barTintColor = .backgroundColor
+            navigationController.navigationBar.barTintColor = Asset.backgroundColor.color
             navigationController.navigationBar.shadowImage = nil
         }
         
         navController.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : UIColor.primary,
-            NSAttributedString.Key.font : UIFont(name: "Roboto-Bold", size: 32) ?? UIFont.systemFont(ofSize: 32)
+            NSAttributedString.Key.foregroundColor : Asset.primary.color,
+            NSAttributedString.Key.font : UIFont(font: FontFamily.Roboto.bold, size: 32) ?? UIFont.systemFont(ofSize: 32)
         ]
         
         navController.navigationBar.prefersLargeTitles = true
 
-        navController.navigationBar.tintColor = .primary
+        navController.navigationBar.tintColor = Asset.primary.color
         navController.setNavigationBarHidden(true, animated: false)
 
         switch page {

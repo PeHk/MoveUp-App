@@ -42,11 +42,11 @@ import UIKit
     
     func setUpView() {
         self.backgroundColor = backgroundColorEnabled
-        self.setTitleColor(UIColor.primary, for: .normal)
-        self.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 17)
+        self.setTitleColor(Asset.primary.color, for: .normal)
+        self.titleLabel?.font = UIFont(font: FontFamily.Roboto.bold, size: 17)
         
         self.layer.borderWidth = 4
-        self.layer.borderColor = UIColor.primary.cgColor
+        self.layer.borderColor = Asset.primary.color.cgColor
         
         if isEnabled {
             setEnabled()

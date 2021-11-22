@@ -11,6 +11,7 @@ PODS:
     - SPPermissions/Core
   - SPPermissions/Notification (6.7.0):
     - SPPermissions/Core
+  - SwiftGen (6.5.1)
 
 DEPENDENCIES:
   - ALProgressView
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - SPPermissions/Health
   - SPPermissions/LocationWhenInUse
   - SPPermissions/Notification
+  - SwiftGen (~> 6.0)
 
 SPEC REPOS:
   trunk:
@@ -27,13 +29,15 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - SkyFloatingLabelTextField
     - SPPermissions
+    - SwiftGen
 
 SPEC CHECKSUMS:
   ALProgressView: 547883405970e932d8f1f12b605aa4f6df08f155
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SPPermissions: 79f69d71f975e893d7d4757c06e4e954de0ffc14
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: 0aa907549acd5259da0aea3476d6adff1c093da4
+PODFILE CHECKSUM: 6c0a9e920807e86e0866a9787403ffe3bcb6d6a2
 
 COCOAPODS: 1.11.2
