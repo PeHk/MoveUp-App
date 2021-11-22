@@ -68,6 +68,8 @@
 		E1E51087274C014E00C9C266 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51086274C014E00C9C266 /* ServerError.swift */; };
 		E1E51089274C020B00C9C266 /* NetworkManager+Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51088274C020B00C9C266 /* NetworkManager+Interceptor.swift */; };
 		E1E5108B274C039200C9C266 /* NetworkManager+ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */; };
+		E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */; };
+		E1E5108F274C053E00C9C266 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108E274C053E00C9C266 /* Constants.swift */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
 		E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */; };
@@ -143,6 +145,8 @@
 		E1E51086274C014E00C9C266 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		E1E51088274C020B00C9C266 /* NetworkManager+Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Interceptor.swift"; sourceTree = "<group>"; };
 		E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+ErrorHandler.swift"; sourceTree = "<group>"; };
+		E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		E1E5108E274C053E00C9C266 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 				E1E51084274C00D900C9C266 /* NetworkManager+Requests.swift */,
 				E1E51088274C020B00C9C266 /* NetworkManager+Interceptor.swift */,
 				E1E5108A274C039200C9C266 /* NetworkManager+ErrorHandler.swift */,
+				E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E5107F274BFE5300C9C266 /* Endpoint.swift */,
+				E1E5108E274C053E00C9C266 /* Constants.swift */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
+				E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */,
 				E1E51085274C00D900C9C266 /* NetworkManager+Requests.swift in Sources */,
 				E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */,
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
@@ -577,6 +584,7 @@
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
 				E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */,
 				E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */,
+				E1E5108F274C053E00C9C266 /* Constants.swift in Sources */,
 				E1E51089274C020B00C9C266 /* NetworkManager+Interceptor.swift in Sources */,
 				E1E51087274C014E00C9C266 /* ServerError.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
