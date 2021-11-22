@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
         
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "backButton"),
+            image: UIImage(asset: Asset.backButton),
             style: UIBarButtonItem.Style.done,
             target: navigationController,
             action: #selector(navigationController?.goBack))
