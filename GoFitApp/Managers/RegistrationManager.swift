@@ -36,8 +36,7 @@ class RegistrationManager {
                     if let error = dataResponse.error {
                         promise(.failure(error))
                     } else {
-                        print(dataResponse.value!)
-                        // TODO
+                        self.networkManager.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
                         promise(.success(dataResponse.value!))
                     }
                 }
