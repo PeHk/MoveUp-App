@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -94,28 +94,8 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Weight (kg):"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mED-NC-W6U" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                                <rect key="frame" x="0.0" y="120" width="354" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="OAv-72-TwX"/>
-                                                </constraints>
-                                                <color key="textColor" name="primary"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                        <color key="value" name="primary"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                        <color key="value" name="primary"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Age"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Age:"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Age:"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-21-Di3">
-                                                <rect key="frame" x="0.0" y="180" width="354" height="50"/>
+                                                <rect key="frame" x="0.0" y="120" width="354" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2L-ws-XTo">
                                                         <rect key="frame" x="0.0" y="15" width="354" height="30"/>
@@ -134,13 +114,34 @@
                                                     <constraint firstAttribute="bottom" secondItem="w2L-ws-XTo" secondAttribute="bottom" constant="5" id="fL9-bf-Zyr"/>
                                                 </constraints>
                                             </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vg-OL-0mk">
+                                                <rect key="frame" x="0.0" y="180" width="354" height="50"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oex-07-NJL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="50"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-X9-S2C">
+                                                        <rect key="frame" x="77.5" y="0.0" width="276.5" height="50"/>
+                                                        <color key="tintColor" name="primary"/>
+                                                        <date key="minimumDate" timeIntervalSinceReferenceDate="-2871723600">
+                                                            <!--1910-01-01 11:00:00 +0000-->
+                                                        </date>
+                                                    </datePicker>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="pZJ-BO-tnu"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="5vg-OL-0mk" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="08E-1i-gUO"/>
                                             <constraint firstAttribute="trailing" secondItem="qbU-zS-DfM" secondAttribute="trailing" id="0X4-3i-Sss"/>
                                             <constraint firstAttribute="trailing" secondItem="1L6-CW-ZQh" secondAttribute="trailing" id="6IZ-se-fzA"/>
-                                            <constraint firstItem="mED-NC-W6U" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="8Ca-gz-Enc"/>
                                             <constraint firstItem="1L6-CW-ZQh" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="Er8-1X-1Oc"/>
-                                            <constraint firstAttribute="trailing" secondItem="mED-NC-W6U" secondAttribute="trailing" id="LZq-kY-32n"/>
+                                            <constraint firstAttribute="trailing" secondItem="5vg-OL-0mk" secondAttribute="trailing" id="KY5-ac-Kmz"/>
                                             <constraint firstAttribute="trailing" secondItem="uZ8-21-Di3" secondAttribute="trailing" id="Xa9-dF-IOI"/>
                                             <constraint firstItem="qbU-zS-DfM" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="e0m-wm-9sk"/>
                                             <constraint firstItem="uZ8-21-Di3" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="jxj-RL-wWt"/>
@@ -174,6 +175,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="birthDatePicker" destination="VQO-X9-S2C" id="AOj-nZ-2ZG"/>
                         <outlet property="genderPicker" destination="uZ8-21-Di3" id="sAW-gM-CZB"/>
                         <outlet property="saveButton" destination="4ed-Rq-8R4" id="c03-z2-Bdi"/>
                     </connections>
@@ -188,10 +190,7 @@
             <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="4ed-Rq-8R4">
-            <size key="intrinsicContentSize" width="61.5" height="34"/>
-        </designable>
-        <designable name="mED-NC-W6U">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="38" height="32"/>
         </designable>
         <designable name="qbU-zS-DfM">
             <size key="intrinsicContentSize" width="354" height="38.919921875"/>

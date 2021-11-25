@@ -104,8 +104,9 @@ final class RegistrationViewModel: ViewModelProtocol {
                 if case .failure(let error) = completion {
                     self.state.send(.error(error))
                 }
-            } receiveValue: { user in
-                print("Registered user:", user)
+            } receiveValue: { _ in
+                self.state.send(.initial)
+                self.stepper.send(.signUp)
             }
             .store(in: &subscription)
     }

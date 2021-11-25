@@ -6,10 +6,11 @@
 //
 
 import UIKit
-import CloudKit
+import SkyFloatingLabelTextField
 
 class DetailsViewController: UIViewController {
     
+    @IBOutlet weak var birthDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: PrimaryButton!
     @IBOutlet weak var genderPicker: UIView! {
         didSet {
@@ -18,9 +19,14 @@ class DetailsViewController: UIViewController {
     }
     var viewModel: DetailsViewModel!
     var coordinator: DetailsCoordinator!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupViews()
+    }
+    
+    private func setupViews() {
+        self.birthDatePicker.maximumDate = Date()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
