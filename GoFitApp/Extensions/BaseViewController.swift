@@ -10,6 +10,18 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    var isLoading: Bool = false {
+        didSet {
+            isLoading ? self.activityIndicatorBegin() : self.activityIndicatorEnd()
+        }
+    }
+    
+    var errorState: NetworkError? {
+        didSet {
+            handleError(errorState ?? nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,5 +32,29 @@ class BaseViewController: UIViewController {
             target: navigationController,
             action: #selector(navigationController?.goBack))
         
+    }
+    
+    func activityIndicatorBegin() {
+        self.view.isUserInteractionEnabled = false
+        if let parent = self.parent {
+            parent.view.showLoadingView()
+        } else {
+            self.view.showLoadingView()
+        }
+    }
+    
+    func activityIndicatorEnd() {
+        self.view.isUserInteractionEnabled = true
+        if let parent = self.parent {
+            parent.view.removeLoadingView()
+        } else {
+            self.view.removeLoadingView()
+        }
+    }
+    
+    func handleError(_ error: NetworkError?) {
+        if error != nil {
+            AlertManager.showAlert(message: error?.backendError?.message, over: self)
+        }
     }
 }

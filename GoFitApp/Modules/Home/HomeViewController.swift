@@ -6,15 +6,25 @@
 //
 
 import UIKit
+import Combine
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var login: SecondaryButton!
     @IBOutlet weak var getStarted: PrimaryButton!
     var viewModel: HomeViewModel!
+    
+    var subscription = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBindings()
+    }
+    
+    private func setupBindings() {
+        viewModel.isLoading
+            .assign(to: \.isLoading, on: self)
+            .store(in: &subscription)
     }
     
     @IBAction func getStartedTapped(_ sender: Any) {

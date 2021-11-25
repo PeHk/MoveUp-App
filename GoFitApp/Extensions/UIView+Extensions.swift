@@ -39,4 +39,17 @@ extension UIView {
                                                   attribute: .trailing,
                                                   multiplier: 1, constant: margins))
         }
+    
+    func showLoadingView() {
+        let blurLoader = LoadingView(frame: frame)
+        self.addSubview(blurLoader)
+    }
+    
+    func removeLoadingView() {
+        for view in subviews {
+            if view is LoadingView {
+                view.removeFromSuperview()
+            }
+        }
+    }
 }

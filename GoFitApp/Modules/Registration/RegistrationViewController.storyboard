@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,7 +96,7 @@
                                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail address"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail addres:"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail address:"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="E-mail address:"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" name="primary"/>
@@ -120,6 +120,9 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password:"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password:"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atb-Wm-aee" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
@@ -185,8 +188,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="U3a-SR-vGS" id="MuT-5j-G1m"/>
                         <outlet property="informationView" destination="if5-nZ-LvN" id="uTU-VN-faQ"/>
+                        <outlet property="passwordTextField" destination="R9g-6t-x4e" id="CIk-a7-sKz"/>
+                        <outlet property="repeatPasswordTextField" destination="atb-Wm-aee" id="Y4T-2o-8mb"/>
                         <outlet property="signUpButton" destination="xpd-7S-rfO" id="b49-Jw-82z"/>
+                        <outlet property="usernameTextField" destination="TbB-v2-MKf" id="fRg-KE-Gsc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -208,7 +215,7 @@
             <size key="intrinsicContentSize" width="354" height="39.220703125"/>
         </designable>
         <designable name="xpd-7S-rfO">
-            <size key="intrinsicContentSize" width="81.5" height="34"/>
+            <size key="intrinsicContentSize" width="58" height="32"/>
         </designable>
     </designables>
     <resources>

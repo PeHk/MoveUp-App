@@ -2,6 +2,9 @@ PODS:
   - Alamofire (5.4.4)
   - ALProgressView (2.0.0)
   - IQKeyboardManagerSwift (6.5.6)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
   - SkyFloatingLabelTextField (3.8.0)
   - SPPermissions/Calendar (6.7.0):
     - SPPermissions/Core
@@ -13,35 +16,42 @@ PODS:
   - SPPermissions/Notification (6.7.0):
     - SPPermissions/Core
   - SwiftGen (6.5.1)
+  - SwiftyBase64 (1.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.4)
   - ALProgressView
   - IQKeyboardManagerSwift
+  - NVActivityIndicatorView
   - SkyFloatingLabelTextField (~> 3.0)
   - SPPermissions/Calendar
   - SPPermissions/Health
   - SPPermissions/LocationWhenInUse
   - SPPermissions/Notification
   - SwiftGen (~> 6.0)
+  - SwiftyBase64 (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - ALProgressView
     - IQKeyboardManagerSwift
+    - NVActivityIndicatorView
     - SkyFloatingLabelTextField
     - SPPermissions
     - SwiftGen
+    - SwiftyBase64
 
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   ALProgressView: 547883405970e932d8f1f12b605aa4f6df08f155
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SPPermissions: 79f69d71f975e893d7d4757c06e4e954de0ffc14
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftyBase64: 8de4de96a08454e742fdda614dff12d2c62ecbe9
 
-PODFILE CHECKSUM: a15bbdb4ca0775baaa7d78788cbe667f1827cfb9
+PODFILE CHECKSUM: a478c83e4745d74677c64458e7ca945d306c9b09
 
 COCOAPODS: 1.11.2

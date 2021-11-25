@@ -13,6 +13,8 @@ target 'GoFitApp' do
   pod 'SPPermissions/LocationWhenInUse'
   pod 'SPPermissions/Calendar'
   pod 'SwiftGen', '~> 6.0'
+  pod 'NVActivityIndicatorView'
   pod 'Alamofire', '~> 5.4'
+  pod 'SwiftyBase64', '~> 1.0'
 
 end

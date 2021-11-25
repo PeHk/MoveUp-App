@@ -56,4 +56,12 @@ extension Endpoint {
     static var refresh: Self {
         Endpoint(path: "auth/refresh")
     }
+    
+    static var test: Self {
+        Endpoint(path: "api/test")
+    }
+    
+    static var registration: Self {
+        Endpoint(path: "api/register")
+    }
 }

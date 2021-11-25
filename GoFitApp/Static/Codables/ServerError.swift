@@ -6,23 +6,13 @@
 //
 
 import Foundation
+import Alamofire
 
-struct ServerError: Error {
-    var message: String
-    var code: ServerErrorCodes
-    let args: [String]?
+struct NetworkError: Error {
+  let initialError: AFError
+  let backendError: BackendError?
 }
 
-enum ServerErrorCodes: Int {
-    case badRequest = 400
-    case unauthorized = 401
-    case forbidden = 403
-    case notFound = 404
-    case conflict = 409
-    case internalServerError = 500
-    case unknown
-    case emptyResponse
-    case unserialized
-    case userInput
-    case coreData
+struct BackendError: Codable, Error {
+    var message: String
 }
