@@ -17,6 +17,8 @@ final class DependencyContainer {
         return networkManager
     }()
     
+    lazy var registrationManager = RegistrationManager(self)
+    
 //    lazy var logoutInterceptor = LogoutInterceptor(self)
 //    lazy var feedbackManager = FeedbackManager()
 //    lazy var coreDataStore = CoreDataStore(name: "CiceroniLens", in: .persistent)

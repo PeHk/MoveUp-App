@@ -29,6 +29,7 @@
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
 		E12E6BA7274FC10A009B211C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA6274FC109009B211C /* User.swift */; };
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
+		E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAA274FC872009B211C /* RegistrationManager.swift */; };
 		E13B446227206D290062C44B /* SetCaloriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */; };
 		E13B446327206D290062C44B /* SetCaloriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */; };
 		E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B446027206D290062C44B /* SetCaloriesCoordinator.swift */; };
@@ -111,6 +112,7 @@
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E12E6BA6274FC109009B211C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		E12E6BAA274FC872009B211C /* RegistrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManager.swift; sourceTree = "<group>"; };
 		E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCaloriesViewModel.swift; sourceTree = "<group>"; };
 		E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetCaloriesViewController.storyboard; sourceTree = "<group>"; };
 		E13B446027206D290062C44B /* SetCaloriesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCaloriesCoordinator.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */,
 				E1E51090274C066200C9C266 /* CredentialsManager.swift */,
 				E12E6BA8274FC5D7009B211C /* AlertManager.swift */,
+				E12E6BAA274FC872009B211C /* RegistrationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
+				E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */,
 				E13B446527206D290062C44B /* SetCaloriesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,

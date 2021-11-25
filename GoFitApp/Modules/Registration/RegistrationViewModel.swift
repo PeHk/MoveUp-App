@@ -63,10 +63,12 @@ final class RegistrationViewModel: ViewModelProtocol {
     internal var subscription = Set<AnyCancellable>()
     
     private let networkManager: NetworkManager
+    private let registrationManager: RegistrationManager
 
     // MARK: Lifecycle
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
+        self.registrationManager = dependencyContainer.registrationManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -97,20 +99,13 @@ final class RegistrationViewModel: ViewModelProtocol {
     private func signUpButtonTapped() {
         self.state.send(.loading)
         
-        let registrationPublisher: AnyPublisher<DataResponse<User, NetworkError>, Never> = self.networkManager.request(
-            Endpoint.registration.url,
-            method: .post,
-            parameters: ["name": username, "password": SwiftyBase64.EncodeString([UInt8](password.utf8)), "email": email],
-            withInterceptor: false
-        )
-        
-        registrationPublisher
-            .sink { dataResponse in
-                if let error = dataResponse.error {
+        self.registrationManager.registration(email: email, username: username, password: password)
+            .sink { completion in
+                if case .failure(let error) = completion {
                     self.state.send(.error(error))
-                } else {
-                    print(dataResponse.value!)
                 }
+            } receiveValue: { user in
+                print("Registered user:", user)
             }
             .store(in: &subscription)
     }
