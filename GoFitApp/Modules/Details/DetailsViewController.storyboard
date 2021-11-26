@@ -94,26 +94,26 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Weight (kg):"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZ8-21-Di3">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2J-ty-H1S" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="120" width="354" height="50"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2L-ws-XTo">
-                                                        <rect key="frame" x="0.0" y="15" width="354" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="bvd-Gj-i91"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="w2L-ws-XTo" firstAttribute="leading" secondItem="uZ8-21-Di3" secondAttribute="leading" id="OvF-pz-Dve"/>
-                                                    <constraint firstAttribute="height" constant="50" id="RMk-3t-bhP"/>
-                                                    <constraint firstAttribute="trailing" secondItem="w2L-ws-XTo" secondAttribute="trailing" id="bJs-ku-fxk"/>
-                                                    <constraint firstAttribute="bottom" secondItem="w2L-ws-XTo" secondAttribute="bottom" constant="5" id="fL9-bf-Zyr"/>
+                                                    <constraint firstAttribute="height" constant="50" id="gzc-yW-FJj"/>
                                                 </constraints>
-                                            </view>
+                                                <color key="textColor" name="primary"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Gender"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Gender"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Gender"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vg-OL-0mk">
                                                 <rect key="frame" x="0.0" y="180" width="354" height="50"/>
                                                 <subviews>
@@ -142,9 +142,7 @@
                                             <constraint firstAttribute="trailing" secondItem="1L6-CW-ZQh" secondAttribute="trailing" id="6IZ-se-fzA"/>
                                             <constraint firstItem="1L6-CW-ZQh" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="Er8-1X-1Oc"/>
                                             <constraint firstAttribute="trailing" secondItem="5vg-OL-0mk" secondAttribute="trailing" id="KY5-ac-Kmz"/>
-                                            <constraint firstAttribute="trailing" secondItem="uZ8-21-Di3" secondAttribute="trailing" id="Xa9-dF-IOI"/>
                                             <constraint firstItem="qbU-zS-DfM" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="e0m-wm-9sk"/>
-                                            <constraint firstItem="uZ8-21-Di3" firstAttribute="leading" secondItem="3Ld-N6-51Z" secondAttribute="leading" id="jxj-RL-wWt"/>
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-Rq-8R4" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
@@ -176,7 +174,7 @@
                     </view>
                     <connections>
                         <outlet property="birthDatePicker" destination="VQO-X9-S2C" id="AOj-nZ-2ZG"/>
-                        <outlet property="genderPicker" destination="uZ8-21-Di3" id="sAW-gM-CZB"/>
+                        <outlet property="genderTextField" destination="U2J-ty-H1S" id="2mg-q2-KrS"/>
                         <outlet property="saveButton" destination="4ed-Rq-8R4" id="c03-z2-Bdi"/>
                     </connections>
                 </viewController>
@@ -187,13 +185,13 @@
     </scenes>
     <designables>
         <designable name="1L6-CW-ZQh">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="99.5" height="34"/>
         </designable>
         <designable name="4ed-Rq-8R4">
             <size key="intrinsicContentSize" width="38" height="32"/>
         </designable>
         <designable name="qbU-zS-DfM">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="102" height="34"/>
         </designable>
     </designables>
     <resources>

@@ -43,6 +43,9 @@ final class DetailsViewModel: ViewModelProtocol {
 //    internal var errorState = PassthroughSubject<ServerError, Never>()
     
     internal var subscription = Set<AnyCancellable>()
+    
+    var selectedCountry: String?
+    var countryList = ["Algeria", "Andorra", "Angola", "India", "Thailand"]
 
     
     init(_ dependencyContainer: DependencyContainer) {

@@ -8,15 +8,12 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     
+    @IBOutlet weak var genderTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var birthDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: PrimaryButton!
-    @IBOutlet weak var genderPicker: UIView! {
-        didSet {
-            genderPicker.addBottomBorder(color: .lightGray, margins: 0, borderLineSize: 0.5)
-        }
-    }
+    
     var viewModel: DetailsViewModel!
     var coordinator: DetailsCoordinator!
     
@@ -27,6 +24,7 @@ class DetailsViewController: UIViewController {
     
     private func setupViews() {
         self.birthDatePicker.maximumDate = Date()
+        createPickerView()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
