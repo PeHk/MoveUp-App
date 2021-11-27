@@ -14,6 +14,7 @@ final class DetailsViewModel: ViewModelProtocol {
     // MARK: - Enums
     enum Action {
         case saveTapped
+        case permissionsShowed
     }
     
     enum Step {
@@ -31,6 +32,8 @@ final class DetailsViewModel: ViewModelProtocol {
         switch action {
         case .saveTapped:
             saveTapped()
+        case .permissionsShowed:
+            return
         }
     }
     
@@ -67,6 +70,8 @@ final class DetailsViewModel: ViewModelProtocol {
     var selectedGender = CurrentValueSubject<Gender?, Never>(nil)
     var selectedDate = CurrentValueSubject<Date?, Never>(nil)
     
+    private var alreadySent: Bool = false
+    
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
@@ -95,7 +100,11 @@ final class DetailsViewModel: ViewModelProtocol {
     
     // MARK: Actions
     private func saveTapped() {
-        updateUserDetails()
+        if !alreadySent {
+            updateUserDetails()
+        } else {
+            self.action.send(.permissionsShowed)
+        }
     }
     
     private func fetchUser() {
@@ -155,9 +164,10 @@ final class DetailsViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
+                    self.alreadySent = true
                     print(dataResponse.value!)
                     self.isLoading.send(false)
-                    self.stepper.send(.save)
+                    self.action.send(.permissionsShowed)
                 }
             }
             .store(in: &self.subscription)

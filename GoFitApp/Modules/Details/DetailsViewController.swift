@@ -8,6 +8,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 import Combine
+import SPPermissions
 
 class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     
@@ -21,6 +22,8 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     var viewModel: DetailsViewModel!
     var coordinator: DetailsCoordinator!
     var subscription = Set<AnyCancellable>()
+    
+    private var permissionsHidden: Bool = false
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -47,6 +50,14 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
         weightTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.weight, on: viewModel)
+            .store(in: &subscription)
+        
+        viewModel.action
+            .sink { action in
+                if action == .permissionsShowed {
+                    self.presentPermissions()
+                }
+            }
             .store(in: &subscription)
         
         // MARK: Textfields validation
@@ -98,10 +109,34 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        viewModel.action.send(.saveTapped)
+        if permissionsHidden {
+            presentPermissions()
+        } else {
+            viewModel.action.send(.saveTapped)
+        }
     }
     
     @IBAction func dateOfBirthPicked(_ sender: Any) {
         viewModel.selectedDate.send(birthDatePicker.date)
+    }
+    
+    private func presentPermissions() {
+        if !SPPermissions.Permission.locationWhenInUse.authorized || !SPPermissions.Permission.notification.authorized || !SPPermissions.Permission.calendar.authorized {
+            let basicPermissions = SPPermissions.list([.calendar, .notification, .locationWhenInUse])
+            basicPermissions.delegate = self
+            basicPermissions.present(on: self)
+        } else {
+            viewModel.stepper.send(.save)
+        }
+    }
+}
+
+extension DetailsViewController: SPPermissionsDelegate {
+    func didHidePermissions(_ permissions: [SPPermissions.Permission]) {
+        if SPPermissions.Permission.locationWhenInUse.authorized && SPPermissions.Permission.notification.authorized && SPPermissions.Permission.calendar.authorized {
+            self.viewModel.stepper.send(.save)
+        } else {
+            self.permissionsHidden = true
+        }
     }
 }
