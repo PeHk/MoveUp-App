@@ -22,8 +22,8 @@ class RegistrationManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
-    func registration(email: String, username: String, password: String) -> Future<User, NetworkError> {
-        let registrationPublisher: AnyPublisher<DataResponse<User, NetworkError>, Never> = self.networkManager.request(
+    func registration(email: String, username: String, password: String) -> Future<UserResource, NetworkError> {
+        let registrationPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.registration.url,
             method: .post,
             parameters: ["name": username, "password": SwiftyBase64.EncodeString([UInt8](password.utf8)), "email": email],

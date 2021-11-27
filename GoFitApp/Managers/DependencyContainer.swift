@@ -18,8 +18,8 @@ final class DependencyContainer {
     }()
     
     lazy var registrationManager = RegistrationManager(self)
+    lazy var coreDataStore = CoreDataStore(name: "GoFitApp", in: .persistent)
     
 //    lazy var logoutInterceptor = LogoutInterceptor(self)
 //    lazy var feedbackManager = FeedbackManager()
-//    lazy var coreDataStore = CoreDataStore(name: "CiceroniLens", in: .persistent)
 }

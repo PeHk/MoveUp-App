@@ -28,11 +28,14 @@
 		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
 		E127A7DE2751342300D03DB1 /* DetailsViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */; };
-		E12E6BA7274FC10A009B211C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA6274FC109009B211C /* User.swift */; };
+		E12E6BA7274FC10A009B211C /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA6274FC109009B211C /* UserResource.swift */; };
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
 		E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAA274FC872009B211C /* RegistrationManager.swift */; };
 		E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */; };
 		E134E93127523D4F00453781 /* BioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93027523D4F00453781 /* BioData.swift */; };
+		E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134E933275257DD00453781 /* AuthenticationServices.framework */; };
+		E134E93627525BD900453781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93527525BD800453781 /* CoreDataManager.swift */; };
+		E134E93827525E9900453781 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93727525E9900453781 /* UserManager.swift */; };
 		E13B446227206D290062C44B /* SetCaloriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */; };
 		E13B446327206D290062C44B /* SetCaloriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */; };
 		E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B446027206D290062C44B /* SetCaloriesCoordinator.swift */; };
@@ -115,11 +118,15 @@
 		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+Picker.swift"; sourceTree = "<group>"; };
-		E12E6BA6274FC109009B211C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E12E6BA6274FC109009B211C /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		E12E6BAA274FC872009B211C /* RegistrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManager.swift; sourceTree = "<group>"; };
 		E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+CookieStorage.swift"; sourceTree = "<group>"; };
 		E134E93027523D4F00453781 /* BioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioData.swift; sourceTree = "<group>"; };
+		E134E932275257DC00453781 /* GoFitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoFitApp.entitlements; sourceTree = "<group>"; };
+		E134E933275257DD00453781 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		E134E93527525BD800453781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E134E93727525E9900453781 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E13B445E27206D290062C44B /* SetCaloriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCaloriesViewModel.swift; sourceTree = "<group>"; };
 		E13B445F27206D290062C44B /* SetCaloriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetCaloriesViewController.storyboard; sourceTree = "<group>"; };
 		E13B446027206D290062C44B /* SetCaloriesCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCaloriesCoordinator.swift; sourceTree = "<group>"; };
@@ -186,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */,
 				E1E51098274C080500C9C266 /* GoodCache in Frameworks */,
 				3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */,
 			);
@@ -206,6 +214,7 @@
 		B7B973D4E6DB9A51C1EC28A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E134E933275257DD00453781 /* AuthenticationServices.framework */,
 				73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */,
 			);
 			name = Frameworks;
@@ -307,6 +316,7 @@
 		E166098E271C9F4B0077DF6E /* GoFitApp */ = {
 			isa = PBXGroup;
 			children = (
+				E134E932275257DC00453781 /* GoFitApp.entitlements */,
 				E1E51081274BFEF500C9C266 /* Static */,
 				E1E41E9B274BF5D9006674E7 /* SwiftGen */,
 				E10AA3E3271DB3270096B032 /* Font */,
@@ -397,6 +407,8 @@
 				E1E51090274C066200C9C266 /* CredentialsManager.swift */,
 				E12E6BA8274FC5D7009B211C /* AlertManager.swift */,
 				E12E6BAA274FC872009B211C /* RegistrationManager.swift */,
+				E134E93527525BD800453781 /* CoreDataManager.swift */,
+				E134E93727525E9900453781 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -459,7 +471,7 @@
 			children = (
 				E1E51086274C014E00C9C266 /* ServerError.swift */,
 				E1E51094274C06D200C9C266 /* Credentials.swift */,
-				E12E6BA6274FC109009B211C /* User.swift */,
+				E12E6BA6274FC109009B211C /* UserResource.swift */,
 				E1CFFD5B27521EA500794BAC /* Gender.swift */,
 				E134E93027523D4F00453781 /* BioData.swift */,
 			);
@@ -636,6 +648,7 @@
 				E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */,
 				E134E93127523D4F00453781 /* BioData.swift in Sources */,
 				E1E51085274C00D900C9C266 /* NetworkManager+Requests.swift in Sources */,
+				E134E93627525BD900453781 /* CoreDataManager.swift in Sources */,
 				E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */,
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
 				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
@@ -652,7 +665,7 @@
 				E1E51087274C014E00C9C266 /* ServerError.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
 				E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */,
-				E12E6BA7274FC10A009B211C /* User.swift in Sources */,
+				E12E6BA7274FC10A009B211C /* UserResource.swift in Sources */,
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
@@ -673,6 +686,7 @@
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
+				E134E93827525E9900453781 /* UserManager.swift in Sources */,
 				E13B446427206D290062C44B /* SetCaloriesCoordinator.swift in Sources */,
 				E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */,
 				E13B448127206DBF0062C44B /* ActivityCoordinator.swift in Sources */,
@@ -816,6 +830,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
@@ -845,6 +860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
