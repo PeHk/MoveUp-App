@@ -69,6 +69,7 @@ final class DetailsViewModel: ViewModelProtocol {
     
     var selectedGender = CurrentValueSubject<Gender?, Never>(nil)
     var selectedDate = CurrentValueSubject<Date?, Never>(nil)
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
     
     private var alreadySent: Bool = false
     
@@ -114,10 +115,9 @@ final class DetailsViewModel: ViewModelProtocol {
                     print(error)
                 }
             } receiveValue: { users in
-                print(users.first)
-                print(users.first?.email)
-                print(users.first?.name)
-                print(users.first?.registered_at)
+                if users.count > 0 {
+                    self.currentUser.send(users.first!)
+                }
             }
             .store(in: &subscription)
     }
@@ -148,7 +148,7 @@ final class DetailsViewModel: ViewModelProtocol {
         
         let birthDate = Helpers.formatDate(from: selectedDate.value ?? Date())
         
-        let updateRequest: AnyPublisher<DataResponse<BioData, NetworkError>, Never> = networkManager.request(
+        let updateRequest: AnyPublisher<DataResponse<BioDataResource, NetworkError>, Never> = networkManager.request(
             Endpoint.userDetails.url,
             method: .post,
             parameters: ["weight": Float(weight) ?? 0,
@@ -165,11 +165,16 @@ final class DetailsViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 } else {
                     self.alreadySent = true
-                    print(dataResponse.value!)
+                    self.saveBioData(data: dataResponse.value!)
                     self.isLoading.send(false)
                     self.action.send(.permissionsShowed)
                 }
             }
             .store(in: &self.subscription)
+    }
+    
+    private func saveBioData(data: BioDataResource) {
+        
+        
     }
 }

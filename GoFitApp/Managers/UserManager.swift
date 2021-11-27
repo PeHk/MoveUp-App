@@ -48,4 +48,17 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
+    func saveBioData(data: BioDataResource)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+        let action: Action = {
+            let bioData: BioData = self.coreDataStore.createEntity()
+            bioData.activity_minutes = data.activity_minutes ?? 0
+            bioData.weight = data.weight ?? 0
+            bioData.height = data.height ?? 0
+            bioData.bmi = data.bmi ?? 0
+        }
+        return coreDataStore
+            .publicher(save: action)
+            .eraseToAnyPublisher()
+    }
+    
 }

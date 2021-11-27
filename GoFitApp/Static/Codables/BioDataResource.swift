@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct BioData: Codable {
+struct BioDataResource: Codable {
     let weight: Float?
     let height: Float?
     let date_of_birth: String?
     let gender: String?
     let type: Int?
-    let activity_minutes: Int?
+    let activity_minutes: Int64?
     let bmi: Float?
 }
