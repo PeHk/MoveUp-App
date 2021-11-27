@@ -98,7 +98,7 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        viewModel.stepper.send(.save)
+        viewModel.action.send(.saveTapped)
     }
     
     @IBAction func dateOfBirthPicked(_ sender: Any) {

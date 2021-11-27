@@ -90,8 +90,9 @@ final class DetailsViewModel: ViewModelProtocol {
         .map { $0.count < 1 || $1.count < 2 }
         .eraseToAnyPublisher()
     
+    // MARK: Actions
     private func saveTapped() {
-        
+        updateUserDetails()
     }
     
     private func fetchGenders() {
@@ -113,5 +114,36 @@ final class DetailsViewModel: ViewModelProtocol {
             }
             .store(in: &self.subscription)
 
+    }
+    
+    private func updateUserDetails() {
+        isLoading.send(true)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        let birthDate = formatter.string(from: selectedDate.value ?? Date())
+        
+        let updateRequest: AnyPublisher<DataResponse<BioData, NetworkError>, Never> = networkManager.request(
+            Endpoint.userDetails.url,
+            method: .post,
+            parameters: ["weight": Float(weight) ?? 0,
+                         "height": Float(height) ?? 0,
+                         "date_of_birth": birthDate,
+                         "gender": selectedGender.value?.value ?? "",
+                         "type": 2
+                        ]
+        )
+        
+        updateRequest
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    print(dataResponse.value!)
+                    self.isLoading.send(false)
+                    self.stepper.send(.save)
+                }
+            }
+            .store(in: &self.subscription)
     }
 }

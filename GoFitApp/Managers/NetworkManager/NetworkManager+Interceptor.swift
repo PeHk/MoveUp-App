@@ -12,12 +12,15 @@ extension NetworkManager: RequestInterceptor {
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         let request = urlRequest
+        
+        setupCookies()
+        
         completion(.success(request))
     }
     
     func retry(_ request: Request, for session: Session, dueTo error: Error,
                completion: @escaping (RetryResult) -> Void) {
-        completion(.retry)
+        completion(.doNotRetry)
     }
 
 }
