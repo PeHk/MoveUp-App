@@ -118,13 +118,13 @@
                                                 <rect key="frame" x="0.0" y="180" width="354" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oex-07-NJL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="50"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-X9-S2C">
-                                                        <rect key="frame" x="78" y="0.0" width="276" height="50"/>
+                                                        <rect key="frame" x="77.5" y="0.0" width="276.5" height="50"/>
                                                         <color key="tintColor" name="primary"/>
                                                         <date key="minimumDate" timeIntervalSinceReferenceDate="-2871723600">
                                                             <!--1910-01-01 11:00:00 +0000-->
@@ -190,16 +190,16 @@
     </scenes>
     <designables>
         <designable name="1L6-CW-ZQh">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="4ed-Rq-8R4">
             <size key="intrinsicContentSize" width="38" height="32"/>
         </designable>
         <designable name="U2J-ty-H1S">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="qbU-zS-DfM">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
     </designables>
     <resources>

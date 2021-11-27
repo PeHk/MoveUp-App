@@ -57,6 +57,7 @@ final class DetailsViewModel: ViewModelProtocol {
     internal var subscription = Set<AnyCancellable>()
     
     private let networkManager: NetworkManager
+    private let userManager: UserManager
     
     var availableGenders: [Gender?] = []
     
@@ -68,6 +69,7 @@ final class DetailsViewModel: ViewModelProtocol {
     
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
+        self.userManager = dependencyContainer.userManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -84,6 +86,7 @@ final class DetailsViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         self.fetchGenders()
+        self.fetchUser()
     }
     
     private(set) lazy var isInputValid = Publishers.CombineLatest($weight, $height)
@@ -93,6 +96,21 @@ final class DetailsViewModel: ViewModelProtocol {
     // MARK: Actions
     private func saveTapped() {
         updateUserDetails()
+    }
+    
+    private func fetchUser() {
+        self.userManager.getUser()
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    print(error)
+                }
+            } receiveValue: { users in
+                print(users.first)
+                print(users.first?.email)
+                print(users.first?.name)
+                print(users.first?.registered_at)
+            }
+            .store(in: &subscription)
     }
     
     private func fetchGenders() {
@@ -119,9 +137,7 @@ final class DetailsViewModel: ViewModelProtocol {
     private func updateUserDetails() {
         isLoading.send(true)
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        let birthDate = formatter.string(from: selectedDate.value ?? Date())
+        let birthDate = Helpers.formatDate(from: selectedDate.value ?? Date())
         
         let updateRequest: AnyPublisher<DataResponse<BioData, NetworkError>, Never> = networkManager.request(
             Endpoint.userDetails.url,

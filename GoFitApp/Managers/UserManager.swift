@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class UserManager {
     
@@ -23,14 +24,28 @@ class UserManager {
                 user.email = newUser.email
                 user.admin = newUser.admin
                 user.name = newUser.name
-//                user.registered_at = newUser.registered_at
-                
-                
+                user.registered_at =  self.coreDataStore.dateFormatter.date(from: newUser.registered_at)
             }
             return coreDataStore
                 .publicher(save: action)
                 .eraseToAnyPublisher()
-        }
+    }
+    
+    func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NSError> {
+        let request = NSFetchRequest<User>(entityName: User.entityName)
         
+        return coreDataStore
+            .publicher(fetch: request)
+            .eraseToAnyPublisher()
+    }
+    
+    func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NSError> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: User.entityName)
+        request.predicate = NSPredicate(format: "email != nil")
         
+        return coreDataStore
+            .publicher(delete: request)
+            .eraseToAnyPublisher()
+    }
+    
 }

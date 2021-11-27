@@ -12,6 +12,7 @@ import SwiftyBase64
 
 class RegistrationManager {
     
+    
     fileprivate let networkManager: NetworkManager
     fileprivate let credentialsManager: CredentialsManager
     

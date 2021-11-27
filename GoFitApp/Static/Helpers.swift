@@ -17,3 +17,12 @@ struct Validators {
         return emailPredicate.evaluate(with: string)
     }
 }
+
+class Helpers {
+    static func formatDate(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-YYYY"
+        
+        return dateFormatter.string(from: date)
+    }
+}

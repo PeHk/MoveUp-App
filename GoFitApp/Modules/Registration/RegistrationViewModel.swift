@@ -64,11 +64,13 @@ final class RegistrationViewModel: ViewModelProtocol {
     
     private let networkManager: NetworkManager
     private let registrationManager: RegistrationManager
+    private let userManager: UserManager
 
     // MARK: Lifecycle
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
         self.registrationManager = dependencyContainer.registrationManager
+        self.userManager = dependencyContainer.userManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -104,10 +106,24 @@ final class RegistrationViewModel: ViewModelProtocol {
                 if case .failure(let error) = completion {
                     self.state.send(.error(error))
                 }
-            } receiveValue: { _ in
-                self.state.send(.initial)
+            } receiveValue: { user in
+                self.saveUser(user: user)
+            }
+            .store(in: &subscription)
+    }
+    
+    private func saveUser(user: UserResource) {
+        self.userManager.deleteUser()
+            .zip(self.userManager.saveUser(newUser: user))
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    print(error)
+                }
+            } receiveValue: { _, _ in
+                self.isLoading.send(false)
                 self.stepper.send(.signUp)
             }
             .store(in: &subscription)
+        
     }
 }
