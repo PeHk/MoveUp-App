@@ -64,4 +64,8 @@ extension Endpoint {
     static var registration: Self {
         Endpoint(path: "api/register")
     }
+    
+    static var genders: Self {
+        Endpoint(path: "api/genders")
+    }
 }

@@ -15,16 +15,17 @@ extension DetailsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return viewModel.countryList.count // number of dropdown items
+        return viewModel.availableGenders.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return viewModel.countryList[row] // dropdown item
+        return viewModel.availableGenders[row]?.value
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        viewModel.selectedCountry = viewModel.countryList[row]
-        genderTextField.text = viewModel.selectedCountry
+        viewModel.selectedGender.send(viewModel.availableGenders[row])
+        genderTextField.text = viewModel.selectedGender.value?.value
+        view.endEditing(true)
     }
     
     func createPickerView() {
