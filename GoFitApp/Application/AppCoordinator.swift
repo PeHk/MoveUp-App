@@ -53,6 +53,13 @@ final class AppCoordinator: Coordinator {
         childCoordinators.append(setActiveMinutesCoordinator)
     }
     
+    private func showFavouriteSports() {
+        let favouriteSportsCoordinator = FavouriteSportsCoordinator(navigationController, dependencyContainer)
+        favouriteSportsCoordinator.finishDelegate = self
+        favouriteSportsCoordinator.start()
+        childCoordinators.append(favouriteSportsCoordinator)
+    }
+    
     private func showTabBar() {
         let tabBarCoordinator = TabBarCoordinator(navigationController, dependencyContainer)
         tabBarCoordinator.finishDelegate = self
@@ -73,11 +80,14 @@ extension AppCoordinator: CoordinatorFinishDelegate {
             if coor.fromCoordinator == .registration {
                 showMoreDetails()
             }
+        case .favouriteSports:
+            navigationController.viewControllers.removeAll()
             
+            showTabBar()
         case .setActiveMinutes:
             navigationController.viewControllers.removeAll()
            
-            showTabBar()
+            showFavouriteSports()
         case .details:
             navigationController.viewControllers.removeAll()
             

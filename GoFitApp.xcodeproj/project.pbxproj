@@ -72,6 +72,15 @@
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
+		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
+		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
+		E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */; };
+		E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA172753C2FE004E6FDC /* FavouriteSportsViewController.swift */; };
+		E19ABA1D2753C3D1004E6FDC /* SportResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA1C2753C3D1004E6FDC /* SportResource.swift */; };
+		E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */; };
+		E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */; };
+		E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA222753C822004E6FDC /* SportTableViewCell.swift */; };
+		E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA242753C891004E6FDC /* SportCellViewModel.swift */; };
 		E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* Gender.swift */; };
 		E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF2E23274ECB6000741038 /* LoadingView.swift */; };
 		E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9C274BF5D9006674E7 /* Assets.swift */; };
@@ -166,6 +175,15 @@
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
+		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
+		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
+		E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsViewController.storyboard; sourceTree = "<group>"; };
+		E19ABA172753C2FE004E6FDC /* FavouriteSportsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewController.swift; sourceTree = "<group>"; };
+		E19ABA1C2753C3D1004E6FDC /* SportResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportResource.swift; sourceTree = "<group>"; };
+		E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsViewController+TableView.swift"; sourceTree = "<group>"; };
+		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
+		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
 		E1CFFD5B27521EA500794BAC /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		E1DF2E23274ECB6000741038 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E1E41E9C274BF5D9006674E7 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -297,6 +315,15 @@
 			path = "Tabbar modules";
 			sourceTree = "<group>";
 		};
+		E15C5C5F2753D56600B20C2A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E19ABA242753C891004E6FDC /* SportCellViewModel.swift */,
+				E19ABA222753C822004E6FDC /* SportTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E1660983271C9F4B0077DF6E = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				E13B449D27206E1E0062C44B /* Tabbar modules */,
+				E19ABA132753C2FE004E6FDC /* FavouriteSports */,
 				E13B445D27206D290062C44B /* SetActiveMinutes */,
 				E1EBC13F271DCE40009E9939 /* Details */,
 				E16609A9271C9FA90077DF6E /* Login */,
@@ -421,9 +449,10 @@
 				E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */,
 				E1065D95271F29FE002C575E /* UINavigationController+Extensions.swift */,
 				E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */,
-				E13B44A0272094950062C44B /* BaseViewController.swift */,
 				E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */,
 				E1515878275380D20045CBCB /* Optional+Extensions.swift */,
+				E13B44A0272094950062C44B /* BaseViewController.swift */,
+				E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -436,6 +465,19 @@
 				E1DF2E23274ECB6000741038 /* LoadingView.swift */,
 			);
 			path = Designs;
+			sourceTree = "<group>";
+		};
+		E19ABA132753C2FE004E6FDC /* FavouriteSports */ = {
+			isa = PBXGroup;
+			children = (
+				E15C5C5F2753D56600B20C2A /* Cell */,
+				E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */,
+				E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */,
+				E19ABA172753C2FE004E6FDC /* FavouriteSportsViewController.swift */,
+				E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */,
+				E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */,
+			);
+			path = FavouriteSports;
 			sourceTree = "<group>";
 		};
 		E1E41E9B274BF5D9006674E7 /* SwiftGen */ = {
@@ -477,6 +519,7 @@
 				E12E6BA6274FC109009B211C /* UserResource.swift */,
 				E1CFFD5B27521EA500794BAC /* Gender.swift */,
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
+				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -564,6 +607,7 @@
 				E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */,
 				E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */,
 				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
+				E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */,
 				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
 				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
 				E10AA3EE271DB33D0096B032 /* Roboto-MediumItalic.ttf in Resources */,
@@ -635,9 +679,13 @@
 			files = (
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
+				E19ABA1D2753C3D1004E6FDC /* SportResource.swift in Sources */,
+				E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */,
 				E1E51095274C06D200C9C266 /* Credentials.swift in Sources */,
 				E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */,
+				E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
+				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
 				E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */,
 				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
@@ -657,6 +705,7 @@
 				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
 				E13B448027206DBF0062C44B /* ActivityViewModel.swift in Sources */,
+				E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
 				E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */,
@@ -679,13 +728,16 @@
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
+				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
+				E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
+				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,

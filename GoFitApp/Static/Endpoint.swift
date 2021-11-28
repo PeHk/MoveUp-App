@@ -72,4 +72,8 @@ extension Endpoint {
     static var userDetails: Self {
         Endpoint(path: "api/user_details")
     }
+    
+    static var sports: Self {
+        Endpoint(path: "api/sports")
+    }
 }
