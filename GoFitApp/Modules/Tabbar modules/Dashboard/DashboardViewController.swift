@@ -9,7 +9,7 @@ class DashboardViewController: UITableViewController {
     @IBOutlet weak var caloriesView: UIView!
     @IBOutlet weak var stepsView: UIView!
     var viewModel: DashboardViewModel!
-    var coordinator: DashboardCoordinator!
+    weak var coordinator: DashboardCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

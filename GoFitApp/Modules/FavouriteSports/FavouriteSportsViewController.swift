@@ -6,7 +6,7 @@ class FavouriteSportsViewController: BaseTableViewController {
     // MARK: Outlets
     @IBOutlet weak var saveButton: PrimaryButton!
     var viewModel: FavouriteSportsViewModel!
-    var coordinator: FavouriteSportsCoordinator!
+    weak var coordinator: FavouriteSportsCoordinator!
     
     private var subscription = Set<AnyCancellable>()
     
@@ -21,18 +21,18 @@ class FavouriteSportsViewController: BaseTableViewController {
         self.navigationItem.leftBarButtonItem = nil
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        self.navigationController?.navigationBar.sizeToFit()
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        self.navigationController?.navigationBar.sizeToFit()
+//        
+//    }
+//    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//    
     // MARK: Bindings
     private func setupBindings() {
         viewModel.errorState
@@ -53,10 +53,10 @@ class FavouriteSportsViewController: BaseTableViewController {
     
     // MARK: Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        var items: [SportResource] = []
+        var items: [Int64] = []
         if let indexPaths = self.tableView.indexPathsForSelectedRows {
             for indexPath in indexPaths {
-                items.append(viewModel.sports.value[indexPath.row])
+                items.append(viewModel.sports.value[indexPath.row].id)
             }
         }
         

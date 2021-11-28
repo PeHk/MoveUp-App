@@ -20,9 +20,9 @@ class SetActiveMinutesViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var setButton: PrimaryButton!
     
     var viewModel: SetActiveMinutesViewModel!
-    var coordinator: SetActiveMinutesCoordinator!
-    var subscription = Set<AnyCancellable>()
+    weak var coordinator: SetActiveMinutesCoordinator!
     
+    private var subscription = Set<AnyCancellable>()
     private var activityMinutes: Int = 0
     
     // MARK: Lifecycle

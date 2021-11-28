@@ -20,9 +20,9 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
     @IBOutlet weak var saveButton: PrimaryButton!
     
     var viewModel: DetailsViewModel!
-    var coordinator: DetailsCoordinator!
-    var subscription = Set<AnyCancellable>()
+    weak var coordinator: DetailsCoordinator!
     
+    private var subscription = Set<AnyCancellable>()
     private var permissionsHidden: Bool = false
     
     // MARK: Lifecycle

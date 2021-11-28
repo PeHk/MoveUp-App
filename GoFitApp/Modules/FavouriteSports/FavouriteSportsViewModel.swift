@@ -6,7 +6,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case saveSports(_ sports: [SportResource])
+        case saveSports(_ sports: [Int64])
     }
     
     enum Step {
@@ -97,11 +97,26 @@ class FavouriteSportsViewModel: ViewModelProtocol {
 
     }
     
-    private func updateSports(sports: [SportResource]) {
+    private func updateSports(sports: [Int64]) {
         self.state.send(.loading)
         
-//        let updateRequest: AnyPublisher<DataResponse<
-        print(sports)
+        let updateRequest: AnyPublisher<DataResponse<UserSportsResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.sports.url,
+            method: .post,
+            parameters: ["ids": sports]
+        )
+        
+        updateRequest
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    print(dataResponse.value!)
+                    self.isLoading.send(false)
+                    self.stepper.send(.save)
+                }
+            }
+            .store(in: &subscription)
     }
     
     func createSportCellViewModel(sport: SportResource) -> SportCellViewModel {

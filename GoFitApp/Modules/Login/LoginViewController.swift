@@ -10,7 +10,7 @@ import UIKit
 class LoginViewController: BaseViewController {
     
     var viewModel: LoginViewModel!
-    var coordinator: LoginCoordinator!
+    weak var coordinator: LoginCoordinator!
 
     override func viewDidLoad() {
         super.viewDidLoad()

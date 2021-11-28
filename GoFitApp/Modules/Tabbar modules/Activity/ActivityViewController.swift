@@ -4,7 +4,7 @@ import UIKit
 class ActivityViewController: UITableViewController {
     
     var viewModel: ActivityViewModel!
-    var coordinator: ActivityCoordinator!
+    weak var coordinator: ActivityCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

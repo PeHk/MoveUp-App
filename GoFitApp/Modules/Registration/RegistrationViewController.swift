@@ -22,10 +22,10 @@ class RegistrationViewController: BaseViewController {
             informationView.layer.cornerRadius = 25
         }
     }
-    
+
+    weak var coordinator: RegistrationCoordinator!
     var viewModel: RegistrationViewModel!
-    var coordinator: RegistrationCoordinator!
-    var subscription = Set<AnyCancellable>()
+    private var subscription = Set<AnyCancellable>()
 
     // MARK: Lifecycle
     override func viewDidLoad() {

@@ -4,7 +4,7 @@ import UIKit
 class ProfileViewController: UITableViewController {
     
     var viewModel: ProfileViewModel!
-    var coordinator: ProfileCoordinator!
+    weak var coordinator: ProfileCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()

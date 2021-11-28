@@ -12,9 +12,9 @@ class HomeViewController: BaseViewController {
     
     @IBOutlet weak var login: SecondaryButton!
     @IBOutlet weak var getStarted: PrimaryButton!
-    var viewModel: HomeViewModel!
     
-    var subscription = Set<AnyCancellable>()
+    var viewModel: HomeViewModel!
+    private var subscription = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
