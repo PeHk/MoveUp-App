@@ -23,6 +23,8 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
     var coordinator: SetCaloriesCoordinator!
     var subscription = Set<AnyCancellable>()
     
+    private var activityMinutes: Int = 0
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,8 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
             .sink { currentUser in
                 if let user = currentUser {
                     let data = user.bio_data.array(of: BioData.self).first
-                    self.caloriesField.text = "\(data?.activity_minutes ?? 150)"
+                    self.activityMinutes = Int(data?.activity_minutes ?? 150)
+                    self.caloriesField.text = "\(self.activityMinutes)"
                 }
             }
             .store(in: &subscription)
@@ -60,7 +63,13 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func setButtonTapped(_ sender: Any) {
-        viewModel.stepper.send(.save)
+        let inputMinutes = Int(caloriesField.text ?? "150") ?? 150
+        
+        if self.activityMinutes == inputMinutes {
+            viewModel.stepper.send(.save)
+        } else {
+            viewModel.action.send(.saveTapped(inputMinutes))
+        }
     }
     
     @objc func increaseCalories(_ sender: UITapGestureRecognizer) {

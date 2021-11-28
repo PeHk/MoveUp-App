@@ -11,11 +11,13 @@ import CoreData
 
 class UserManager {
     
+    // MARK: Variables
     fileprivate let coreDataStore: CoreDataStore
     fileprivate var subscription = Set<AnyCancellable>()
     
     public var currentUser = CurrentValueSubject<User?, Never>(nil)
     
+    // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.coreDataStore = dependencyContainer.coreDataStore
         self.fetchCurrentUser()

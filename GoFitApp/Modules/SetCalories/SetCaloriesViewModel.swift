@@ -1,11 +1,12 @@
 import Combine
 import Foundation
+import Alamofire
 
 class SetCaloriesViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case saveTapped(_ minutes: Int)
     }
     
     enum Step {
@@ -20,7 +21,10 @@ class SetCaloriesViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .saveTapped(let minutes):
+            saveTapped(minutes: minutes)
+        }
     }
     
     func processState(_ state: State) {
@@ -47,12 +51,14 @@ class SetCaloriesViewModel: ViewModelProtocol {
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
     private let userManager: UserManager
+    private let networkManager: NetworkManager
     
     let increaseNumber = 10
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.userManager = dependencyContainer.userManager
+        self.networkManager = dependencyContainer.networkManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -73,5 +79,41 @@ class SetCaloriesViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    // MARK: Actions
+    private func saveTapped(minutes: Int) {
+        // TODO: Update minutes on user and on backend
+        self.isLoading.send(true)
+        let updateRequest: AnyPublisher<DataResponse<BioDataResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.userDetails.url,
+            method: .post,
+            parameters: ["type": 3, "activity_minutes": minutes]
+        )
+        
+        updateRequest
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    self.updateBioData(data: dataResponse.value!)
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    private func updateBioData(data: BioDataResource) {
+        if let user = currentUser.value {
+            self.userManager.saveBioData(data: data, user: user)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        print(error)
+                    }
+                } receiveValue: { _ in
+                    self.isLoading.send(false)
+                    self.stepper.send(.save)
+                }
+                .store(in: &subscription)
+        }
     }
 }
