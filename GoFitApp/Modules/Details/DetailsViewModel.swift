@@ -88,11 +88,16 @@ final class DetailsViewModel: ViewModelProtocol {
                 self?.processState(state)
             })
             .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+            }
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
         self.fetchGenders()
-        self.fetchUser()
     }
     
     private(set) lazy var isInputValid = Publishers.CombineLatest($weight, $height)
@@ -106,20 +111,6 @@ final class DetailsViewModel: ViewModelProtocol {
         } else {
             self.action.send(.permissionsShowed)
         }
-    }
-    
-    private func fetchUser() {
-        self.userManager.getUser()
-            .sink { completion in
-                if case .failure(let error) = completion {
-                    print(error)
-                }
-            } receiveValue: { users in
-                if users.count > 0 {
-                    self.currentUser.send(users.first!)
-                }
-            }
-            .store(in: &subscription)
     }
     
     private func fetchGenders() {
@@ -166,15 +157,23 @@ final class DetailsViewModel: ViewModelProtocol {
                 } else {
                     self.alreadySent = true
                     self.saveBioData(data: dataResponse.value!)
-                    self.isLoading.send(false)
-                    self.action.send(.permissionsShowed)
                 }
             }
             .store(in: &self.subscription)
     }
     
     private func saveBioData(data: BioDataResource) {
-        
-        
+        if let user = currentUser.value {
+            self.userManager.saveBioData(data: data, user: user)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        print(error)
+                    }
+                } receiveValue: { _ in
+                    self.isLoading.send(false)
+                    self.action.send(.permissionsShowed)
+                }
+                .store(in: &subscription)
+        }
     }
 }

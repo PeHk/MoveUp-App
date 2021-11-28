@@ -1,8 +1,9 @@
 import Combine
 import UIKit
 
-class SetCaloriesViewController: UIViewController, UITextFieldDelegate {
+class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
     
+    // MARK: Outlets
     @IBOutlet weak var caloriesField: UITextField!
     @IBOutlet weak var plusButtonView: UIView! {
         didSet {
@@ -16,11 +17,13 @@ class SetCaloriesViewController: UIViewController, UITextFieldDelegate {
             minusButtonView.addGestureRecognizer(tap)
         }
     }
-    
     @IBOutlet weak var setButton: PrimaryButton!
+    
     var viewModel: SetCaloriesViewModel!
     var coordinator: SetCaloriesCoordinator!
+    var subscription = Set<AnyCancellable>()
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -35,9 +38,27 @@ class SetCaloriesViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupBindings() {
+        viewModel.errorState
+            .compactMap( { $0 })
+            .assign(to: \.errorState, on: self)
+            .store(in: &subscription)
+        
+        viewModel.isLoading
+            .assign(to: \.isLoading, on: self)
+            .store(in: &subscription)
+        
+        viewModel.currentUser
+            .sink { currentUser in
+                if let user = currentUser {
+                    let data = user.bio_data.array(of: BioData.self).first
+                    self.caloriesField.text = "\(data?.activity_minutes ?? 150)"
+                }
+            }
+            .store(in: &subscription)
         
     }
     
+    // MARK: Actions
     @IBAction func setButtonTapped(_ sender: Any) {
         viewModel.stepper.send(.save)
     }

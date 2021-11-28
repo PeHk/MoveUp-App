@@ -14,8 +14,23 @@ class UserManager {
     fileprivate let coreDataStore: CoreDataStore
     fileprivate var subscription = Set<AnyCancellable>()
     
+    public var currentUser = CurrentValueSubject<User?, Never>(nil)
+    
     init(_ dependencyContainer: DependencyContainer) {
         self.coreDataStore = dependencyContainer.coreDataStore
+        self.fetchCurrentUser()
+    }
+    
+    ///Function will notify all the controllers about new user
+    /// - Warning: Current user is optional value
+    public func fetchCurrentUser() {
+        self.getUser()
+            .sink { completion in
+                return
+            } receiveValue: { users in
+                self.currentUser.send(users.first)
+            }
+            .store(in: &subscription)
     }
     
     func saveUser(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
@@ -48,13 +63,16 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    func saveBioData(data: BioDataResource)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    func saveBioData(data: BioDataResource, user: User)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+        
+        let bioData: BioData = self.coreDataStore.createEntity()
+        bioData.activity_minutes = data.activity_minutes ?? 0
+        bioData.weight = data.weight ?? 0
+        bioData.height = data.height ?? 0
+        bioData.bmi = data.bmi ?? 0
+        
         let action: Action = {
-            let bioData: BioData = self.coreDataStore.createEntity()
-            bioData.activity_minutes = data.activity_minutes ?? 0
-            bioData.weight = data.weight ?? 0
-            bioData.height = data.height ?? 0
-            bioData.bmi = data.bmi ?? 0
+            user.bio_data = user.bio_data?.adding(bioData) as NSSet?
         }
         return coreDataStore
             .publicher(save: action)

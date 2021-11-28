@@ -120,6 +120,7 @@ final class RegistrationViewModel: ViewModelProtocol {
                     print(error)
                 }
             } receiveValue: { _, _ in
+                self.userManager.fetchCurrentUser()
                 self.isLoading.send(false)
                 self.stepper.send(.signUp)
             }

@@ -15,7 +15,7 @@ class SetCaloriesViewModel: ViewModelProtocol {
     enum State {
         case initial
         case loading
-//        case error(_ error: ServerError)
+        case error(_ error: NetworkError)
     }
     
     // MARK: Actions and States
@@ -27,27 +27,33 @@ class SetCaloriesViewModel: ViewModelProtocol {
         switch state {
         case .initial:
             initializeView()
-//        case .error(let error):
-//            isLoading.send(false)
-//            errorState.send(error)
+        case .error(let error):
+            isLoading.send(false)
+            errorState.send(error)
         case .loading:
             isLoading.send(true)
         }
     }
     
     // MARK: - Variables
-    var state = CurrentValueSubject<State, Never>(.initial)
-    var action = PassthroughSubject<Action, Never>()
-    var stepper = PassthroughSubject<Step, Never>()
-//    var errorState = PassthroughSubject<ServerError, Never>()
-    var isLoading = CurrentValueSubject<Bool, Never>(false)
+    internal var state = CurrentValueSubject<State, Never>(.initial)
+    internal var action = PassthroughSubject<Action, Never>()
+    internal var stepper = PassthroughSubject<Step, Never>()
+    internal var errorState = PassthroughSubject<NetworkError, Never>()
+    internal var isLoading = CurrentValueSubject<Bool, Never>(false)
     
-    var subscription = Set<AnyCancellable>()
+    internal var subscription = Set<AnyCancellable>()
+    
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
+    
+    private let userManager: UserManager
     
     let increaseNumber = 10
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.userManager = dependencyContainer.userManager
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -56,6 +62,12 @@ class SetCaloriesViewModel: ViewModelProtocol {
         state.sink(receiveValue: { [weak self] state in
             self?.processState(state)
         })
+            .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+            }
             .store(in: &subscription)
     }
     
