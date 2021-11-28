@@ -2,11 +2,11 @@ import Combine
 import Foundation
 import Alamofire
 
-class FavouriteSportsViewModel: ViewModelProtocol {
+class SetActiveMinutesViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case saveSports(_ sports: [SportResource])
+        case saveTapped(_ minutes: Int)
     }
     
     enum Step {
@@ -22,8 +22,8 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     // MARK: Actions and States
     func processAction(_ action: Action) {
         switch action {
-        case .saveSports(let sports):
-            updateSports(sports: sports)
+        case .saveTapped(let minutes):
+            saveTapped(minutes: minutes)
         }
     }
     
@@ -48,15 +48,17 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     
     internal var subscription = Set<AnyCancellable>()
     
-    public var sports = CurrentValueSubject<[SportResource], Never>([])
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
     
-    private let networkManager: NetworkManager
     private let userManager: UserManager
+    private let networkManager: NetworkManager
+    
+    let increaseNumber = 10
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
-        self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
+        self.networkManager = dependencyContainer.networkManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -67,44 +69,51 @@ class FavouriteSportsViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+            }
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
         isLoading.send(false)
-        fetchSports()
     }
     
-    private func fetchSports() {
-        self.state.send(.loading)
-        
-        let fetchRequest: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
-            Endpoint.sports.url,
-            withInterceptor: false
+    // MARK: Actions
+    private func saveTapped(minutes: Int) {
+        // TODO: Update minutes on user and on backend
+        self.isLoading.send(true)
+        let updateRequest: AnyPublisher<DataResponse<BioDataResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.userDetails.url,
+            method: .post,
+            parameters: ["type": 3, "activity_minutes": minutes]
         )
         
-        fetchRequest
+        updateRequest
             .sink { dataResponse in
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-                    print(dataResponse.value!)
-                    self.sports.value = dataResponse.value!
-                    self.isLoading.send(false)
-                    
+                    self.updateBioData(data: dataResponse.value!)
                 }
             }
             .store(in: &subscription)
-
     }
     
-    private func updateSports(sports: [SportResource]) {
-        self.state.send(.loading)
-        
-//        let updateRequest: AnyPublisher<DataResponse<
-        print(sports)
-    }
-    
-    func createSportCellViewModel(sport: SportResource) -> SportCellViewModel {
-        SportCellViewModel(isSelected: false, name: sport.name)
+    private func updateBioData(data: BioDataResource) {
+        if let user = currentUser.value {
+            self.userManager.saveBioData(data: data, user: user)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        print(error)
+                    }
+                } receiveValue: { _ in
+                    self.isLoading.send(false)
+                    self.stepper.send(.save)
+                }
+                .store(in: &subscription)
+        }
     }
 }
