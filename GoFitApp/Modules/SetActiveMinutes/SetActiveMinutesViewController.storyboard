@@ -19,10 +19,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Set Calories View Controller-->
+        <!--Set Active Minutes View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SetCaloriesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SetCaloriesViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetActiveMinutesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SetActiveMinutesViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,8 +136,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="caloriesField" destination="Qa2-Pp-akd" id="sBQ-c4-thA"/>
                         <outlet property="minusButtonView" destination="3fk-20-mW4" id="d1s-iv-xcU"/>
+                        <outlet property="minutesField" destination="Qa2-Pp-akd" id="Uge-Tg-CZu"/>
                         <outlet property="plusButtonView" destination="N6i-lT-WuN" id="Moy-fh-2hx"/>
                         <outlet property="setButton" destination="QjY-Qn-6AT" id="FNZ-Wx-xad"/>
                     </connections>

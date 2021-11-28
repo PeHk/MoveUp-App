@@ -46,11 +46,11 @@ final class AppCoordinator: Coordinator {
         childCoordinators.append(detailsCoordinator)
     }
     
-    private func showSetCalories() {
-        let setCaloriesCoordinator = SetCaloriesCoordinator(navigationController, dependencyContainer)
-        setCaloriesCoordinator.finishDelegate = self
-        setCaloriesCoordinator.start()
-        childCoordinators.append(setCaloriesCoordinator)
+    private func showSetActiveMinutes() {
+        let setActiveMinutesCoordinator = SetActiveMinutesCoordinator(navigationController, dependencyContainer)
+        setActiveMinutesCoordinator.finishDelegate = self
+        setActiveMinutesCoordinator.start()
+        childCoordinators.append(setActiveMinutesCoordinator)
     }
     
     private func showTabBar() {
@@ -74,14 +74,14 @@ extension AppCoordinator: CoordinatorFinishDelegate {
                 showMoreDetails()
             }
             
-        case .setCalories:
+        case .setActiveMinutes:
             navigationController.viewControllers.removeAll()
            
             showTabBar()
         case .details:
             navigationController.viewControllers.removeAll()
             
-            showSetCalories()
+            showSetActiveMinutes()
         case .tab:
             navigationController.viewControllers.removeAll()
 

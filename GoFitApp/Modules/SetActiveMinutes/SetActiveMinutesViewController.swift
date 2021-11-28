@@ -1,26 +1,26 @@
 import Combine
 import UIKit
 
-class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
+class SetActiveMinutesViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: Outlets
-    @IBOutlet weak var caloriesField: UITextField!
+    @IBOutlet weak var minutesField: UITextField!
     @IBOutlet weak var plusButtonView: UIView! {
         didSet {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(increaseCalories(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(increaseMinutes(_:)))
             plusButtonView.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak var minusButtonView: UIView! {
         didSet {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(decreaseCalories(_:)))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(decreaseMinutes(_:)))
             minusButtonView.addGestureRecognizer(tap)
         }
     }
     @IBOutlet weak var setButton: PrimaryButton!
     
-    var viewModel: SetCaloriesViewModel!
-    var coordinator: SetCaloriesCoordinator!
+    var viewModel: SetActiveMinutesViewModel!
+    var coordinator: SetActiveMinutesCoordinator!
     var subscription = Set<AnyCancellable>()
     
     private var activityMinutes: Int = 0
@@ -36,9 +36,10 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
         plusButtonView.layer.cornerRadius = plusButtonView.bounds.height / 2
         minusButtonView.layer.cornerRadius = minusButtonView.bounds.height / 2
         
-        caloriesField.delegate = self
+        minutesField.delegate = self
     }
     
+    // MARK: Bindings
     private func setupBindings() {
         viewModel.errorState
             .compactMap( { $0 })
@@ -54,7 +55,7 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
                 if let user = currentUser {
                     let data = user.bio_data.array(of: BioData.self).first
                     self.activityMinutes = Int(data?.activity_minutes ?? 150)
-                    self.caloriesField.text = "\(self.activityMinutes)"
+                    self.minutesField.text = "\(self.activityMinutes)"
                 }
             }
             .store(in: &subscription)
@@ -63,7 +64,7 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func setButtonTapped(_ sender: Any) {
-        let inputMinutes = Int(caloriesField.text ?? "150") ?? 150
+        let inputMinutes = Int(minutesField.text ?? "150") ?? 150
         
         if self.activityMinutes == inputMinutes {
             viewModel.stepper.send(.save)
@@ -72,26 +73,26 @@ class SetCaloriesViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func increaseCalories(_ sender: UITapGestureRecognizer) {
-        if let currentInput = caloriesField.text {
+    @objc func increaseMinutes(_ sender: UITapGestureRecognizer) {
+        if let currentInput = minutesField.text {
             
             if let maxNum = Int(currentInput) {
                 if maxNum >= 2000 {
-                    self.caloriesField.text = "2000"
+                    self.minutesField.text = "2000"
                     return 
                 }
             }
             
             let num = (Int(currentInput) ?? 0) + viewModel.increaseNumber
-            self.caloriesField.text = "\(num)"
+            self.minutesField.text = "\(num)"
         }
     }
     
-    @objc func decreaseCalories(_ sender: UITapGestureRecognizer) {
-        guard caloriesField.text != "0" && caloriesField.text != "" else { return }
-        if let currentInput = caloriesField.text {
+    @objc func decreaseMinutes(_ sender: UITapGestureRecognizer) {
+        guard minutesField.text != "0" && minutesField.text != "" else { return }
+        if let currentInput = minutesField.text {
             let num = (Int(currentInput) ?? 0) - viewModel.increaseNumber
-            self.caloriesField.text = "\(num)"
+            self.minutesField.text = "\(num)"
         }
     }
     

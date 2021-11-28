@@ -2,21 +2,21 @@ import Combine
 import Foundation
 import UIKit
 
-class SetCaloriesCoordinator: NSObject, Coordinator {
+class SetActiveMinutesCoordinator: NSObject, Coordinator {
     let dependencyContainer: DependencyContainer
     
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
-    var type: CoordinatorType { .setCalories }
+    var type: CoordinatorType { .setActiveMinutes }
     
     var childCoordinators: [Coordinator] = []
     
     var subscription = Set<AnyCancellable>()
     
-    var viewModel: SetCaloriesViewModel {
-        let viewModel = SetCaloriesViewModel(dependencyContainer)
+    var viewModel: SetActiveMinutesViewModel {
+        let viewModel = SetActiveMinutesViewModel(dependencyContainer)
         return viewModel
     }
     
@@ -26,11 +26,11 @@ class SetCaloriesCoordinator: NSObject, Coordinator {
     }
     
     deinit {
-        print("SetCaloriesViewModel deinit")
+        print("SetActiveMinutesViewModel deinit")
     }
     
     func start() {
-        let viewController: SetCaloriesViewController = .instantiate()
+        let viewController: SetActiveMinutesViewController = .instantiate()
         viewController.viewModel = viewModel
         viewController.coordinator = self
         

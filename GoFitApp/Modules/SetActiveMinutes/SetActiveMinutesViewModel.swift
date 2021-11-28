@@ -2,7 +2,7 @@ import Combine
 import Foundation
 import Alamofire
 
-class SetCaloriesViewModel: ViewModelProtocol {
+class SetActiveMinutesViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
