@@ -19,9 +19,9 @@ class CredentialsManager {
    
     let keychain = KeychainWrapper(serviceName: Constants.serviceName)
     
-    func saveCredentials(credentials: Parameters) {
-        keychain.set(credentials["email"] as? String ?? "", forKey: Constants.usernameKey)
-        keychain.set(credentials["password"] as? String ?? "", forKey: Constants.passwordKey)
+    func saveCredentials(email: String, password: String) {
+        keychain.set(email, forKey: Constants.usernameKey)
+        keychain.set(password, forKey: Constants.passwordKey)
         dependencyContainer.userDefaultsManager.setLoggedIn()
     }
     

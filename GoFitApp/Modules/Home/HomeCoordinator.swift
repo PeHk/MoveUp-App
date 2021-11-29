@@ -10,6 +10,9 @@ import UIKit
 import Combine
 
 final class HomeCoordinator: NSObject, Coordinator  {
+    
+    let fromInterceptor: Bool?
+    
     let dependencyContainer: DependencyContainer
     
     var finishDelegate: CoordinatorFinishDelegate?
@@ -29,9 +32,10 @@ final class HomeCoordinator: NSObject, Coordinator  {
         return homeViewModel
     }
         
-    init(_ navigationController: UINavigationController, _ dependencyContainer: DependencyContainer) {
+    init(_ navigationController: UINavigationController, _ dependencyContainer: DependencyContainer, _ fromInterceptor: Bool? = nil) {
         self.navigationController = navigationController
         self.dependencyContainer = dependencyContainer
+        self.fromInterceptor = fromInterceptor
     }
     
     deinit {
@@ -56,7 +60,7 @@ final class HomeCoordinator: NSObject, Coordinator  {
         navigationController.delegate = self
         let homeViewController: HomeViewController = .instantiate()
         homeViewController.viewModel = homeViewModel
-        
+        homeViewController.fromInterceptor = fromInterceptor
         homeViewController.viewModel.stepper
             .sink(receiveValue: { [weak self] event in
                 switch event {

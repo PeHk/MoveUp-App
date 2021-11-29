@@ -5,31 +5,34 @@ class ProfileViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case logout
     }
     
     enum Step {
-        
+        case logout
     }
     
     enum State {
         case initial
         case loading
-//        case error(_ error: ServerError)
+        case error(_ error: NetworkError)
     }
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .logout:
+            self.logout()
+        }
     }
     
     func processState(_ state: State) {
         switch state {
         case .initial:
             initializeView()
-//        case .error(let error):
-//            isLoading.send(false)
-//            errorState.send(error)
+        case .error(let error):
+            isLoading.send(false)
+            errorState.send(error)
         case .loading:
             isLoading.send(true)
         }
@@ -39,13 +42,17 @@ class ProfileViewModel: ViewModelProtocol {
     var state = CurrentValueSubject<State, Never>(.initial)
     var action = PassthroughSubject<Action, Never>()
     var stepper = PassthroughSubject<Step, Never>()
-//    var errorState = PassthroughSubject<ServerError, Never>()
+    var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
     var subscription = Set<AnyCancellable>()
     
+    fileprivate let logoutManager: LogoutManager
+    
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.logoutManager = dependencyContainer.logoutManager
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -59,5 +66,10 @@ class ProfileViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    // MARK: Actions
+    private func logout() {
+        self.logoutManager.logout(false)
     }
 }

@@ -1,8 +1,8 @@
 //
-//  RegistrationManager.swift
+//  LoginManager.swift
 //  GoFitApp
 //
-//  Created by Peter Hlavatík on 25/11/2021.
+//  Created by Peter Hlavatík on 29/11/2021.
 //
 
 import Foundation
@@ -10,8 +10,7 @@ import Combine
 import Alamofire
 import SwiftyBase64
 
-class RegistrationManager {
-    
+class LoginManager {
     
     fileprivate let networkManager: NetworkManager
     fileprivate let credentialsManager: CredentialsManager
@@ -23,16 +22,16 @@ class RegistrationManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
-    public func registration(email: String, username: String, password: String) -> Future<UserResource, NetworkError> {
-        let registrationPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
-            Endpoint.registration.url,
+    public func login(email: String, password: String) -> Future<UserDataResource, NetworkError> {
+        let loginPublisher: AnyPublisher<DataResponse<UserDataResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.login.url,
             method: .post,
-            parameters: ["name": username, "password": SwiftyBase64.EncodeString([UInt8](password.utf8)), "email": email],
+            parameters: ["email": email, "password": SwiftyBase64.EncodeString([UInt8](password.utf8))],
             withInterceptor: false
         )
         
         return Future { promise in
-            registrationPublisher
+            loginPublisher
                 .sink { dataResponse in
                     if let error = dataResponse.error {
                         promise(.failure(error))
@@ -45,4 +44,5 @@ class RegistrationManager {
                 .store(in: &self.subscription)
         }
     }
+    
 }

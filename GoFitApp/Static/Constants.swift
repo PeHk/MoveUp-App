@@ -36,4 +36,9 @@ struct Constants {
     static let errorWhileGetting = "Error while getting the data"
     static let errorWhileDeleting = "Error while deleting the data"
     static let userNotFound = "Current user not found!"
+    
+    static let loggedOutTitle = "Logged out!"
+    static let loggedOutDescription = "You have been successfully logged out!"
+    
+    static let interceptorDescription = "Please log in again!"
 }

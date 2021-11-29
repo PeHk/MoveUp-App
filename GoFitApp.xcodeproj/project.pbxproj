@@ -73,6 +73,10 @@
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
 		E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E171B3162754107D00DC0BD3 /* UserSportsResource.swift */; };
+		E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513027552A1400C9917F /* ProfileViewController+TableView.swift */; };
+		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
+		E17751352755326D00C9917F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751342755326D00C9917F /* LoginManager.swift */; };
+		E17751372755402100C9917F /* UserDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751362755402100C9917F /* UserDataResource.swift */; };
 		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
 		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
 		E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */; };
@@ -177,6 +181,10 @@
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
 		E171B3162754107D00DC0BD3 /* UserSportsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSportsResource.swift; sourceTree = "<group>"; };
+		E177513027552A1400C9917F /* ProfileViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+TableView.swift"; sourceTree = "<group>"; };
+		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
+		E17751342755326D00C9917F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		E17751362755402100C9917F /* UserDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResource.swift; sourceTree = "<group>"; };
 		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
 		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
 		E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsViewController.storyboard; sourceTree = "<group>"; };
@@ -299,9 +307,10 @@
 			isa = PBXGroup;
 			children = (
 				E13B449527206DE30062C44B /* ProfileCoordinator.swift */,
-				E13B449627206DE30062C44B /* ProfileViewController.storyboard */,
-				E13B449727206DE30062C44B /* ProfileViewController.swift */,
 				E13B449827206DE30062C44B /* ProfileViewModel.swift */,
+				E13B449727206DE30062C44B /* ProfileViewController.swift */,
+				E13B449627206DE30062C44B /* ProfileViewController.storyboard */,
+				E177513027552A1400C9917F /* ProfileViewController+TableView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -441,6 +450,8 @@
 				E12E6BAA274FC872009B211C /* RegistrationManager.swift */,
 				E134E93527525BD800453781 /* CoreDataManager.swift */,
 				E134E93727525E9900453781 /* UserManager.swift */,
+				E177513227552B7100C9917F /* LogoutManager.swift */,
+				E17751342755326D00C9917F /* LoginManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -523,6 +534,7 @@
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
 				E171B3162754107D00DC0BD3 /* UserSportsResource.swift */,
+				E17751362755402100C9917F /* UserDataResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -694,11 +706,13 @@
 				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
 				E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */,
 				E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */,
+				E17751372755402100C9917F /* UserDataResource.swift in Sources */,
 				E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */,
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
+				E17751352755326D00C9917F /* LoginManager.swift in Sources */,
 				E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */,
 				E134E93127523D4F00453781 /* BioDataResource.swift in Sources */,
 				E1E51085274C00D900C9C266 /* NetworkManager+Requests.swift in Sources */,
@@ -726,6 +740,7 @@
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
 				E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */,
+				E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */,
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
@@ -746,6 +761,7 @@
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
+				E177513327552B7100C9917F /* LogoutManager.swift in Sources */,
 				E134E93827525E9900453781 /* UserManager.swift in Sources */,
 				E13B446427206D290062C44B /* SetActiveMinutesCoordinator.swift in Sources */,
 				E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */,

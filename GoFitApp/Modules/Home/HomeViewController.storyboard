@@ -29,16 +29,16 @@
                                 <rect key="frame" x="30" y="144" width="354" height="698"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ncY-5c-H89">
-                                        <rect key="frame" x="45" y="0.0" width="264" height="94.5"/>
+                                        <rect key="frame" x="38.5" y="0.0" width="277.5" height="94.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome GoFiter!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCU-ej-QCS">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="277.5" height="37.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
                                                 <color key="textColor" name="primary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you ready to increase your determination?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgx-PQ-UwT">
-                                                <rect key="frame" x="0.0" y="47.5" width="264" height="47"/>
+                                                <rect key="frame" x="0.0" y="47.5" width="277.5" height="47"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" name="primary"/>
                                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yNS-jE-YkE">
-                                        <rect key="frame" x="0.0" y="313" width="354" height="110"/>
+                                        <rect key="frame" x="0.0" y="313.5" width="354" height="110"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQu-O2-jA6" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -84,7 +84,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2021 Peter Hlavatík" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aL-wK-lMy">
-                                        <rect key="frame" x="77" y="680" width="200" height="18"/>
+                                        <rect key="frame" x="77" y="680.5" width="200" height="17.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="xHJ-uS-4yB"/>
                                         </constraints>
@@ -123,12 +123,12 @@
             <size key="intrinsicContentSize" width="195" height="32"/>
         </designable>
         <designable name="gQu-O2-jA6">
-            <size key="intrinsicContentSize" width="109.5" height="34"/>
+            <size key="intrinsicContentSize" width="86" height="32"/>
         </designable>
     </designables>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99215686274509807" green="1" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

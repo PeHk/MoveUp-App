@@ -21,19 +21,40 @@ final class AppCoordinator: Coordinator {
     var subscription = Set<AnyCancellable>()
     
     let dependencyContainer: DependencyContainer
+    let userDefaultsManager: UserDefaultsManager
+    let logoutManager: LogoutManager
 
     init(_ navigationController: UINavigationController, _ dependencyContainer: DependencyContainer) {
         self.navigationController = navigationController
         self.dependencyContainer = dependencyContainer
+        self.userDefaultsManager = dependencyContainer.userDefaultsManager
+        self.logoutManager = dependencyContainer.logoutManager
+        
         navigationController.setNavigationBarHidden(true, animated: true)
+        
+        self.logoutManager.logoutCompleted
+            .sink { state in
+                self.logout(state)
+            }
+            .store(in: &subscription)
     }
     
     func start() {
-        showHomePage()
+        if userDefaultsManager.isLoggedIn() {
+            showTabBar()
+        } else {
+            showHomePage()
+        }
     }
     
-    private func showHomePage(_ fromInterceptor: Bool = false) {
-        let homeCoordinator = HomeCoordinator(navigationController, dependencyContainer)
+    private func logout(_ fromInterceptor: Bool? = nil) {
+        self.childCoordinators = []
+        self.navigationController.viewControllers.removeAll()
+        self.showHomePage(fromInterceptor)
+    }
+    
+    private func showHomePage(_ fromInterceptor: Bool? = nil) {
+        let homeCoordinator = HomeCoordinator(navigationController, dependencyContainer, fromInterceptor)
         homeCoordinator.finishDelegate = self
         homeCoordinator.start()
         childCoordinators.append(homeCoordinator)
