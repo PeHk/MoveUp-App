@@ -96,11 +96,19 @@ extension HomeCoordinator: CoordinatorFinishDelegate {
                 navigationController.popViewController(animated: true)
             }
         case .login:
+            let coor = childCoordinator as! LoginCoordinator
             
             self.fromCoordinator = .login
             
-            navigationController.setNavigationBarHidden(true, animated: true)
-            navigationController.popViewController(animated: true)
+            if coor.loginSuccessfull {
+                self.finish()
+                
+                navigationController.setNavigationBarHidden(true, animated: true)
+                navigationController.popViewController(animated: true)
+            } else {
+                navigationController.setNavigationBarHidden(true, animated: true)
+                navigationController.popViewController(animated: true)
+            }
         default:
             break
         }

@@ -38,6 +38,7 @@ class UserManager {
     func saveUser(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
             let action: Action = {
                 let user: User = self.coreDataStore.createEntity()
+                user.id = newUser.id
                 user.email = newUser.email
                 user.admin = newUser.admin
                 user.name = newUser.name
@@ -65,7 +66,7 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    func saveBioData(data: BioDataResource, user: User)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    public func saveBioData(data: BioDataResource, user: User)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
         
         let bioData: BioData = self.coreDataStore.createEntity()
         bioData.activity_minutes = data.activity_minutes ?? 0
@@ -76,6 +77,38 @@ class UserManager {
         let action: Action = {
             user.bio_data = user.bio_data?.adding(bioData) as NSSet?
         }
+        return coreDataStore
+            .publicher(save: action)
+            .eraseToAnyPublisher()
+    }
+    
+    public func saveUserWithData(newUser: UserDataResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+        
+        var bioDataArray: [BioData] = []
+    
+        for data in newUser.bio_data {
+            let bioData: BioData = self.coreDataStore.createEntity()
+            bioData.activity_minutes = data.activity_minutes ?? 0
+            bioData.weight = data.weight ?? 0
+            bioData.height = data.height ?? 0
+            bioData.bmi = data.bmi ?? 0
+            
+            bioDataArray.append(bioData)
+        }
+        
+        let action: Action = {
+            let user: User = self.coreDataStore.createEntity()
+            user.id = newUser.id
+            user.email = newUser.email
+            user.admin = newUser.admin
+            user.name = newUser.name
+            user.gender = newUser.gender
+            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: newUser.date_of_birth)
+            user.registered_at = self.coreDataStore.dateFormatter.date(from: newUser.registered_at)
+            
+            user.bio_data = NSSet(array: bioDataArray)
+        }
+    
         return coreDataStore
             .publicher(save: action)
             .eraseToAnyPublisher()

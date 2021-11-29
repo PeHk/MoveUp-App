@@ -8,9 +8,9 @@
 import Foundation
 
 struct UserResource: Codable {
-    let email: String
-    let admin: Bool
     let id: Int64
+    let email: String
     let name: String
+    let admin: Bool
     let registered_at: String
 }

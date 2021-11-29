@@ -20,6 +20,8 @@ final class LoginCoordinator: Coordinator  {
     
     var childCoordinators: [Coordinator] = []
     
+    var loginSuccessfull: Bool = false
+    
     var subscription = Set<AnyCancellable>()
     
     var loginViewModel: LoginViewModel {
@@ -42,8 +44,12 @@ final class LoginCoordinator: Coordinator  {
         loginViewController.coordinator = self
         
         loginViewController.viewModel.stepper
-            .sink { [weak self] _ in
-                self?.finish()
+            .sink { [weak self] event in
+                switch event {
+                case .login:
+                    self?.loginSuccessfull = true
+                    self?.finish()
+                }
             }
             .store(in: &subscription)
         

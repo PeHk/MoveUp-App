@@ -21,6 +21,7 @@ final class DependencyContainer {
     lazy var coreDataStore = CoreDataStore(name: "GoFitApp", in: .persistent)
     lazy var userManager = UserManager(self)
     lazy var logoutManager = LogoutManager(self)
+    lazy var loginManager = LoginManager(self)
     
 //    lazy var feedbackManager = FeedbackManager()
 }

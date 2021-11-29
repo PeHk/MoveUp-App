@@ -125,6 +125,5 @@ final class RegistrationViewModel: ViewModelProtocol {
                 self.stepper.send(.signUp)
             }
             .store(in: &subscription)
-        
     }
 }

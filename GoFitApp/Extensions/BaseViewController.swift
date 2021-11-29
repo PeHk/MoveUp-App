@@ -54,7 +54,7 @@ class BaseViewController: UIViewController {
     
     func handleError(_ error: NetworkError?) {
         if error != nil {
-            AlertManager.showAlert(message: error?.backendError?.message, over: self)
+            AlertManager.showAlert(message: error?.backendError?.message ?? error?.initialError.errorDescription, over: self)
         }
     }
 }

@@ -100,6 +100,8 @@ extension AppCoordinator: CoordinatorFinishDelegate {
             
             if coor.fromCoordinator == .registration {
                 showMoreDetails()
+            } else if coor.fromCoordinator == .login {
+                showTabBar()
             }
         case .favouriteSports:
             navigationController.viewControllers.removeAll()
