@@ -12,7 +12,7 @@ final class LoginViewModel: ViewModelProtocol {
 
     // MARK: - Enums
     enum Action {
-
+        case loginTapped
     }
     
     enum Step {
@@ -22,7 +22,7 @@ final class LoginViewModel: ViewModelProtocol {
     enum State {
         case initial
         case loading
-//        case error(_ error: ServerError)
+        case error(_ error: NetworkError)
     }
     
     // MARK: Actions and States
@@ -40,11 +40,17 @@ final class LoginViewModel: ViewModelProtocol {
     
     internal let action = PassthroughSubject<Action, Never>()
     internal let stepper = PassthroughSubject<Step, Never>()
-//    internal var errorState = PassthroughSubject<ServerError, Never>()
+    internal var errorState = PassthroughSubject<NetworkError, Never>()
     
     internal var subscription = Set<AnyCancellable>()
-
     
+    @Published var email: String = ""
+    @Published var password: String = ""
+    
+    private(set) lazy var isInputValid = Publishers.CombineLatest($email, $password)
+        .map { $0.count < 2 || $1.count < 3 || Validators.textFieldValidatorEmail($0) }
+        .eraseToAnyPublisher()
+
     init(_ dependencyContainer: DependencyContainer) {
         action
             .sink(receiveValue: { [weak self] action in

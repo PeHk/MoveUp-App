@@ -87,6 +87,9 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Login"/>
+                                                <connections>
+                                                    <action selector="loginTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="glp-qN-GJs"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VL-5w-ZlE">
                                                 <rect key="frame" x="0.0" y="65" width="354" height="20"/>
@@ -125,6 +128,12 @@
                             <constraint firstItem="9I1-rV-Zkr" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="dK3-BY-Qn3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="qnJ-jt-qg0" id="Rcx-p3-wfF"/>
+                        <outlet property="forgotPasswordButton" destination="4VL-5w-ZlE" id="Tj8-wb-iL6"/>
+                        <outlet property="loginButton" destination="xHT-7s-nlS" id="erL-5b-Ayz"/>
+                        <outlet property="passwordTextField" destination="7ZJ-fs-rh7" id="40K-i3-0zs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,12 +148,12 @@
             <size key="intrinsicContentSize" width="354" height="39.220703125"/>
         </designable>
         <designable name="xHT-7s-nlS">
-            <size key="intrinsicContentSize" width="67" height="34"/>
+            <size key="intrinsicContentSize" width="38" height="30"/>
         </designable>
     </designables>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99215686274509807" green="1" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
