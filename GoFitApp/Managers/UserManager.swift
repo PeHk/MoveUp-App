@@ -66,7 +66,28 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    public func saveBioData(data: BioDataResource, user: User)-> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    public func saveBioDataAfterRegistration(data: FirstBioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+        
+        let bioDataArray = data.bio_data.first
+        
+        let bioData: BioData = self.coreDataStore.createEntity()
+        bioData.activity_minutes = bioDataArray?.activity_minutes ?? 0
+        bioData.weight = bioDataArray?.weight ?? 0
+        bioData.height = bioDataArray?.height ?? 0
+        bioData.bmi = bioDataArray?.bmi ?? 0
+        
+        let action: Action = {
+            user.bio_data = user.bio_data?.adding(bioData) as NSSet?
+            user.gender = data.gender
+            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth)
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .eraseToAnyPublisher()
+    }
+    
+    public func saveBioData(data: BioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
         
         let bioData: BioData = self.coreDataStore.createEntity()
         bioData.activity_minutes = data.activity_minutes ?? 0

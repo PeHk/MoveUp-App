@@ -25,13 +25,13 @@ class CredentialsManager {
         dependencyContainer.userDefaultsManager.setLoggedIn()
     }
     
-    func getCredentials() -> Credentials? {
-        if let username = keychain.string(forKey: Constants.usernameKey), let password = keychain.string(forKey: Constants.passwordKey) {
-            return Credentials(email: username, password: password)
-        } else {
-            return nil
-        }
-    }
+//    func getCredentials() -> Credentials? {
+//        if let username = keychain.string(forKey: Constants.usernameKey), let password = keychain.string(forKey: Constants.passwordKey) {
+//            return Credentials(email: username, password: password)
+//        } else {
+//            return nil
+//        }
+//    }
     
     func getEncodedCredentials() -> (email: String, password: String)? {
         if let username = keychain.string(forKey: Constants.usernameKey), let password = keychain.string(forKey: Constants.passwordKey) {

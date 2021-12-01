@@ -139,7 +139,7 @@ final class DetailsViewModel: ViewModelProtocol {
         
         let birthDate = Helpers.formatDate(from: selectedDate.value ?? Date())
         
-        let updateRequest: AnyPublisher<DataResponse<BioDataResource, NetworkError>, Never> = networkManager.request(
+        let updateRequest: AnyPublisher<DataResponse<FirstBioDataResource, NetworkError>, Never> = networkManager.request(
             Endpoint.userDetails.url,
             method: .post,
             parameters: ["weight": Float(weight) ?? 0,
@@ -162,9 +162,9 @@ final class DetailsViewModel: ViewModelProtocol {
             .store(in: &self.subscription)
     }
     
-    private func saveBioData(data: BioDataResource) {
+    private func saveBioData(data: FirstBioDataResource) {
         if let user = currentUser.value {
-            self.userManager.saveBioData(data: data, user: user)
+            self.userManager.saveBioDataAfterRegistration(data: data, user: user)
                 .sink { completion in
                     if case .failure(let error) = completion {
                         print(error)

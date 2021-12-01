@@ -140,9 +140,7 @@ class TabBarCoordinator: NSObject, Coordinator {
         ]
         
         navController.navigationBar.prefersLargeTitles = true
-
         navController.navigationBar.tintColor = Asset.primary.color
-        navController.setNavigationBarHidden(true, animated: false)
 
         switch page {
         case .dashboard:

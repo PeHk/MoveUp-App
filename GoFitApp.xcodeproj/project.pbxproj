@@ -27,6 +27,11 @@
 		E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA402271DB7F30096B032 /* LoginViewController.swift */; };
 		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
+		E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAABB275771900075F74D /* FirstBioDataResource.swift */; };
+		E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */; };
+		E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */; };
+		E11FAAC62757762C0075F74D /* ProfileDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */; };
+		E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */; };
 		E127A7DE2751342300D03DB1 /* DetailsViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */; };
 		E12E6BA7274FC10A009B211C /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA6274FC109009B211C /* UserResource.swift */; };
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
@@ -98,7 +103,6 @@
 		E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */; };
 		E1E5108F274C053E00C9C266 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5108E274C053E00C9C266 /* Constants.swift */; };
 		E1E51091274C066200C9C266 /* CredentialsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51090274C066200C9C266 /* CredentialsManager.swift */; };
-		E1E51095274C06D200C9C266 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E51094274C06D200C9C266 /* Credentials.swift */; };
 		E1E51098274C080500C9C266 /* GoodCache in Frameworks */ = {isa = PBXBuildFile; productRef = E1E51097274C080500C9C266 /* GoodCache */; };
 		E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */; };
 		E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */; };
@@ -132,6 +136,11 @@
 		E10AA402271DB7F30096B032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		E11FAABB275771900075F74D /* FirstBioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstBioDataResource.swift; sourceTree = "<group>"; };
+		E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
+		E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileDetailViewController.storyboard; sourceTree = "<group>"; };
+		E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+Picker.swift"; sourceTree = "<group>"; };
 		E12E6BA6274FC109009B211C /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -206,7 +215,6 @@
 		E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E1E5108E274C053E00C9C266 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E1E51090274C066200C9C266 /* CredentialsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManager.swift; sourceTree = "<group>"; };
-		E1E51094274C06D200C9C266 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		E1EBC137271DC225009E9939 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		E1EBC139271DC27B009E9939 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		E1EBC13B271DC28D009E9939 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +277,17 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		E11FAABF2757762C0075F74D /* ProfileDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */,
+				E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */,
+				E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */,
+				E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */,
+			);
+			path = ProfileDetail;
+			sourceTree = "<group>";
+		};
 		E13B445D27206D290062C44B /* SetActiveMinutes */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +325,7 @@
 		E13B449427206DE30062C44B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E11FAABF2757762C0075F74D /* ProfileDetail */,
 				E13B449527206DE30062C44B /* ProfileCoordinator.swift */,
 				E13B449827206DE30062C44B /* ProfileViewModel.swift */,
 				E13B449727206DE30062C44B /* ProfileViewController.swift */,
@@ -528,13 +548,13 @@
 			isa = PBXGroup;
 			children = (
 				E1E51086274C014E00C9C266 /* ServerError.swift */,
-				E1E51094274C06D200C9C266 /* Credentials.swift */,
 				E12E6BA6274FC109009B211C /* UserResource.swift */,
 				E1CFFD5B27521EA500794BAC /* Gender.swift */,
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
 				E171B3162754107D00DC0BD3 /* UserSportsResource.swift */,
 				E17751362755402100C9917F /* UserDataResource.swift */,
+				E11FAABB275771900075F74D /* FirstBioDataResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -640,6 +660,7 @@
 				E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */,
 				E10AA3F7271DB33D0096B032 /* Roboto-Thin.ttf in Resources */,
 				E10AA3F6271DB33D0096B032 /* Roboto-Black.ttf in Resources */,
+				E11FAAC62757762C0075F74D /* ProfileDetailViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,12 +717,12 @@
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
 				E19ABA1D2753C3D1004E6FDC /* SportResource.swift in Sources */,
 				E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */,
-				E1E51095274C06D200C9C266 /* Credentials.swift in Sources */,
 				E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */,
 				E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
 				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
+				E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */,
 				E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */,
 				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
 				E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */,
@@ -740,15 +761,18 @@
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
 				E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */,
+				E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */,
 				E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */,
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
+				E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
 				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
+				E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */,
 				E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,

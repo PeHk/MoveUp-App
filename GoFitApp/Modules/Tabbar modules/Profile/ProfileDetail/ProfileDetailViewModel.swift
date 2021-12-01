@@ -1,16 +1,15 @@
 import Combine
 import Foundation
 
-class ProfileViewModel: ViewModelProtocol {
+class ProfileDetailViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case logout
+        
     }
     
     enum Step {
-        case logout
-        case profile
+        
     }
     
     enum State {
@@ -21,10 +20,7 @@ class ProfileViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        switch action {
-        case .logout:
-            self.logout()
-        }
+        return
     }
     
     func processState(_ state: State) {
@@ -48,12 +44,8 @@ class ProfileViewModel: ViewModelProtocol {
     
     var subscription = Set<AnyCancellable>()
     
-    fileprivate let logoutManager: LogoutManager
-    
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
-        self.logoutManager = dependencyContainer.logoutManager
-        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -67,10 +59,5 @@ class ProfileViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
-    }
-    
-    // MARK: Actions
-    private func logout() {
-        self.logoutManager.logout(false)
     }
 }

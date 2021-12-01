@@ -21,18 +21,6 @@ class FavouriteSportsViewController: BaseTableViewController {
         self.navigationItem.leftBarButtonItem = nil
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//        self.navigationController?.navigationBar.sizeToFit()
-//        
-//    }
-//    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//    
     // MARK: Bindings
     private func setupBindings() {
         viewModel.errorState

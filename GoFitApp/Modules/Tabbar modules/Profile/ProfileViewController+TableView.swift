@@ -14,6 +14,8 @@ extension ProfileViewController {
         case 0:
             switch indexPath.row {
             case 0:
+                viewModel.stepper.send(.profile)
+            case 1:
                 viewModel.action.send(.logout)
             default:
                 break
