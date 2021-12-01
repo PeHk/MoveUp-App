@@ -42,10 +42,16 @@ class ProfileDetailViewModel: ViewModelProtocol {
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
+    
     var subscription = Set<AnyCancellable>()
+    
+    fileprivate let userManager: UserManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.userManager = dependencyContainer.userManager
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -54,6 +60,12 @@ class ProfileDetailViewModel: ViewModelProtocol {
         state.sink(receiveValue: { [weak self] state in
             self?.processState(state)
         })
+            .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+            }
             .store(in: &subscription)
     }
     

@@ -21,7 +21,14 @@ struct Validators {
 class Helpers {
     static func formatDate(from date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    static func printDate(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
         
         return dateFormatter.string(from: date)
     }

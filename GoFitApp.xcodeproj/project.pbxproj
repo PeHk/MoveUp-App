@@ -91,6 +91,10 @@
 		E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */; };
 		E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA222753C822004E6FDC /* SportTableViewCell.swift */; };
 		E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA242753C891004E6FDC /* SportCellViewModel.swift */; };
+		E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */; };
+		E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */; };
+		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
+		E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */; };
 		E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* Gender.swift */; };
 		E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF2E23274ECB6000741038 /* LoadingView.swift */; };
 		E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9C274BF5D9006674E7 /* Assets.swift */; };
@@ -203,6 +207,10 @@
 		E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsViewController+TableView.swift"; sourceTree = "<group>"; };
 		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
 		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
+		E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsDetailViewController.storyboard; sourceTree = "<group>"; };
+		E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewController.swift; sourceTree = "<group>"; };
+		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
+		E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewModel.swift; sourceTree = "<group>"; };
 		E1CFFD5B27521EA500794BAC /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		E1DF2E23274ECB6000741038 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E1E41E9C274BF5D9006674E7 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -325,6 +333,7 @@
 		E13B449427206DE30062C44B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E1CB6081275793D500E4F39D /* FavouriteSportsDetail */,
 				E11FAABF2757762C0075F74D /* ProfileDetail */,
 				E13B449527206DE30062C44B /* ProfileCoordinator.swift */,
 				E13B449827206DE30062C44B /* ProfileViewModel.swift */,
@@ -513,6 +522,17 @@
 			path = FavouriteSports;
 			sourceTree = "<group>";
 		};
+		E1CB6081275793D500E4F39D /* FavouriteSportsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */,
+				E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */,
+				E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */,
+				E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */,
+			);
+			path = FavouriteSportsDetail;
+			sourceTree = "<group>";
+		};
 		E1E41E9B274BF5D9006674E7 /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,6 +675,7 @@
 				E10AA3EF271DB33D0096B032 /* Roboto-BoldItalic.ttf in Resources */,
 				E10AA3FA271DB3450096B032 /* Roboto-ThinItalic.ttf in Resources */,
 				E13B447F27206DBF0062C44B /* ActivityViewController.storyboard in Resources */,
+				E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */,
 				E13B447D27206DBF0062C44B /* DashboardViewController.storyboard in Resources */,
 				E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */,
 				E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */,
@@ -721,6 +742,7 @@
 				E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
 				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
+				E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
 				E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */,
 				E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */,
@@ -733,6 +755,7 @@
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
+				E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */,
 				E17751352755326D00C9917F /* LoginManager.swift in Sources */,
 				E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */,
 				E134E93127523D4F00453781 /* BioDataResource.swift in Sources */,
@@ -767,6 +790,7 @@
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
+				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,

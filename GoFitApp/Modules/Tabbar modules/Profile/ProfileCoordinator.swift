@@ -42,6 +42,8 @@ class ProfileCoordinator: NSObject, Coordinator {
                     self?.showProfile()
                 case .logout:
                     self?.finish()
+                case .sports:
+                    self?.showSports()
                 }
             }
             .store(in: &subscription)
@@ -55,6 +57,13 @@ class ProfileCoordinator: NSObject, Coordinator {
         profileDetailCoordinator.start()
         childCoordinators.append(profileDetailCoordinator)
     }
+    
+    private func showSports() {
+        let sportsDetailCoordinator = FavouriteSportsDetailCoordinator(navigationController, dependencyContainer)
+        sportsDetailCoordinator.finishDelegate = self
+        sportsDetailCoordinator.start()
+        childCoordinators.append(sportsDetailCoordinator)
+    }
 }
 
 extension ProfileCoordinator: CoordinatorFinishDelegate {
@@ -63,6 +72,8 @@ extension ProfileCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.type {
         case .profileDetail:
+            navigationController.popViewController(animated: true)
+        case .sportsDetail:
             navigationController.popViewController(animated: true)
         default:
             break
@@ -82,6 +93,10 @@ extension ProfileCoordinator: UINavigationControllerDelegate {
         
         if let profileDetailController = fromViewController as? ProfileDetailViewController {
             if let coordinator = profileDetailController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
+        } else if let sportsDetailController = fromViewController as? FavouriteSportsDetailViewController {
+            if let coordinator = sportsDetailController.coordinator {
                 coordinatorDidFinish(childCoordinator: coordinator)
             }
         }

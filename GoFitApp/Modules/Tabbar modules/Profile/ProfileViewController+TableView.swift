@@ -16,6 +16,8 @@ extension ProfileViewController {
             case 0:
                 viewModel.stepper.send(.profile)
             case 1:
+                viewModel.stepper.send(.sports)
+            case 2:
                 viewModel.action.send(.logout)
             default:
                 break
