@@ -96,16 +96,14 @@ class TabBarCoordinator: NSObject, Coordinator {
         if #available(iOS 13.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = Asset.greenSoft.color
             appearance.shadowImage = nil
             appearance.shadowColor = nil
             tabBarController.tabBar.tintColor = Asset.primary.color
             tabBarController.tabBar.standardAppearance = appearance
 
         } else {
-            tabBarController.tabBar.isTranslucent = false
+            tabBarController.tabBar.isTranslucent = true
             tabBarController.tabBar.tintColor = Asset.primary.color
-            tabBarController.tabBar.barTintColor = Asset.backgroundColor.color
             tabBarController.tabBar.standardAppearance.shadowColor = nil
             tabBarController.tabBar.standardAppearance.shadowImage = nil
         }
@@ -135,7 +133,7 @@ class TabBarCoordinator: NSObject, Coordinator {
         }
         
         navController.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : Asset.primary.color,
+//            NSAttributedString.Key.foregroundColor : Asset.primary.color,
             NSAttributedString.Key.font : UIFont(font: FontFamily.Roboto.bold, size: 32) ?? UIFont.systemFont(ofSize: 32)
         ]
         

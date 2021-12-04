@@ -32,7 +32,6 @@ extension ProfileViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as? UITableViewHeaderFooterView
         header?.textLabel?.font = UIFont.init(font: FontFamily.Roboto.regular, size: 17)
-        header?.textLabel?.textColor = Asset.primary.color
         header?.tintColor = Asset.backgroundColor.color
     }
 }

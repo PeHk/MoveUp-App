@@ -28,49 +28,49 @@
                         <sections>
                             <tableViewSection headerTitle="Account" id="hZB-r7-J0e">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="ArW-hR-k3Y" imageView="OWq-aL-CoI" style="IBUITableViewCellStyleDefault" id="IDQ-sl-U1P">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="ArW-hR-k3Y" imageView="OWq-aL-CoI" style="IBUITableViewCellStyleDefault" id="IDQ-sl-U1P">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IDQ-sl-U1P" id="GBw-Vd-EON">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Personal details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ArW-hR-k3Y">
-                                                    <rect key="frame" x="55.5" y="0.0" width="338.5" height="50"/>
+                                                    <rect key="frame" x="55.5" y="0.0" width="321" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                                    <color key="textColor" name="primary"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="person" catalog="system" id="OWq-aL-CoI">
-                                                    <rect key="frame" x="20.75" y="16.5" width="19" height="17.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="person.fill" catalog="system" id="OWq-aL-CoI">
+                                                    <rect key="frame" x="21.25" y="16.5" width="18" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="backgroundColor"/>
+                                            <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="FMv-GQ-88B" imageView="JTL-Ta-9QA" style="IBUITableViewCellStyleDefault" id="D51-bH-CVY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="FMv-GQ-88B" imageView="JTL-Ta-9QA" style="IBUITableViewCellStyleDefault" id="D51-bH-CVY">
                                         <rect key="frame" x="0.0" y="94.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D51-bH-CVY" id="Rvq-o8-3Gn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Favourite sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FMv-GQ-88B">
-                                                    <rect key="frame" x="58.5" y="0.0" width="335.5" height="50"/>
+                                                    <rect key="frame" x="58.5" y="0.0" width="318" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                                    <color key="textColor" name="primary"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="sportscourt" catalog="system" id="JTL-Ta-9QA">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="sportscourt.fill" catalog="system" id="JTL-Ta-9QA">
                                                     <rect key="frame" x="17" y="16" width="26.5" height="17.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="backgroundColor"/>
+                                            <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
@@ -85,15 +85,15 @@
                                                     <rect key="frame" x="57" y="0.0" width="337" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                                                    <color key="textColor" name="primary"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="rectangle.portrait.and.arrow.right" catalog="system" id="TKa-je-Zyg">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="rectangle.portrait.and.arrow.right.fill" catalog="system" id="TKa-je-Zyg">
                                                     <rect key="frame" x="18.5" y="15" width="23.5" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="backgroundColor"/>
+                                            <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
@@ -116,10 +116,13 @@
     </scenes>
     <resources>
         <image name="icons8-customer-50" width="23" height="23.5"/>
-        <image name="person" catalog="system" width="128" height="117"/>
-        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
-        <image name="sportscourt" catalog="system" width="128" height="84"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <namedColor name="backgroundColor">
+            <color red="0.96079978557548129" green="0.96079978557548129" blue="0.96079978557548129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="insideBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
