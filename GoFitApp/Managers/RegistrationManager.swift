@@ -23,11 +23,11 @@ class RegistrationManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
-    public func registration(email: String, username: String, password: String) -> Future<UserResource, NetworkError> {
+    public func registration(withForm formModel: SignUpRequestModel) -> Future<UserResource, NetworkError> {
         let registrationPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.registration.url,
             method: .post,
-            parameters: ["name": username, "password": SwiftyBase64.EncodeString([UInt8](password.utf8)), "email": email],
+            parameters: ["name": formModel.name, "password": formModel.password, "email": formModel.email],
             withInterceptor: false
         )
         
@@ -38,7 +38,7 @@ class RegistrationManager {
                         promise(.failure(error))
                     } else {
                         self.networkManager.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
-                        self.credentialsManager.saveCredentials(email: email, password: password)
+                        self.credentialsManager.saveCredentials(email: formModel.email, password: formModel.getDecodedPassword() ?? "")
                         promise(.success(dataResponse.value!))
                     }
                 }

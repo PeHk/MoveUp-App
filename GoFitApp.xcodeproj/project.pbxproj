@@ -64,6 +64,10 @@
 		E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */; };
 		E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA1A274FB81A002CB035 /* Helpers.swift */; };
 		E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1515878275380D20045CBCB /* Optional+Extensions.swift */; };
+		E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */; };
+		E162218E275B9AFD00A7A46D /* RegistrationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218D275B9AFD00A7A46D /* RegistrationManagerTests.swift */; };
+		E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218F275B9C6F00A7A46D /* String+Extensions.swift */; };
+		E1622194275B9CB100A7A46D /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1622193275B9CB100A7A46D /* SignUpRequestModelTests.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
 		E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E166099B271C9F4E0077DF6E /* Assets.xcassets */; };
@@ -190,6 +194,10 @@
 		E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
+		E162218D275B9AFD00A7A46D /* RegistrationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManagerTests.swift; sourceTree = "<group>"; };
+		E162218F275B9C6F00A7A46D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E1622193275B9CB100A7A46D /* SignUpRequestModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModelTests.swift; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1660999271C9F4B0077DF6E /* GoFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoFitApp.xcdatamodel; sourceTree = "<group>"; };
@@ -386,6 +394,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E162218A275B9A1000A7A46D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E1660983271C9F4B0077DF6E = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +535,7 @@
 				E1515878275380D20045CBCB /* Optional+Extensions.swift */,
 				E13B44A0272094950062C44B /* BaseViewController.swift */,
 				E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */,
+				E162218F275B9C6F00A7A46D /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,6 +568,8 @@
 			children = (
 				E12A7A39275B6A4200561C0C /* HelpersTests.swift */,
 				E12A7A3B275B6EE100561C0C /* ValidatorsTests.swift */,
+				E162218D275B9AFD00A7A46D /* RegistrationManagerTests.swift */,
+				E1622193275B9CB100A7A46D /* SignUpRequestModelTests.swift */,
 			);
 			path = GoFitAppTests;
 			sourceTree = "<group>";
@@ -578,6 +597,7 @@
 		E1E51081274BFEF500C9C266 /* Static */ = {
 			isa = PBXGroup;
 			children = (
+				E162218A275B9A1000A7A46D /* Models */,
 				E1E51093274C06C300C9C266 /* Codables */,
 				E1E5107F274BFE5300C9C266 /* Endpoint.swift */,
 				E1E5108E274C053E00C9C266 /* Constants.swift */,
@@ -814,6 +834,7 @@
 				E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */,
 				E17751372755402100C9917F /* UserDataResource.swift in Sources */,
 				E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */,
+				E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */,
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
@@ -869,6 +890,7 @@
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
+				E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
@@ -886,7 +908,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12A7A3C275B6EE100561C0C /* ValidatorsTests.swift in Sources */,
+				E162218E275B9AFD00A7A46D /* RegistrationManagerTests.swift in Sources */,
 				E12A7A3A275B6A4200561C0C /* HelpersTests.swift in Sources */,
+				E1622194275B9CB100A7A46D /* SignUpRequestModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

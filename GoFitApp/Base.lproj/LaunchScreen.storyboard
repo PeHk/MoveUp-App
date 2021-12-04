@@ -40,7 +40,7 @@
     <resources>
         <image name="MoveUpNameIcon" width="530.5" height="588.5"/>
         <namedColor name="backgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96079978557548129" green="0.96079978557548129" blue="0.96079978557548129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
