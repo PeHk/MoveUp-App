@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,12 +17,12 @@
         <scene sceneID="VRS-Wq-SuE">
             <objects>
                 <tableViewController storyboardIdentifier="ProfileViewController" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VKH-Ub-X4U" customClass="ProfileViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8fu-et-L3D">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="8fu-et-L3D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Vif-lx-bOO">
-                            <rect key="frame" x="0.0" y="217" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="217.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="backgroundColor"/>
                         </view>
@@ -29,14 +30,14 @@
                             <tableViewSection headerTitle="Account" id="hZB-r7-J0e">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="ArW-hR-k3Y" imageView="OWq-aL-CoI" style="IBUITableViewCellStyleDefault" id="IDQ-sl-U1P">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
+                                        <rect key="frame" x="20" y="49.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IDQ-sl-U1P" id="GBw-Vd-EON">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344.5" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Personal details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ArW-hR-k3Y">
-                                                    <rect key="frame" x="55.5" y="0.0" width="321" height="50"/>
+                                                    <rect key="frame" x="55.5" y="0.0" width="281" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -49,17 +50,18 @@
                                             </subviews>
                                             <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="FMv-GQ-88B" imageView="JTL-Ta-9QA" style="IBUITableViewCellStyleDefault" id="D51-bH-CVY">
-                                        <rect key="frame" x="0.0" y="94.5" width="414" height="50"/>
+                                        <rect key="frame" x="20" y="99.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D51-bH-CVY" id="Rvq-o8-3Gn">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="344.5" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Favourite sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FMv-GQ-88B">
-                                                    <rect key="frame" x="58.5" y="0.0" width="318" height="50"/>
+                                                    <rect key="frame" x="58.5" y="0.0" width="278" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -72,17 +74,18 @@
                                             </subviews>
                                             <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="wld-xq-xH6" imageView="TKa-je-Zyg" style="IBUITableViewCellStyleDefault" id="ha2-nd-WtP">
-                                        <rect key="frame" x="0.0" y="144.5" width="414" height="50"/>
+                                        <rect key="frame" x="20" y="149.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ha2-nd-WtP" id="zHe-bB-GIl">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wld-xq-xH6">
-                                                    <rect key="frame" x="57" y="0.0" width="337" height="50"/>
+                                                    <rect key="frame" x="57" y="0.0" width="297" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -95,6 +98,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
                                 </cells>
@@ -120,7 +124,7 @@
         <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <namedColor name="backgroundColor">
-            <color red="0.96079978557548129" green="0.96079978557548129" blue="0.96079978557548129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="insideBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -128,5 +132,8 @@
         <namedColor name="primary">
             <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
