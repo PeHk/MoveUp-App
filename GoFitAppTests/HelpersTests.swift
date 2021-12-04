@@ -10,14 +10,15 @@ import XCTest
 
 class HelpersTests: XCTestCase {
     
-    let formatter = DateFormatter()
+    var formatter: DateFormatter!
 
-    override func setUpWithError() throws {
+    override func setUp() {
+        formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        formatter = nil
     }
     
     func testFormatDate_WhenValidDateProvided_ShouldBeEquals() {
