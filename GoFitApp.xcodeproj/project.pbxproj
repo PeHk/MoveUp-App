@@ -93,7 +93,6 @@
 		E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */; };
 		E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA222753C822004E6FDC /* SportTableViewCell.swift */; };
 		E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA242753C891004E6FDC /* SportCellViewModel.swift */; };
-		E1AAA0102759726500DC9643 /* GoFitAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAA00F2759726500DC9643 /* GoFitAppTests.swift */; };
 		E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */; };
 		E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */; };
 		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
@@ -223,7 +222,6 @@
 		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
 		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
 		E1AAA00D2759726500DC9643 /* GoFitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1AAA00F2759726500DC9643 /* GoFitAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFitAppTests.swift; sourceTree = "<group>"; };
 		E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsDetailViewController.storyboard; sourceTree = "<group>"; };
 		E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewController.swift; sourceTree = "<group>"; };
 		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -551,7 +549,6 @@
 		E1AAA00E2759726500DC9643 /* GoFitAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				E1AAA00F2759726500DC9643 /* GoFitAppTests.swift */,
 				E12A7A39275B6A4200561C0C /* HelpersTests.swift */,
 				E12A7A3B275B6EE100561C0C /* ValidatorsTests.swift */,
 			);
@@ -888,7 +885,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1AAA0102759726500DC9643 /* GoFitAppTests.swift in Sources */,
 				E12A7A3C275B6EE100561C0C /* ValidatorsTests.swift in Sources */,
 				E12A7A3A275B6A4200561C0C /* HelpersTests.swift in Sources */,
 			);
@@ -1044,11 +1040,16 @@
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1074,11 +1075,16 @@
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

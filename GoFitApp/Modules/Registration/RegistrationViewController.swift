@@ -19,7 +19,7 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var signUpButton: PrimaryButton!
     @IBOutlet weak var informationView: UIView! {
         didSet {
-            informationView.layer.cornerRadius = 25
+            informationView.layer.cornerRadius = 10
         }
     }
 

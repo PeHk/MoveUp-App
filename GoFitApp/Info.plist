@@ -2,26 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Access needed for better recommendations</string>
-	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
-	<string>Access needed for better recommendations</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Access needed for better recommendations</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Access needed for better recommendations</string>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~iphone</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

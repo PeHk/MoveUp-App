@@ -59,7 +59,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="RET-fh-Fmt"/>
                                                 </constraints>
-                                                <color key="textColor" name="primary"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
@@ -72,6 +71,12 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Height (cm)"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Height (cm):"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Height (cm):"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1L6-CW-ZQh" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
@@ -79,7 +84,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Lo1-b6-YP8"/>
                                                 </constraints>
-                                                <color key="textColor" name="primary"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
@@ -92,6 +96,12 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Weight (kg)"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Weight (kg):"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Weight (kg):"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2J-ty-H1S" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
@@ -99,7 +109,6 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="gzc-yW-FJj"/>
                                                 </constraints>
-                                                <color key="textColor" name="primary"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -112,6 +121,12 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Gender"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Gender"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Gender"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" name="primary"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vg-OL-0mk">
@@ -204,10 +219,10 @@
     </designables>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

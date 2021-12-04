@@ -47,7 +47,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="greenSoft"/>
+                                            <color key="backgroundColor" name="backgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
@@ -70,7 +70,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="greenSoft"/>
+                                            <color key="backgroundColor" name="backgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
@@ -93,7 +93,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" name="greenSoft"/>
+                                            <color key="backgroundColor" name="backgroundColor"/>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
@@ -120,13 +120,10 @@
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="sportscourt" catalog="system" width="128" height="84"/>
         <namedColor name="backgroundColor">
-            <color red="0.99215686274509807" green="1" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="greenSoft">
-            <color red="0.90980392156862744" green="0.92941176470588238" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -106,5 +106,4 @@ class ValidatorsTests: XCTestCase {
         // Assert
         XCTAssertFalse(sut, "The textFieldValidatorEmail() should have returned FALSE for an invalid email but returned TRUE")
     }
-
 }

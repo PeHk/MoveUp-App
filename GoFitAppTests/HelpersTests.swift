@@ -11,6 +11,7 @@ import XCTest
 class HelpersTests: XCTestCase {
     
     var formatter: DateFormatter!
+    let dateType = "2016/10/08 22:31"
 
     override func setUp() {
         formatter = DateFormatter()
@@ -22,9 +23,8 @@ class HelpersTests: XCTestCase {
     }
     
     func testFormatDate_WhenValidDateProvided_ShouldBeEquals() {
-    
         // Arrange
-        let date = formatter.date(from: "2016/10/08 22:31")!
+        let date = formatter.date(from: dateType)!
         
         // Act
         let sut = Helpers.formatDate(from: date)
@@ -32,5 +32,15 @@ class HelpersTests: XCTestCase {
         // Assert
         XCTAssertEqual(sut, "2016-10-08T22:31:00", "The formatDate() should have returned formatted date as a string but returned string is NOT EQUAL")
     }
-
+    
+    func testPrintedDate_WhenValidDateProvided_ShouldBeEquals() {
+        // Arrange
+        let date = formatter.date(from: dateType)!
+        
+        // Act
+        let sut = Helpers.printDate(from: date)
+        
+        // Assert
+        XCTAssertEqual(sut, "08/10/2016", "The printDatE() should have returned formatted date as a string but returned string is NOT EQUAL")
+    }
 }
