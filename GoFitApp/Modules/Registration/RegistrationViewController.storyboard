@@ -34,19 +34,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="438"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="But first, we need more info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-KC-YI9">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="348"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="308"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
-                                                <color key="textColor" name="primary"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if5-nZ-LvN">
-                                                <rect key="frame" x="0.0" y="358" width="354" height="80"/>
+                                                <rect key="frame" x="0.0" y="318" width="354" height="120"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We need your registration to provide you personal recommendations. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J4-4p-BEU">
-                                                        <rect key="frame" x="5" y="10" width="344" height="60"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J4-4p-BEU">
+                                                        <rect key="frame" x="5" y="10" width="344" height="100"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="vPs-si-Uvr"/>
+                                                            <constraint firstAttribute="height" constant="100" id="vPs-si-Uvr"/>
                                                         </constraints>
+                                                        <string key="text">Registration is required to provide personalized features
+(activity recommendations)</string>
                                                         <color key="textColor" name="text"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -247,7 +249,7 @@
     </designables>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="greenSoft">
             <color red="1" green="0.35686274509803922" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

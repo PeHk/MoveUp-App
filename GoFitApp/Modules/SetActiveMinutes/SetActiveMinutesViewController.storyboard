@@ -36,13 +36,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your weekly goal for active minutes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzn-4a-89R">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="75"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
-                                                <color key="textColor" name="primary"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial value is recommended for you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGu-Re-qQz">
                                                 <rect key="frame" x="0.0" y="95" width="354" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="20"/>
-                                                <color key="textColor" name="primary"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -78,7 +78,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Vmz-Ec-3Pt"/>
                                                         </constraints>
-                                                        <color key="textColor" name="primary"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="36"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
@@ -107,7 +106,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minutes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RL-f2-d5v">
                                                 <rect key="frame" x="0.0" y="55" width="354" height="23.5"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="20"/>
-                                                <color key="textColor" name="primary"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -149,15 +148,15 @@
     </scenes>
     <designables>
         <designable name="QjY-Qn-6AT">
-            <size key="intrinsicContentSize" width="30" height="30"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
     </designables>
     <resources>
         <namedColor name="backgroundColor">
-            <color red="0.94901960784313721" green="0.98431372549019602" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
-            <color red="0.37647058823529411" green="0.35686274509803922" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
