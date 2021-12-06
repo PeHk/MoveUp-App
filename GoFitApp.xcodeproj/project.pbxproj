@@ -32,6 +32,8 @@
 		E10E45E2275E9D6B0073F2A6 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E1275E9D6B0073F2A6 /* DetailViewControllerTests.swift */; };
 		E10E45E4275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E3275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift */; };
 		E10E45E6275EB8240073F2A6 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */; };
+		E10E45EE275EBAC90073F2A6 /* GoFitAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45ED275EBAC90073F2A6 /* GoFitAppUITests.swift */; };
+		E10E45F0275EBAC90073F2A6 /* GoFitAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45EF275EBAC90073F2A6 /* GoFitAppUITestsLaunchTests.swift */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
 		E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAABB275771900075F74D /* FirstBioDataResource.swift */; };
 		E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */; };
@@ -130,6 +132,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E10E45F1275EBAC90073F2A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1660984271C9F4B0077DF6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E166098B271C9F4B0077DF6E;
+			remoteInfo = GoFitApp;
+		};
 		E1BCA2F2275E3C4000FC67D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1660984271C9F4B0077DF6E /* Project object */;
@@ -166,6 +175,9 @@
 		E10E45E1275E9D6B0073F2A6 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		E10E45E3275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveMinutesViewControllerTests.swift; sourceTree = "<group>"; };
 		E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		E10E45EB275EBAC80073F2A6 /* GoFitAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10E45ED275EBAC90073F2A6 /* GoFitAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFitAppUITests.swift; sourceTree = "<group>"; };
+		E10E45EF275EBAC90073F2A6 /* GoFitAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoFitAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E11FAABB275771900075F74D /* FirstBioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstBioDataResource.swift; sourceTree = "<group>"; };
 		E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -268,6 +280,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E10E45E8275EBAC80073F2A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1660989271C9F4B0077DF6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +371,15 @@
 				E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E10E45EC275EBAC90073F2A6 /* GoFitAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E10E45ED275EBAC90073F2A6 /* GoFitAppUITests.swift */,
+				E10E45EF275EBAC90073F2A6 /* GoFitAppUITestsLaunchTests.swift */,
+			);
+			path = GoFitAppUITests;
 			sourceTree = "<group>";
 		};
 		E11FAABF2757762C0075F74D /* ProfileDetail */ = {
@@ -446,6 +474,7 @@
 			children = (
 				E166098E271C9F4B0077DF6E /* GoFitApp */,
 				E1BCA2EF275E3C4000FC67D5 /* GoFitAppTests */,
+				E10E45EC275EBAC90073F2A6 /* GoFitAppUITests */,
 				E166098D271C9F4B0077DF6E /* Products */,
 				775E6C8804BA24CF37A9EA78 /* Pods */,
 				B7B973D4E6DB9A51C1EC28A3 /* Frameworks */,
@@ -457,6 +486,7 @@
 			children = (
 				E166098C271C9F4B0077DF6E /* GoFitApp.app */,
 				E1BCA2EE275E3C4000FC67D5 /* GoFitAppTests.xctest */,
+				E10E45EB275EBAC80073F2A6 /* GoFitAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -686,6 +716,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E10E45EA275EBAC80073F2A6 /* GoFitAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E10E45F3275EBAC90073F2A6 /* Build configuration list for PBXNativeTarget "GoFitAppUITests" */;
+			buildPhases = (
+				E10E45E7275EBAC80073F2A6 /* Sources */,
+				E10E45E8275EBAC80073F2A6 /* Frameworks */,
+				E10E45E9275EBAC80073F2A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E10E45F2275EBAC90073F2A6 /* PBXTargetDependency */,
+			);
+			name = GoFitAppUITests;
+			productName = GoFitAppUITests;
+			productReference = E10E45EB275EBAC80073F2A6 /* GoFitAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E166098B271C9F4B0077DF6E /* GoFitApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E16609A3271C9F4E0077DF6E /* Build configuration list for PBXNativeTarget "GoFitApp" */;
@@ -736,6 +784,10 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					E10E45EA275EBAC80073F2A6 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = E166098B271C9F4B0077DF6E;
+					};
 					E166098B271C9F4B0077DF6E = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -764,11 +816,19 @@
 			targets = (
 				E166098B271C9F4B0077DF6E /* GoFitApp */,
 				E1BCA2ED275E3C4000FC67D5 /* GoFitAppTests */,
+				E10E45EA275EBAC80073F2A6 /* GoFitAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E10E45E9275EBAC80073F2A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E166098A271C9F4B0077DF6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -853,6 +913,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E10E45E7275EBAC80073F2A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E10E45F0275EBAC90073F2A6 /* GoFitAppUITestsLaunchTests.swift in Sources */,
+				E10E45EE275EBAC90073F2A6 /* GoFitAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1660988271C9F4B0077DF6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -962,6 +1031,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E10E45F2275EBAC90073F2A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E166098B271C9F4B0077DF6E /* GoFitApp */;
+			targetProxy = E10E45F1275EBAC90073F2A6 /* PBXContainerItemProxy */;
+		};
 		E1BCA2F3275E3C4000FC67D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E166098B271C9F4B0077DF6E /* GoFitApp */;
@@ -981,6 +1055,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E10E45F4275EBAC90073F2A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Z38328C5Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.hlavatik.GoFitAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoFitApp;
+			};
+			name = Debug;
+		};
+		E10E45F5275EBAC90073F2A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Z38328C5Z;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sk.hlavatik.GoFitAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoFitApp;
+			};
+			name = Release;
+		};
 		E16609A1271C9F4E0077DF6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1219,6 +1337,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E10E45F3275EBAC90073F2A6 /* Build configuration list for PBXNativeTarget "GoFitAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E10E45F4275EBAC90073F2A6 /* Debug */,
+				E10E45F5275EBAC90073F2A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1660987271C9F4B0077DF6E /* Build configuration list for PBXProject "GoFitApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -33,9 +33,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E1AAA00C2759726500DC9643"
+               BlueprintIdentifier = "E1BCA2ED275E3C4000FC67D5"
                BuildableName = "GoFitAppTests.xctest"
                BlueprintName = "GoFitAppTests"
+               ReferencedContainer = "container:GoFitApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E10E45EA275EBAC80073F2A6"
+               BuildableName = "GoFitAppUITests.xctest"
+               BlueprintName = "GoFitAppUITests"
                ReferencedContainer = "container:GoFitApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
