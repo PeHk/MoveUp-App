@@ -36,7 +36,7 @@ class FavouriteSportsDetailCoordinator: NSObject, Coordinator {
         
         viewController.viewModel.stepper
             .sink { [weak self] event in
-                
+                self?.finish()
             }
             .store(in: &subscription)
         
