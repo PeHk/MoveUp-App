@@ -45,7 +45,5 @@ class SignUpRequestModelTests: XCTestCase {
         
         // Assert
         XCTAssertEqual(encodedPassword, encodedInsertedPassword, "The password from model is not encoded in the same way as password inserted")
-    }
-    
-    
+    }    
 }

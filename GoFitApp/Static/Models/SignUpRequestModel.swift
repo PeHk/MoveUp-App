@@ -22,4 +22,12 @@ struct SignUpRequestModel {
     func getDecodedPassword() -> String? {
         self.password.base64Decoded
     }
+    
+    func toJSON() -> [String: Any] {
+        [
+            "email": email as Any,
+            "name": name as Any,
+            "password": password as Any
+        ]
+    }
 }
