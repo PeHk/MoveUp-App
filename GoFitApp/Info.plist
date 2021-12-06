@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>App can update your healthkit data</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>App can share your health data to your friends with your permission</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>App needs to see all the health records</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

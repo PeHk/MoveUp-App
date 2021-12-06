@@ -26,6 +26,8 @@
 		E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA400271DB7E80096B032 /* LoginViewModel.swift */; };
 		E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA402271DB7F30096B032 /* LoginViewController.swift */; };
 		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
+		E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D2275E61C50073F2A6 /* PermissionManager.swift */; };
+		E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10E45D4275E62860073F2A6 /* HealthKit.framework */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
 		E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAABB275771900075F74D /* FirstBioDataResource.swift */; };
 		E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */; };
@@ -141,6 +143,8 @@
 		E10AA400271DB7E80096B032 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E10AA402271DB7F30096B032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		E10E45D2275E61C50073F2A6 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		E10E45D4275E62860073F2A6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E11FAABB275771900075F74D /* FirstBioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstBioDataResource.swift; sourceTree = "<group>"; };
 		E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */,
+				E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */,
 				E1E51098274C080500C9C266 /* GoodCache in Frameworks */,
 				3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */,
 			);
@@ -264,6 +269,7 @@
 		B7B973D4E6DB9A51C1EC28A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E10E45D4275E62860073F2A6 /* HealthKit.framework */,
 				E134E933275257DD00453781 /* AuthenticationServices.framework */,
 				73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */,
 			);
@@ -493,6 +499,7 @@
 				E134E93727525E9900453781 /* UserManager.swift */,
 				E177513227552B7100C9917F /* LogoutManager.swift */,
 				E17751342755326D00C9917F /* LoginManager.swift */,
+				E10E45D2275E61C50073F2A6 /* PermissionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -822,6 +829,7 @@
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */,
+				E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,

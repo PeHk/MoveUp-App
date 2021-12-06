@@ -10,7 +10,7 @@ class ProfileDetailViewController: BaseTableViewController {
     @IBOutlet weak var nameCell: UITableViewCell!
     
     var viewModel: ProfileDetailViewModel!
-    var coordinator: ProfileDetailCoordinator!
+    weak var coordinator: ProfileDetailCoordinator!
     
     private var subscription = Set<AnyCancellable>()
     

@@ -15,6 +15,7 @@ final class DetailsViewModel: ViewModelProtocol {
     enum Action {
         case saveTapped
         case permissionsShowed
+        case healthKitPermissions
     }
     
     enum Step {
@@ -34,6 +35,8 @@ final class DetailsViewModel: ViewModelProtocol {
             saveTapped()
         case .permissionsShowed:
             return
+        case .healthKitPermissions:
+            showHealthKit()
         }
     }
     
@@ -59,8 +62,9 @@ final class DetailsViewModel: ViewModelProtocol {
     
     internal var subscription = Set<AnyCancellable>()
     
-    private let networkManager: NetworkManager
-    private let userManager: UserManager
+    fileprivate let networkManager: NetworkManager
+    fileprivate let userManager: UserManager
+    fileprivate let permissionManager: PermissionManager
     
     var availableGenders: [Gender?] = []
     
@@ -72,10 +76,11 @@ final class DetailsViewModel: ViewModelProtocol {
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
     private var alreadySent: Bool = false
-    
+
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
+        self.permissionManager = dependencyContainer.permissionManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -174,6 +179,14 @@ final class DetailsViewModel: ViewModelProtocol {
                     self.action.send(.permissionsShowed)
                 }
                 .store(in: &subscription)
+        }
+    }
+    
+    private func showHealthKit() {
+        self.permissionManager.authorizeHealthKit { success in
+            DispatchQueue.main.async {
+                self.stepper.send(.save)
+            }
         }
     }
 }

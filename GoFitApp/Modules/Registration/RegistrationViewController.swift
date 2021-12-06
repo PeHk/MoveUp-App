@@ -112,6 +112,5 @@ class RegistrationViewController: BaseViewController {
     // MARK: Actions
     @IBAction func signUpButtonTapped(_ sender: Any) {
         viewModel.action.send(.signUpButton)
-//        viewModel.stepper.send(.signUp)
     }
 }
