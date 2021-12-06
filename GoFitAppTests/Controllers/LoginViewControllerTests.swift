@@ -36,8 +36,8 @@ class LoginViewControllerTests: XCTestCase {
     }
 
     func testLoginViewController_WhenCreated_HasRequiredTextFieldsEmpty() {
-        XCTAssertEqual(sut?.emailTextField.text, "", "Email textfield is not initialy empty")
-        XCTAssertEqual(sut?.passwordTextField.text, "", "Password textfield is not initialy empty")
+        XCTAssertEqual(sut?.emailTextField.text, "", "Email textfield is not initially empty")
+        XCTAssertEqual(sut?.passwordTextField.text, "", "Password textfield is not initially empty")
     }
     
     func testLoginViewController_WhenCreated_HasLoginButtonAndAction() throws {
@@ -63,5 +63,4 @@ class LoginViewControllerTests: XCTestCase {
             }
             .store(in: &subscription)
     }
-    
 }

@@ -36,10 +36,10 @@ class RegistrationControllerTests: XCTestCase {
     }
     
     func testRegistrationViewController_WhenCreated_HasRequiredTextFieldsEmtpy() throws {
-        XCTAssertEqual(sut?.emailTextField.text, "", "Email textfield is not initialy empty")
-        XCTAssertEqual(sut?.passwordTextField.text, "", "Password textfield is not initialy empty")
-        XCTAssertEqual(sut?.usernameTextField.text, "", "Username textfield is not initialy empty")
-        XCTAssertEqual(sut?.repeatPasswordTextField.text, "", "Repeat password textfield is not initialy empty")
+        XCTAssertEqual(sut?.emailTextField.text, "", "Email textfield is not initially empty")
+        XCTAssertEqual(sut?.passwordTextField.text, "", "Password textfield is not initially empty")
+        XCTAssertEqual(sut?.usernameTextField.text, "", "Username textfield is not initially empty")
+        XCTAssertEqual(sut?.repeatPasswordTextField.text, "", "Repeat password textfield is not initially empty")
     }
     
     func testRegistrationViewController_WhenCreated_HasRegisterButtonAndAction() throws {
