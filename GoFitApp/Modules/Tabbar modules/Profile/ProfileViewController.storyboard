@@ -28,7 +28,7 @@
                         <sections>
                             <tableViewSection headerTitle="Account" id="hZB-r7-J0e">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="ArW-hR-k3Y" imageView="OWq-aL-CoI" style="IBUITableViewCellStyleDefault" id="IDQ-sl-U1P">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="ArW-hR-k3Y" imageView="OWq-aL-CoI" style="IBUITableViewCellStyleDefault" id="IDQ-sl-U1P">
                                         <rect key="frame" x="20" y="49.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IDQ-sl-U1P" id="GBw-Vd-EON">
@@ -52,7 +52,7 @@
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="FMv-GQ-88B" imageView="JTL-Ta-9QA" style="IBUITableViewCellStyleDefault" id="D51-bH-CVY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="FMv-GQ-88B" imageView="JTL-Ta-9QA" style="IBUITableViewCellStyleDefault" id="D51-bH-CVY">
                                         <rect key="frame" x="20" y="99.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D51-bH-CVY" id="Rvq-o8-3Gn">
@@ -76,7 +76,7 @@
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="wld-xq-xH6" imageView="TKa-je-Zyg" style="IBUITableViewCellStyleDefault" id="ha2-nd-WtP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="wld-xq-xH6" imageView="TKa-je-Zyg" style="IBUITableViewCellStyleDefault" id="ha2-nd-WtP">
                                         <rect key="frame" x="20" y="149.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ha2-nd-WtP" id="zHe-bB-GIl">
