@@ -145,6 +145,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9I1-rV-Zkr" secondAttribute="trailing" constant="30" id="00i-FU-T72"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9I1-rV-Zkr" secondAttribute="bottom" constant="100" id="33d-x7-NdY"/>
@@ -166,10 +167,10 @@
     </scenes>
     <designables>
         <designable name="7ZJ-fs-rh7">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="qnJ-jt-qg0">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="xHT-7s-nlS">
             <size key="intrinsicContentSize" width="43" height="32"/>
@@ -178,7 +179,7 @@
     <resources>
         <image name="MoveUpIcon" width="500" height="432"/>
         <namedColor name="backgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
