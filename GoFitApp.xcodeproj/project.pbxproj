@@ -129,6 +129,7 @@
 		E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EBC144271DCEC1009E9939 /* DetailsViewController.swift */; };
 		E1EBC147271DCED0009E9939 /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */; };
 		E1FC4752275FEE7000DC9479 /* LoginFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */; };
+		E1FC4754275FF0B800DC9479 /* HomeFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,7 @@
 		E1EBC144271DCEC1009E9939 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
 		E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowUITests.swift; sourceTree = "<group>"; };
+		E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowUITests.swift; sourceTree = "<group>"; };
 		F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.debug.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */,
+				E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */,
 				E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */,
 			);
 			path = GoFitAppUITests;
@@ -918,6 +921,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10E45EE275EBAC90073F2A6 /* SignUpFlowUITests.swift in Sources */,
+				E1FC4754275FF0B800DC9479 /* HomeFlowUITests.swift in Sources */,
 				E1FC4752275FEE7000DC9479 /* LoginFlowUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

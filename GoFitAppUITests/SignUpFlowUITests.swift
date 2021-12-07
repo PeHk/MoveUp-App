@@ -11,7 +11,6 @@ class SignUpFlowUITests: XCTestCase {
     
     var app: XCUIApplication!
     var getStartedButton: XCUIElement!
-    var alreadyHaveAccountButton: XCUIElement!
     var nicknameTextField: XCUIElement!
     var emailTextField: XCUIElement!
     var passwordTextField: XCUIElement!
@@ -35,7 +34,6 @@ class SignUpFlowUITests: XCTestCase {
         app.launch()
         
         getStartedButton = app.buttons["getStartedButton"]
-        alreadyHaveAccountButton = app.buttons["alreadyAccountButton"]
         nicknameTextField = app.textFields["nicknameTextField"]
         emailTextField = app.textFields["emailTextField"]
         passwordTextField = app.secureTextFields["passwordTextField"]
@@ -48,7 +46,6 @@ class SignUpFlowUITests: XCTestCase {
     override func tearDownWithError() throws {
         app = nil
         getStartedButton = nil
-        alreadyHaveAccountButton = nil
         nicknameTextField = nil
         emailTextField = nil
         passwordTextField = nil
@@ -57,24 +54,7 @@ class SignUpFlowUITests: XCTestCase {
         
         try super.tearDownWithError()
     }
-    
-    func testGetStartedButton_WhenTapped_RegistrationViewControllerPresented() {
-        getStartedButton.tap()
-        
-        XCTAssertTrue(app.otherElements["RegistrationViewController"].waitForExistence(timeout: 1), "Registration View Controller is not presented after tapping on get started button!")
-    }
-    
-    func testAlreadyHaveAnAccount_WhenTapped_LoginViewControllerPresented() {
-        alreadyHaveAccountButton.tap()
-        
-        XCTAssertTrue(app.otherElements["LoginViewController"].waitForExistence(timeout: 1), "Login View Controller is not presented after tapping on already have account button!")
-    }
 
-    func testHomeViewController_WhenViewLoaded_RequiredButtonsAreEnabled() throws {
-        XCTAssertTrue(getStartedButton.isEnabled, "Get started button is not enabled for user interactions!")
-        XCTAssertTrue(alreadyHaveAccountButton.isEnabled, "Already have account button is not enabled for user interactions!")
-    }
-    
     func testRegistrationViewController_WhenInvalidInputInserted_ButtonDisabled() {
         // Arrange
         getStartedButton.tap()

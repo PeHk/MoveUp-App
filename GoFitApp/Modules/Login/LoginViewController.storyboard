@@ -53,6 +53,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qnJ-jt-qg0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="7I2-fN-l3j"/>
                                                 </constraints>
@@ -78,6 +79,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7ZJ-fs-rh7" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="zrr-o1-F09"/>
                                                 </constraints>
@@ -108,6 +110,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-7s-nlS" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Y8g-T0-PIL"/>
                                                 </constraints>
@@ -167,10 +170,10 @@
     </scenes>
     <designables>
         <designable name="7ZJ-fs-rh7">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="qnJ-jt-qg0">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="xHT-7s-nlS">
             <size key="intrinsicContentSize" width="43" height="32"/>
