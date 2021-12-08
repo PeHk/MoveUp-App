@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "92D41C0C-AE1A-4B4F-9E07-3DEA39F3CAFF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GoFitApp.xcodeproj",
+        "identifier" : "E1BCA2ED275E3C4000FC67D5",
+        "name" : "GoFitAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

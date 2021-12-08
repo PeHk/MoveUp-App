@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "7C6F18C4-B887-4816-95B6-E28EEB0940EC",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:GoFitApp.xcodeproj",
+      "identifier" : "E166098B271C9F4B0077DF6E",
+      "name" : "GoFitApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GoFitApp.xcodeproj",
+        "identifier" : "E10E45EA275EBAC80073F2A6",
+        "name" : "GoFitAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

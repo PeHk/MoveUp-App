@@ -248,6 +248,9 @@
 		E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsViewController+TableView.swift"; sourceTree = "<group>"; };
 		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
 		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
+		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
+		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
+		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
 		E1BCA2EE275E3C4000FC67D5 /* GoFitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpRequestModelTests.swift; sourceTree = "<group>"; };
 		E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
@@ -378,6 +381,7 @@
 		E10E45EC275EBAC90073F2A6 /* GoFitAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */,
 				E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */,
 				E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */,
 				E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */,
@@ -475,6 +479,7 @@
 		E1660983271C9F4B0077DF6E = {
 			isa = PBXGroup;
 			children = (
+				E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */,
 				E166098E271C9F4B0077DF6E /* GoFitApp */,
 				E1BCA2EF275E3C4000FC67D5 /* GoFitAppTests */,
 				E10E45EC275EBAC90073F2A6 /* GoFitAppUITests */,
@@ -639,6 +644,7 @@
 		E1BCA2EF275E3C4000FC67D5 /* GoFitAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */,
 				E10E45DA275E89480073F2A6 /* Controllers */,
 				E10E45D9275E83AB0073F2A6 /* Static */,
 				E10E45D8275E83890073F2A6 /* RegistrationManager */,
