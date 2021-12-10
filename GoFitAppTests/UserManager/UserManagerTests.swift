@@ -89,4 +89,29 @@ class UserManagerTests: XCTestCase {
             }
             .store(in: &subscription)
     }
+    
+    func testUserManager_WhenUserWithDataInserted_BioDataShouldEquals() {
+        // Arrange
+        let data = BioDataResource(weight: 94, height: 184, activity_minutes: 200, bmi: 26.5)
+        let user = UserDataResource(id: 1, email: "test@test.com", name: "Test", admin: false, registered_at: "2021-06-11'T'00:00:00", date_of_birth: "2021-06-11'T'00:00:00", gender: "male", bio_data: [data])
+        
+        // Act
+        sut.saveUserWithData(newUser: user)
+            .sink { _ in
+                ()
+            } receiveValue: { _ in
+                ()
+            }
+            .store(in: &subscription)
+        
+        // Assert
+        sut.getUser()
+            .sink { _ in
+                ()
+            } receiveValue: { users in
+                XCTAssertEqual(users.count, 1)
+                XCTAssertEqual(users.first?.bio_data?.count, 1)
+            }
+            .store(in: &subscription)
+    }
 }

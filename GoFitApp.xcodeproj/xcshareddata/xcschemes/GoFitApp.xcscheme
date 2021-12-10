@@ -39,6 +39,9 @@
          <TestPlanReference
             reference = "container:GoFitAppTests/GoFitApp-UnitTestsPlan.xctestplan">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:GoFitAppTests/GoFitApp-IntegrationTestsPlan.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference

@@ -214,6 +214,7 @@
 		E13B449E27206E6C0062C44B /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		E13B44A0272094950062C44B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E14451522763C86700DEBA8E /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		E14451542763CBC200DEBA8E /* GoFitApp-IntegrationTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-IntegrationTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
@@ -654,6 +655,7 @@
 		E1BCA2EF275E3C4000FC67D5 /* GoFitAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				E14451542763CBC200DEBA8E /* GoFitApp-IntegrationTestsPlan.xctestplan */,
 				E14451512763C85100DEBA8E /* UserManager */,
 				E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */,
 				E10E45DA275E89480073F2A6 /* Controllers */,
