@@ -104,7 +104,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="EGH-T5-Y6Y"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail address"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail address:"/>

@@ -65,4 +65,20 @@ class RegistrationControllerTests: XCTestCase {
             }
             .store(in: &subscription)
     }
+    
+    func testRegistrationViewController_WhenCreated_PasswordTextFieldHasSecureEntry() {
+        // Assert
+        XCTAssertTrue(sut.passwordTextField.isSecureTextEntry, "PasswordTextField has no secure entry attribute!")
+    }
+    
+    func testRegistrationViewController_WhenCreated_RepeatPasswordTextFieldHasSecureEntry() {
+        // Assert
+        XCTAssertTrue(sut.repeatPasswordTextField.isSecureTextEntry, "RepeatPasswordTextField has no secure entry attribute!")
+    }
+    
+    // Bug found
+    func testRegistrationViewController_WhenCreated_EmailTextFieldHasEmailContentType() {
+        // Assert
+        XCTAssertEqual(sut.emailTextField.keyboardType, .emailAddress, "Email textfield has no email content type keyboard")
+    }
 }

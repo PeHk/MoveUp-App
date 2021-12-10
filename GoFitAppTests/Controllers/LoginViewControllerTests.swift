@@ -52,6 +52,17 @@ class LoginViewControllerTests: XCTestCase {
         XCTAssertEqual(actions.first, "loginTapped:", "There is no correct action assigned")
     }
     
+    func testLoginViewController_WhenCreated_PasswordTextFieldHasSecureTextEntry() throws {
+        // Assert
+        XCTAssertTrue(sut.passwordTextField.isSecureTextEntry, "Password textfield has no secure text entry attribute")
+    }
+
+    // Bug found
+    func testLoginViewController_WhenCreated_EmailTextFieldHasEmailContentType() throws {
+        // Assert
+        XCTAssertEqual(sut.emailTextField.keyboardType, UIKeyboardType.emailAddress, "Email textfield has no email keyboard type")
+    }
+//
     func testLoginViewController_WhenLoginButtonTapped_InvokesLoginProcess() {
         // Act
         sut.loginButton.sendActions(for: .touchUpInside)
