@@ -114,4 +114,60 @@ class UserManagerTests: XCTestCase {
             }
             .store(in: &subscription)
     }
+    
+    func testUserManager_WhenUserWithDataInserted_BioDataShouldEqualsInsertedValues() throws {
+        // Arrange
+        let data = BioDataResource(weight: 94, height: 184, activity_minutes: 200, bmi: 26.5)
+        let user = UserDataResource(id: 1, email: "test@test.com", name: "Test", admin: false, registered_at: "2021-06-11'T'00:00:00", date_of_birth: "2021-06-11'T'00:00:00", gender: "male", bio_data: [data])
+        var currentUser: User?
+        
+        
+        // Act
+        sut.saveUserWithData(newUser: user)
+            .sink { _ in
+                ()
+            } receiveValue: { _ in
+                ()
+            }
+            .store(in: &subscription)
+        
+        sut.getUser()
+            .sink { _ in
+                ()
+            } receiveValue: { users in
+                XCTAssertEqual(users.count, 1)
+                currentUser = users.first
+                
+            }
+            .store(in: &subscription)
+        
+        // Assert
+        let bioData: BioData = try XCTUnwrap(currentUser?.bio_data?.allObjects[0]) as! BioData
+        XCTAssertEqual(data.weight, bioData.weight)
+    }
+    
+    func testUserManager_WhenNewUserInsertedAndFetchCalled_CurrentUserShouldBeUpdated() {
+        // Arrange
+        let user = UserResource(id: 1, email: "test@test.com", name: "Test", admin: false, registered_at: "2021-06-11'T'00:00:00")
+        
+        sut.saveUser(newUser: user)
+            .sink { _ in
+                ()
+            } receiveValue: { _ in
+                ()
+            }
+            .store(in: &subscription)
+        
+        // Act
+        sut.fetchCurrentUser()
+        
+        // Assert
+        sut.currentUser
+            .sink { _ in
+                ()
+            } receiveValue: { user in
+                XCTAssertNotNil(user, "User is nil even when new user was inserted")
+            }
+            .store(in: &subscription)
+    }
 }
