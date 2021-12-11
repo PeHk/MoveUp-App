@@ -13,6 +13,11 @@
   },
   "testTargets" : [
     {
+      "skippedTests" : [
+        "CredentialsManagerTests",
+        "UserDefaultsManagerTests",
+        "UserManagerTests"
+      ],
       "target" : {
         "containerPath" : "container:GoFitApp.xcodeproj",
         "identifier" : "E1BCA2ED275E3C4000FC67D5",
