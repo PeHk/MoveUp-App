@@ -16,5 +16,6 @@ target 'GoFitApp' do
   pod 'NVActivityIndicatorView'
   pod 'Alamofire', '~> 5.4'
   pod 'SwiftyBase64', '~> 1.0'
+  pod 'EmptyDataSet-Swift', '~> 5.0.0'
 
 end

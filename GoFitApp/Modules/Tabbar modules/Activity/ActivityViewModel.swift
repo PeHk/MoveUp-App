@@ -42,10 +42,13 @@ class ActivityViewModel: ViewModelProtocol {
 //    var errorState = PassthroughSubject<ServerError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
+    var configuration: Configuration
     var subscription = Set<AnyCancellable>()
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.configuration = Configuration(.activities)
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })

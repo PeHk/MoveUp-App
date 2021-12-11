@@ -100,6 +100,7 @@
 		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
 		E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */; };
 		E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* Gender.swift */; };
+		E1D630AA2765249D00AF12F2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D630A92765249D00AF12F2 /* Configuration.swift */; };
 		E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF2E23274ECB6000741038 /* LoadingView.swift */; };
 		E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9C274BF5D9006674E7 /* Assets.swift */; };
 		E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9D274BF5D9006674E7 /* Fonts.swift */; };
@@ -220,6 +221,7 @@
 		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
 		E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewModel.swift; sourceTree = "<group>"; };
 		E1CFFD5B27521EA500794BAC /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		E1D630A92765249D00AF12F2 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E1DF2E23274ECB6000741038 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E1E41E9C274BF5D9006674E7 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		E1E41E9D274BF5D9006674E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				E1E5107F274BFE5300C9C266 /* Endpoint.swift */,
 				E1E5108E274C053E00C9C266 /* Constants.swift */,
 				E14FBA1A274FB81A002CB035 /* Helpers.swift */,
+				E1D630A92765249D00AF12F2 /* Configuration.swift */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
+				E1D630AA2765249D00AF12F2 /* Configuration.swift in Sources */,
 				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
 				E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */,
