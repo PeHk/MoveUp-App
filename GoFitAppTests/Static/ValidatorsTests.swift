@@ -106,4 +106,15 @@ class ValidatorsTests: XCTestCase {
         // Assert
         XCTAssertFalse(sut, "The textFieldValidatorEmail() should have returned FALSE for an invalid email but returned TRUE")
     }
+    
+    func testEmailValidator_WhenTooManyCharactersProvided_ShouldReturnFalse() {
+        // Arrange
+        let email = "abc@mail.abcdeffsfasjhfjshfjshfjhsafjhsajfhsajfhsahfjshfhfhfshsafhahsfheuhutetuurtuhtjahtjhstjjcjhcvhvhcjbhjhcbjchbjchbjcbhcjhbjchbjhcjbhcjbhcjbhcjbhc"
+        
+        // Act
+        let sut = Validators.textFieldValidatorEmail(email)
+        
+        // Assert
+        XCTAssertFalse(sut, "The textFieldValidatorEmail() should have returned FALSE for an invalid email but returned TRUE")
+    }
 }
