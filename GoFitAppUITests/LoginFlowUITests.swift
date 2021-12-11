@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import GoFitApp
 
 class LoginFlowUITests: XCTestCase {
     
@@ -16,6 +17,7 @@ class LoginFlowUITests: XCTestCase {
     var emailTextField: XCUIElement!
     var passwordTextField: XCUIElement!
     var loginButton: XCUIElement!
+    var tabBar: XCUIElement!
     
     func dismissKeyboardIfPresent() {
         if app.keyboards.element(boundBy: 0).exists {
@@ -37,6 +39,7 @@ class LoginFlowUITests: XCTestCase {
         passwordTextField = app.secureTextFields["passwordTextField"]
         loginButton = app.buttons["loginButton"]
         alreadyHaveAccountButton = app.buttons["alreadyAccountButton"]
+        tabBar = app.tabBars["Tab Bar"]
 
         continueAfterFailure = false
     }
@@ -46,6 +49,7 @@ class LoginFlowUITests: XCTestCase {
         emailTextField = nil
         passwordTextField = nil
         loginButton = nil
+        tabBar = nil
         
         try super.tearDownWithError()
     }
@@ -107,7 +111,23 @@ class LoginFlowUITests: XCTestCase {
         
         // Assert
         XCTAssertTrue(app.tables["DashboardViewController"].waitForExistence(timeout: 10), "Dashboard View Controller is not presented after tapping on already have account button!")
+        
+        logoutFromDashboard()
     }
+    
+    func testLoginViewController_WhenLogout_AlertShowed() {
+        // Arrange
+        loginFromHomeController()
+        tabBar.children(matching: .button).element(boundBy: 2).tap()
+        
+        // Act
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Logout"]/*[[".cells.staticTexts[\"Logout\"]",".staticTexts[\"Logout\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        // Assert
+        XCTAssertTrue(app.alerts["alertDialog"].waitForExistence(timeout: 5), "An logout alert dialog was not presented when logout was provided")
+    }
+    
+    
     
     func testLoginViewController_WhenInvalidPasswordInsertedAndLoginTapped_ErrorAlertShowed() {
         // Arrange
@@ -131,5 +151,24 @@ class LoginFlowUITests: XCTestCase {
         // Assert
         XCTAssertTrue(app.alerts["alertDialog"].waitForExistence(timeout: 5), "An error alert dialog was not presented when invalid signup form was submitted")
     }
-
+    
+    
+    // MARK: Heleper functions
+    func logoutFromDashboard() {
+        tabBar.children(matching: .button).element(boundBy: 2).tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Logout"]/*[[".cells.staticTexts[\"Logout\"]",".staticTexts[\"Logout\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
+    
+    func loginFromHomeController() {
+        alreadyHaveAccountButton.tap()
+        emailTextField.tap()
+        emailTextField.typeText("test@test.com")
+        dismissKeyboardIfPresent()
+        
+        passwordTextField.tap()
+        passwordTextField.typeText("test123")
+        dismissKeyboardIfPresent()
+        
+        loginButton.tap()
+    }
 }
