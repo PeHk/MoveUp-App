@@ -67,6 +67,9 @@
 		E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B449E27206E6C0062C44B /* TabBarCoordinator.swift */; };
 		E13B44A1272094950062C44B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B44A0272094950062C44B /* BaseViewController.swift */; };
 		E14451532763C86700DEBA8E /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451522763C86700DEBA8E /* UserManagerTests.swift */; };
+		E14451572764B02500DEBA8E /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */; };
+		E14451592764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */; };
+		E144515C2764B60800DEBA8E /* CredentialsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144515B2764B60700DEBA8E /* CredentialsManagerTests.swift */; };
 		E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */; };
 		E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA1A274FB81A002CB035 /* Helpers.swift */; };
 		E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1515878275380D20045CBCB /* Optional+Extensions.swift */; };
@@ -215,6 +218,9 @@
 		E13B44A0272094950062C44B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E14451522763C86700DEBA8E /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
 		E14451542763CBC200DEBA8E /* GoFitApp-IntegrationTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-IntegrationTestsPlan.xctestplan"; sourceTree = "<group>"; };
+		E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
+		E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTestsConstants.swift; sourceTree = "<group>"; };
+		E144515B2764B60700DEBA8E /* CredentialsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManagerTests.swift; sourceTree = "<group>"; };
 		E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
@@ -470,6 +476,23 @@
 			path = UserManager;
 			sourceTree = "<group>";
 		};
+		E14451552764AFF000DEBA8E /* UserDefaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */,
+				E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */,
+			);
+			path = UserDefaultsManager;
+			sourceTree = "<group>";
+		};
+		E144515A2764B5E900DEBA8E /* CredentialsManager */ = {
+			isa = PBXGroup;
+			children = (
+				E144515B2764B60700DEBA8E /* CredentialsManagerTests.swift */,
+			);
+			path = CredentialsManager;
+			sourceTree = "<group>";
+		};
 		E15C5C5F2753D56600B20C2A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,11 +679,13 @@
 			isa = PBXGroup;
 			children = (
 				E14451542763CBC200DEBA8E /* GoFitApp-IntegrationTestsPlan.xctestplan */,
-				E14451512763C85100DEBA8E /* UserManager */,
 				E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */,
 				E10E45DA275E89480073F2A6 /* Controllers */,
 				E10E45D9275E83AB0073F2A6 /* Static */,
 				E10E45D8275E83890073F2A6 /* RegistrationManager */,
+				E14451552764AFF000DEBA8E /* UserDefaultsManager */,
+				E14451512763C85100DEBA8E /* UserManager */,
+				E144515A2764B5E900DEBA8E /* CredentialsManager */,
 			);
 			path = GoFitAppTests;
 			sourceTree = "<group>";
@@ -1040,6 +1065,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E144515C2764B60800DEBA8E /* CredentialsManagerTests.swift in Sources */,
+				E14451572764B02500DEBA8E /* UserDefaultsManagerTests.swift in Sources */,
+				E14451592764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift in Sources */,
 				E14451532763C86700DEBA8E /* UserManagerTests.swift in Sources */,
 				E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */,
 				E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */,
