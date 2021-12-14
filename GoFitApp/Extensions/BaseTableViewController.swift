@@ -54,7 +54,7 @@ class BaseTableViewController: UITableViewController {
     
     func handleError(_ error: NetworkError?) {
         if error != nil {
-            AlertManager.showAlert(message: error?.backendError?.message ?? error?.initialError.errorDescription, over: self)
+            AlertManager.showAlert(message: error?.backendError?.message ?? error?.initialError?.errorDescription ?? error?.coreDataError.debugDescription, over: self)
         }
     }
 }

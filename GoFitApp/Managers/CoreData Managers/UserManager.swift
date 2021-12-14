@@ -35,7 +35,8 @@ class UserManager {
             .store(in: &subscription)
     }
     
-    func saveUser(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    // MARK: Functions
+    func saveUser(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
             let action: Action = {
                 let user: User = self.coreDataStore.createEntity()
                 user.id = newUser.id
@@ -46,27 +47,36 @@ class UserManager {
             }
             return coreDataStore
                 .publicher(save: action)
+                .mapError({ error in
+                .init(initialError: nil, backendError: nil, error)
+                })
                 .eraseToAnyPublisher()
     }
     
-    func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NSError> {
+    func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NetworkError> {
         let request = NSFetchRequest<User>(entityName: User.entityName)
         
         return coreDataStore
             .publicher(fetch: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NSError> {
+    func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: User.entityName)
         request.predicate = NSPredicate(format: "email != nil")
         
         return coreDataStore
             .publicher(delete: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    public func saveBioDataAfterRegistration(data: FirstBioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    public func saveBioDataAfterRegistration(data: FirstBioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         let bioDataArray = data.bio_data.first
         
@@ -84,10 +94,13 @@ class UserManager {
         
         return coreDataStore
             .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    public func saveBioData(data: BioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    public func saveBioData(data: BioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         let bioData: BioData = self.coreDataStore.createEntity()
         bioData.activity_minutes = data.activity_minutes ?? 0
@@ -100,10 +113,13 @@ class UserManager {
         }
         return coreDataStore
             .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    public func saveUserWithData(newUser: UserDataResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    public func saveUserWithData(newUser: UserDataResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         var bioDataArray: [BioData] = []
     
@@ -132,6 +148,9 @@ class UserManager {
     
         return coreDataStore
             .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     

@@ -116,7 +116,7 @@ final class LoginViewModel: ViewModelProtocol {
             .zip(self.userManager.saveUserWithData(newUser: user))
             .sink { completion in
                 if case .failure(let error) = completion {
-                    print(error)
+                    self.state.send(.error(error))
                 }
             } receiveValue: { _, _ in
                 self.userManager.fetchCurrentUser()

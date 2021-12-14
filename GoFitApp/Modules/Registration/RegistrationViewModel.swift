@@ -119,7 +119,7 @@ final class RegistrationViewModel: ViewModelProtocol {
             .zip(self.userManager.saveUser(newUser: user))
             .sink { completion in
                 if case .failure(let error) = completion {
-                    print(error)
+                    self.state.send(.error(error))
                 }
             } receiveValue: { _, _ in
                 self.userManager.fetchCurrentUser()

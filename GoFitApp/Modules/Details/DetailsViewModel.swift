@@ -172,7 +172,7 @@ final class DetailsViewModel: ViewModelProtocol {
             self.userManager.saveBioDataAfterRegistration(data: data, user: user)
                 .sink { completion in
                     if case .failure(let error) = completion {
-                        print(error)
+                        self.state.send(.error(error))
                     }
                 } receiveValue: { _ in
                     self.isLoading.send(false)
