@@ -27,7 +27,7 @@ class RegistrationManager {
         let registrationPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.registration.url,
             method: .post,
-            parameters: ["name": formModel.name, "password": formModel.password, "email": formModel.email],
+            parameters: formModel.toJSON(),
             withInterceptor: false
         )
         

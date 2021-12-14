@@ -131,6 +131,7 @@
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" name="backgroundColor"/>
+                            <accessibility key="accessibilityConfiguration" identifier="DashboardViewController"/>
                             <constraints>
                                 <constraint firstItem="3Uo-EL-yfK" firstAttribute="leading" secondItem="gUa-gY-GBX" secondAttribute="leading" constant="15" id="9WL-0t-6q3"/>
                                 <constraint firstItem="3Uo-EL-yfK" firstAttribute="top" secondItem="gUa-gY-GBX" secondAttribute="top" constant="10" id="Ald-6f-cHw"/>

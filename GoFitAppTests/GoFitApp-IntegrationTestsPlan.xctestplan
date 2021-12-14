@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "3E7D17A0-E17A-4FB3-B490-DC6907DB3CBE",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ActiveMinutesViewControllerTests",
+        "DetailViewControllerTests",
+        "HelpersTests",
+        "HomeViewControllerTests",
+        "LoginViewControllerTests",
+        "RegistrationControllerTests",
+        "SignUpRequestModelTests",
+        "ValidatorsTests"
+      ],
+      "target" : {
+        "containerPath" : "container:GoFitApp.xcodeproj",
+        "identifier" : "E1BCA2ED275E3C4000FC67D5",
+        "name" : "GoFitAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

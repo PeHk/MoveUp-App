@@ -15,7 +15,7 @@ final class AlertManager {
         
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(.ok)
-        
+        ac.view.accessibilityIdentifier = "alertDialog"
         viewController.present(ac, animated: true)
     }
     

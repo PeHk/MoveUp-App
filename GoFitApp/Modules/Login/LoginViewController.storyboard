@@ -53,11 +53,12 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qnJ-jt-qg0" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="7I2-fN-l3j"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail"/>
@@ -78,6 +79,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7ZJ-fs-rh7" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="zrr-o1-F09"/>
                                                 </constraints>
@@ -108,6 +110,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-7s-nlS" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Y8g-T0-PIL"/>
                                                 </constraints>
@@ -145,6 +148,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="LoginViewController"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9I1-rV-Zkr" secondAttribute="trailing" constant="30" id="00i-FU-T72"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9I1-rV-Zkr" secondAttribute="bottom" constant="100" id="33d-x7-NdY"/>
@@ -166,10 +170,10 @@
     </scenes>
     <designables>
         <designable name="7ZJ-fs-rh7">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="qnJ-jt-qg0">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="xHT-7s-nlS">
             <size key="intrinsicContentSize" width="43" height="32"/>
@@ -178,7 +182,7 @@
     <resources>
         <image name="MoveUpIcon" width="500" height="432"/>
         <namedColor name="backgroundColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.99607843137254903" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

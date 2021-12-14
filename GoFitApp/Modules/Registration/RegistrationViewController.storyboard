@@ -75,6 +75,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbB-v2-MKf" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="nicknameTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hmD-Em-wk9"/>
                                                 </constraints>
@@ -100,11 +101,12 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3a-SR-vGS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="60" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="EGH-T5-Y6Y"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="E-mail address"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="E-mail address:"/>
@@ -125,6 +127,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R9g-6t-x4e" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="120" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9Lf-gD-m3D"/>
                                                 </constraints>
@@ -150,6 +153,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atb-Wm-aee" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="180" width="354" height="50"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="repeatPasswordTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="EqL-Lc-CpQ"/>
                                                 </constraints>
@@ -187,6 +191,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpd-7S-rfO" customClass="PrimaryButton" customModule="GoFitApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="728" width="354" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="signUpButton"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tDj-uY-fTZ"/>
                                         </constraints>
@@ -209,6 +214,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="backgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="RegistrationViewController"/>
                         <constraints>
                             <constraint firstItem="Afh-dW-iWM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="lnx-Yh-2TD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Afh-dW-iWM" secondAttribute="trailing" constant="30" id="muu-ud-tP1"/>
@@ -232,16 +238,16 @@
     </scenes>
     <designables>
         <designable name="R9g-6t-x4e">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="TbB-v2-MKf">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="U3a-SR-vGS">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="atb-Wm-aee">
-            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
+            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
         </designable>
         <designable name="xpd-7S-rfO">
             <size key="intrinsicContentSize" width="61" height="34"/>

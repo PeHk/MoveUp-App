@@ -69,7 +69,7 @@ final class LoginViewModel: ViewModelProtocol {
     fileprivate let permissionManager: PermissionManager
     
     private(set) lazy var isInputValid = Publishers.CombineLatest($email, $password)
-        .map { $0.count < 2 || $1.count < 3 || Validators.textFieldValidatorEmail($0) }
+        .map { $0.count < 2 || $1.count < 3 || !Validators.textFieldValidatorEmail($0) }
         .eraseToAnyPublisher()
 
     // MARK: Init

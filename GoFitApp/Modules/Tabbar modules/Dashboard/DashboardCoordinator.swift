@@ -42,6 +42,7 @@ class DashboardCoordinator: NSObject, Coordinator {
             }
             .store(in: &subscription)
         
+        viewController.view.accessibilityIdentifier = "DashboardViewController"
         navigationController.setViewControllers([viewController], animated: false)
     }
 }

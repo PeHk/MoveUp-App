@@ -71,7 +71,7 @@ class LoginViewController: BaseViewController {
         
         viewModel.isInputValid
             .sink { input in
-                input ? self.loginButton.setEnabled() : self.loginButton.setDisabled()
+                !input ? self.loginButton.setEnabled() : self.loginButton.setDisabled()
             }
             .store(in: &subscription)
         

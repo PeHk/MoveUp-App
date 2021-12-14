@@ -24,7 +24,7 @@ protocol Coordinator: AnyObject {
     /// A place to put logic to finish the flow, to clean all children coordinators, and to notify the parent that this coordinator is ready to be deallocated
     func finish()
     
-//    init(_ navigationController: UINavigationController, _ networkManager: NetworkManager)
+//    init(_ navigationController: UINavigationController, _ dependencyContainer: DependencyContainer)
 }
 
 extension Coordinator {

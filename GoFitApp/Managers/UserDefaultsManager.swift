@@ -11,9 +11,8 @@ import Combine
 
 class UserDefaultsManager {
     
-    let dependencyContainer: DependencyContainer
-    let defaults = UserDefaults.standard
-    let connectionPresetChanged = PassthroughSubject<Void, Never>()
+    fileprivate let dependencyContainer: DependencyContainer
+    fileprivate let defaults = UserDefaults.standard
     
     init(_ dependencyContainer: DependencyContainer) {
         self.dependencyContainer = dependencyContainer
@@ -37,5 +36,12 @@ class UserDefaultsManager {
     
     func get(forKey: String) -> Any? {
         defaults.value(forKey: forKey)
+    }
+    
+    func resetDefaults() {
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 }
