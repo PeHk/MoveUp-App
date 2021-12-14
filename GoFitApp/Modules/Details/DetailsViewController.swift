@@ -126,7 +126,7 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
             basicPermissions.delegate = self
             basicPermissions.present(on: self)
         } else {
-            viewModel.stepper.send(.save)
+            viewModel.action.send(.healthKitPermissions)
         }
     }
 }
@@ -134,7 +134,7 @@ class DetailsViewController: BaseViewController,  UITextFieldDelegate {
 extension DetailsViewController: SPPermissionsDelegate {
     func didHidePermissions(_ permissions: [SPPermissions.Permission]) {
         if SPPermissions.Permission.locationWhenInUse.authorized && SPPermissions.Permission.notification.authorized && SPPermissions.Permission.calendar.authorized {
-            self.viewModel.stepper.send(.save)
+            viewModel.action.send(.healthKitPermissions)
         } else {
             self.permissionsHidden = true
         }

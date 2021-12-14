@@ -43,6 +43,6 @@ class SetActiveMinutesCoordinator: NSObject, Coordinator {
             }
             .store(in: &subscription)
         
-        navigationController.setViewControllers([viewController], animated: false)
+        self.navigationController.setViewControllers([viewController], animated: false)
     }
 }

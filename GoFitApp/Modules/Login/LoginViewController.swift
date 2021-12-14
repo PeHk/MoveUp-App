@@ -8,9 +8,11 @@
 import UIKit
 import Combine
 import SkyFloatingLabelTextField
+import SPPermissions
 
 class LoginViewController: BaseViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var forgotPasswordButton: UILabel!
     @IBOutlet weak var loginButton: PrimaryButton!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField!
@@ -20,6 +22,7 @@ class LoginViewController: BaseViewController {
     weak var coordinator: LoginCoordinator!
 
     private var subscription = Set<AnyCancellable>()
+    private var permissionsHidden: Bool = false
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -71,10 +74,40 @@ class LoginViewController: BaseViewController {
                 !input ? self.loginButton.setEnabled() : self.loginButton.setDisabled()
             }
             .store(in: &subscription)
+        
+        viewModel.action
+            .sink { action in
+                if case .permissionsShowed = action {
+                    self.presentPermissions()
+                }
+            }
+            .store(in: &subscription)
     }
     
     // MARK: Actions
     @IBAction func loginTapped(_ sender: Any) {
         self.viewModel.action.send(.loginTapped)
+    }
+    
+    private func presentPermissions() {
+        if !SPPermissions.Permission.locationWhenInUse.authorized || !SPPermissions.Permission.notification.authorized || !SPPermissions.Permission.calendar.authorized {
+            let basicPermissions = SPPermissions.list([.calendar, .notification, .locationWhenInUse])
+            basicPermissions.delegate = self
+            basicPermissions.allowSwipeDismiss = false
+            basicPermissions.present(on: self)
+
+        } else {
+            viewModel.action.send(.healthKitPermissions)
+        }
+    }
+}
+
+extension LoginViewController: SPPermissionsDelegate {
+    func didHidePermissions(_ permissions: [SPPermissions.Permission]) {
+        if SPPermissions.Permission.locationWhenInUse.authorized && SPPermissions.Permission.notification.authorized && SPPermissions.Permission.calendar.authorized {
+            viewModel.action.send(.healthKitPermissions)
+        } else {
+            self.permissionsHidden = true
+        }
     }
 }

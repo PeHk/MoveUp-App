@@ -13,6 +13,8 @@ final class LoginViewModel: ViewModelProtocol {
     // MARK: - Enums
     enum Action {
         case loginTapped
+        case permissionsShowed
+        case healthKitPermissions
     }
     
     enum Step {
@@ -30,6 +32,10 @@ final class LoginViewModel: ViewModelProtocol {
         switch action {
         case .loginTapped:
             self.loginTapped()
+        case .permissionsShowed:
+            return
+        case .healthKitPermissions:
+            showHealthKit()
         }
     }
     
@@ -60,6 +66,7 @@ final class LoginViewModel: ViewModelProtocol {
     
     fileprivate let loginManager: LoginManager
     fileprivate let userManager: UserManager
+    fileprivate let permissionManager: PermissionManager
     
     private(set) lazy var isInputValid = Publishers.CombineLatest($email, $password)
         .map { $0.count < 2 || $1.count < 3 || !Validators.textFieldValidatorEmail($0) }
@@ -69,6 +76,7 @@ final class LoginViewModel: ViewModelProtocol {
     init(_ dependencyContainer: DependencyContainer) {
         self.loginManager = dependencyContainer.loginManager
         self.userManager = dependencyContainer.userManager
+        self.permissionManager = dependencyContainer.permissionManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -113,8 +121,16 @@ final class LoginViewModel: ViewModelProtocol {
             } receiveValue: { _, _ in
                 self.userManager.fetchCurrentUser()
                 self.isLoading.send(false)
-                self.stepper.send(.login)
+                self.action.send(.permissionsShowed)
             }
             .store(in: &subscription)
+    }
+    
+    private func showHealthKit() {
+        self.permissionManager.authorizeHealthKit { success in
+            DispatchQueue.main.async {
+                self.stepper.send(.login)
+            }
+        }
     }
 }

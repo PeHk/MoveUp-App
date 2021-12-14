@@ -48,6 +48,9 @@ final class AppCoordinator: Coordinator {
     }
     
     private func logout(_ fromInterceptor: Bool? = nil) {
+        for child in childCoordinators {
+            child.finish()
+        }
         self.childCoordinators = []
         self.navigationController.viewControllers.removeAll()
         self.showHomePage(fromInterceptor)

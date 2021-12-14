@@ -1,8 +1,9 @@
 import Combine
 import UIKit
 import ALProgressView
+import EmptyDataSet_Swift
 
-class DashboardViewController: UITableViewController {
+class DashboardViewController: UITableViewController, EmptyDataSetSource, EmptyDataSetDelegate {
     
     @IBOutlet weak var caloriesRing: ALProgressRing!
     @IBOutlet weak var stepsRing: ALProgressRing!
@@ -34,6 +35,16 @@ class DashboardViewController: UITableViewController {
         
         stepsRing.setProgress(0.9, animated: true)
         caloriesRing.setProgress(0.4, animated: true)
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        
+        tableView.emptyDataSetView { [weak self] view in
+            if self != nil {
+                view.titleLabelString(self?.viewModel.configuration.titleString)
+                    .isScrollAllowed(true)
+            }
+        }
     }
     
     private func setupBindings() {
