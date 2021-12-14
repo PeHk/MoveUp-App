@@ -44,10 +44,14 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     var subscription = Set<AnyCancellable>()
     
-    var sections = ["Recent", "All sports"]
+    let sportManager: SportManager
+    
+    var sections = CurrentValueSubject<[SectionData], Never>([])
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.sportManager = dependencyContainer.sportManager
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -61,5 +65,23 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
+        self.fetchSports()
+    }
+    
+    private func fetchSports() {
+        self.state.send(.loading)
+        self.sportManager.currentSports
+            .sink { _ in
+                ()
+            } receiveValue: { sports in
+                self.sections.send([SectionData(sectionName: "All sports", sectionItems: sports)])
+                self.isLoading.send(false)
+            }
+            .store(in: &subscription)
+
+    }
+    
+    func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {
+        ActivityCellViewModel(name: sport.name ?? "", id: sport.id)
     }
 }

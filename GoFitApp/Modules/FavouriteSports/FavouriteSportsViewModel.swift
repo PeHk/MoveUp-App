@@ -52,11 +52,13 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     
     private let networkManager: NetworkManager
     private let userManager: UserManager
+    private let sportManager: SportManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
+        self.sportManager = dependencyContainer.sportManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -87,14 +89,28 @@ class FavouriteSportsViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-                    print(dataResponse.value!)
                     self.sports.value = dataResponse.value!
+                    self.saveSportsToCoreData(sports: dataResponse.value!)
                     self.isLoading.send(false)
                     
                 }
             }
             .store(in: &subscription)
 
+    }
+    
+    private func saveSportsToCoreData(sports: [SportResource]) {
+        for sport in sports {
+            self.sportManager.saveSport(newSport: sport)
+                .sink { _ in
+                    ()
+                } receiveValue: { _ in
+                    ()
+                }
+                .store(in: &subscription)
+        }
+        
+        self.sportManager.fetchCurrentSports()
     }
     
     private func updateSports(sports: [Int64]) {
@@ -111,7 +127,6 @@ class FavouriteSportsViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-                    print(dataResponse.value!)
                     self.isLoading.send(false)
                     self.stepper.send(.save)
                 }

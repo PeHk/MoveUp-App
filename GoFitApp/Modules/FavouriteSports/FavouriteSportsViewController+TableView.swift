@@ -26,12 +26,4 @@ extension FavouriteSportsViewController {
             fatalError("Unexpected kind")
         }
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
 }
