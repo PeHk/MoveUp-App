@@ -26,6 +26,8 @@
 		E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA400271DB7E80096B032 /* LoginViewModel.swift */; };
 		E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA402271DB7F30096B032 /* LoginViewController.swift */; };
 		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
+		E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D2275E61C50073F2A6 /* PermissionManager.swift */; };
+		E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10E45D4275E62860073F2A6 /* HealthKit.framework */; };
 		E10E45D7275E7CC30073F2A6 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D6275E7CC30073F2A6 /* NetworkProtocol.swift */; };
 		E10E45DD275E896A0073F2A6 /* RegistrationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45DC275E896A0073F2A6 /* RegistrationControllerTests.swift */; };
 		E10E45E0275E99BF0073F2A6 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45DF275E99BE0073F2A6 /* LoginViewControllerTests.swift */; };
@@ -33,8 +35,14 @@
 		E10E45E4275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E3275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift */; };
 		E10E45E6275EB8240073F2A6 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */; };
 		E10E45EE275EBAC90073F2A6 /* SignUpFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */; };
-		E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D2275E61C50073F2A6 /* PermissionManager.swift */; };
-		E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10E45D4275E62860073F2A6 /* HealthKit.framework */; };
+		E1111F142768DBEB00B10529 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0B2768DBEB00B10529 /* ActivityDetailViewController.swift */; };
+		E1111F152768DBEB00B10529 /* ActivityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */; };
+		E1111F162768DBEB00B10529 /* ActivityDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */; };
+		E1111F172768DBEB00B10529 /* ActivityDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1111F0E2768DBEB00B10529 /* ActivityDetailViewController.storyboard */; };
+		E1111F182768DBEB00B10529 /* ActivityPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1111F102768DBEB00B10529 /* ActivityPickerViewController.storyboard */; };
+		E1111F192768DBEB00B10529 /* ActivityPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F112768DBEB00B10529 /* ActivityPickerViewModel.swift */; };
+		E1111F1A2768DBEB00B10529 /* ActivityPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F122768DBEB00B10529 /* ActivityPickerViewController.swift */; };
+		E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
 		E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAABB275771900075F74D /* FirstBioDataResource.swift */; };
 		E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */; };
@@ -177,6 +185,8 @@
 		E10AA400271DB7E80096B032 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E10AA402271DB7F30096B032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		E10E45D2275E61C50073F2A6 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		E10E45D4275E62860073F2A6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		E10E45D6275E7CC30073F2A6 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		E10E45DC275E896A0073F2A6 /* RegistrationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationControllerTests.swift; sourceTree = "<group>"; };
 		E10E45DF275E99BE0073F2A6 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
@@ -185,8 +195,14 @@
 		E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		E10E45EB275EBAC80073F2A6 /* GoFitAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlowUITests.swift; sourceTree = "<group>"; };
-		E10E45D2275E61C50073F2A6 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
-		E10E45D4275E62860073F2A6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		E1111F0B2768DBEB00B10529 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
+		E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewModel.swift; sourceTree = "<group>"; };
+		E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailCoordinator.swift; sourceTree = "<group>"; };
+		E1111F0E2768DBEB00B10529 /* ActivityDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityDetailViewController.storyboard; sourceTree = "<group>"; };
+		E1111F102768DBEB00B10529 /* ActivityPickerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityPickerViewController.storyboard; sourceTree = "<group>"; };
+		E1111F112768DBEB00B10529 /* ActivityPickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPickerViewModel.swift; sourceTree = "<group>"; };
+		E1111F122768DBEB00B10529 /* ActivityPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPickerViewController.swift; sourceTree = "<group>"; };
+		E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityPickerCoordinator.swift; sourceTree = "<group>"; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E11FAABB275771900075F74D /* FirstBioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstBioDataResource.swift; sourceTree = "<group>"; };
 		E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -406,6 +422,28 @@
 			path = GoFitAppUITests;
 			sourceTree = "<group>";
 		};
+		E1111F0A2768DBEB00B10529 /* ActivityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E1111F0B2768DBEB00B10529 /* ActivityDetailViewController.swift */,
+				E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */,
+				E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */,
+				E1111F0E2768DBEB00B10529 /* ActivityDetailViewController.storyboard */,
+			);
+			path = ActivityDetail;
+			sourceTree = "<group>";
+		};
+		E1111F0F2768DBEB00B10529 /* ActivityPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E1111F102768DBEB00B10529 /* ActivityPickerViewController.storyboard */,
+				E1111F112768DBEB00B10529 /* ActivityPickerViewModel.swift */,
+				E1111F122768DBEB00B10529 /* ActivityPickerViewController.swift */,
+				E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */,
+			);
+			path = ActivityPicker;
+			sourceTree = "<group>";
+		};
 		E11FAABF2757762C0075F74D /* ProfileDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +481,8 @@
 		E13B447527206DBF0062C44B /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				E1111F0A2768DBEB00B10529 /* ActivityDetail */,
+				E1111F0F2768DBEB00B10529 /* ActivityPicker */,
 				E13B447627206DBF0062C44B /* ActivityViewController.swift */,
 				E13B447727206DBF0062C44B /* ActivityViewController.storyboard */,
 				E13B447827206DBF0062C44B /* ActivityViewModel.swift */,
@@ -891,10 +931,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EBC147271DCED0009E9939 /* DetailsViewController.storyboard in Resources */,
+				E1111F172768DBEB00B10529 /* ActivityDetailViewController.storyboard in Resources */,
 				E10AA3F2271DB33D0096B032 /* Roboto-Medium.ttf in Resources */,
 				E10AA3F5271DB33D0096B032 /* Roboto-LightItalic.ttf in Resources */,
 				E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */,
 				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
+				E1111F182768DBEB00B10529 /* ActivityPickerViewController.storyboard in Resources */,
 				E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */,
 				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
 				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
@@ -986,6 +1028,7 @@
 			files = (
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
+				E1111F162768DBEB00B10529 /* ActivityDetailCoordinator.swift in Sources */,
 				E19ABA1D2753C3D1004E6FDC /* SportResource.swift in Sources */,
 				E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */,
 				E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */,
@@ -1005,6 +1048,7 @@
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
+				E1111F1A2768DBEB00B10529 /* ActivityPickerViewController.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */,
 				E17751352755326D00C9917F /* LoginManager.swift in Sources */,
@@ -1012,6 +1056,7 @@
 				E134E93127523D4F00453781 /* BioDataResource.swift in Sources */,
 				E1E51085274C00D900C9C266 /* NetworkManager+Requests.swift in Sources */,
 				E134E93627525BD900453781 /* CoreDataManager.swift in Sources */,
+				E1111F152768DBEB00B10529 /* ActivityDetailViewModel.swift in Sources */,
 				E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */,
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
 				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
@@ -1027,6 +1072,7 @@
 				E1E5108F274C053E00C9C266 /* Constants.swift in Sources */,
 				E1E51089274C020B00C9C266 /* NetworkManager+Interceptor.swift in Sources */,
 				E1E51087274C014E00C9C266 /* ServerError.swift in Sources */,
+				E1111F192768DBEB00B10529 /* ActivityPickerViewModel.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
 				E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */,
 				E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */,
@@ -1041,6 +1087,7 @@
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
+				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
@@ -1059,6 +1106,7 @@
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */,
+				E1111F142768DBEB00B10529 /* ActivityDetailViewController.swift in Sources */,
 				E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,

@@ -43,5 +43,5 @@ protocol CoordinatorFinishDelegate: AnyObject {
 // MARK: - CoordinatorType
 /// Using this structure we can define what type of flow we can use in-app.
 enum CoordinatorType {
-    case app, login, registration, home, details, tab, activity, history, profile, dashboard, setActiveMinutes, favouriteSports, profileDetail, sportsDetail
+    case app, login, registration, home, details, tab, activity, history, profile, dashboard, setActiveMinutes, favouriteSports, profileDetail, sportsDetail, activityPicker, activityDetail
 }

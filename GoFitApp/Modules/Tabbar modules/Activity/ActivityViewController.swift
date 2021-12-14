@@ -35,6 +35,6 @@ class ActivityViewController: UITableViewController, EmptyDataSetSource, EmptyDa
     }
     
     @objc func addTapped() {
-        
+        self.viewModel.stepper.send(.startActivity)
     }
 }

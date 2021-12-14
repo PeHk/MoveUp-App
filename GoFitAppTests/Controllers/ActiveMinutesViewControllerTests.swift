@@ -48,7 +48,6 @@ class ActiveMinutesViewControllerTests: XCTestCase {
         // Act
         let recognizers = try XCTUnwrap(increaseView.gestureRecognizers, "Increase view has no gesture recognizers initialized")
         
-        
         // Assert
         XCTAssertEqual(recognizers.count, 1, "Increase view have no exactly one recognizer!")
     }
@@ -59,7 +58,6 @@ class ActiveMinutesViewControllerTests: XCTestCase {
         
         // Act
         let recognizers = try XCTUnwrap(decreaseView.gestureRecognizers, "Decrease view has no gesture recognizers initialized")
-        
         
         // Assert
         XCTAssertEqual(recognizers.count, 1, "Decrease view have no exactly one recognizer!")

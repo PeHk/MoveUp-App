@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-class ActivityViewModel: ViewModelProtocol {
+class ActivityPickerViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
@@ -9,7 +9,7 @@ class ActivityViewModel: ViewModelProtocol {
     }
     
     enum Step {
-        case startActivity
+        
     }
     
     enum State {
@@ -42,13 +42,12 @@ class ActivityViewModel: ViewModelProtocol {
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
-    var configuration: Configuration
     var subscription = Set<AnyCancellable>()
+    
+    var sections = ["Recent", "All sports"]
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
-        self.configuration = Configuration(.activities)
-        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
