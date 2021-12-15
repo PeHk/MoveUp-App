@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="BioData" representedClassName="BioData" syncable="YES" codeGenerationType="class">
         <attribute name="activity_minutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="bmi" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -9,6 +9,7 @@
     </entity>
     <entity name="Sport" representedClassName="Sport" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="met" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
@@ -23,7 +24,7 @@
     </entity>
     <elements>
         <element name="BioData" positionX="-46.8299560546875" positionY="13.68820190429688" width="128" height="118"/>
+        <element name="Sport" positionX="-189" positionY="-54" width="128" height="74"/>
         <element name="User" positionX="-339.1815795898438" positionY="-212.3511657714844" width="128" height="163"/>
-        <element name="Sport" positionX="-189" positionY="-54" width="128" height="59"/>
     </elements>
 </model>

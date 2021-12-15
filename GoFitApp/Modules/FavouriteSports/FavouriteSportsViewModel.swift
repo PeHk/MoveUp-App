@@ -48,7 +48,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     
     internal var subscription = Set<AnyCancellable>()
     
-    public var sports = CurrentValueSubject<[SportResource], Never>([])
+    public var sports = CurrentValueSubject<[Sport], Never>([])
     
     private let networkManager: NetworkManager
     private let userManager: UserManager
@@ -69,6 +69,12 @@ class FavouriteSportsViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
+        
+        self.sportManager.currentSports
+            .sink { sports in
+                self.sports.send(sports)
+            }
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
@@ -76,6 +82,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
         fetchSports()
     }
     
+    // MARK: Functions
     private func fetchSports() {
         self.state.send(.loading)
         
@@ -89,10 +96,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-                    self.sports.value = dataResponse.value!
                     self.saveSportsToCoreData(sports: dataResponse.value!)
-                    self.isLoading.send(false)
-                    
                 }
             }
             .store(in: &subscription)
@@ -102,14 +106,17 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     private func saveSportsToCoreData(sports: [SportResource]) {
         for sport in sports {
             self.sportManager.saveSport(newSport: sport)
-                .sink { _ in
-                    ()
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        self.state.send(.error(error))
+                    }
                 } receiveValue: { _ in
                     ()
                 }
                 .store(in: &subscription)
         }
         
+        self.isLoading.send(false)
         self.sportManager.fetchCurrentSports()
     }
     
@@ -134,7 +141,8 @@ class FavouriteSportsViewModel: ViewModelProtocol {
             .store(in: &subscription)
     }
     
-    func createSportCellViewModel(sport: SportResource) -> SportCellViewModel {
-        SportCellViewModel(isSelected: false, name: sport.name)
+    // MARK: ViewModels
+    func createSportCellViewModel(sport: Sport) -> SportCellViewModel {
+        SportCellViewModel(isSelected: false, name: sport.name ?? "")
     }
 }

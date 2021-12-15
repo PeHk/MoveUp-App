@@ -10,6 +10,6 @@ import Foundation
 struct SportResource: Codable {
     let id: Int64
     let name: String
-    let calories_per_hour: Int64
+    let met: Float
     let created_at: String
 }

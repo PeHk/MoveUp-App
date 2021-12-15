@@ -34,32 +34,42 @@ class SportManager {
             .store(in: &subscription)
     }
     
-    func getSports() -> AnyPublisher<CoreDataFetchResultsPublisher<Sport>.Output, NSError> {
+    func getSports() -> AnyPublisher<CoreDataFetchResultsPublisher<Sport>.Output, NetworkError> {
         let request = NSFetchRequest<Sport>(entityName: Sport.entityName)
         
         return coreDataStore
             .publicher(fetch: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    func saveSport(newSport: SportResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NSError> {
+    func saveSport(newSport: SportResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
             let sport: Sport = self.coreDataStore.createEntity()
             sport.name = newSport.name
             sport.id = newSport.id
+            sport.met = newSport.met
         }
 
         return coreDataStore
             .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
     
-    func deleteSports() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NSError> {
+    func deleteSports() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Sport.entityName)
         request.predicate = NSPredicate(format: "id != nil")
         
         return coreDataStore
             .publicher(delete: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
             .eraseToAnyPublisher()
     }
 }
