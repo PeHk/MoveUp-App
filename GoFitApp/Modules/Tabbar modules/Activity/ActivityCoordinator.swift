@@ -52,6 +52,13 @@ class ActivityCoordinator: NSObject, Coordinator {
         activityPickerCoordinator.start()
         childCoordinators.append(activityPickerCoordinator)
     }
+    
+    private func showActivityDetail() {
+        let activityDetailCoordinator = ActivityDetailCoordinator(navigationController, dependencyContainer)
+        activityDetailCoordinator.finishDelegate = self
+        activityDetailCoordinator.start()
+        childCoordinators.append(activityDetailCoordinator)
+    }
 }
 
 // MARK: Navigation extensions
@@ -61,6 +68,8 @@ extension ActivityCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.type {
         case .activityPicker:
+            let coor = childCoordinator as! ActivityPickerCoordinator
+            
             navigationController.popViewController(animated: true)
         default:
             break

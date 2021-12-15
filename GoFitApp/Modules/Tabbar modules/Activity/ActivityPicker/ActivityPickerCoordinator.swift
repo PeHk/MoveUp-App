@@ -10,6 +10,7 @@ class ActivityPickerCoordinator: NSObject, Coordinator {
     var type: CoordinatorType { .activityPicker }
     var childCoordinators: [Coordinator] = []
     var subscription = Set<AnyCancellable>()
+    var selectedSport: Sport? = nil 
     
     var viewModel: ActivityPickerViewModel {
         let viewModel = ActivityPickerViewModel(dependencyContainer)

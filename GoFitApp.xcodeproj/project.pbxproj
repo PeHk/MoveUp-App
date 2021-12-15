@@ -88,6 +88,8 @@
 		E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA1A274FB81A002CB035 /* Helpers.swift */; };
 		E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1515878275380D20045CBCB /* Optional+Extensions.swift */; };
 		E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */; };
+		E153BCC2276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */; };
+		E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */; };
 		E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */; };
 		E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218F275B9C6F00A7A46D /* String+Extensions.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
@@ -255,6 +257,8 @@
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityPickerViewController+TableView.swift"; sourceTree = "<group>"; };
+		E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsDetailViewController+TableView.swift"; sourceTree = "<group>"; };
+		E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
 		E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
 		E162218F275B9C6F00A7A46D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -727,6 +731,7 @@
 				E13B44A0272094950062C44B /* BaseViewController.swift */,
 				E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */,
 				E162218F275B9C6F00A7A46D /* String+Extensions.swift */,
+				E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -776,6 +781,7 @@
 				E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */,
 				E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */,
 				E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */,
+				E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */,
 			);
 			path = FavouriteSportsDetail;
 			sourceTree = "<group>";
@@ -1079,6 +1085,7 @@
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
+				E153BCC2276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift in Sources */,
 				E1111F1A2768DBEB00B10529 /* ActivityPickerViewController.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */,
@@ -1144,6 +1151,7 @@
 				E1111F142768DBEB00B10529 /* ActivityDetailViewController.swift in Sources */,
 				E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
+				E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
 				E177513327552B7100C9917F /* LogoutManager.swift in Sources */,

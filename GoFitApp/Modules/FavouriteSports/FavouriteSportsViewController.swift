@@ -41,10 +41,10 @@ class FavouriteSportsViewController: BaseTableViewController {
     
     // MARK: Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        var items: [Int64] = []
+        var items: [Sport] = []
         if let indexPaths = self.tableView.indexPathsForSelectedRows {
             for indexPath in indexPaths {
-                items.append(viewModel.sports.value[indexPath.row].id)
+                items.append(viewModel.sports.value[indexPath.row])
             }
         }
         

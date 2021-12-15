@@ -41,11 +41,19 @@ class FavouriteSportsDetailViewModel: ViewModelProtocol {
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var sports = CurrentValueSubject<[Sport], Never>([])
+    var user = CurrentValueSubject<User?, Never>(nil)
     
     var subscription = Set<AnyCancellable>()
     
+    let sportManager: SportManager
+    let userManager: UserManager
+    
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
+        self.sportManager = dependencyContainer.sportManager
+        self.userManager = dependencyContainer.userManager
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })
@@ -55,9 +63,25 @@ class FavouriteSportsDetailViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
+        
+        self.sportManager.currentSports
+            .sink(receiveValue: { sports in
+                self.sports.send(sports)
+            })
+            .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink(receiveValue: { user in
+                self.user.send(user)
+            })
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {
+        ActivityCellViewModel(name: sport.name ?? "", id: sport.id)
     }
 }

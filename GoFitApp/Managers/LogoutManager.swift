@@ -13,6 +13,7 @@ class LogoutManager {
     fileprivate let dependencyContainer: DependencyContainer
     fileprivate let userManager: UserManager
     fileprivate let credentialsManager: CredentialsManager
+    fileprivate let sportManager: SportManager
     
     private var subscription = Set<AnyCancellable>()
     
@@ -22,11 +23,13 @@ class LogoutManager {
         self.dependencyContainer = dependencyContainer
         self.userManager = dependencyContainer.userManager
         self.credentialsManager = dependencyContainer.credentialsManager
+        self.sportManager = dependencyContainer.sportManager
     }
     
     public func logout(_ fromInterceptor: Bool? = nil) {
         if credentialsManager.removeCredentials() {
             self.userManager.deleteUser()
+                .zip(self.sportManager.deleteSports())
                 .receive(on: DispatchQueue.main)
                 .sink { _ in
                     ()

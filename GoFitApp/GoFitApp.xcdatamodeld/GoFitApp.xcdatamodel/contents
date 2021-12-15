@@ -11,6 +11,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="met" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favourite_sports" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="admin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -21,10 +22,11 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="registered_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="bio_data" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BioData" inverseName="user" inverseEntity="BioData"/>
+        <relationship name="favourite_sports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sport" inverseName="user" inverseEntity="Sport"/>
     </entity>
     <elements>
         <element name="BioData" positionX="-46.8299560546875" positionY="13.68820190429688" width="128" height="118"/>
-        <element name="Sport" positionX="-189" positionY="-54" width="128" height="74"/>
-        <element name="User" positionX="-339.1815795898438" positionY="-212.3511657714844" width="128" height="163"/>
+        <element name="Sport" positionX="-584.8748779296875" positionY="24.59228515625" width="128" height="103"/>
+        <element name="User" positionX="-339.1815795898438" positionY="-212.3511657714844" width="128" height="178"/>
     </elements>
 </model>

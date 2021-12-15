@@ -72,4 +72,17 @@ class SportManager {
             })
             .eraseToAnyPublisher()
     }
+    
+    func saveSportToUser(user: User, sports: [Sport]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let action: Action = {
+            user.favourite_sports = NSSet(array: sports)
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
 }

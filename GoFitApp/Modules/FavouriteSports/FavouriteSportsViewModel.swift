@@ -6,7 +6,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case saveSports(_ sports: [Int64])
+        case saveSports(_ sports: [Sport])
     }
     
     enum Step {
@@ -49,6 +49,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     internal var subscription = Set<AnyCancellable>()
     
     public var sports = CurrentValueSubject<[Sport], Never>([])
+    public var user = CurrentValueSubject<User?, Never>(nil)
     
     private let networkManager: NetworkManager
     private let userManager: UserManager
@@ -73,6 +74,12 @@ class FavouriteSportsViewModel: ViewModelProtocol {
         self.sportManager.currentSports
             .sink { sports in
                 self.sports.send(sports)
+            }
+            .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.user.send(user)
             }
             .store(in: &subscription)
     }
@@ -120,13 +127,19 @@ class FavouriteSportsViewModel: ViewModelProtocol {
         self.sportManager.fetchCurrentSports()
     }
     
-    private func updateSports(sports: [Int64]) {
+    private func updateSports(sports: [Sport]) {
         self.state.send(.loading)
+        
+        var ids: [Int64] = []
+        
+        for sport in sports {
+            ids.append(sport.id)
+        }
         
         let updateRequest: AnyPublisher<DataResponse<UserSportsResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.sports.url,
             method: .post,
-            parameters: ["ids": sports]
+            parameters: ["ids": ids]
         )
         
         updateRequest
@@ -134,11 +147,25 @@ class FavouriteSportsViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-                    self.isLoading.send(false)
-                    self.stepper.send(.save)
+                    self.updateUser(sports: sports)
                 }
             }
             .store(in: &subscription)
+    }
+    
+    private func updateUser(sports: [Sport]) {
+        if let currentUser = user.value {
+            self.sportManager.saveSportToUser(user: currentUser, sports: sports)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        self.state.send(.error(error))
+                    }
+                } receiveValue: { _ in
+                    self.isLoading.send(false)
+                    self.stepper.send(.save)
+                }
+                .store(in: &subscription)
+        }
     }
     
     // MARK: ViewModels
