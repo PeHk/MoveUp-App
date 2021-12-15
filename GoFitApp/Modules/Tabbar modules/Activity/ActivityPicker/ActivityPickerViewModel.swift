@@ -5,7 +5,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case selected(_ sport: Sport)
     }
     
     enum Step {
@@ -20,7 +20,10 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .selected(let sport):
+            self.processSelection(sport: sport)
+        }
     }
     
     func processState(_ state: State) {
@@ -61,24 +64,33 @@ class ActivityPickerViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
+        
+        self.sportManager.currentSports
+            .sink { sports in
+                self.sections.send([SectionData(sectionName: "All sports", sectionItems: sports)])
+            }
+            .store(in: &subscription)
+
     }
     
     internal func initializeView() {
         isLoading.send(false)
-        self.fetchSports()
     }
     
-    private func fetchSports() {
-        self.state.send(.loading)
-        self.sportManager.currentSports
-            .sink { _ in
-                ()
-            } receiveValue: { sports in
-                self.sections.send([SectionData(sectionName: "All sports", sectionItems: sports)])
-                self.isLoading.send(false)
-            }
-            .store(in: &subscription)
-
+//    private func fetchSports() {
+//        self.state.send(.loading)
+//        self.sportManager.currentSports
+//            .sink { _ in
+//                ()
+//            } receiveValue: { sports in
+//
+//                self.isLoading.send(false)
+//            }
+//            .store(in: &subscription)
+//
+//    }
+    private func processSelection(sport: Sport) {
+        
     }
     
     func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {

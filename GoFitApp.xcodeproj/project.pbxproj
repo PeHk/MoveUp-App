@@ -87,6 +87,7 @@
 		E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */; };
 		E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA1A274FB81A002CB035 /* Helpers.swift */; };
 		E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1515878275380D20045CBCB /* Optional+Extensions.swift */; };
+		E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */; };
 		E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */; };
 		E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218F275B9C6F00A7A46D /* String+Extensions.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
@@ -253,6 +254,7 @@
 		E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityPickerViewController+TableView.swift"; sourceTree = "<group>"; };
 		E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
 		E162218F275B9C6F00A7A46D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -449,6 +451,7 @@
 				E1111F112768DBEB00B10529 /* ActivityPickerViewModel.swift */,
 				E1111F122768DBEB00B10529 /* ActivityPickerViewController.swift */,
 				E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */,
+				E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */,
 			);
 			path = ActivityPicker;
 			sourceTree = "<group>";
@@ -1119,6 +1122,7 @@
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
+				E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */,
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
