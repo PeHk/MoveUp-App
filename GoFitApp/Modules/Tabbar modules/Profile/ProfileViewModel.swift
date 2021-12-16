@@ -1,11 +1,13 @@
 import Combine
 import Foundation
+import UIKit
 
 class ProfileViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
         case logout
+        case support
     }
     
     enum Step {
@@ -14,7 +16,6 @@ class ProfileViewModel: ViewModelProtocol {
         case sports
         case goals
         case notifications
-        case support
     }
     
     enum State {
@@ -28,6 +29,8 @@ class ProfileViewModel: ViewModelProtocol {
         switch action {
         case .logout:
             self.logout()
+        case .support:
+            self.contactSupport()
         }
     }
     
@@ -78,5 +81,11 @@ class ProfileViewModel: ViewModelProtocol {
     // MARK: Actions
     private func logout() {
         self.logoutManager.logout(false)
+    }
+    
+    private func contactSupport() {
+        if let url = URL(string: Constants.supportAddress) {
+            UIApplication.shared.open(url)
+        }
     }
 }

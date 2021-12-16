@@ -34,7 +34,7 @@ extension ProfileViewController {
         case 2:
             switch indexPath.row {
             case 0:
-                viewModel.stepper.send(.support)
+                viewModel.action.send(.support)
             default:
                 break
             }

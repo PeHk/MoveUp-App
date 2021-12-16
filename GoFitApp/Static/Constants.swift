@@ -43,4 +43,6 @@ struct Constants {
     static let loggedOutDescription = "You have been successfully logged out!"
     
     static let interceptorDescription = "Please log in again!"
+    
+    static let supportAddress = "https://forms.gle/ADimvyVnpRfrgwDC7"
 }
