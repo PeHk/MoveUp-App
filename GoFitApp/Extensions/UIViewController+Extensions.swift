@@ -30,7 +30,10 @@ extension UIViewController {
             textField.text = inputText
             textField.placeholder = inputPlaceholder
             textField.keyboardType = inputKeyboardType
+            textField.addTarget(alert, action: #selector(alert.textDidChangeInAlert), for: .editingChanged)
         }
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
             guard let textField =  alert.textFields?.first else {
                 actionHandler?(nil)
@@ -38,7 +41,7 @@ extension UIViewController {
             }
             actionHandler?(textField.text)
         }))
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        
         
         self.present(alert, animated: true, completion: nil)
     }

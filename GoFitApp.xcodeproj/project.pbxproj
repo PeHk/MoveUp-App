@@ -58,6 +58,7 @@
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
 		E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAA274FC872009B211C /* RegistrationManager.swift */; };
 		E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */; };
+		E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */; };
 		E134E93127523D4F00453781 /* BioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93027523D4F00453781 /* BioDataResource.swift */; };
 		E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134E933275257DD00453781 /* AuthenticationServices.framework */; };
 		E134E93627525BD900453781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93527525BD800453781 /* CoreDataManager.swift */; };
@@ -231,6 +232,7 @@
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		E12E6BAA274FC872009B211C /* RegistrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManager.swift; sourceTree = "<group>"; };
 		E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+CookieStorage.swift"; sourceTree = "<group>"; };
+		E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E134E93027523D4F00453781 /* BioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioDataResource.swift; sourceTree = "<group>"; };
 		E134E932275257DC00453781 /* GoFitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoFitApp.entitlements; sourceTree = "<group>"; };
 		E134E933275257DD00453781 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -746,6 +748,7 @@
 				E19ABA1E2753C608004E6FDC /* BaseTableViewController.swift */,
 				E162218F275B9C6F00A7A46D /* String+Extensions.swift */,
 				E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */,
+				E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
+				E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */,
 				E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */,
 				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
