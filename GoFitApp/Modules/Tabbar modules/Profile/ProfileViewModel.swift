@@ -12,6 +12,9 @@ class ProfileViewModel: ViewModelProtocol {
         case logout
         case profile
         case sports
+        case goals
+        case notifications
+        case support
     }
     
     enum State {

@@ -22,6 +22,22 @@ extension ProfileViewController {
             default:
                 break
             }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                viewModel.stepper.send(.goals)
+            case 1:
+                viewModel.stepper.send(.notifications)
+            default:
+                break
+            }
+        case 2:
+            switch indexPath.row {
+            case 0:
+                viewModel.stepper.send(.support)
+            default:
+                break
+            }
         default:
             break
         }

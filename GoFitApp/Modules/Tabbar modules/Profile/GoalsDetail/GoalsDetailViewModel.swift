@@ -1,11 +1,16 @@
 import Combine
 import Foundation
 
-class DashboardViewModel: ViewModelProtocol {
+class GoalsDetailViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case update
+        case showMinutes
+        case showCalories
+        case showSteps
+        case saveSteps(_ steps: Int)
+        case saveCalories(_ calories: Int)
+        case saveMinutes(_ minutes: Int)
     }
     
     enum Step {
@@ -21,8 +26,14 @@ class DashboardViewModel: ViewModelProtocol {
     // MARK: Actions and States
     func processAction(_ action: Action) {
         switch action {
-        case .update:
-            self.refreshValues()
+        case .saveCalories(let calories):
+            self.changeCalories(calories: calories)
+        case .saveMinutes(let minutes):
+            self.changeMinutes(minutes: minutes)
+        case .saveSteps(let steps):
+            self.changeSteps(steps: steps)
+        default:
+            break
         }
     }
     
@@ -39,30 +50,27 @@ class DashboardViewModel: ViewModelProtocol {
     }
     
     // MARK: - Variables
-    var stepsGoal: Int
-    var caloriesGoal: Int
+    var steps: Int
+    var calories: Int
     var state = CurrentValueSubject<State, Never>(.initial)
     var action = PassthroughSubject<Action, Never>()
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
-    var steps = CurrentValueSubject<Double, Never>(0)
-    var calories = CurrentValueSubject<Double, Never>(0)
+    var reloadTableView = CurrentValueSubject<Bool, Never>(true)
     
-    var configuration: Configuration
     var subscription = Set<AnyCancellable>()
     
-    let healthKitManager: HealthKitManager
     let userDefaultsManager: UserDefaultsManager
+    let healthKitManager: HealthKitManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
-        self.configuration = Configuration(.recommendations)
-        self.healthKitManager = dependencyContainer.healthKitManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
+        self.healthKitManager = dependencyContainer.healthKitManager
         
-        self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
-        self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
+        self.steps = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
+        self.calories = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -73,27 +81,32 @@ class DashboardViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
-        
-        self.healthKitManager.steps
-            .sink { steps in
-                self.steps.send(steps)
-                self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
-            }
-            .store(in: &subscription)
-        
-        self.healthKitManager.calories
-            .sink { calories in
-                self.calories.send(calories)
-                self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
-            }
-            .store(in: &subscription)
     }
     
     internal func initializeView() {
         isLoading.send(false)
     }
     
-    private func refreshValues() {
+    // MARK: Actions
+    private func changeSteps(steps: Int) {
+        self.state.send(.loading)
+        self.steps = steps
+        self.userDefaultsManager.set(value: steps, forKey: Constants.stepsGoal)
         self.healthKitManager.refreshValues()
+        self.isLoading.send(false)
+        self.reloadTableView.send(true)
+    }
+    
+    private func changeCalories(calories: Int) {
+        self.state.send(.loading)
+        self.calories = calories
+        self.userDefaultsManager.set(value: calories, forKey: Constants.caloriesGoal)
+        self.healthKitManager.refreshValues()
+        self.isLoading.send(false)
+        self.reloadTableView.send(true)
+    }
+    
+    private func changeMinutes(minutes: Int) {
+        
     }
 }

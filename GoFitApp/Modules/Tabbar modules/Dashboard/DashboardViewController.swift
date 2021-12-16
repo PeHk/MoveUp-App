@@ -76,7 +76,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
             .receive(on: DispatchQueue.main)
             .sink { steps in
                 self.stepsLabel.text = "\(Int(steps))"
-                self.stepsRing.setProgress(Float(steps) / 10000, animated: true)
+                self.stepsRing.setProgress(Float(steps) / Float(self.viewModel.stepsGoal), animated: true)
             }
             .store(in: &subscription)
         
@@ -84,7 +84,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
             .receive(on: DispatchQueue.main)
             .sink { calories in
                 self.caloriesLabel.text = "\(Int(calories))"
-                self.caloriesRing.setProgress(Float(calories) / 800, animated: true)
+                self.caloriesRing.setProgress(Float(calories) / Float(self.viewModel.caloriesGoal), animated: true)
             }
             .store(in: &subscription)
     }
