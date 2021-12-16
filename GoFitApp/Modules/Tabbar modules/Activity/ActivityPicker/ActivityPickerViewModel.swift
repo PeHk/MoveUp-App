@@ -67,7 +67,15 @@ class ActivityPickerViewModel: ViewModelProtocol {
         
         self.sportManager.currentSports
             .sink { sports in
-                self.sections.send([SectionData(sectionName: "All sports", sectionItems: sports)])
+                let grouppedSports = Dictionary(grouping: sports, by: { $0.name?.prefix(1) ?? "" })
+                
+                let keys = grouppedSports.keys.sorted()
+                
+                var sections: [SectionData] = keys.map{ SectionData(sectionIndexName: String($0), sectionName: String($0), sectionItems: grouppedSports[$0]!.sorted(by: { $0.name ?? "" < $1.name ?? "" }))}
+                
+                sections.insert(SectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: []), at: 0)
+                
+                self.sections.send(sections)
             }
             .store(in: &subscription)
 
@@ -77,23 +85,11 @@ class ActivityPickerViewModel: ViewModelProtocol {
         isLoading.send(false)
     }
     
-//    private func fetchSports() {
-//        self.state.send(.loading)
-//        self.sportManager.currentSports
-//            .sink { _ in
-//                ()
-//            } receiveValue: { sports in
-//
-//                self.isLoading.send(false)
-//            }
-//            .store(in: &subscription)
-//
-//    }
     private func processSelection(sport: Sport) {
         
     }
     
     func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {
-        ActivityCellViewModel(name: sport.name ?? "", id: sport.id)
+        ActivityCellViewModel(name: sport.name ?? "", id: sport.id, enableSelection: false)
     }
 }

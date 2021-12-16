@@ -13,6 +13,10 @@ class FavouriteSportsDetailViewController: BaseTableViewController {
         setupBindings()
     }
     
+    private func setupViews() {
+        navigationItem.rightBarButtonItem = editButtonItem
+    }
+    
     private func setupBindings() {
         viewModel.errorState
             .compactMap( { $0 })

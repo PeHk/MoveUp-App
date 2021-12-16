@@ -17,6 +17,10 @@ extension ActivityPickerViewController {
         return viewModel.sections.value[section].sectionName
     }
     
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return viewModel.sections.value.map{$0.sectionIndexName}
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.sections.value[section].sectionItems.count
     }

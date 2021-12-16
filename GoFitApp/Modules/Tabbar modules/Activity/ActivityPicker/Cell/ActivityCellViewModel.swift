@@ -10,4 +10,5 @@ import Foundation
 struct ActivityCellViewModel {
     var name: String
     var id: Int64
+    var enableSelection: Bool
 }

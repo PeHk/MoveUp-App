@@ -12,8 +12,14 @@ class ActivityTableViewCell: UITableViewCell {
     var viewModel: ActivityCellViewModel? {
         didSet {
             self.textLabel?.text = viewModel?.name
+            
+            if let viewModel = viewModel {
+                self.enableSelection = viewModel.enableSelection
+            }
         }
     }
+    
+    var enableSelection: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +29,8 @@ class ActivityTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        accessoryType = selected ? .checkmark : .none
+        
+        accessoryType = enableSelection ? (selected ? .checkmark : .none): . none
     }
     
     static func reuseIdentifier() -> String {

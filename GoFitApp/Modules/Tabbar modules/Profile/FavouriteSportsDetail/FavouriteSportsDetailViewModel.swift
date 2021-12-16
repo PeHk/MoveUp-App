@@ -82,6 +82,6 @@ class FavouriteSportsDetailViewModel: ViewModelProtocol {
     }
     
     func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {
-        ActivityCellViewModel(name: sport.name ?? "", id: sport.id)
+        ActivityCellViewModel(name: sport.name ?? "", id: sport.id, enableSelection: true)
     }
 }
