@@ -121,6 +121,7 @@
 		E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */; };
 		E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA222753C822004E6FDC /* SportTableViewCell.swift */; };
 		E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA242753C891004E6FDC /* SportCellViewModel.swift */; };
+		E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95832276B3E9A000EB73E /* HealthKitManager.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
@@ -292,6 +293,7 @@
 		E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsViewController+TableView.swift"; sourceTree = "<group>"; };
 		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
 		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
+		E1A95832276B3E9A000EB73E /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 				E177513227552B7100C9917F /* LogoutManager.swift */,
 				E17751342755326D00C9917F /* LoginManager.swift */,
 				E10E45D2275E61C50073F2A6 /* PermissionManager.swift */,
+				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1081,6 +1084,7 @@
 				E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */,
 				E17751372755402100C9917F /* UserDataResource.swift in Sources */,
 				E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */,
+				E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */,
 				E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */,
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
 				E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */,
@@ -1379,14 +1383,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Access needed for better recommendations";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1397,7 +1402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = sk.hlavatik.GoFitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1414,14 +1419,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Access needed for better recommendations";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1432,7 +1438,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = sk.hlavatik.GoFitApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

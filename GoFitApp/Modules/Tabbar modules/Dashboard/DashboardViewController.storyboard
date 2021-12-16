@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -180,8 +180,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="caloriesLabel" destination="PEz-Xf-Kzg" id="qup-Dr-Nyd"/>
                         <outlet property="caloriesRing" destination="HNp-ev-7sD" id="9FP-3A-2Fr"/>
                         <outlet property="caloriesView" destination="pae-7h-YNS" id="d5h-dc-IM5"/>
+                        <outlet property="stepsLabel" destination="hSF-0l-zrd" id="5tn-29-5pC"/>
                         <outlet property="stepsRing" destination="iHo-Pv-vJb" id="UKP-jr-Dmy"/>
                         <outlet property="stepsView" destination="DvZ-mb-xk9" id="hMs-qG-vlH"/>
                     </connections>

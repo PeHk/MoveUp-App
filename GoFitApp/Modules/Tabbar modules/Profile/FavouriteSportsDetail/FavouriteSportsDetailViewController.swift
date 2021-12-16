@@ -10,11 +10,12 @@ class FavouriteSportsDetailViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         setupBindings()
     }
     
     private func setupViews() {
-        navigationItem.rightBarButtonItem = editButtonItem
+//        navigationItem.rightBarButtonItem = editButtonItem
     }
     
     private func setupBindings() {
@@ -33,4 +34,10 @@ class FavouriteSportsDetailViewController: BaseTableViewController {
             }
             .store(in: &subscription)
     }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        
+//        tableView.setEditing(editing, animated: true)
+//    }
 }

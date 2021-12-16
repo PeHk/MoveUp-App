@@ -3,14 +3,38 @@ import UIKit
 import ALProgressView
 import EmptyDataSet_Swift
 
-class DashboardViewController: UITableViewController, EmptyDataSetSource, EmptyDataSetDelegate {
+class DashboardViewController: BaseTableViewController, EmptyDataSetSource, EmptyDataSetDelegate {
+    // MARK: Outlet
+    @IBOutlet weak var caloriesRing: ALProgressRing! {
+        didSet {
+            caloriesRing.endColor = Asset.primary.color
+            caloriesRing.startColor = Asset.secondary.color
+        }
+    }
+    @IBOutlet weak var stepsRing: ALProgressRing! {
+        didSet {
+            stepsRing.startColor = Asset.secondary.color
+            stepsRing.endColor = Asset.primary.color
+        }
+    }
+    @IBOutlet weak var caloriesView: UIView! {
+        didSet {
+            caloriesView.layer.cornerRadius = 10
+        }
+    }
+    @IBOutlet weak var stepsView: UIView! {
+        didSet {
+            stepsView.layer.cornerRadius = 10
+        }
+    }
+    @IBOutlet weak var stepsLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
     
-    @IBOutlet weak var caloriesRing: ALProgressRing!
-    @IBOutlet weak var stepsRing: ALProgressRing!
-    @IBOutlet weak var caloriesView: UIView!
-    @IBOutlet weak var stepsView: UIView!
+    // MARK: Variables
     var viewModel: DashboardViewModel!
     weak var coordinator: DashboardCoordinator!
+    
+    var subscription = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,21 +45,12 @@ class DashboardViewController: UITableViewController, EmptyDataSetSource, EmptyD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.sizeToFit()
+        self.viewModel.action.send(.update)
     }
     
     private func setupView() {
-        caloriesView.layer.cornerRadius = 10
-        stepsView.layer.cornerRadius = 10
-        
-        stepsRing.startColor = Asset.secondary.color
-        caloriesRing.startColor = Asset.secondary.color
-        
-        stepsRing.endColor = Asset.primary.color
-        caloriesRing.endColor = Asset.primary.color
-        
-        stepsRing.setProgress(0.9, animated: true)
-        caloriesRing.setProgress(0.4, animated: true)
-        
+        navigationItem.leftBarButtonItem = nil
+
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         
@@ -48,6 +63,29 @@ class DashboardViewController: UITableViewController, EmptyDataSetSource, EmptyD
     }
     
     private func setupBindings() {
+        viewModel.errorState
+            .compactMap( { $0 })
+            .assign(to: \.errorState, on: self)
+            .store(in: &subscription)
         
+        viewModel.isLoading
+            .assign(to: \.isLoading, on: self)
+            .store(in: &subscription)
+        
+        viewModel.steps
+            .receive(on: DispatchQueue.main)
+            .sink { steps in
+                self.stepsLabel.text = "\(Int(steps))"
+                self.stepsRing.setProgress(Float(steps) / 10000, animated: true)
+            }
+            .store(in: &subscription)
+        
+        viewModel.calories
+            .receive(on: DispatchQueue.main)
+            .sink { calories in
+                self.caloriesLabel.text = "\(Int(calories))"
+                self.caloriesRing.setProgress(Float(calories) / 800, animated: true)
+            }
+            .store(in: &subscription)
     }
 }

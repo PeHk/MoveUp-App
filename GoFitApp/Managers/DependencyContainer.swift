@@ -24,6 +24,7 @@ final class DependencyContainer {
     lazy var loginManager = LoginManager(self)
     lazy var permissionManager = PermissionManager(self)
     lazy var sportManager = SportManager(self)
+    lazy var healthKitManager = HealthKitManager(self)
     
 //    lazy var feedbackManager = FeedbackManager()
 }

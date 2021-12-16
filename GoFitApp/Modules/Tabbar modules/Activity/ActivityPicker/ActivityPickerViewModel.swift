@@ -73,7 +73,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
                 
                 var sections: [SectionData] = keys.map{ SectionData(sectionIndexName: String($0), sectionName: String($0), sectionItems: grouppedSports[$0]!.sorted(by: { $0.name ?? "" < $1.name ?? "" }))}
                 
-                sections.insert(SectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: []), at: 0)
+//                sections.insert(SectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: []), at: 0)
                 
                 self.sections.send(sections)
             }

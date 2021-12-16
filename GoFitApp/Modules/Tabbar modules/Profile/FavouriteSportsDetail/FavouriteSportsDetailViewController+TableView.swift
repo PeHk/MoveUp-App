@@ -38,7 +38,7 @@ extension FavouriteSportsDetailViewController {
                 return false
             }
         }
-        
+
         if shouldSelect() {
             cell.setSelected(true, animated: false)
         }
