@@ -138,6 +138,7 @@
 		E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* Gender.swift */; };
 		E1D630AA2765249D00AF12F2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D630A92765249D00AF12F2 /* Configuration.swift */; };
 		E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF2E23274ECB6000741038 /* LoadingView.swift */; };
+		E1E3C5C3276E15F300E8A70A /* ProfileDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3C5C2276E15F300E8A70A /* ProfileDetailViewController+TableView.swift */; };
 		E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9C274BF5D9006674E7 /* Assets.swift */; };
 		E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E41E9D274BF5D9006674E7 /* Fonts.swift */; };
 		E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5107F274BFE5300C9C266 /* Endpoint.swift */; };
@@ -320,6 +321,7 @@
 		E1CFFD5B27521EA500794BAC /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		E1D630A92765249D00AF12F2 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E1DF2E23274ECB6000741038 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E1E3C5C2276E15F300E8A70A /* ProfileDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		E1E41E9C274BF5D9006674E7 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		E1E41E9D274BF5D9006674E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E1E5107F274BFE5300C9C266 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */,
 				E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */,
 				E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */,
+				E1E3C5C2276E15F300E8A70A /* ProfileDetailViewController+TableView.swift */,
 			);
 			path = ProfileDetail;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
 				E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */,
+				E1E3C5C3276E15F300E8A70A /* ProfileDetailViewController+TableView.swift in Sources */,
 				E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,

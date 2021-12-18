@@ -2,13 +2,7 @@ import Combine
 import UIKit
 
 class ProfileDetailViewController: BaseTableViewController {
-    
-    // MARK: Outlets
-    @IBOutlet weak var genderCell: UITableViewCell!
-    @IBOutlet weak var dateOfBirthCell: UITableViewCell!
-    @IBOutlet weak var emailCell: UITableViewCell!
-    @IBOutlet weak var nameCell: UITableViewCell!
-    
+        
     var viewModel: ProfileDetailViewModel!
     weak var coordinator: ProfileDetailCoordinator!
     
@@ -37,14 +31,8 @@ class ProfileDetailViewController: BaseTableViewController {
         
     
         viewModel.currentUser
-            .sink { currentUser in
-                if let user = currentUser {
-                    self.emailCell.detailTextLabel?.text = user.email
-                    self.dateOfBirthCell.detailTextLabel?.text = Helpers.printDate(from: user.date_of_birth ?? Date())
-                    self.genderCell.detailTextLabel?.text = user.gender
-                    self.nameCell.detailTextLabel?.text = user.name
-                    
-                }
+            .sink { _ in
+                self.tableView.reloadData()
             }
             .store(in: &subscription)
     }
