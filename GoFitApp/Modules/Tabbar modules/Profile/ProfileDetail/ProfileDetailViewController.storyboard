@@ -23,11 +23,11 @@
                         <sections>
                             <tableViewSection id="1yx-l2-IKw">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="5CU-Zq-zZU" detailTextLabel="d5E-rn-LKe" style="IBUITableViewCellStyleValue1" id="A17-Q1-Kvm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="5CU-Zq-zZU" detailTextLabel="d5E-rn-LKe" style="IBUITableViewCellStyleValue1" id="A17-Q1-Kvm">
                                         <rect key="frame" x="20" y="18" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A17-Q1-Kvm" id="o4R-Md-07U">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345.5" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5CU-Zq-zZU">
@@ -38,7 +38,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5E-rn-LKe">
-                                                    <rect key="frame" x="310.5" y="15" width="43.5" height="20"/>
+                                                    <rect key="frame" x="294" y="15" width="43.5" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <color key="textColor" name="darkerText"/>
@@ -47,7 +47,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="insideBackgroundColor"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="greenSoft"/>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fmV-GQ-ynQ" detailTextLabel="LQx-He-25u" style="IBUITableViewCellStyleValue1" id="1rx-nU-Sso">
                                         <rect key="frame" x="20" y="68" width="374" height="50"/>

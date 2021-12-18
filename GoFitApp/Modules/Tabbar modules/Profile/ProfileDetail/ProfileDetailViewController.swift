@@ -11,12 +11,7 @@ class ProfileDetailViewController: BaseTableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         setupBindings()
-    }
-    
-    private func setupView() {
-        
     }
     
     private func setupBindings() {
@@ -29,7 +24,6 @@ class ProfileDetailViewController: BaseTableViewController {
             .assign(to: \.isLoading, on: self)
             .store(in: &subscription)
         
-    
         viewModel.currentUser
             .sink { _ in
                 self.tableView.reloadData()

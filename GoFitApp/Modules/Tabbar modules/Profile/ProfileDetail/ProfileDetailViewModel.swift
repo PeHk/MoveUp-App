@@ -5,7 +5,7 @@ class ProfileDetailViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case nameChange(_ name: String)
     }
     
     enum Step {
@@ -20,7 +20,10 @@ class ProfileDetailViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .nameChange(let name):
+            self.changeName(name)
+        }
     }
     
     func processState(_ state: State) {
@@ -71,5 +74,9 @@ class ProfileDetailViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    private func changeName(_ name: String) {
+        
     }
 }

@@ -10,6 +10,32 @@ import UIKit
 
 extension ProfileDetailViewController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = viewModel.currentUser.value
+        
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                self.showInputDialogForName(
+                    title: "Nickname update",
+                    subtitle: "Enter new name:",
+                    inputText: "\(user?.name ?? "")",
+                    inputKeyboardType: .default,
+                    actionHandler:  { text in
+                        if let t = text {
+                            self.viewModel.action.send(.nameChange(t))
+                        }
+                        
+                    })
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let user = viewModel.currentUser.value
         let bioData: [BioData]? = user?.bio_data?.toArray()
