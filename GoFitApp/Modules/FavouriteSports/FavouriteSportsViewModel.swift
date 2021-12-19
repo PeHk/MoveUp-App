@@ -136,7 +136,7 @@ class FavouriteSportsViewModel: ViewModelProtocol {
             ids.append(sport.id)
         }
         
-        let updateRequest: AnyPublisher<DataResponse<UserSportsResource, NetworkError>, Never> = self.networkManager.request(
+        let updateRequest: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.sports.url,
             method: .post,
             parameters: ["ids": ids]

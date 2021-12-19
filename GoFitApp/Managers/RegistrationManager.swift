@@ -23,11 +23,11 @@ class RegistrationManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
-    public func registration(withForm formModel: SignUpRequestModel) -> Future<UserResource, NetworkError> {
+    public func registration(withForm formModel: UserResource) -> Future<UserResource, NetworkError> {
         let registrationPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.registration.url,
             method: .post,
-            parameters: formModel.toJSON(),
+            parameters: formModel.registrationJSON(),
             withInterceptor: false
         )
         
@@ -38,7 +38,7 @@ class RegistrationManager {
                         promise(.failure(error))
                     } else {
                         self.networkManager.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
-                        self.credentialsManager.saveCredentials(email: formModel.email, password: formModel.getDecodedPassword() ?? "")
+                        self.credentialsManager.saveCredentials(email: formModel.email ?? "", password: formModel.getDecodedPassword() ?? "")
                         promise(.success(dataResponse.value!))
                     }
                 }

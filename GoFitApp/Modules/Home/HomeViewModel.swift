@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import Alamofire
 
 final class HomeViewModel: ViewModelProtocol {
 
@@ -45,13 +44,8 @@ final class HomeViewModel: ViewModelProtocol {
     internal var errorState = PassthroughSubject<NetworkError, Never>()
     
     internal var subscription = Set<AnyCancellable>()
-    
-    internal let networkManager: NetworkManager
 
-    
     init(_ dependencyContainer: DependencyContainer) {
-        self.networkManager = dependencyContainer.networkManager
-        
         action
             .sink(receiveValue: { [weak self] action in
                 self?.processAction(action)
@@ -69,24 +63,5 @@ final class HomeViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
-        fetch()
-        
-    }
-    
-    struct Test: Decodable {
-        let message: String
-    }
-    
-    func fetch() {
-        let t: AnyPublisher<DataResponse<Test, NetworkError>, Never> = networkManager.request(Endpoint.test.url)
-        
-        t.sink { (dataResponse) in
-            if dataResponse.error != nil {
-                print(dataResponse.error!)
-            } else {
-                print(dataResponse.value!)
-            }
-        }.store(in: &subscription)
-            
     }
 }

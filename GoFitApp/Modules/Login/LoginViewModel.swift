@@ -99,7 +99,9 @@ final class LoginViewModel: ViewModelProtocol {
     private func loginTapped() {
         self.state.send(.loading)
         
-        self.loginManager.login(email: email, password: password)
+        let model = UserResource(email: email, password: password)
+        
+        self.loginManager.login(withForm: model)
             .sink { completion in
                 if case .failure(let error) = completion {
                     print(error)
@@ -111,7 +113,7 @@ final class LoginViewModel: ViewModelProtocol {
             .store(in: &subscription)
     }
     
-    private func saveUser(user: UserDataResource) {
+    private func saveUser(user: UserResource) {
         self.userManager.deleteUser()
             .zip(self.userManager.saveUserWithData(newUser: user))
             .sink { completion in

@@ -6,19 +6,57 @@
 //
 
 import Foundation
+import SwiftyBase64
 
 struct UserResource: Codable {
-    let id: Int64
-    let email: String
-    let name: String
-    let admin: Bool
-    let registered_at: String
+    var id: Int64?
+    var email: String?
+    var password: String?
+    var name: String?
+    var admin: Bool?
+    var registered_at: String?
+    var date_of_birth: String?
+    var gender: String?
+    var bio_data: [BioDataResource]?
+    var favourite_sports: [SportResource]?
     
-    init(id: Int64, email: String, name: String, admin: Bool, registered_at: String) {
-        self.id = id
+    init(name: String, email: String, password: String) {
         self.email = email
         self.name = name
-        self.admin = admin
-        self.registered_at = registered_at
+        self.password = SwiftyBase64.EncodeString([UInt8](password.utf8))
+    }
+    
+    init(email: String, password: String) {
+        self.email = email
+        self.password = password
+    }
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    public func registrationJSON() -> [String: Any] {
+        [
+            "email": email as Any,
+            "name": name as Any,
+            "password": password as Any
+        ]
+    }
+    
+    public func loginJSON() -> [String: Any] {
+        [
+            "email": email as Any,
+            "password": password as Any
+        ]
+    }
+    
+    public func nameJSON() -> [String: Any] {
+        [
+            "name": name as Any
+        ]
+    }
+    
+    public func getDecodedPassword() -> String? {
+        self.password?.base64Decoded
     }
 }

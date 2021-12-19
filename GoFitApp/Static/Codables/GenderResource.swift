@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Gender: Codable {
+struct GenderResource: Codable {
     let name: String
     let value: String
 }

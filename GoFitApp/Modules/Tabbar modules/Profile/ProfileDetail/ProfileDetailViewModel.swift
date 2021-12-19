@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import Alamofire
 
 class ProfileDetailViewModel: ViewModelProtocol {
     
@@ -50,10 +51,12 @@ class ProfileDetailViewModel: ViewModelProtocol {
     var subscription = Set<AnyCancellable>()
     
     fileprivate let userManager: UserManager
+    fileprivate let networkManager: NetworkManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.userManager = dependencyContainer.userManager
+        self.networkManager = dependencyContainer.networkManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -76,7 +79,25 @@ class ProfileDetailViewModel: ViewModelProtocol {
         isLoading.send(false)
     }
     
+    // MARK: Functions
     private func changeName(_ name: String) {
         
+        let userName = UserResource(name: name)
+        
+        let updateRequest: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.userDetails.url,
+            method: .put,
+            parameters: userName.nameJSON()
+        )
+        
+        updateRequest
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+//                    self.updateUser(sports: sports)
+                }
+            }
+            .store(in: &subscription)
     }
 }

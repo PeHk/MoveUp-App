@@ -66,12 +66,12 @@ final class DetailsViewModel: ViewModelProtocol {
     fileprivate let userManager: UserManager
     fileprivate let permissionManager: PermissionManager
     
-    var availableGenders: [Gender?] = []
+    var availableGenders: [GenderResource?] = []
     
     @Published var height: String = ""
     @Published var weight: String = ""
     
-    var selectedGender = CurrentValueSubject<Gender?, Never>(nil)
+    var selectedGender = CurrentValueSubject<GenderResource?, Never>(nil)
     var selectedDate = CurrentValueSubject<Date?, Never>(nil)
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
@@ -121,7 +121,7 @@ final class DetailsViewModel: ViewModelProtocol {
     private func fetchGenders() {
         isLoading.send(true)
         
-        let genderRequest: AnyPublisher<DataResponse<[Gender], NetworkError>, Never> = networkManager.request(
+        let genderRequest: AnyPublisher<DataResponse<[GenderResource], NetworkError>, Never> = networkManager.request(
             Endpoint.genders.url,
             withInterceptor: false
         )
@@ -144,15 +144,16 @@ final class DetailsViewModel: ViewModelProtocol {
         
         let birthDate = Helpers.formatDate(from: selectedDate.value ?? Date())
         
-        let updateRequest: AnyPublisher<DataResponse<FirstBioDataResource, NetworkError>, Never> = networkManager.request(
+        let updateRequest: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = networkManager.request(
             Endpoint.userDetails.url,
             method: .post,
-            parameters: ["weight": Float(weight) ?? 0,
-                         "height": Float(height) ?? 0,
-                         "date_of_birth": birthDate,
-                         "gender": selectedGender.value?.value ?? "",
-                         "type": 2
-                        ]
+            parameters: [
+                "weight": Float(weight) ?? 0,
+                "height": Float(height) ?? 0,
+                "date_of_birth": birthDate,
+                "gender": selectedGender.value?.value ?? "",
+                "type": 2
+            ]
         )
         
         updateRequest
@@ -167,7 +168,7 @@ final class DetailsViewModel: ViewModelProtocol {
             .store(in: &self.subscription)
     }
     
-    private func saveBioData(data: FirstBioDataResource) {
+    private func saveBioData(data: UserResource) {
         if let user = currentUser.value {
             self.userManager.saveBioDataAfterRegistration(data: data, user: user)
                 .sink { completion in

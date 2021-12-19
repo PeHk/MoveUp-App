@@ -101,7 +101,7 @@ final class RegistrationViewModel: ViewModelProtocol {
     private func signUpButtonTapped() {
         self.state.send(.loading)
         
-        let model = SignUpRequestModel(email: email, name: username, password: password)
+        let model = UserResource(name: username, email: email, password: password)
         
         self.registrationManager.registration(withForm: model)
             .sink { completion in

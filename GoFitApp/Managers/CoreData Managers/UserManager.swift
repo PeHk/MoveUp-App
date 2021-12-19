@@ -35,15 +35,15 @@ class UserManager {
             .store(in: &subscription)
     }
     
-    // MARK: Functions
+    // MARK: Save new user
     func saveUser(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
             let action: Action = {
                 let user: User = self.coreDataStore.createEntity()
-                user.id = newUser.id
+                user.id = newUser.id ?? 0
                 user.email = newUser.email
-                user.admin = newUser.admin
+                user.admin = newUser.admin ?? false
                 user.name = newUser.name
-                user.registered_at =  self.coreDataStore.dateFormatter.date(from: newUser.registered_at)
+                user.registered_at =  self.coreDataStore.dateFormatter.date(from: newUser.registered_at ?? "")
             }
             return coreDataStore
                 .publicher(save: action)
@@ -53,7 +53,8 @@ class UserManager {
                 .eraseToAnyPublisher()
     }
     
-    func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NetworkError> {
+    // MARK: Get user
+    public func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NetworkError> {
         let request = NSFetchRequest<User>(entityName: User.entityName)
         
         return coreDataStore
@@ -64,7 +65,8 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
+    // MARK: Delete user
+    public func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: User.entityName)
         request.predicate = NSPredicate(format: "email != nil")
         
@@ -76,9 +78,10 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    public func saveBioDataAfterRegistration(data: FirstBioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    // MARK: Save bio data after registration
+    public func saveBioDataAfterRegistration(data: UserResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
-        let bioDataArray = data.bio_data.first
+        let bioDataArray = data.bio_data?.first
         
         let bioData: BioData = self.coreDataStore.createEntity()
         bioData.activity_minutes = bioDataArray?.activity_minutes ?? 0
@@ -89,7 +92,7 @@ class UserManager {
         let action: Action = {
             user.bio_data = user.bio_data?.adding(bioData) as NSSet?
             user.gender = data.gender
-            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth)
+            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth ?? "")
         }
         
         return coreDataStore
@@ -100,6 +103,7 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
+    // MARK: Save bio data
     public func saveBioData(data: BioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         let bioData: BioData = self.coreDataStore.createEntity()
@@ -119,29 +123,32 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
-    public func saveUserWithData(newUser: UserDataResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    // MARK: Save user with data
+    public func saveUserWithData(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         var bioDataArray: [BioData] = []
-    
-        for data in newUser.bio_data {
-            let bioData: BioData = self.coreDataStore.createEntity()
-            bioData.activity_minutes = data.activity_minutes ?? 0
-            bioData.weight = data.weight ?? 0
-            bioData.height = data.height ?? 0
-            bioData.bmi = data.bmi ?? 0
-            
-            bioDataArray.append(bioData)
-        }
         
+        if let bio_data = newUser.bio_data {
+            for data in bio_data {
+                let bioData: BioData = self.coreDataStore.createEntity()
+                bioData.activity_minutes = data.activity_minutes ?? 0
+                bioData.weight = data.weight ?? 0
+                bioData.height = data.height ?? 0
+                bioData.bmi = data.bmi ?? 0
+                
+                bioDataArray.append(bioData)
+            }
+        }
+
         let action: Action = {
             let user: User = self.coreDataStore.createEntity()
-            user.id = newUser.id
+            user.id = newUser.id ?? 0
             user.email = newUser.email
-            user.admin = newUser.admin
+            user.admin = newUser.admin ?? false
             user.name = newUser.name
             user.gender = newUser.gender
-            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: newUser.date_of_birth)
-            user.registered_at = self.coreDataStore.dateFormatter.date(from: newUser.registered_at)
+            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: newUser.date_of_birth ?? "")
+            user.registered_at = self.coreDataStore.dateFormatter.date(from: newUser.registered_at ?? "")
             
             user.bio_data = NSSet(array: bioDataArray)
         }

@@ -48,7 +48,6 @@
 		E1111F232768FD5100B10529 /* ActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F222768FD5100B10529 /* ActivityCellViewModel.swift */; };
 		E1111F252768FD8400B10529 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F242768FD8400B10529 /* ActivityTableViewCell.swift */; };
 		E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */; };
-		E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAABB275771900075F74D /* FirstBioDataResource.swift */; };
 		E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */; };
 		E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */; };
 		E11FAAC62757762C0075F74D /* ProfileDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */; };
@@ -91,7 +90,6 @@
 		E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */; };
 		E153BCC2276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */; };
 		E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */; };
-		E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */; };
 		E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218F275B9C6F00A7A46D /* String+Extensions.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
@@ -108,11 +106,9 @@
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
 		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
-		E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E171B3162754107D00DC0BD3 /* UserSportsResource.swift */; };
 		E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513027552A1400C9917F /* ProfileViewController+TableView.swift */; };
 		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
 		E17751352755326D00C9917F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751342755326D00C9917F /* LoginManager.swift */; };
-		E17751372755402100C9917F /* UserDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751362755402100C9917F /* UserDataResource.swift */; };
 		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
 		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
 		E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */; };
@@ -135,7 +131,7 @@
 		E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */; };
 		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
 		E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */; };
-		E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* Gender.swift */; };
+		E1CFFD5C27521EA500794BAC /* GenderResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CFFD5B27521EA500794BAC /* GenderResource.swift */; };
 		E1D630AA2765249D00AF12F2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D630A92765249D00AF12F2 /* Configuration.swift */; };
 		E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF2E23274ECB6000741038 /* LoadingView.swift */; };
 		E1E3C5C3276E15F300E8A70A /* ProfileDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3C5C2276E15F300E8A70A /* ProfileDetailViewController+TableView.swift */; };
@@ -223,7 +219,6 @@
 		E1111F222768FD5100B10529 /* ActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellViewModel.swift; sourceTree = "<group>"; };
 		E1111F242768FD8400B10529 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		E112B642271FEFBE00A3BB8F /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		E11FAABB275771900075F74D /* FirstBioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstBioDataResource.swift; sourceTree = "<group>"; };
 		E11FAAC02757762C0075F74D /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -268,7 +263,6 @@
 		E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityPickerViewController+TableView.swift"; sourceTree = "<group>"; };
 		E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
-		E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestModel.swift; sourceTree = "<group>"; };
 		E162218F275B9C6F00A7A46D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -287,11 +281,9 @@
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
-		E171B3162754107D00DC0BD3 /* UserSportsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSportsResource.swift; sourceTree = "<group>"; };
 		E177513027552A1400C9917F /* ProfileViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+TableView.swift"; sourceTree = "<group>"; };
 		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
 		E17751342755326D00C9917F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		E17751362755402100C9917F /* UserDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResource.swift; sourceTree = "<group>"; };
 		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
 		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
 		E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsViewController.storyboard; sourceTree = "<group>"; };
@@ -318,7 +310,7 @@
 		E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewController.swift; sourceTree = "<group>"; };
 		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
 		E1CB6085275793D500E4F39D /* FavouriteSportsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewModel.swift; sourceTree = "<group>"; };
-		E1CFFD5B27521EA500794BAC /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		E1CFFD5B27521EA500794BAC /* GenderResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderResource.swift; sourceTree = "<group>"; };
 		E1D630A92765249D00AF12F2 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E1DF2E23274ECB6000741038 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E1E3C5C2276E15F300E8A70A /* ProfileDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailViewController+TableView.swift"; sourceTree = "<group>"; };
@@ -603,14 +595,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		E162218A275B9A1000A7A46D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E162218B275B9A1F00A7A46D /* SignUpRequestModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		E1660983271C9F4B0077DF6E = {
 			isa = PBXGroup;
 			children = (
@@ -830,7 +814,6 @@
 		E1E51081274BFEF500C9C266 /* Static */ = {
 			isa = PBXGroup;
 			children = (
-				E162218A275B9A1000A7A46D /* Models */,
 				E1E51093274C06C300C9C266 /* Codables */,
 				E1111F1F2768F9F100B10529 /* SectionData.swift */,
 				E1E5107F274BFE5300C9C266 /* Endpoint.swift */,
@@ -857,12 +840,9 @@
 			children = (
 				E1E51086274C014E00C9C266 /* ServerError.swift */,
 				E12E6BA6274FC109009B211C /* UserResource.swift */,
-				E1CFFD5B27521EA500794BAC /* Gender.swift */,
+				E1CFFD5B27521EA500794BAC /* GenderResource.swift */,
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
-				E171B3162754107D00DC0BD3 /* UserSportsResource.swift */,
-				E17751362755402100C9917F /* UserDataResource.swift */,
-				E11FAABB275771900075F74D /* FirstBioDataResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -1108,14 +1088,12 @@
 				E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
 				E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */,
-				E1CFFD5C27521EA500794BAC /* Gender.swift in Sources */,
+				E1CFFD5C27521EA500794BAC /* GenderResource.swift in Sources */,
 				E1EBC13A271DC27B009E9939 /* RegistrationViewModel.swift in Sources */,
 				E1EBC13C271DC28D009E9939 /* RegistrationViewController.swift in Sources */,
 				E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */,
-				E17751372755402100C9917F /* UserDataResource.swift in Sources */,
 				E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */,
 				E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */,
-				E162218C275B9A1F00A7A46D /* SignUpRequestModel.swift in Sources */,
 				E1A788CD276B5E58007C406E /* GoalsDetailViewModel.swift in Sources */,
 				E1A788D0276B5E58007C406E /* GoalsDetailViewController.swift in Sources */,
 				E1EBC145271DCEC1009E9939 /* DetailsViewController.swift in Sources */,
@@ -1163,13 +1141,11 @@
 				E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */,
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
-				E11FAABC275771900075F74D /* FirstBioDataResource.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */,
 				E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */,
-				E171B3172754107D00DC0BD3 /* UserSportsResource.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
 				E1111F232768FD5100B10529 /* ActivityCellViewModel.swift in Sources */,

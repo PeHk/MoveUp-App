@@ -22,11 +22,11 @@ class LoginManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
-    public func login(email: String, password: String) -> Future<UserDataResource, NetworkError> {
-        let loginPublisher: AnyPublisher<DataResponse<UserDataResource, NetworkError>, Never> = self.networkManager.request(
+    public func login(withForm: UserResource) -> Future<UserResource, NetworkError> {
+        let loginPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.login.url,
             method: .post,
-            parameters: ["email": email, "password": SwiftyBase64.EncodeString([UInt8](password.utf8))],
+            parameters: withForm.loginJSON(),
             withInterceptor: false
         )
         
@@ -37,7 +37,7 @@ class LoginManager {
                         promise(.failure(error))
                     } else {
                         self.networkManager.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
-                        self.credentialsManager.saveCredentials(email: email, password: password)
+                        self.credentialsManager.saveCredentials(email: withForm.email ?? "", password: withForm.getDecodedPassword() ?? "")
                         promise(.success(dataResponse.value!))
                     }
                 }
