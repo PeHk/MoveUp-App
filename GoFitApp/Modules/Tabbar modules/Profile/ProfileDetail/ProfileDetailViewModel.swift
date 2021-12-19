@@ -81,7 +81,7 @@ class ProfileDetailViewModel: ViewModelProtocol {
     
     // MARK: Functions
     private func changeName(_ name: String) {
-        
+        self.state.send(.loading)
         let userName = UserResource(name: name)
         
         let updateRequest: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
@@ -95,9 +95,24 @@ class ProfileDetailViewModel: ViewModelProtocol {
                 if let error = dataResponse.error {
                     self.state.send(.error(error))
                 } else {
-//                    self.updateUser(sports: sports)
+                    self.updateUser(name: name)
                 }
             }
             .store(in: &subscription)
+    }
+    
+    private func updateUser(name: String) {
+        if let user = currentUser.value {
+            userManager.updateUserName(user: user, name: name)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        self.state.send(.error(error))
+                    }
+                } receiveValue: { _ in
+                    self.userManager.fetchCurrentUser()
+                    self.isLoading.send(false)
+                }
+                .store(in: &subscription)
+        } 
     }
 }

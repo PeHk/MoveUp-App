@@ -12,7 +12,6 @@ extension ProfileDetailViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = viewModel.currentUser.value
-        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -26,7 +25,6 @@ extension ProfileDetailViewController {
                         if let t = text {
                             self.viewModel.action.send(.nameChange(t))
                         }
-                        
                     })
             default:
                 break

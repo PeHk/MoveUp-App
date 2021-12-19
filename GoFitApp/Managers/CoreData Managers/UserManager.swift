@@ -161,4 +161,17 @@ class UserManager {
             .eraseToAnyPublisher()
     }
     
+    // MARK: Update user name
+    public func updateUserName(user: User, name: String) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError>  {
+        let action: Action = {
+            user.name = name
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
 }
