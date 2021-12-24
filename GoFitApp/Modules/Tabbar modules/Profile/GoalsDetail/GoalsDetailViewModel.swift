@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import Alamofire
 
 class GoalsDetailViewModel: ViewModelProtocol {
     
@@ -52,6 +53,7 @@ class GoalsDetailViewModel: ViewModelProtocol {
     // MARK: - Variables
     var steps: Int
     var calories: Int
+    var minutes : Int = 0
     var state = CurrentValueSubject<State, Never>(.initial)
     var action = PassthroughSubject<Action, Never>()
     var stepper = PassthroughSubject<Step, Never>()
@@ -60,14 +62,19 @@ class GoalsDetailViewModel: ViewModelProtocol {
     var reloadTableView = CurrentValueSubject<Bool, Never>(true)
     
     var subscription = Set<AnyCancellable>()
-    
-    let userDefaultsManager: UserDefaultsManager
-    let healthKitManager: HealthKitManager
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
+
+    fileprivate let userDefaultsManager: UserDefaultsManager
+    fileprivate let healthKitManager: HealthKitManager
+    fileprivate let networkManager: NetworkManager
+    fileprivate let userManager: UserManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.healthKitManager = dependencyContainer.healthKitManager
+        self.networkManager = dependencyContainer.networkManager
+        self.userManager = dependencyContainer.userManager
         
         self.steps = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.calories = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -80,6 +87,13 @@ class GoalsDetailViewModel: ViewModelProtocol {
         state.sink(receiveValue: { [weak self] state in
             self?.processState(state)
         })
+            .store(in: &subscription)
+        
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+                self.getLastActiveMinutes()
+            }
             .store(in: &subscription)
     }
     
@@ -107,6 +121,49 @@ class GoalsDetailViewModel: ViewModelProtocol {
     }
     
     private func changeMinutes(minutes: Int) {
+        self.state.send(.loading)
         
+        let model = BioDataResource(activity_minutes: Int64(minutes))
+        
+        let request: AnyPublisher<DataResponse<BioDataResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.userDetails.url,
+            method: .post,
+            parameters: model.getActivityMinutesUpdateJSON()
+        )
+        
+        request
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    self.updateUser(details: dataResponse.value!)
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    private func updateUser(details: BioDataResource) {
+        if let user = currentUser.value {
+            self.userManager.saveBioData(data: details, user: user)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        self.state.send(.error(error))
+                    }
+                } receiveValue: { _ in
+                    self.userManager.fetchCurrentUser()
+                    self.isLoading.send(false)
+                    self.reloadTableView.send(true)
+                }
+                .store(in: &subscription)
+        }
+    }
+    
+    private func getLastActiveMinutes() {
+        if let user = self.currentUser.value {
+            let bioData: [BioData]? = user.bio_data?.toArray()
+            print(bioData)
+            self.minutes = Int(bioData?.last?.activity_minutes ?? 200)
+            print(minutes)
+        }
     }
 }

@@ -16,7 +16,7 @@ extension GoalsDetailViewController {
         case 1:
             cell.detailTextLabel?.text = "\(viewModel.calories)"
         case 2:
-            cell.detailTextLabel?.text = "200"
+            cell.detailTextLabel?.text = "\(viewModel.minutes)"
         default:
             break
         }
@@ -51,7 +51,7 @@ extension GoalsDetailViewController {
             self.showInputDialog(
                 title: "Active minutes update",
                 subtitle: "Enter new weekly minutes goal:",
-                inputPlaceholder: "",
+                inputText: "\(viewModel.minutes)",
                 inputKeyboardType: .numberPad,
                 actionHandler:  { text in
                     if let t = text {

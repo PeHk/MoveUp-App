@@ -8,12 +8,12 @@
 import Foundation
 
 struct BioDataResource: Codable {
-    let weight: Float?
-    let height: Float?
-    let date_of_birth: String?
-    let gender: String?
-    let activity_minutes: Int64?
-    let bmi: Float?
+    var weight: Float?
+    var height: Float?
+    var date_of_birth: String?
+    var gender: String?
+    var activity_minutes: Int64?
+    var bmi: Float?
     
     init(weight: Float?, height: Float?, activity_minutes: Int64?, bmi: Float?) {
         self.weight = weight
@@ -31,5 +31,16 @@ struct BioDataResource: Codable {
         self.bmi = bmi
         self.gender = gender
         self.date_of_birth = date_of_birth
+    }
+    
+    init(activity_minutes: Int64) {
+        self.activity_minutes = activity_minutes
+    }
+    
+    public func getActivityMinutesUpdateJSON()-> [String: Any] {
+        [
+            "type": 3 as Any,
+            "activity_minutes": activity_minutes as Any
+        ]
     }
 }
