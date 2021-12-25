@@ -13,6 +13,7 @@ class UserManager {
     
     // MARK: Variables
     fileprivate let coreDataStore: CoreDataStore
+    fileprivate let sportManager: SportManager
     fileprivate var subscription = Set<AnyCancellable>()
     
     public var currentUser = CurrentValueSubject<User?, Never>(nil)
@@ -20,6 +21,7 @@ class UserManager {
     // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.coreDataStore = dependencyContainer.coreDataStore
+        self.sportManager = dependencyContainer.sportManager
         self.fetchCurrentUser()
     }
     
@@ -69,6 +71,8 @@ class UserManager {
     public func deleteUser() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: User.entityName)
         request.predicate = NSPredicate(format: "email != nil")
+        
+        self.currentUser.send(nil)
         
         return coreDataStore
             .publicher(delete: request)
@@ -131,6 +135,7 @@ class UserManager {
     public func saveUserWithData(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         
         var bioDataArray: [BioData] = []
+        var favouriteSportsArray: [Sport] = []
         
         if let bio_data = newUser.bio_data {
             for data in bio_data {
@@ -145,6 +150,24 @@ class UserManager {
                 bioDataArray.append(bioData)
             }
         }
+        
+        let actualSports = self.sportManager.currentSports.value
+        
+        if let sports = newUser.favourite_sports {
+            for data in sports {
+                print(data.id)
+                if let actualSport = actualSports.first(where: { $0.id == data.id }) {
+                    favouriteSportsArray.append(actualSport)
+                } else {
+                    let sport: Sport = self.coreDataStore.createEntity()
+                    sport.id = data.id
+                    sport.name = data.name
+                    sport.met = data.met
+                    
+                    favouriteSportsArray.append(sport)
+                }
+            }
+        }
 
         let action: Action = {
             let user: User = self.coreDataStore.createEntity()
@@ -157,6 +180,7 @@ class UserManager {
             user.registered_at = self.coreDataStore.dateFormatter.date(from: newUser.registered_at ?? "")
             
             user.bio_data = NSSet(array: bioDataArray)
+            user.favourite_sports = NSSet(array: favouriteSportsArray)
         }
     
         return coreDataStore

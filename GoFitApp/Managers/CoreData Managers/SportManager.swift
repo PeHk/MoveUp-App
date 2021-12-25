@@ -65,6 +65,8 @@ class SportManager {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Sport.entityName)
         request.predicate = NSPredicate(format: "id != nil")
         
+        self.currentSports.send([])
+        
         return coreDataStore
             .publicher(delete: request)
             .mapError({ error in

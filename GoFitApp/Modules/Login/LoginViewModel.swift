@@ -67,6 +67,7 @@ final class LoginViewModel: ViewModelProtocol {
     fileprivate let loginManager: LoginManager
     fileprivate let userManager: UserManager
     fileprivate let permissionManager: PermissionManager
+    fileprivate let sportManager: SportManager
     
     private(set) lazy var isInputValid = Publishers.CombineLatest($email, $password)
         .map { $0.count < 2 || $1.count < 3 || !Validators.textFieldValidatorEmail($0) }
@@ -77,6 +78,7 @@ final class LoginViewModel: ViewModelProtocol {
         self.loginManager = dependencyContainer.loginManager
         self.userManager = dependencyContainer.userManager
         self.permissionManager = dependencyContainer.permissionManager
+        self.sportManager = dependencyContainer.sportManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -108,7 +110,7 @@ final class LoginViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 }
             } receiveValue: { user in
-                self.saveUser(user: user)
+                self.saveSportsToCoreData(user: user, sports: user.sports)
             }
             .store(in: &subscription)
     }
@@ -126,6 +128,25 @@ final class LoginViewModel: ViewModelProtocol {
                 self.action.send(.permissionsShowed)
             }
             .store(in: &subscription)
+    }
+    
+    private func saveSportsToCoreData(user: UserResource, sports: [SportResource]?) {
+        if let allSports = sports {
+            for sport in allSports {
+                self.sportManager.saveSport(newSport: sport)
+                    .sink { completion in
+                        if case .failure(let error) = completion {
+                            self.state.send(.error(error))
+                        }
+                    } receiveValue: { _ in
+                        ()
+                    }
+                    .store(in: &subscription)
+            }
+        }
+        
+        self.sportManager.fetchCurrentSports()
+        self.saveUser(user: user)
     }
     
     private func showHealthKit() {

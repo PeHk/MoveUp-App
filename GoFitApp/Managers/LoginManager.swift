@@ -23,6 +23,7 @@ class LoginManager {
     }
     
     public func login(withForm: UserResource) -> Future<UserResource, NetworkError> {
+        
         let loginPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.login.url,
             method: .post,

@@ -19,6 +19,7 @@ struct UserResource: Codable {
     var gender: String?
     var bio_data: [BioDataResource]?
     var favourite_sports: [SportResource]?
+    var sports: [SportResource]?
     
     init(name: String, email: String, password: String) {
         self.email = email
@@ -28,7 +29,7 @@ struct UserResource: Codable {
     
     init(email: String, password: String) {
         self.email = email
-        self.password = password
+        self.password = SwiftyBase64.EncodeString([UInt8](password.utf8))
     }
     
     init(name: String) {
