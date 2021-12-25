@@ -160,8 +160,14 @@ class GoalsDetailViewModel: ViewModelProtocol {
     
     private func getLastActiveMinutes() {
         if let user = self.currentUser.value {
-            let bioData: [BioData]? = user.bio_data?.toArray()
-            print(bioData)
+            var bioData: [BioData]? = user.bio_data?.toArray()
+            
+            if bioData != nil {
+                bioData!.sort {
+                    $0.id < $1.id
+                }
+            }
+            
             self.minutes = Int(bioData?.last?.activity_minutes ?? 200)
             print(minutes)
         }

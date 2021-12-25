@@ -14,6 +14,8 @@ struct BioDataResource: Codable {
     var gender: String?
     var activity_minutes: Int64?
     var bmi: Float?
+    var id: Int64?
+    var created_at: String?
     
     init(weight: Float?, height: Float?, activity_minutes: Int64?, bmi: Float?) {
         self.weight = weight

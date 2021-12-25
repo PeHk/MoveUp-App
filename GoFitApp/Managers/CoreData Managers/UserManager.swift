@@ -88,6 +88,8 @@ class UserManager {
         bioData.weight = bioDataArray?.weight ?? 0
         bioData.height = bioDataArray?.height ?? 0
         bioData.bmi = bioDataArray?.bmi ?? 0
+        bioData.id = bioDataArray?.id ?? 0
+        bioData.created_at = self.coreDataStore.dateFormatter.date(from: bioDataArray?.created_at ?? "")
         
         let action: Action = {
             user.bio_data = user.bio_data?.adding(bioData) as NSSet?
@@ -111,6 +113,8 @@ class UserManager {
         bioData.weight = data.weight ?? 0
         bioData.height = data.height ?? 0
         bioData.bmi = data.bmi ?? 0
+        bioData.id = data.id ?? 0
+        bioData.created_at = self.coreDataStore.dateFormatter.date(from: data.created_at ?? "")
         
         let action: Action = {
             user.bio_data = user.bio_data?.adding(bioData) as NSSet?
@@ -135,6 +139,8 @@ class UserManager {
                 bioData.weight = data.weight ?? 0
                 bioData.height = data.height ?? 0
                 bioData.bmi = data.bmi ?? 0
+                bioData.id = data.id ?? 0
+                bioData.created_at = self.coreDataStore.dateFormatter.date(from: data.created_at ?? "")
                 
                 bioDataArray.append(bioData)
             }
