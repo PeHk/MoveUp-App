@@ -35,12 +35,14 @@ class ActivityPickerCoordinator: NSObject, Coordinator {
         
         viewController.viewModel.stepper
             .sink { [weak self] event in
-                self?.finish()
+                switch event {
+                case .sportSelected(let sport):
+                    self?.selectedSport = sport
+                    self?.finish()
+                }
             }
             .store(in: &subscription)
         
         navigationController.pushViewController(viewController, animated: true)
     }
-    
-    // MARK: Modules
 }

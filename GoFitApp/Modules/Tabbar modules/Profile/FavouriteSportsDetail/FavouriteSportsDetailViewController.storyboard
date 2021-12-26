@@ -15,7 +15,7 @@
         <!--Favourite sports-->
         <scene sceneID="H9s-dE-vK4">
             <objects>
-                <tableViewController storyboardIdentifier="FavouriteSportsDetailViewController" title="Favourite sports" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Krz-cq-TMg" customClass="FavouriteSportsDetailViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavouriteSportsDetailViewController" title="Favourite sports" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Krz-cq-TMg" customClass="FavouriteSportsDetailViewController" customModule="GoFitApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="VBz-Ou-nL1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

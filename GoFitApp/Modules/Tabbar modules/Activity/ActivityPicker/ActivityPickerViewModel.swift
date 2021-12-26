@@ -5,11 +5,10 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        case selected(_ sport: Sport)
     }
     
     enum Step {
-        
+        case sportSelected(sport: Sport)
     }
     
     enum State {
@@ -20,10 +19,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        switch action {
-        case .selected(let sport):
-            self.processSelection(sport: sport)
-        }
+        
     }
     
     func processState(_ state: State) {
@@ -83,10 +79,6 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     internal func initializeView() {
         isLoading.send(false)
-    }
-    
-    private func processSelection(sport: Sport) {
-        
     }
     
     func createActivityCellViewModel(sport: Sport) -> ActivityCellViewModel {

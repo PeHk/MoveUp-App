@@ -53,8 +53,8 @@ class ActivityCoordinator: NSObject, Coordinator {
         childCoordinators.append(activityPickerCoordinator)
     }
     
-    private func showActivityDetail() {
-        let activityDetailCoordinator = ActivityDetailCoordinator(navigationController, dependencyContainer)
+    private func showActivityDetail(sport: Sport) {
+        let activityDetailCoordinator = ActivityDetailCoordinator(navigationController, dependencyContainer, sport: sport)
         activityDetailCoordinator.finishDelegate = self
         activityDetailCoordinator.start()
         childCoordinators.append(activityDetailCoordinator)
@@ -70,6 +70,13 @@ extension ActivityCoordinator: CoordinatorFinishDelegate {
         case .activityPicker:
             let coor = childCoordinator as! ActivityPickerCoordinator
             
+            if let sport = coor.selectedSport {
+                navigationController.popViewController(animated: false)
+                showActivityDetail(sport: sport)
+            } else {
+                navigationController.popViewController(animated: true)
+            }
+        case .activityDetail:
             navigationController.popViewController(animated: true)
         default:
             break
@@ -89,6 +96,10 @@ extension ActivityCoordinator: UINavigationControllerDelegate {
         
         if let activityPickerController = fromViewController as? ActivityPickerViewController {
             if let coordinator = activityPickerController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
+        } else if let activityDetailViewController = fromViewController as? ActivityDetailViewController {
+            if let coordinator = activityDetailViewController.coordinator {
                 coordinatorDidFinish(childCoordinator: coordinator)
             }
         }

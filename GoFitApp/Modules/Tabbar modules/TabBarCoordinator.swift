@@ -133,7 +133,6 @@ class TabBarCoordinator: NSObject, Coordinator {
         }
         
         navController.navigationBar.largeTitleTextAttributes = [
-//            NSAttributedString.Key.foregroundColor : Asset.primary.color,
             NSAttributedString.Key.font : UIFont(font: FontFamily.Roboto.bold, size: 32) ?? UIFont.systemFont(ofSize: 32)
         ]
         

@@ -9,7 +9,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     enum Step {
-        
+        case endActivity
     }
     
     enum State {
@@ -41,11 +41,14 @@ class ActivityDetailViewModel: ViewModelProtocol {
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var sport: Sport
     
     var subscription = Set<AnyCancellable>()
     
     // MARK: - Init
-    init(_ dependencyContainer: DependencyContainer) {
+    init(_ dependencyContainer: DependencyContainer, sport: Sport) {
+        self.sport = sport
+        
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
         })

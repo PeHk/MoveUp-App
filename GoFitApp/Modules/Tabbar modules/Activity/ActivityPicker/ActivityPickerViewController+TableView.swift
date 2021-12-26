@@ -41,6 +41,6 @@ extension ActivityPickerViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sport = viewModel.sections.value[indexPath.section].sectionItems[indexPath.row]
-        self.viewModel.action.send(.selected(sport))
+        self.viewModel.stepper.send(.sportSelected(sport: sport))
     }
 }
