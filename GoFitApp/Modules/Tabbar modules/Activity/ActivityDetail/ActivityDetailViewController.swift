@@ -26,12 +26,18 @@ class ActivityDetailViewController: BaseViewController {
         setupBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     private func setupView() {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
         self.title = viewModel.sport.name
         self.viewModel.action.send(.start)
@@ -46,7 +52,6 @@ class ActivityDetailViewController: BaseViewController {
         viewModel.isLoading
             .assign(to: \.isLoading, on: self)
             .store(in: &subscription)
-        
         
         viewModel.$timeString
             .sink { time in
