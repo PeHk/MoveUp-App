@@ -3,11 +3,19 @@ import UIKit
 
 class ActivityDetailViewController: BaseViewController {
     
+    @IBOutlet weak var pauseString: UILabel!
+    @IBOutlet weak var pauseImage: UIImageView!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var playView: UIView!
+    @IBOutlet weak var playView: UIView! {
+        didSet {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(pauseTapped(_:)))
+            playView.addGestureRecognizer(tap)
+            playView.isUserInteractionEnabled = true
+        }
+    }
     @IBOutlet weak var stopView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: #selector(stopTapped(_:)))
@@ -18,6 +26,7 @@ class ActivityDetailViewController: BaseViewController {
     var viewModel: ActivityDetailViewModel!
     var coordinator: ActivityDetailCoordinator!
     
+    private var isRunning = false
     private var subscription = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -40,6 +49,7 @@ class ActivityDetailViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = nil
         self.navigationItem.hidesBackButton = true
         self.title = viewModel.sport.name
+        self.isRunning = true
         self.viewModel.action.send(.start)
     }
     
@@ -66,7 +76,25 @@ class ActivityDetailViewController: BaseViewController {
             .store(in: &subscription)
     }
     
+    private func changeIcon() {
+        self.isRunning ? (self.pauseString.text = "Pause") : (self.pauseString.text = "Resume")
+        self.isRunning ? (self.pauseImage.image = UIImage(systemName: "pause.fill")) :
+        (self.pauseImage.image = UIImage(systemName: "play.fill"))
+        
+    }
+    
     @objc func stopTapped(_ sender: UITapGestureRecognizer) {
         self.viewModel.action.send(.stop)
+    }
+    
+    @objc func pauseTapped(_ sender: UITapGestureRecognizer) {
+        
+        self.isRunning ? self.viewModel.action.send(.pause) : self.viewModel.action.send(.resume)
+        
+        
+        self.isRunning ? (self.isRunning = false) : (self.isRunning = true)
+        
+        self.changeIcon()
+        
     }
 }

@@ -130,21 +130,21 @@
                                         <rect key="frame" x="42" y="0.0" width="330" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bY-H7-Fec">
-                                                <rect key="frame" x="0.0" y="20" width="150" height="60"/>
+                                                <rect key="frame" x="0.0" y="25" width="150" height="50"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YtE-pm-RXl">
-                                                        <rect key="frame" x="20" y="5" width="110" height="50"/>
+                                                        <rect key="frame" x="20" y="5" width="110" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UWD-k5-KlE">
-                                                                <rect key="frame" x="0.0" y="2" width="30" height="46"/>
+                                                                <rect key="frame" x="0.0" y="2" width="20" height="36"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="30" id="O2A-y4-JnG"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="O2A-y4-JnG"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NID-2Y-7oT">
-                                                                <rect key="frame" x="50" y="0.0" width="60" height="50"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NID-2Y-7oT">
+                                                                <rect key="frame" x="40" y="0.0" width="70" height="40"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -155,7 +155,7 @@
                                                 <constraints>
                                                     <constraint firstItem="YtE-pm-RXl" firstAttribute="leading" secondItem="0bY-H7-Fec" secondAttribute="leading" constant="20" id="5e0-8n-VHd"/>
                                                     <constraint firstItem="YtE-pm-RXl" firstAttribute="top" secondItem="0bY-H7-Fec" secondAttribute="top" constant="5" id="LVL-fw-fDW"/>
-                                                    <constraint firstAttribute="height" constant="60" id="d9a-yn-YGs"/>
+                                                    <constraint firstAttribute="height" constant="50" id="d9a-yn-YGs"/>
                                                     <constraint firstAttribute="width" constant="150" id="doL-nz-fhF"/>
                                                     <constraint firstAttribute="trailing" secondItem="YtE-pm-RXl" secondAttribute="trailing" constant="20" id="iRX-Jh-6zb"/>
                                                     <constraint firstAttribute="bottom" secondItem="YtE-pm-RXl" secondAttribute="bottom" constant="5" id="xYe-XT-pbl"/>
@@ -167,21 +167,21 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xbf-Eq-v0r">
-                                                <rect key="frame" x="180" y="20" width="150" height="60"/>
+                                                <rect key="frame" x="180" y="25" width="150" height="50"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-hS-6Uq">
-                                                        <rect key="frame" x="20" y="5" width="110" height="50"/>
+                                                        <rect key="frame" x="20" y="5" width="110" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pause.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vx2-hF-Gvb">
-                                                                <rect key="frame" x="0.0" y="2" width="30" height="46"/>
+                                                                <rect key="frame" x="0.0" y="2" width="20" height="36"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="30" id="DhZ-YP-yNf"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="DhZ-YP-yNf"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pause" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W61-xM-z3K">
-                                                                <rect key="frame" x="50" y="0.0" width="60" height="50"/>
-                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pause" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W61-xM-z3K">
+                                                                <rect key="frame" x="40" y="0.0" width="70" height="40"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -195,7 +195,7 @@
                                                     <constraint firstAttribute="width" constant="150" id="Xm7-eH-Ucn"/>
                                                     <constraint firstItem="5Q6-hS-6Uq" firstAttribute="top" secondItem="Xbf-Eq-v0r" secondAttribute="top" constant="5" id="iR5-Xa-05T"/>
                                                     <constraint firstItem="5Q6-hS-6Uq" firstAttribute="leading" secondItem="Xbf-Eq-v0r" secondAttribute="leading" constant="20" id="kix-o5-OtW"/>
-                                                    <constraint firstAttribute="height" constant="60" id="pE3-ap-yW8"/>
+                                                    <constraint firstAttribute="height" constant="50" id="pE3-ap-yW8"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -229,6 +229,8 @@
                         <outlet property="caloriesLabel" destination="eG5-td-KuC" id="uyz-u6-nHt"/>
                         <outlet property="distanceLabel" destination="BMo-HN-3Sh" id="Hzv-JE-IAh"/>
                         <outlet property="paceLabel" destination="E9v-Iu-xL5" id="vmb-Bi-Wdo"/>
+                        <outlet property="pauseImage" destination="vx2-hF-Gvb" id="fEX-O8-RmK"/>
+                        <outlet property="pauseString" destination="W61-xM-z3K" id="8N5-rO-spv"/>
                         <outlet property="playView" destination="Xbf-Eq-v0r" id="Rn4-Ng-ROb"/>
                         <outlet property="stopView" destination="0bY-H7-Fec" id="qeD-7S-Cb9"/>
                         <outlet property="timeLabel" destination="71l-Xa-Kyh" id="yfg-qg-lJK"/>

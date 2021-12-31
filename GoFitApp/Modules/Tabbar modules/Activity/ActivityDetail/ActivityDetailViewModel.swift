@@ -8,6 +8,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
     enum Action {
         case start
         case stop
+        case pause
+        case resume
     }
     
     enum Step {
@@ -27,6 +29,10 @@ class ActivityDetailViewModel: ViewModelProtocol {
             self.startTimer()
         case .stop:
             self.stopTimer()
+        case .pause:
+            self.pauseTimer()
+        case .resume:
+            self.resumeTimer()
         }
     }
     
@@ -112,6 +118,14 @@ class ActivityDetailViewModel: ViewModelProtocol {
     private func stopTimer() {
         timerManager.stopTimer()
         self.stepper.send(.endActivity)
+    }
+    
+    private func pauseTimer() {
+        timerManager.pauseTimer()
+    }
+    
+    private func resumeTimer() {
+        timerManager.startTimer()
     }
     
     private func calculateCalories() {
