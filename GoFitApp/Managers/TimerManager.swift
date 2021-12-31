@@ -10,9 +10,9 @@ import Combine
 import UIKit
 
 class TimerManager: ObservableObject {
-    @Published var timeString = ""
+    @Published var timeString = "00:00:00"
     
-    private var time = Int()
+    private(set) public var time = Int()
     private var timer: Timer?
     private var notificationDate: Date?
     var subscription = Set<AnyCancellable>()
@@ -41,7 +41,7 @@ class TimerManager: ObservableObject {
     public func stopTimer() {
         timer?.invalidate()
         time = Int()
-        timeString = ""
+        timeString = "00:00:00"
     }
     
     public func pauseTimer() {

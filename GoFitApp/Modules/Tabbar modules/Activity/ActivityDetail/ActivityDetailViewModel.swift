@@ -50,16 +50,23 @@ class ActivityDetailViewModel: ViewModelProtocol {
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var sport: Sport
     
+    private var weight: Float = 0
+    
+    var currentUser = CurrentValueSubject<User?, Never>(nil)
+    
     @Published var timeString = "00:00:00"
+    @Published var caloriesString = "0 cal"
     
     var subscription = Set<AnyCancellable>()
     
     fileprivate let timerManager: TimerManager
+    fileprivate let userManager: UserManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
         self.timerManager = dependencyContainer.timerManager
+        self.userManager = dependencyContainer.userManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -71,14 +78,31 @@ class ActivityDetailViewModel: ViewModelProtocol {
         })
             .store(in: &subscription)
         
+        self.userManager.currentUser
+            .sink { user in
+                self.currentUser.send(user)
+                self.setWeight()
+            }
+            .store(in: &subscription)
+        
         timerManager.$timeString.sink { time in
             self.timeString = time
+            self.calculateCalories()
         }
         .store(in: &subscription)
     }
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    // MARK: Actions
+    private func setWeight() {
+        if let user = currentUser.value {
+            let bioDataArr: [BioData]? = user.bio_data?.toArray()
+            
+            weight = bioDataArr?.first?.weight ?? 0
+        }
     }
     
     private func startTimer() {
@@ -88,5 +112,12 @@ class ActivityDetailViewModel: ViewModelProtocol {
     private func stopTimer() {
         timerManager.stopTimer()
         self.stepper.send(.endActivity)
+    }
+    
+    private func calculateCalories() {
+        var calories = sport.met * 3.5 * weight / 200
+        calories = calories / 60
+        calories = calories * Float(timerManager.time)
+        caloriesString = "\(String(format: "%.2f", calories)) cal"
     }
 }

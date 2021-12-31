@@ -58,6 +58,12 @@ class ActivityDetailViewController: BaseViewController {
                 self.timeLabel.text = time
             }
             .store(in: &subscription)
+        
+        viewModel.$caloriesString
+            .sink { calories in
+                self.caloriesLabel.text = calories
+            }
+            .store(in: &subscription)
     }
     
     @objc func stopTapped(_ sender: UITapGestureRecognizer) {
