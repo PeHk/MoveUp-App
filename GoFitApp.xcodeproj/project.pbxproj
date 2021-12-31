@@ -35,6 +35,7 @@
 		E10E45E4275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E3275EB28A0073F2A6 /* ActiveMinutesViewControllerTests.swift */; };
 		E10E45E6275EB8240073F2A6 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */; };
 		E10E45EE275EBAC90073F2A6 /* SignUpFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */; };
+		E110FE2A277F456900DE4681 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E110FE29277F456900DE4681 /* FeedbackManager.swift */; };
 		E1111F142768DBEB00B10529 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0B2768DBEB00B10529 /* ActivityDetailViewController.swift */; };
 		E1111F152768DBEB00B10529 /* ActivityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */; };
 		E1111F162768DBEB00B10529 /* ActivityDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */; };
@@ -207,6 +208,7 @@
 		E10E45E5275EB8230073F2A6 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		E10E45EB275EBAC80073F2A6 /* GoFitAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10E45ED275EBAC90073F2A6 /* SignUpFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFlowUITests.swift; sourceTree = "<group>"; };
+		E110FE29277F456900DE4681 /* FeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		E1111F0B2768DBEB00B10529 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewModel.swift; sourceTree = "<group>"; };
 		E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 				E10E45D2275E61C50073F2A6 /* PermissionManager.swift */,
 				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
 				E1264453277EFCCE000116F8 /* TimerManager.swift */,
+				E110FE29277F456900DE4681 /* FeedbackManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */,
 				E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
+				E110FE2A277F456900DE4681 /* FeedbackManager.swift in Sources */,
 				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
 				E1264454277EFCCE000116F8 /* TimerManager.swift in Sources */,
 				E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */,

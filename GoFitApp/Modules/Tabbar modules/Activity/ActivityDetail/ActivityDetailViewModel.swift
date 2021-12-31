@@ -67,12 +67,14 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     fileprivate let timerManager: TimerManager
     fileprivate let userManager: UserManager
+    fileprivate let feedbackManager: FeedbackManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
         self.timerManager = dependencyContainer.timerManager
         self.userManager = dependencyContainer.userManager
+        self.feedbackManager = dependencyContainer.feedbackManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -117,14 +119,17 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     private func stopTimer() {
         timerManager.stopTimer()
+        self.feedbackManager.sendFeedbackNotification(.success)
         self.stepper.send(.endActivity)
     }
     
     private func pauseTimer() {
+        self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.pauseTimer()
     }
     
     private func resumeTimer() {
+        self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.startTimer()
     }
     
