@@ -3,8 +3,8 @@ import UIKit
 
 class ActivityDetailViewController: BaseViewController {
     
+    @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
-    @IBOutlet weak var heartbeatLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var playView: UIView!

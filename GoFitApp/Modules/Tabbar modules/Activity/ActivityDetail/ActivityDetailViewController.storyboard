@@ -79,7 +79,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="5eF-IZ-ucO">
                                                         <rect key="frame" x="0.0" y="0.0" width="127" height="100"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heartbeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeG-RZ-Qlx">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeG-RZ-Qlx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="127" height="46"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -226,8 +226,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="caloriesLabel" destination="eG5-td-KuC" id="uyz-u6-nHt"/>
                         <outlet property="distanceLabel" destination="BMo-HN-3Sh" id="Hzv-JE-IAh"/>
-                        <outlet property="heartbeatLabel" destination="eG5-td-KuC" id="RxX-hw-yit"/>
                         <outlet property="paceLabel" destination="E9v-Iu-xL5" id="vmb-Bi-Wdo"/>
                         <outlet property="playView" destination="Xbf-Eq-v0r" id="Rn4-Ng-ROb"/>
                         <outlet property="stopView" destination="0bY-H7-Fec" id="qeD-7S-Cb9"/>
