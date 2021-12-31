@@ -52,6 +52,7 @@
 		E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */; };
 		E11FAAC62757762C0075F74D /* ProfileDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */; };
 		E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */; };
+		E1264454277EFCCE000116F8 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1264453277EFCCE000116F8 /* TimerManager.swift */; };
 		E127A7DE2751342300D03DB1 /* DetailsViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */; };
 		E12E6BA7274FC10A009B211C /* UserResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA6274FC109009B211C /* UserResource.swift */; };
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
@@ -223,6 +224,7 @@
 		E11FAAC12757762C0075F74D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E11FAAC22757762C0075F74D /* ProfileDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileDetailViewController.storyboard; sourceTree = "<group>"; };
 		E11FAAC32757762C0075F74D /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
+		E1264453277EFCCE000116F8 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		E127A7DD2751342300D03DB1 /* DetailsViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsViewController+Picker.swift"; sourceTree = "<group>"; };
 		E12E6BA6274FC109009B211C /* UserResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResource.swift; sourceTree = "<group>"; };
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 				E17751342755326D00C9917F /* LoginManager.swift */,
 				E10E45D2275E61C50073F2A6 /* PermissionManager.swift */,
 				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
+				E1264453277EFCCE000116F8 /* TimerManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */,
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
 				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
+				E1264454277EFCCE000116F8 /* TimerManager.swift in Sources */,
 				E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
 				E11FAAC72757762C0075F74D /* ProfileDetailViewModel.swift in Sources */,

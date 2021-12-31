@@ -5,7 +5,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case start
+        case stop
     }
     
     enum Step {
@@ -20,7 +21,12 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .start:
+            self.startTimer()
+        case .stop:
+            self.stopTimer()
+        }
     }
     
     func processState(_ state: State) {
@@ -43,11 +49,16 @@ class ActivityDetailViewModel: ViewModelProtocol {
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var sport: Sport
     
+    @Published var timeString = "00:00:00"
+    
     var subscription = Set<AnyCancellable>()
+    
+    fileprivate let timerManager: TimerManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
+        self.timerManager = dependencyContainer.timerManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -58,9 +69,23 @@ class ActivityDetailViewModel: ViewModelProtocol {
             self?.processState(state)
         })
             .store(in: &subscription)
+        
+        timerManager.$timeString.sink { time in
+            self.timeString = time
+        }
+        .store(in: &subscription)
     }
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    private func startTimer() {
+        timerManager.startTimer()
+    }
+    
+    private func stopTimer() {
+        timerManager.stopTimer()
+        self.stepper.send(.endActivity)
     }
 }
