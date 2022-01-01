@@ -98,6 +98,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
             self.calculateCalories()
         }
         .store(in: &subscription)
+        
+        timerManager.isPaused = false
     }
     
     internal func initializeView() {
@@ -125,11 +127,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     private func pauseTimer() {
         self.feedbackManager.sendImpactFeedback(.rigid)
+        timerManager.isPaused = true
         timerManager.pauseTimer()
     }
     
     private func resumeTimer() {
         self.feedbackManager.sendImpactFeedback(.rigid)
+        timerManager.isPaused = false
         timerManager.startTimer()
     }
     

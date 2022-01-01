@@ -13,6 +13,7 @@ class TimerManager: ObservableObject {
     @Published var timeString = "00:00:00"
     
     private(set) public var time = Int()
+    public var isPaused: Bool = false
     private var timer: Timer?
     private var notificationDate: Date?
     var subscription = Set<AnyCancellable>()
@@ -32,20 +33,20 @@ class TimerManager: ObservableObject {
     }
     
     public func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.time += 1
             self.countdown()
         }
     }
     
     public func stopTimer() {
-        timer?.invalidate()
-        time = Int()
-        timeString = "00:00:00"
+        self.timer?.invalidate()
+        self.time = Int()
+        self.timeString = "00:00:00"
     }
     
     public func pauseTimer() {
-        timer?.invalidate()
+        self.timer?.invalidate()
     }
     
     @objc private func countdown() {
@@ -64,14 +65,18 @@ class TimerManager: ObservableObject {
     }
     
     private func movingToBackground() {
-        notificationDate = Date()
-        self.pauseTimer()
+        if !isPaused {
+            notificationDate = Date()
+            self.pauseTimer()
+        }
     }
     
     private func movingToForeground() {
-        let deltaTime: Int = Int(Date().timeIntervalSince(notificationDate ?? Date()))
-        self.time += deltaTime
-        self.startTimer()
+        if !isPaused {
+            let deltaTime: Int = Int(Date().timeIntervalSince(notificationDate ?? Date()))
+            self.time += deltaTime
+            self.startTimer()
+        }
     }
 
 }
