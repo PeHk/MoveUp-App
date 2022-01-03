@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+        <attribute name="calories" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="end_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="start_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="trace" optional="YES" attributeType="Transformable"/>
+        <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" inverseName="activities" inverseEntity="Sport"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="activities" inverseEntity="User"/>
+    </entity>
     <entity name="BioData" representedClassName="BioData" syncable="YES" codeGenerationType="class">
         <attribute name="activity_minutes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="bmi" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -13,6 +22,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="met" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="sport" inverseEntity="Activity"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favourite_sports" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
@@ -23,12 +33,14 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="registered_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="user" inverseEntity="Activity"/>
         <relationship name="bio_data" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BioData" inverseName="user" inverseEntity="BioData"/>
         <relationship name="favourite_sports" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sport" inverseName="user" inverseEntity="Sport"/>
     </entity>
     <elements>
-        <element name="BioData" positionX="-46.8299560546875" positionY="13.68820190429688" width="128" height="148"/>
-        <element name="Sport" positionX="-584.8748779296875" positionY="24.59228515625" width="128" height="103"/>
-        <element name="User" positionX="-339.1815795898438" positionY="-212.3511657714844" width="128" height="178"/>
+        <element name="Activity" positionX="-584.4906005859375" positionY="-214.0376586914062" width="128" height="148"/>
+        <element name="BioData" positionX="-130.731689453125" positionY="-208.6987915039062" width="128" height="148"/>
+        <element name="Sport" positionX="-395.0457153320312" positionY="61.9317626953125" width="128" height="118"/>
+        <element name="User" positionX="-339.1815795898438" positionY="-212.3511657714844" width="128" height="193"/>
     </elements>
 </model>
