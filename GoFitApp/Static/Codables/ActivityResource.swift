@@ -8,9 +8,15 @@
 import Foundation
 
 struct ActivityResource: Codable {
-    let startDate: Date
-    let endDate: Date
-    let calories: Float
+    let start_date: Date
+    let end_date: Date
+    let calories: Double
+    let name: String
+    
+    var duration: TimeInterval {
+        end_date.timeIntervalSince(start_date)
+    }
+    
     
 }
 

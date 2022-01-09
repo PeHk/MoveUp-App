@@ -71,6 +71,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     fileprivate let userManager: UserManager
     fileprivate let feedbackManager: FeedbackManager
     fileprivate let healthKitManager: HealthKitManager
+    fileprivate let activityManager: ActivityManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
@@ -80,6 +81,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.userManager = dependencyContainer.userManager
         self.feedbackManager = dependencyContainer.feedbackManager
         self.healthKitManager = dependencyContainer.healthKitManager
+        self.activityManager = dependencyContainer.activityManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -141,25 +143,43 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.state.send(.loading)
         timerManager.stopTimer()
         self.feedbackManager.sendFeedbackNotification(.success)
-
-        let workout = LocalWorkout(start: start, end: Date(), calories: totalCalories)
+        
+        let workout = ActivityResource(start_date: start, end_date: Date(), calories: totalCalories, name: sport.name ?? "")
 
         if workout.duration > 60 {
-            self.healthKitManager.saveWorkout(workout: workout)
-                .receive(on: DispatchQueue.main)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(.init(initialError: nil, backendError: nil, error as NSError)))
-                    }
-                } receiveValue: { _ in
-                    self.isLoading.send(false)
-                    self.stepper.send(.endActivity)
-                }
-                .store(in: &subscription)
+            self.saveHealthKitWorkout(workout: workout)
         } else {
             self.isLoading.send(false)
             self.stepper.send(.endActivity)
         }
+    }
+    
+    private func saveHealthKitWorkout(workout: ActivityResource) {
+        self.healthKitManager.saveWorkout(workout: workout)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(.init(initialError: nil, backendError: nil, error as NSError)))
+                }
+            } receiveValue: { _ in
+                self.saveCoreDataWorkout(workout: workout)
+            }
+            .store(in: &subscription)
+    }
+    
+    private func saveCoreDataWorkout(workout: ActivityResource) {
+        self.activityManager.saveActivity(newActivity: workout)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
+                }
+            } receiveValue: { _ in
+                self.activityManager.fetchCurrentActivities()
+                self.isLoading.send(false)
+                self.stepper.send(.endActivity)
+            }
+            .store(in: &subscription)
     }
     
     private func pauseTimer() {

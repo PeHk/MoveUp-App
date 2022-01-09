@@ -30,14 +30,14 @@ class HealthKitManager {
     }
     
     // MARK: Save workout
-    func saveWorkout(workout: LocalWorkout) -> Future<Void, Error> {
+    func saveWorkout(workout: ActivityResource) -> Future<Void, Error> {
         Future { promise in
             let builder = HKWorkoutBuilder(
                 healthStore: self.healthStore,
                 configuration: self.workoutConfiguration,
                 device: .local())
             
-            builder.beginCollection(withStart: workout.start) { success, error in
+            builder.beginCollection(withStart: workout.start_date) { success, error in
                 guard success else {
                     if let error = error {
                         promise(.failure(error))
@@ -59,8 +59,8 @@ class HealthKitManager {
                 
                 let sample = HKCumulativeQuantitySample(type: quantityType,
                                                               quantity: quantity,
-                                                              start: workout.start,
-                                                              end: workout.end)
+                                                              start: workout.start_date,
+                                                              end: workout.end_date)
                 
                 builder.add([sample]) { (success, error) in
                     guard success else {
@@ -73,7 +73,7 @@ class HealthKitManager {
                         }
                     }
                     
-                    builder.endCollection(withEnd: workout.end) { (success, error) in
+                    builder.endCollection(withEnd: workout.end_date) { (success, error) in
                         guard success else {
                             if let error = error {
                                 promise(.failure(error))

@@ -31,7 +31,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Uo-EL-yfK">
-                                    <rect key="frame" x="15" y="10" width="389" height="238"/>
+                                    <rect key="frame" x="15" y="0.0" width="389" height="248"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-VR-1h6">
                                             <rect key="frame" x="0.0" y="0.0" width="389" height="180"/>
@@ -122,7 +122,7 @@
                                             </constraints>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We recommend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-rf-kpb">
-                                            <rect key="frame" x="0.0" y="200.5" width="389" height="37.5"/>
+                                            <rect key="frame" x="0.0" y="210.5" width="389" height="37.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                             <accessibility key="accessibilityConfiguration" identifier="DashboardViewController"/>
                             <constraints>
                                 <constraint firstItem="3Uo-EL-yfK" firstAttribute="leading" secondItem="gUa-gY-GBX" secondAttribute="leading" constant="15" id="9WL-0t-6q3"/>
-                                <constraint firstItem="3Uo-EL-yfK" firstAttribute="top" secondItem="gUa-gY-GBX" secondAttribute="top" constant="10" id="Ald-6f-cHw"/>
+                                <constraint firstItem="3Uo-EL-yfK" firstAttribute="top" secondItem="gUa-gY-GBX" secondAttribute="top" id="Ald-6f-cHw"/>
                                 <constraint firstAttribute="bottom" secondItem="3Uo-EL-yfK" secondAttribute="bottom" constant="10" id="DDP-yQ-T0p"/>
                                 <constraint firstAttribute="trailing" secondItem="3Uo-EL-yfK" secondAttribute="trailing" constant="10" id="wmL-BC-3Nf"/>
                             </constraints>

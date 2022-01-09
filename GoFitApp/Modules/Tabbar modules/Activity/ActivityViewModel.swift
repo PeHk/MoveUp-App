@@ -42,12 +42,17 @@ class ActivityViewModel: ViewModelProtocol {
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
+    var activities = CurrentValueSubject<[Activity], Never>([])
+    
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
+    
+    fileprivate let activityManager: ActivityManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.configuration = Configuration(.activities)
+        self.activityManager = dependencyContainer.activityManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -57,6 +62,12 @@ class ActivityViewModel: ViewModelProtocol {
         state.sink(receiveValue: { [weak self] state in
             self?.processState(state)
         })
+            .store(in: &subscription)
+        
+        self.activityManager.currentActivities
+            .sink { activities in
+                self.activities.send(activities)
+            }
             .store(in: &subscription)
     }
     

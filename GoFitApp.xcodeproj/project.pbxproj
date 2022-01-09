@@ -127,6 +127,8 @@
 		E1A788D2276B637C007C406E /* GoalsDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A788D1276B637C007C406E /* GoalsDetailViewController+TableView.swift */; };
 		E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95832276B3E9A000EB73E /* HealthKitManager.swift */; };
 		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
+		E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92E278B1505003DE96D /* ActivityManager.swift */; };
+		E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
@@ -305,6 +307,8 @@
 		E1A788D1276B637C007C406E /* GoalsDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		E1A95832276B3E9A000EB73E /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityResource.swift; sourceTree = "<group>"; };
+		E1AAD92E278B1505003DE96D /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
@@ -480,6 +484,7 @@
 				E134E93527525BD800453781 /* CoreDataManager.swift */,
 				E134E93727525E9900453781 /* UserManager.swift */,
 				E1111F1D2768F64100B10529 /* SportManager.swift */,
+				E1AAD92E278B1505003DE96D /* ActivityManager.swift */,
 			);
 			path = "CoreData Managers";
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				E13B447727206DBF0062C44B /* ActivityViewController.storyboard */,
 				E13B447827206DBF0062C44B /* ActivityViewModel.swift */,
 				E13B447927206DBF0062C44B /* ActivityCoordinator.swift */,
+				E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -1095,6 +1101,7 @@
 				E13B447B27206DBF0062C44B /* DashboardViewModel.swift in Sources */,
 				E110FE2A277F456900DE4681 /* FeedbackManager.swift in Sources */,
 				E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */,
+				E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */,
 				E1264454277EFCCE000116F8 /* TimerManager.swift in Sources */,
 				E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */,
 				E13B446227206D290062C44B /* SetActiveMinutesViewModel.swift in Sources */,
@@ -1182,6 +1189,7 @@
 				E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */,
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
+				E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */,
 				E177513327552B7100C9917F /* LogoutManager.swift in Sources */,
 				E134E93827525E9900453781 /* UserManager.swift in Sources */,
 				E13B446427206D290062C44B /* SetActiveMinutesCoordinator.swift in Sources */,
