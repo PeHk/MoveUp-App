@@ -88,13 +88,8 @@ class ActivityDetailViewController: BaseViewController {
     }
     
     @objc func pauseTapped(_ sender: UITapGestureRecognizer) {
-        
         self.isRunning ? self.viewModel.action.send(.pause) : self.viewModel.action.send(.resume)
-        
-        
         self.isRunning ? (self.isRunning = false) : (self.isRunning = true)
-        
         self.changeIcon()
-        
     }
 }

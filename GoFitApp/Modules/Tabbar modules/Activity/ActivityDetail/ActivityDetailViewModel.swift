@@ -57,6 +57,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
     var sport: Sport
     
     private var weight: Float = 0
+    private var start: Date
+    private var totalCalories: Double = 0
     
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
@@ -68,13 +70,16 @@ class ActivityDetailViewModel: ViewModelProtocol {
     fileprivate let timerManager: TimerManager
     fileprivate let userManager: UserManager
     fileprivate let feedbackManager: FeedbackManager
+    fileprivate let healthKitManager: HealthKitManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
-        self.timerManager = dependencyContainer.timerManager
+        self.start = Date()
+        self.timerManager = TimerManager()
         self.userManager = dependencyContainer.userManager
         self.feedbackManager = dependencyContainer.feedbackManager
+        self.healthKitManager = dependencyContainer.healthKitManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -102,6 +107,19 @@ class ActivityDetailViewModel: ViewModelProtocol {
         timerManager.isPaused = false
     }
     
+    private var caloriesConstant: Double {
+        var calories = sport.met * 3.5 * weight / 200
+        calories = calories / 60
+        return Double(calories)
+    }
+    
+    private func calculateCalories() {
+        if Float(timerManager.time) > 0 {
+            totalCalories = caloriesConstant * timerManager.time
+            caloriesString = "\(String(format: "%.2f", totalCalories)) cal"
+        }
+    }
+    
     internal func initializeView() {
         isLoading.send(false)
     }
@@ -120,9 +138,28 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func stopTimer() {
+        self.state.send(.loading)
         timerManager.stopTimer()
         self.feedbackManager.sendFeedbackNotification(.success)
-        self.stepper.send(.endActivity)
+
+        let workout = LocalWorkout(start: start, end: Date(), calories: totalCalories)
+
+        if workout.duration > 60 {
+            self.healthKitManager.saveWorkout(workout: workout)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    if case .failure(let error) = completion {
+                        self.state.send(.error(.init(initialError: nil, backendError: nil, error as NSError)))
+                    }
+                } receiveValue: { _ in
+                    self.isLoading.send(false)
+                    self.stepper.send(.endActivity)
+                }
+                .store(in: &subscription)
+        } else {
+            self.isLoading.send(false)
+            self.stepper.send(.endActivity)
+        }
     }
     
     private func pauseTimer() {
@@ -135,12 +172,5 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = false
         timerManager.startTimer()
-    }
-    
-    private func calculateCalories() {
-        var calories = sport.met * 3.5 * weight / 200
-        calories = calories / 60
-        calories = calories * Float(timerManager.time)
-        caloriesString = "\(String(format: "%.2f", calories)) cal"
     }
 }

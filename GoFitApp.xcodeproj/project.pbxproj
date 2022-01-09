@@ -126,6 +126,7 @@
 		E1A788D0276B5E58007C406E /* GoalsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A788CC276B5E57007C406E /* GoalsDetailViewController.swift */; };
 		E1A788D2276B637C007C406E /* GoalsDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A788D1276B637C007C406E /* GoalsDetailViewController+TableView.swift */; };
 		E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A95832276B3E9A000EB73E /* HealthKitManager.swift */; };
+		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
@@ -303,6 +304,7 @@
 		E1A788CC276B5E57007C406E /* GoalsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsDetailViewController.swift; sourceTree = "<group>"; };
 		E1A788D1276B637C007C406E /* GoalsDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		E1A95832276B3E9A000EB73E /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityResource.swift; sourceTree = "<group>"; };
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 				E1CFFD5B27521EA500794BAC /* GenderResource.swift */,
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
+				E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,
 				E1065D96271F29FE002C575E /* UINavigationController+Extensions.swift in Sources */,
 				E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */,
+				E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */,
 				E1E3C5C3276E15F300E8A70A /* ProfileDetailViewController+TableView.swift in Sources */,
 				E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,

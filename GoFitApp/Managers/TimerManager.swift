@@ -12,7 +12,7 @@ import UIKit
 class TimerManager: ObservableObject {
     @Published var timeString = "00:00:00"
     
-    private(set) public var time = Int()
+    private(set) public var time = Double()
     public var isPaused: Bool = false
     private var timer: Timer?
     private var notificationDate: Date?
@@ -41,7 +41,7 @@ class TimerManager: ObservableObject {
     
     public func stopTimer() {
         self.timer?.invalidate()
-        self.time = Int()
+        self.time = Double()
         self.timeString = "00:00:00"
     }
     
@@ -58,9 +58,9 @@ class TimerManager: ObservableObject {
             timer?.invalidate()
         }
         
-        hours = time / 3600
-        minutes = (time % 3600) / 60
-        seconds = (time % 3600) % 60
+        hours = Int(time) / 3600
+        minutes = (Int(time) % 3600) / 60
+        seconds = (Int(time) % 3600) % 60
         timeString = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
     
@@ -73,7 +73,7 @@ class TimerManager: ObservableObject {
     
     private func movingToForeground() {
         if !isPaused {
-            let deltaTime: Int = Int(Date().timeIntervalSince(notificationDate ?? Date()))
+            let deltaTime: Double = Date().timeIntervalSince(notificationDate ?? Date())
             self.time += deltaTime
             self.startTimer()
         }

@@ -12,6 +12,7 @@ import HealthKit
 class HealthKitManager {
     
     fileprivate let healthStore = HKHealthStore()
+    fileprivate let workoutConfiguration = HKWorkoutConfiguration()
     fileprivate var subscription = Set<AnyCancellable>()
     
     public var steps = CurrentValueSubject<Double, Never>(0)
@@ -19,6 +20,8 @@ class HealthKitManager {
     
     init(_ dependencyContainer: DependencyContainer) {
         self.refreshValues()
+        
+        workoutConfiguration.activityType = .other
     }
     
     public func refreshValues() {
@@ -26,6 +29,75 @@ class HealthKitManager {
         self.getTodaysCalories()
     }
     
+    // MARK: Save workout
+    func saveWorkout(workout: LocalWorkout) -> Future<Void, Error> {
+        Future { promise in
+            let builder = HKWorkoutBuilder(
+                healthStore: self.healthStore,
+                configuration: self.workoutConfiguration,
+                device: .local())
+            
+            builder.beginCollection(withStart: workout.start) { success, error in
+                guard success else {
+                    if let error = error {
+                        promise(.failure(error))
+                        return
+                    }
+                    else {
+                        return
+                    }
+                }
+                
+                guard let quantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
+                    promise(.failure(NSError(domain: "healthKit", code: 400, userInfo: nil)))
+                    return
+                }
+                    
+                let unit = HKUnit.kilocalorie()
+                let totalEnergyBurned = workout.calories
+                let quantity = HKQuantity(unit: unit, doubleValue: Double(totalEnergyBurned))
+                
+                let sample = HKCumulativeQuantitySample(type: quantityType,
+                                                              quantity: quantity,
+                                                              start: workout.start,
+                                                              end: workout.end)
+                
+                builder.add([sample]) { (success, error) in
+                    guard success else {
+                        if let error = error {
+                            promise(.failure(error))
+                            return
+                        }
+                        else {
+                            return
+                        }
+                    }
+                    
+                    builder.endCollection(withEnd: workout.end) { (success, error) in
+                        guard success else {
+                            if let error = error {
+                                promise(.failure(error))
+                                return
+                            } else {
+                                return
+                            }
+                        }
+                        
+                        builder.finishWorkout { (_, error) in
+                            if let error = error {
+                                promise(.failure(error))
+                            } else {
+                                promise(.success(()))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
+    
+    // MARK: Get steps
     private func getTodaysSteps() {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         
@@ -52,6 +124,7 @@ class HealthKitManager {
         self.healthStore.execute(query)
     }
     
+    // MARK: Get calories
     private func getTodaysCalories() {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
