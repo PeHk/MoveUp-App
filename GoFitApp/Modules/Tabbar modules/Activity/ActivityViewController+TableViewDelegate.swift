@@ -15,10 +15,17 @@ extension ActivityViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "activityHistoryCell", for: indexPath)
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ActivityHistoryTableViewCell.reuseIdentifier(), for: indexPath) as? ActivityHistoryTableViewCell {
+            
+            let activity = viewModel.activities.value[indexPath.row]
+            let cellViewModel = viewModel.createActivityHistoryCellViewModel(activity: activity)
+            
+            cell.viewModel = cellViewModel
+            
+            return cell
+        } else {
+            fatalError("Unexpected kind!")
+        }
     }
-
 }
 

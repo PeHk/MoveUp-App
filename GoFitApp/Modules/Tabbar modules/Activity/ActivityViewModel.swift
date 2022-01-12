@@ -74,4 +74,9 @@ class ActivityViewModel: ViewModelProtocol {
     internal func initializeView() {
         isLoading.send(false)
     }
+    
+    // MARK: ViewModels
+    func createActivityHistoryCellViewModel(activity: Activity) -> ActivityHistoryCellViewModel {
+        ActivityHistoryCellViewModel(name: activity.name ?? "None", duration: activity.duration, calories: activity.calories)
+    }
 }

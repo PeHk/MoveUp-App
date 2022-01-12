@@ -32,4 +32,11 @@ class Helpers {
         
         return dateFormatter.string(from: date)
     }
+    
+    static func formatTimeInterval(time: TimeInterval) -> String? {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter.string(from: time)
+    }
 }

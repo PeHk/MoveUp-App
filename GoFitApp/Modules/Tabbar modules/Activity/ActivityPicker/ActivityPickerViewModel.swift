@@ -45,7 +45,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     let sportManager: SportManager
     
-    var sections = CurrentValueSubject<[SectionData], Never>([])
+    var sections = CurrentValueSubject<[SportSectionData], Never>([])
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -67,7 +67,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
                 
                 let keys = grouppedSports.keys.sorted()
                 
-                var sections: [SectionData] = keys.map{ SectionData(sectionIndexName: String($0), sectionName: String($0), sectionItems: grouppedSports[$0]!.sorted(by: { $0.name ?? "" < $1.name ?? "" }))}
+                var sections: [SportSectionData] = keys.map{ SportSectionData(sectionIndexName: String($0), sectionName: String($0), sectionItems: grouppedSports[$0]!.sorted(by: { $0.name ?? "" < $1.name ?? "" }))}
                 
 //                sections.insert(SectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: []), at: 0)
                 

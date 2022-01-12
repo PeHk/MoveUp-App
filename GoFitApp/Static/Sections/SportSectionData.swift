@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SectionData {
+struct SportSectionData {
     let sectionIndexName: String
     let sectionName: String
     let sectionItems: [Sport]
