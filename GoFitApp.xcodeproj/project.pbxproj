@@ -89,6 +89,10 @@
 		E14451572764B02500DEBA8E /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */; };
 		E14451592764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */; };
 		E144515C2764B60800DEBA8E /* CredentialsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144515B2764B60700DEBA8E /* CredentialsManagerTests.swift */; };
+		E1494251278F793900D38EA6 /* ActivityHistoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */; };
+		E1494252278F793900D38EA6 /* ActivityHistoryDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */; };
+		E1494253278F793900D38EA6 /* ActivityHistoryDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149424F278F793800D38EA6 /* ActivityHistoryDetailCoordinator.swift */; };
+		E1494254278F793900D38EA6 /* ActivityHistoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1494250278F793800D38EA6 /* ActivityHistoryDetailViewModel.swift */; };
 		E14FBA19274FB6F6002CB035 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */; };
 		E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14FBA1A274FB81A002CB035 /* Helpers.swift */; };
 		E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1515878275380D20045CBCB /* Optional+Extensions.swift */; };
@@ -270,6 +274,10 @@
 		E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
 		E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTestsConstants.swift; sourceTree = "<group>"; };
 		E144515B2764B60700DEBA8E /* CredentialsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsManagerTests.swift; sourceTree = "<group>"; };
+		E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHistoryDetailViewController.swift; sourceTree = "<group>"; };
+		E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ActivityHistoryDetailViewController.storyboard; sourceTree = "<group>"; };
+		E149424F278F793800D38EA6 /* ActivityHistoryDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHistoryDetailCoordinator.swift; sourceTree = "<group>"; };
+		E1494250278F793800D38EA6 /* ActivityHistoryDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityHistoryDetailViewModel.swift; sourceTree = "<group>"; };
 		E14FBA18274FB6F6002CB035 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		E14FBA1A274FB81A002CB035 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		E1515878275380D20045CBCB /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
@@ -475,10 +483,10 @@
 			isa = PBXGroup;
 			children = (
 				E1111F212768FD4300B10529 /* Cell */,
+				E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */,
 				E1111F102768DBEB00B10529 /* ActivityPickerViewController.storyboard */,
 				E1111F112768DBEB00B10529 /* ActivityPickerViewModel.swift */,
 				E1111F122768DBEB00B10529 /* ActivityPickerViewController.swift */,
-				E1111F132768DBEB00B10529 /* ActivityPickerCoordinator.swift */,
 				E153BCBF276A6F360093D05E /* ActivityPickerViewController+TableView.swift */,
 			);
 			path = ActivityPicker;
@@ -542,13 +550,14 @@
 		E13B447527206DBF0062C44B /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				E149424C278F793800D38EA6 /* ActivityHistoryDetail */,
 				E13D271C278F2F4B00EEF255 /* ActivityHistoryCell */,
 				E1111F0A2768DBEB00B10529 /* ActivityDetail */,
 				E1111F0F2768DBEB00B10529 /* ActivityPicker */,
+				E13B447927206DBF0062C44B /* ActivityCoordinator.swift */,
 				E13B447627206DBF0062C44B /* ActivityViewController.swift */,
 				E13B447727206DBF0062C44B /* ActivityViewController.storyboard */,
 				E13B447827206DBF0062C44B /* ActivityViewModel.swift */,
-				E13B447927206DBF0062C44B /* ActivityCoordinator.swift */,
 				E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */,
 			);
 			path = Activity;
@@ -622,6 +631,18 @@
 			);
 			path = CredentialsManager;
 			sourceTree = "<group>";
+		};
+		E149424C278F793800D38EA6 /* ActivityHistoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E149424F278F793800D38EA6 /* ActivityHistoryDetailCoordinator.swift */,
+				E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */,
+				E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */,
+				E1494250278F793800D38EA6 /* ActivityHistoryDetailViewModel.swift */,
+			);
+			name = ActivityHistoryDetail;
+			path = "GoFitApp/Modules/Tabbar modules/Activity/ActivityHistoryDetail";
+			sourceTree = SOURCE_ROOT;
 		};
 		E15C5C5F2753D56600B20C2A /* Cell */ = {
 			isa = PBXGroup;
@@ -1042,6 +1063,7 @@
 				E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */,
 				E13B447D27206DBF0062C44B /* DashboardViewController.storyboard in Resources */,
 				E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */,
+				E1494252278F793900D38EA6 /* ActivityHistoryDetailViewController.storyboard in Resources */,
 				E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */,
 				E10AA3F7271DB33D0096B032 /* Roboto-Thin.ttf in Resources */,
 				E10AA3F6271DB33D0096B032 /* Roboto-Black.ttf in Resources */,
@@ -1116,6 +1138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1494254278F793900D38EA6 /* ActivityHistoryDetailViewModel.swift in Sources */,
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
 				E1111F162768DBEB00B10529 /* ActivityDetailCoordinator.swift in Sources */,
@@ -1170,6 +1193,7 @@
 				E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */,
 				E127A7DE2751342300D03DB1 /* DetailsViewController+Picker.swift in Sources */,
 				E1E41E9F274BF5D9006674E7 /* Fonts.swift in Sources */,
+				E1494251278F793900D38EA6 /* ActivityHistoryDetailViewController.swift in Sources */,
 				E1E5108F274C053E00C9C266 /* Constants.swift in Sources */,
 				E1E51089274C020B00C9C266 /* NetworkManager+Interceptor.swift in Sources */,
 				E1E51087274C014E00C9C266 /* ServerError.swift in Sources */,
@@ -1218,6 +1242,7 @@
 				E13B449B27206DE30062C44B /* ProfileViewController.swift in Sources */,
 				E16609B7271CA0580077DF6E /* Coordinator.swift in Sources */,
 				E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */,
+				E1494253278F793900D38EA6 /* ActivityHistoryDetailCoordinator.swift in Sources */,
 				E177513327552B7100C9917F /* LogoutManager.swift in Sources */,
 				E134E93827525E9900453781 /* UserManager.swift in Sources */,
 				E13B446427206D290062C44B /* SetActiveMinutesCoordinator.swift in Sources */,

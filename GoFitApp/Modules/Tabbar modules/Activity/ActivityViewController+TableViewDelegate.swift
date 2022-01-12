@@ -34,5 +34,12 @@ extension ActivityViewController {
             fatalError("Unexpected kind!")
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activity = viewModel.sections.value[indexPath.section].sectionItems[indexPath.row]
+        
+        self.viewModel.stepper.send(.showActivityHistory(activity: activity))
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 

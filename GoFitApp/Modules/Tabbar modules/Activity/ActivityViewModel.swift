@@ -10,6 +10,7 @@ class ActivityViewModel: ViewModelProtocol {
     
     enum Step {
         case startActivity
+        case showActivityHistory(activity: Activity)
     }
     
     enum State {

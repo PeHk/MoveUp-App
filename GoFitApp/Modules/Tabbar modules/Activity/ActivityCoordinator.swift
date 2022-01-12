@@ -38,6 +38,8 @@ class ActivityCoordinator: NSObject, Coordinator {
                 switch event {
                 case .startActivity:
                     self?.showActivityPicker()
+                case .showActivityHistory(let activity):
+                    self?.showActivityHistoryDetail(activity: activity)
                 }
             }
             .store(in: &subscription)
@@ -59,6 +61,13 @@ class ActivityCoordinator: NSObject, Coordinator {
         activityDetailCoordinator.start()
         childCoordinators.append(activityDetailCoordinator)
     }
+    
+    private func showActivityHistoryDetail(activity: Activity) {
+        let activityHistoryDetailCoordinator = ActivityHistoryDetailCoordinator(navigationController, dependencyContainer, activity: activity)
+        activityHistoryDetailCoordinator.finishDelegate = self
+        activityHistoryDetailCoordinator.start()
+        childCoordinators.append(activityHistoryDetailCoordinator)
+    }
 }
 
 // MARK: Navigation extensions
@@ -76,6 +85,8 @@ extension ActivityCoordinator: CoordinatorFinishDelegate {
             } else {
                 navigationController.popViewController(animated: true)
             }
+        case .historyDetail:
+            navigationController.popViewController(animated: true)
         case .activityDetail:
             navigationController.popViewController(animated: true)
         default:
@@ -100,6 +111,10 @@ extension ActivityCoordinator: UINavigationControllerDelegate {
             }
         } else if let activityDetailViewController = fromViewController as? ActivityDetailViewController {
             if let coordinator = activityDetailViewController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
+        } else if let activityHistoryDetailViewController = fromViewController as? ActivityHistoryDetailViewController {
+            if let coordinator = activityHistoryDetailViewController.coordinator {
                 coordinatorDidFinish(childCoordinator: coordinator)
             }
         }
