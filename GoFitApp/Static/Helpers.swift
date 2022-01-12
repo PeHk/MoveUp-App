@@ -39,4 +39,11 @@ class Helpers {
         formatter.allowedUnits = [.hour, .minute, .second]
         return formatter.string(from: time)
     }
+    
+    static func getTimeFromDate(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        
+        return dateFormatter.string(from: date)
+    }
 }

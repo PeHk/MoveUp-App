@@ -70,7 +70,8 @@ class ActivityViewModel: ViewModelProtocol {
                 
                 let keys = grouppedActivities.keys.sorted(by: >)
                 
-                let sections: [ActivitySectionData] = keys.map{ ActivitySectionData(sectionIndexName: $0, sectionName: $0, sectionItems: grouppedActivities[$0]!)}
+                let sections: [ActivitySectionData] = keys.map{ ActivitySectionData(sectionIndexName: $0, sectionName: $0, sectionItems: grouppedActivities[$0]!.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
+                }))}
                 
                 
                 self.sections.send(sections)
