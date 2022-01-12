@@ -42,7 +42,7 @@ class ActivityViewModel: ViewModelProtocol {
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
-    var activities = CurrentValueSubject<[Activity], Never>([])
+    var sections = CurrentValueSubject<[ActivitySectionData], Never>([])
     
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
@@ -66,7 +66,14 @@ class ActivityViewModel: ViewModelProtocol {
         
         self.activityManager.currentActivities
             .sink { activities in
-                self.activities.send(activities)
+                let grouppedActivities = Dictionary(grouping: activities, by: { Helpers.printDate(from: $0.end_date ?? Date()) })
+                
+                let keys = grouppedActivities.keys.sorted(by: >)
+                
+                let sections: [ActivitySectionData] = keys.map{ ActivitySectionData(sectionIndexName: $0, sectionName: $0, sectionItems: grouppedActivities[$0]!)}
+                
+                
+                self.sections.send(sections)
             }
             .store(in: &subscription)
     }

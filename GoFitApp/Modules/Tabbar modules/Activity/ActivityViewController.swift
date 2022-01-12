@@ -43,7 +43,7 @@ class ActivityViewController: BaseTableViewController, EmptyDataSetSource, Empty
             .assign(to: \.isLoading, on: self)
             .store(in: &subscription)
         
-        viewModel.activities
+        viewModel.sections
             .sink { _ in
                 self.tableView.reloadData()
             }

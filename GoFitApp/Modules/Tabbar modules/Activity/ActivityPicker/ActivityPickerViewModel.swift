@@ -42,9 +42,7 @@ class ActivityPickerViewModel: ViewModelProtocol {
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     
     var subscription = Set<AnyCancellable>()
-    
     let sportManager: SportManager
-    
     var sections = CurrentValueSubject<[SportSectionData], Never>([])
     
     // MARK: - Init

@@ -8,5 +8,7 @@
 import Foundation
 
 struct ActivitySectionData {
-    
+    let sectionIndexName: String
+    let sectionName: String
+    let sectionItems: [Activity]
 }
