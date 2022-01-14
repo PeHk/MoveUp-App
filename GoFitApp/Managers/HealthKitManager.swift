@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import HealthKit
+import CoreLocation
 
 class HealthKitManager {
     
@@ -15,13 +16,17 @@ class HealthKitManager {
     fileprivate let workoutConfiguration = HKWorkoutConfiguration()
     fileprivate var subscription = Set<AnyCancellable>()
     
+    fileprivate var routeBuilder: HKWorkoutRouteBuilder
+    
     public var steps = CurrentValueSubject<Double, Never>(0)
     public var calories = CurrentValueSubject<Double, Never>(0)
     
     init(_ dependencyContainer: DependencyContainer) {
+        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: nil)
+        workoutConfiguration.activityType = .other
+        
         self.refreshValues()
         
-        workoutConfiguration.activityType = .other
     }
     
     public func refreshValues() {
@@ -82,17 +87,34 @@ class HealthKitManager {
                                 return
                             }
                         }
-                        
-                        builder.finishWorkout { (_, error) in
+
+                        builder.finishWorkout { (workout, error) in
                             if let error = error {
                                 promise(.failure(error))
                             } else {
-                                promise(.success(()))
+                                if let workout = workout {
+                                    self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
+                                        guard newRoute != nil else {
+                                            return
+                                        }
+                                        
+                                        promise(.success(()))
+                                        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: self.healthStore, device: nil)
+                                    }
+                                } else {
+                                    promise(.failure(error ?? NSError()))
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+    }
+    
+    public func addRouteToBuilder(location: [CLLocation]) {
+        routeBuilder.insertRouteData(location) { (success, error) in
+            print("Inserting the route")
         }
     }
         

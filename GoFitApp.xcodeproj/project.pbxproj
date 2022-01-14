@@ -26,6 +26,7 @@
 		E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA400271DB7E80096B032 /* LoginViewModel.swift */; };
 		E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10AA402271DB7F30096B032 /* LoginViewController.swift */; };
 		E10AA405271DB7FF0096B032 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */; };
+		E10B294D2791DD2000E551CB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B294C2791DD2000E551CB /* LocationManager.swift */; };
 		E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D2275E61C50073F2A6 /* PermissionManager.swift */; };
 		E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E10E45D4275E62860073F2A6 /* HealthKit.framework */; };
 		E10E45D7275E7CC30073F2A6 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E45D6275E7CC30073F2A6 /* NetworkProtocol.swift */; };
@@ -208,6 +209,7 @@
 		E10AA400271DB7E80096B032 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E10AA402271DB7F30096B032 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E10AA404271DB7FF0096B032 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		E10B294C2791DD2000E551CB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E10E45D2275E61C50073F2A6 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		E10E45D4275E62860073F2A6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		E10E45D6275E7CC30073F2A6 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
 				E1264453277EFCCE000116F8 /* TimerManager.swift */,
 				E110FE29277F456900DE4681 /* FeedbackManager.swift */,
+				E10B294C2791DD2000E551CB /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
+				E10B294D2791DD2000E551CB /* LocationManager.swift in Sources */,
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */,

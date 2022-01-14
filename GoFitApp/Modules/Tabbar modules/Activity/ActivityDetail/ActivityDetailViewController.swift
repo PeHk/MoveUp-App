@@ -74,6 +74,12 @@ class ActivityDetailViewController: BaseViewController {
                 self.caloriesLabel.text = calories
             }
             .store(in: &subscription)
+        
+        viewModel.$distanceString
+            .sink { distance in
+                self.distanceLabel.text = distance
+            }
+            .store(in: &subscription)
     }
     
     private func changeIcon() {

@@ -64,6 +64,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     @Published var timeString = "00:00:00"
     @Published var caloriesString = "0 cal"
+    @Published var distanceString = "0,00 km"
     
     var subscription = Set<AnyCancellable>()
     
@@ -72,12 +73,14 @@ class ActivityDetailViewModel: ViewModelProtocol {
     fileprivate let feedbackManager: FeedbackManager
     fileprivate let healthKitManager: HealthKitManager
     fileprivate let activityManager: ActivityManager
+    fileprivate let locationManager: LocationManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
         self.start = Date()
         self.timerManager = TimerManager()
+        self.locationManager = dependencyContainer.locationManager
         self.userManager = dependencyContainer.userManager
         self.feedbackManager = dependencyContainer.feedbackManager
         self.healthKitManager = dependencyContainer.healthKitManager
@@ -105,6 +108,14 @@ class ActivityDetailViewModel: ViewModelProtocol {
             self.calculateCalories()
         }
         .store(in: &subscription)
+        
+        self.locationManager.latestDistance
+            .sink { distance in
+                let currentDistance = distance.rounded() / 1000
+                self.distanceString = String(format: "%.2f", currentDistance) + " km"
+                print(distance)
+            }
+            .store(in: &subscription)
         
         timerManager.isPaused = false
     }
@@ -137,11 +148,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     private func startTimer() {
         timerManager.startTimer()
+        locationManager.start()
     }
     
     private func stopTimer() {
         self.state.send(.loading)
         timerManager.stopTimer()
+        locationManager.stop()
         self.feedbackManager.sendFeedbackNotification(.success)
         
         let workout = ActivityResource(start_date: start, end_date: Date(), calories: totalCalories, name: sport.name ?? "")
@@ -186,11 +199,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = true
         timerManager.pauseTimer()
+        locationManager.stop()
     }
     
     private func resumeTimer() {
         self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = false
         timerManager.startTimer()
+        locationManager.start()
     }
 }
