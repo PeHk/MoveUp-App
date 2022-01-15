@@ -15,7 +15,7 @@ extension ActivityHistoryDetailViewController {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.fillColor = Asset.primary.color
             polylineRenderer.strokeColor = Asset.primary.color
-            polylineRenderer.lineWidth = 10
+            polylineRenderer.lineWidth = 5
             
             return polylineRenderer
         }

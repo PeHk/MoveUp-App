@@ -48,6 +48,13 @@ class Helpers {
         return dateFormatter.string(from: date)
     }
     
+    static func getTimeAndDateFormatted(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm, dd/MM/YYYY"
+        
+        return dateFormatter.string(from: date)
+    }
+    
     static func getCoreLocationObjects(from activity: Activity) -> [CLLocationCoordinate2D] {
         var coordinates: [CLLocationCoordinate2D] = []
         if let locations = activity.locations {

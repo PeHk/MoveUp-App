@@ -3,18 +3,16 @@ import UIKit
 import MapKit
 
 class ActivityHistoryDetailViewController: BaseTableViewController, MKMapViewDelegate {
-    
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var averagePaceLabel: UILabel!
-    @IBOutlet weak var caloriesLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var startedTime: UILabel!
-    @IBOutlet weak var startedDate: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
+
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.layer.cornerRadius = 10
+        }
+    }
     
     var viewModel: ActivityHistoryDetailViewModel!
     var coordinator: ActivityHistoryDetailCoordinator!
+    var hideMapSection: Bool = false
     
     private var subscription = Set<AnyCancellable>()
     
@@ -27,12 +25,6 @@ class ActivityHistoryDetailViewController: BaseTableViewController, MKMapViewDel
     private func setupView() {
         self.title = viewModel.activity.name
         mapView.delegate = self
-        
-        self.durationLabel.text = Helpers.formatTimeInterval(time: viewModel.activity.duration)
-        self.startedDate.text = Helpers.printDate(from: viewModel.activity.start_date ?? Date())
-        self.startedTime.text = Helpers.getTimeFromDate(from: viewModel.activity.start_date ?? Date())
-        self.caloriesLabel.text = String(format: "%.2f", viewModel.activity.calories) + " kCal"
-        self.distanceLabel.text = String(format: "%.2f", viewModel.activity.traveledDistance) + " km"
     }
     
     private func setupBindings() {
@@ -53,11 +45,8 @@ class ActivityHistoryDetailViewController: BaseTableViewController, MKMapViewDel
                     self.mapView.addOverlay(polyline)
                     self.setVisibleMapArea(polyline: polyline, edgeInsets: self.viewModel.edges)
                 } else {
-                    self.mapView.isHidden = true
-                    
-                    var frame = self.headerView.frame
-                    frame.size.height = 380
-                    self.headerView.frame = frame
+                    self.hideMapSection = true
+                    self.tableView.reloadData()
                 }
             }
             .store(in: &subscription)

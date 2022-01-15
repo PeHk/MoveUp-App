@@ -142,6 +142,7 @@
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
+		E1CAAB4D27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAAB4C27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift */; };
 		E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */; };
 		E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */; };
 		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
@@ -336,6 +337,7 @@
 		E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpRequestModelTests.swift; sourceTree = "<group>"; };
 		E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
 		E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpersTests.swift; sourceTree = "<group>"; };
+		E1CAAB4C27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityHistoryDetail+TableView.swift"; sourceTree = "<group>"; };
 		E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsDetailViewController.storyboard; sourceTree = "<group>"; };
 		E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewController.swift; sourceTree = "<group>"; };
 		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */,
 				E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */,
 				E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */,
+				E1CAAB4C27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift */,
 			);
 			name = ActivityHistoryDetail;
 			path = "GoFitApp/Modules/Tabbar modules/Activity/ActivityHistoryDetail";
@@ -1236,6 +1239,7 @@
 				E11FAAC42757762C0075F74D /* ProfileDetailCoordinator.swift in Sources */,
 				E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */,
 				E1E3C5C3276E15F300E8A70A /* ProfileDetailViewController+TableView.swift in Sources */,
+				E1CAAB4D27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift in Sources */,
 				E19ABA1F2753C608004E6FDC /* BaseTableViewController.swift in Sources */,
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
