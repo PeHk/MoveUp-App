@@ -143,6 +143,7 @@
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
 		E1CAAB4D27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAAB4C27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift */; };
+		E1CAAB4F279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAAB4E279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift */; };
 		E1CB6086275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */; };
 		E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */; };
 		E1CB6088275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */; };
@@ -338,6 +339,7 @@
 		E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
 		E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpersTests.swift; sourceTree = "<group>"; };
 		E1CAAB4C27931E5900D4A81D /* ActivityHistoryDetail+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityHistoryDetail+TableView.swift"; sourceTree = "<group>"; };
+		E1CAAB4E279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+Extensions.swift"; sourceTree = "<group>"; };
 		E1CB6082275793D500E4F39D /* FavouriteSportsDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsDetailViewController.storyboard; sourceTree = "<group>"; };
 		E1CB6083275793D500E4F39D /* FavouriteSportsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailViewController.swift; sourceTree = "<group>"; };
 		E1CB6084275793D500E4F39D /* FavouriteSportsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				E162218F275B9C6F00A7A46D /* String+Extensions.swift */,
 				E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */,
 				E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */,
+				E1CAAB4E279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1201,6 +1204,7 @@
 				E1A788D2276B637C007C406E /* GoalsDetailViewController+TableView.swift in Sources */,
 				E1111F252768FD8400B10529 /* ActivityTableViewCell.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
+				E1CAAB4F279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
 				E1E41E9E274BF5D9006674E7 /* Assets.swift in Sources */,
 				E14FBA1B274FB81A002CB035 /* Helpers.swift in Sources */,
