@@ -10,10 +10,7 @@ import SPPermissions
 import Combine
 import HealthKit
 
-class PermissionManager {
-    
-    public var permissionPresented = PassthroughSubject<Void, Never>()
-    
+class PermissionManager {    
     fileprivate var subscription = Set<AnyCancellable>()
     fileprivate let healthStore = HKHealthStore()
     
@@ -37,25 +34,18 @@ class PermissionManager {
     init(_ dependencyContainer: DependencyContainer) {
         
     }
-    
-    private var isAuthorized: Bool? = false
 
     func authorizeHealthKit(completion: ((_ success: Bool) -> Void)!) {
         guard HKHealthStore.isHealthDataAvailable() else {
             completion(false)
             return
         }
-        
         // Request Authorization
-        self.permissionPresented.send(())
         healthStore.requestAuthorization(toShare: allTypes, read: allTypes) { (success, error) in
-            
             if success {
                 completion(true)
-                self.isAuthorized = true
             } else {
                 completion(false)
-                self.isAuthorized = false
             }
         }
     }  

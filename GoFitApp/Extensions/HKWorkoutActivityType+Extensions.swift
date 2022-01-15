@@ -105,7 +105,7 @@ extension HKWorkoutActivityType {
 }
 
 extension String {
-    var hkWorkoutactivityType: HKWorkoutActivityType {
+    var hkWorkoutActivityType: HKWorkoutActivityType {
         switch self {
         case "americanFootball":            return .americanFootball
         case "archery":                     return .archery

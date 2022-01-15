@@ -23,10 +23,7 @@ class HealthKitManager {
     
     init(_ dependencyContainer: DependencyContainer) {
         self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: nil)
-        workoutConfiguration.activityType = .other
-        
         self.refreshValues()
-        
     }
     
     public func refreshValues() {
@@ -35,8 +32,10 @@ class HealthKitManager {
     }
     
     // MARK: Save workout
-    func saveWorkout(workout: ActivityResource) -> Future<Void, Error> {
+    func saveWorkout(workout: ActivityResource, sport: Sport) -> Future<Void, Error> {
         Future { promise in
+            self.workoutConfiguration.activityType = sport.healthKitType?.hkWorkoutActivityType ?? .other
+            
             let builder = HKWorkoutBuilder(
                 healthStore: self.healthStore,
                 configuration: self.workoutConfiguration,

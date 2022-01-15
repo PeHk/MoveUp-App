@@ -12,4 +12,6 @@ struct SportResource: Codable {
     let name: String
     let met: Float
     let created_at: String
+    let health_kit_type: String
+    let type: String
 }

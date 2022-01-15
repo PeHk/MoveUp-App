@@ -171,7 +171,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func saveHealthKitWorkout(workout: ActivityResource) {
-        self.healthKitManager.saveWorkout(workout: workout)
+        self.healthKitManager.saveWorkout(workout: workout, sport: sport)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure(let error) = completion {
@@ -184,7 +184,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func saveCoreDataWorkout(workout: ActivityResource) {
-        self.activityManager.saveActivity(newActivity: workout)
+        self.activityManager.saveActivity(newActivity: workout, sport: sport)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure(let error) = completion {

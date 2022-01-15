@@ -51,6 +51,8 @@ class SportManager {
             sport.name = newSport.name
             sport.id = newSport.id
             sport.met = newSport.met
+            sport.healthKitType = newSport.health_kit_type
+            sport.type = newSport.type
         }
 
         return coreDataStore

@@ -155,7 +155,6 @@ class UserManager {
         
         if let sports = newUser.favourite_sports {
             for data in sports {
-                print(data.id)
                 if let actualSport = actualSports.first(where: { $0.id == data.id }) {
                     favouriteSportsArray.append(actualSport)
                 } else {

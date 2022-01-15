@@ -43,7 +43,7 @@ class ActivityManager {
             .eraseToAnyPublisher()
     }
     
-    public func saveActivity(newActivity: ActivityResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    public func saveActivity(newActivity: ActivityResource, sport: Sport) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
             let activity: Activity = self.coreDataStore.createEntity()
             activity.name = newActivity.name
@@ -53,6 +53,7 @@ class ActivityManager {
             activity.duration = newActivity.duration
             activity.traveledDistance = newActivity.traveledDistance
             activity.locations = self.getDataFromArray(array: newActivity.route)
+            activity.sport = sport
         }
 
         return coreDataStore
@@ -74,5 +75,17 @@ class ActivityManager {
         return nil
     }
     
-    
+    func deleteActivities() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Activity.entityName)
+        request.predicate = NSPredicate(format: "name != nil")
+        
+        self.currentActivities.send([])
+        
+        return coreDataStore
+            .publicher(delete: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
 }

@@ -20,6 +20,7 @@ struct UserResource: Codable {
     var bio_data: [BioDataResource]?
     var favourite_sports: [SportResource]?
     var sports: [SportResource]?
+    var activities: [ActivityResource]?
     
     init(name: String, email: String, password: String) {
         self.email = email

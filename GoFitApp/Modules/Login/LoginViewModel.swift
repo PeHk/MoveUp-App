@@ -35,7 +35,6 @@ final class LoginViewModel: ViewModelProtocol {
         case .permissionsShowed:
             return
         case .healthKitPermissions:
-            self.isLoading.send(true)
             showHealthKit()
         }
     }
@@ -107,7 +106,6 @@ final class LoginViewModel: ViewModelProtocol {
         self.loginManager.login(withForm: model)
             .sink { completion in
                 if case .failure(let error) = completion {
-                    print(error)
                     self.state.send(.error(error))
                 }
             } receiveValue: { user in
@@ -125,7 +123,6 @@ final class LoginViewModel: ViewModelProtocol {
                 }
             } receiveValue: { _, _ in
                 self.userManager.fetchCurrentUser()
-                self.isLoading.send(false)
                 self.action.send(.permissionsShowed)
             }
             .store(in: &subscription)
@@ -151,14 +148,9 @@ final class LoginViewModel: ViewModelProtocol {
     }
     
     private func showHealthKit() {
-        self.permissionManager.permissionPresented
-            .sink { _ in
-                self.isLoading.send(false)
-            }
-            .store(in: &subscription)
-        
         self.permissionManager.authorizeHealthKit { success in
             DispatchQueue.main.async {
+                self.isLoading.send(false)
                 self.stepper.send(.login)
             }
         }
