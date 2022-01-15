@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Validators {
     static func textFieldValidatorEmail(_ string: String) -> Bool {
@@ -45,5 +46,30 @@ class Helpers {
         dateFormatter.dateFormat = "HH:mm:ss"
         
         return dateFormatter.string(from: date)
+    }
+    
+    static func getCoreLocationObjects(from activity: Activity) -> [CLLocationCoordinate2D] {
+        var coordinates: [CLLocationCoordinate2D] = []
+        if let locations = activity.locations {
+            if let array = getArrayFromData(data: locations) {
+                for location in array {
+                    let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                    coordinates.append(coordinate)
+                }
+            }
+        }
+        
+        return coordinates
+    }
+    
+    static func getArrayFromData(data: Data) -> [Coordinates]? {
+        do {
+            let array = try PropertyListDecoder.init().decode([Coordinates].self, from: data)
+            return array
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
+        
+        return nil
     }
 }

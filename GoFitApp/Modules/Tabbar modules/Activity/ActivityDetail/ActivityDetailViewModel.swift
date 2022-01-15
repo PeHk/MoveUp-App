@@ -59,6 +59,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     private var weight: Float = 0
     private var start: Date
     private var totalCalories: Double = 0
+    private var currentDistance: Double = 0
     
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
@@ -80,7 +81,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.sport = sport
         self.start = Date()
         self.timerManager = TimerManager()
-        self.locationManager = dependencyContainer.locationManager
+        self.locationManager = LocationManager(dependencyContainer)
         self.userManager = dependencyContainer.userManager
         self.feedbackManager = dependencyContainer.feedbackManager
         self.healthKitManager = dependencyContainer.healthKitManager
@@ -109,11 +110,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
         }
         .store(in: &subscription)
         
-        self.locationManager.latestDistance
+        self.locationManager.traveledDistance
             .sink { distance in
-                let currentDistance = distance.rounded() / 1000
-                self.distanceString = String(format: "%.2f", currentDistance) + " km"
-                print(distance)
+                let tmpDistance = distance.rounded() / 1000
+                if self.currentDistance < tmpDistance {
+                    self.currentDistance = tmpDistance
+                    self.distanceString = String(format: "%.2f", self.currentDistance) + " km"
+                }
             }
             .store(in: &subscription)
         
@@ -157,7 +160,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         locationManager.stop()
         self.feedbackManager.sendFeedbackNotification(.success)
         
-        let workout = ActivityResource(start_date: start, end_date: Date(), calories: totalCalories, name: sport.name ?? "")
+        let workout = ActivityResource(start_date: start, end_date: Date(), calories: totalCalories, name: sport.name ?? "", traveledDistance: currentDistance, route: locationManager.getRouteCoordinates())
 
         if workout.duration > 60 {
             self.saveHealthKitWorkout(workout: workout)

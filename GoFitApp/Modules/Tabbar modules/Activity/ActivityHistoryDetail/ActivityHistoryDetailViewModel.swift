@@ -1,5 +1,7 @@
 import Combine
 import Foundation
+import CoreLocation
+import UIKit
 
 class ActivityHistoryDetailViewModel: ViewModelProtocol {
     
@@ -44,11 +46,15 @@ class ActivityHistoryDetailViewModel: ViewModelProtocol {
     
     var subscription = Set<AnyCancellable>()
     
-    let activity: Activity
+    @Published var coordinates: [CLLocationCoordinate2D] = []
+    
+    public let activity: Activity
+    public let edges = UIEdgeInsets(top: 30.0, left: 30.0, bottom: 30.0, right: 30.0)
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, activity: Activity) {
         self.activity = activity
+        coordinates = Helpers.getCoreLocationObjects(from: activity)
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)

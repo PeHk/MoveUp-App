@@ -51,6 +51,8 @@ class ActivityManager {
             activity.start_date = newActivity.start_date
             activity.calories = newActivity.calories
             activity.duration = newActivity.duration
+            activity.traveledDistance = newActivity.traveledDistance
+            activity.locations = self.getDataFromArray(array: newActivity.route)
         }
 
         return coreDataStore
@@ -60,4 +62,17 @@ class ActivityManager {
             })
             .eraseToAnyPublisher()
     }
+    
+    
+    func getDataFromArray(array: [Coordinates]) -> Data? {
+        do {
+            let data = try PropertyListEncoder.init().encode(array)
+            return data
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    
 }

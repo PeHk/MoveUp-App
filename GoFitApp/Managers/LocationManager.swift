@@ -13,14 +13,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager
     private let healthKitManager: HealthKitManager
-    private  var initialLocation: CLLocation?
+    private var lastLocation: CLLocation!
+    private var route: [CLLocation]
     
-    public var latestDistance = CurrentValueSubject<Double, Never>(0.0)
+    public var traveledDistance = CurrentValueSubject<Double, Never>(0.0)
     
     init(_ dependencyContainer: DependencyContainer) {
         self.locationManager = CLLocationManager()
         self.healthKitManager = dependencyContainer.healthKitManager
-        self.initialLocation = locationManager.location
+        self.lastLocation = locationManager.location
+        self.route = []
         
         super.init()
         
@@ -31,7 +33,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     public func start() {
-        self.initialLocation = locationManager.location
+        self.lastLocation = locationManager.location
         self.locationManager.startUpdatingLocation()
     }
     
@@ -48,15 +50,35 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         guard !filteredLocations.isEmpty else { return }
         
         self.getDistance(latestLocation: filteredLocations.last)
+        
+        if let last = filteredLocations.last {
+            self.route.append(last)
+        }
+        
         healthKitManager.addRouteToBuilder(location: filteredLocations)
     }
     
     private func getDistance(latestLocation: CLLocation?) {
-        if let initial = self.initialLocation, let latest = latestLocation {
-            self.latestDistance.send(latest.distance(from: initial))
-        } else {
-            self.latestDistance.send(0.0)
+        if let latestLocation = latestLocation {
+            var traveledDistance = self.traveledDistance.value
+            
+            traveledDistance += latestLocation.distance(from: self.lastLocation)
+            
+            self.traveledDistance.send(traveledDistance)
+            
+            self.lastLocation = latestLocation
         }
+    }
+    
+    public func getRouteCoordinates() -> [Coordinates] {
+        var coordinates: [Coordinates] = []
+        
+        for location in route {
+            let coordinate = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            coordinates.append(coordinate)
+        }
+        
+        return coordinates
     }
     
 }

@@ -90,8 +90,8 @@ class LoginViewController: BaseViewController {
     }
     
     private func presentPermissions() {
-        if !SPPermissions.Permission.locationWhenInUse.authorized || !SPPermissions.Permission.notification.authorized || !SPPermissions.Permission.calendar.authorized {
-            let basicPermissions = SPPermissions.list([.calendar, .notification, .locationWhenInUse])
+        if !SPPermissions.Permission.locationAlways.authorized || !SPPermissions.Permission.notification.authorized || !SPPermissions.Permission.calendar.authorized {
+            let basicPermissions = SPPermissions.list([.calendar, .notification, .locationAlways])
             basicPermissions.delegate = self
             basicPermissions.allowSwipeDismiss = false
             basicPermissions.present(on: self)
@@ -104,7 +104,7 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: SPPermissionsDelegate {
     func didHidePermissions(_ permissions: [SPPermissions.Permission]) {
-        if SPPermissions.Permission.locationWhenInUse.authorized && SPPermissions.Permission.notification.authorized && SPPermissions.Permission.calendar.authorized {
+        if SPPermissions.Permission.locationAlways.authorized && SPPermissions.Permission.notification.authorized && SPPermissions.Permission.calendar.authorized {
             viewModel.action.send(.healthKitPermissions)
         } else {
             self.permissionsHidden = true

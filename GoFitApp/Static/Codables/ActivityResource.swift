@@ -6,32 +6,22 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct ActivityResource: Codable {
     let start_date: Date
     let end_date: Date
     let calories: Double
     let name: String
+    let traveledDistance: Double
+    let route: [Coordinates]
     
     var duration: TimeInterval {
         end_date.timeIntervalSince(start_date)
     }
-    
-    
 }
 
-struct LocalWorkout {
-    var start: Date
-    var end: Date
-    var calories: Double
-    
-    init(start: Date, end: Date, calories: Double) {
-        self.start = start
-        self.end = end
-        self.calories = calories
-    }
-    
-    var duration: TimeInterval {
-        end.timeIntervalSince(start)
-    }
+struct Coordinates: Codable {
+    let latitude: Double
+    let longitude: Double
 }

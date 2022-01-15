@@ -10,7 +10,7 @@ target 'GoFitApp' do
   pod 'ALProgressView' 
   pod 'SPPermissions/Health'
   pod 'SPPermissions/Notification'
-  pod 'SPPermissions/LocationWhenInUse'
+  pod 'SPPermissions/LocationAlways'
   pod 'SPPermissions/Calendar'
   pod 'SwiftGen', '~> 6.0'
   pod 'NVActivityIndicatorView'

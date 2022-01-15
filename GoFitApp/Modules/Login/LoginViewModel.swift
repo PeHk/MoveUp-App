@@ -35,6 +35,7 @@ final class LoginViewModel: ViewModelProtocol {
         case .permissionsShowed:
             return
         case .healthKitPermissions:
+            self.isLoading.send(true)
             showHealthKit()
         }
     }
@@ -150,6 +151,12 @@ final class LoginViewModel: ViewModelProtocol {
     }
     
     private func showHealthKit() {
+        self.permissionManager.permissionPresented
+            .sink { _ in
+                self.isLoading.send(false)
+            }
+            .store(in: &subscription)
+        
         self.permissionManager.authorizeHealthKit { success in
             DispatchQueue.main.async {
                 self.stepper.send(.login)

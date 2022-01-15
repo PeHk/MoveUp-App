@@ -95,11 +95,11 @@ class HealthKitManager {
                                 if let workout = workout {
                                     self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
                                         guard newRoute != nil else {
+                                            promise(.failure(error ?? NSError()))
                                             return
                                         }
-                                        
+                                                                                
                                         promise(.success(()))
-                                        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: self.healthStore, device: nil)
                                     }
                                 } else {
                                     promise(.failure(error ?? NSError()))
@@ -114,10 +114,9 @@ class HealthKitManager {
     
     public func addRouteToBuilder(location: [CLLocation]) {
         routeBuilder.insertRouteData(location) { (success, error) in
-            print("Inserting the route")
+            //
         }
     }
-        
     
     // MARK: Get steps
     private func getTodaysSteps() {

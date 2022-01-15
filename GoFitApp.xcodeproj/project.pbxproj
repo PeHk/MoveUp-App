@@ -119,6 +119,7 @@
 		E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513027552A1400C9917F /* ProfileViewController+TableView.swift */; };
 		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
 		E17751352755326D00C9917F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751342755326D00C9917F /* LoginManager.swift */; };
+		E1805FE62792BC6100587EC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1805FE52792BC6100587EC1 /* MapKit.framework */; };
 		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
 		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
 		E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */; };
@@ -137,6 +138,7 @@
 		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
 		E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92E278B1505003DE96D /* ActivityManager.swift */; };
 		E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */; };
+		E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
 		E1BCA2FE275E3C7C00FC67D5 /* HelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2FA275E3C7C00FC67D5 /* HelpersTests.swift */; };
@@ -307,6 +309,7 @@
 		E177513027552A1400C9917F /* ProfileViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+TableView.swift"; sourceTree = "<group>"; };
 		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
 		E17751342755326D00C9917F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		E1805FE52792BC6100587EC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
 		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
 		E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsViewController.storyboard; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
+		E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityHistoryDetail+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		E1BCA2EE275E3C4000FC67D5 /* GoFitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpRequestModelTests.swift; sourceTree = "<group>"; };
 		E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorsTests.swift; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 			files = (
 				E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */,
 				E10E45D5275E62860073F2A6 /* HealthKit.framework in Frameworks */,
+				E1805FE62792BC6100587EC1 /* MapKit.framework in Frameworks */,
 				E1E51098274C080500C9C266 /* GoodCache in Frameworks */,
 				3D8EE13525AC8EB75EAE7D0C /* Pods_GoFitApp.framework in Frameworks */,
 			);
@@ -404,6 +409,7 @@
 		B7B973D4E6DB9A51C1EC28A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1805FE52792BC6100587EC1 /* MapKit.framework */,
 				E10E45D4275E62860073F2A6 /* HealthKit.framework */,
 				E134E933275257DD00453781 /* AuthenticationServices.framework */,
 				73EE8C4645BF1D5F97C83D0F /* Pods_GoFitApp.framework */,
@@ -638,9 +644,10 @@
 			isa = PBXGroup;
 			children = (
 				E149424F278F793800D38EA6 /* ActivityHistoryDetailCoordinator.swift */,
-				E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */,
-				E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */,
 				E1494250278F793800D38EA6 /* ActivityHistoryDetailViewModel.swift */,
+				E149424D278F793800D38EA6 /* ActivityHistoryDetailViewController.swift */,
+				E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */,
+				E149424E278F793800D38EA6 /* ActivityHistoryDetailViewController.storyboard */,
 			);
 			name = ActivityHistoryDetail;
 			path = "GoFitApp/Modules/Tabbar modules/Activity/ActivityHistoryDetail";
@@ -1234,6 +1241,7 @@
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
+				E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
@@ -1481,6 +1489,8 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide you workouts based on distance";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide you workouts based on distance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1517,6 +1527,8 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide you workouts based on distance";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide you workouts based on distance";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Access needed for better recommendations";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

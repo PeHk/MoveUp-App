@@ -7,14 +7,14 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - SkyFloatingLabelTextField (3.8.0)
-  - SPPermissions/Calendar (6.7.0):
+  - SPPermissions/Calendar (6.8.4):
     - SPPermissions/Core
-  - SPPermissions/Core (6.7.0)
-  - SPPermissions/Health (6.7.0):
+  - SPPermissions/Core (6.8.4)
+  - SPPermissions/Health (6.8.4):
     - SPPermissions/Core
-  - SPPermissions/LocationWhenInUse (6.7.0):
+  - SPPermissions/LocationAlways (6.8.4):
     - SPPermissions/Core
-  - SPPermissions/Notification (6.7.0):
+  - SPPermissions/Notification (6.8.4):
     - SPPermissions/Core
   - SwiftGen (6.5.1)
   - SwiftyBase64 (1.1.1)
@@ -28,7 +28,7 @@ DEPENDENCIES:
   - SkyFloatingLabelTextField (~> 3.0)
   - SPPermissions/Calendar
   - SPPermissions/Health
-  - SPPermissions/LocationWhenInUse
+  - SPPermissions/LocationAlways
   - SPPermissions/Notification
   - SwiftGen (~> 6.0)
   - SwiftyBase64 (~> 1.0)
@@ -52,10 +52,10 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SPPermissions: 79f69d71f975e893d7d4757c06e4e954de0ffc14
+  SPPermissions: 5bcd18d1f599bdd008182bcbcc0b1c9eb59787a5
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftyBase64: 8de4de96a08454e742fdda614dff12d2c62ecbe9
 
-PODFILE CHECKSUM: 3bbc92c845ef2219621a52a086ffac38839786a5
+PODFILE CHECKSUM: 87257fb71966296f8bfaa3170a27becd96121ba0
 
 COCOAPODS: 1.11.2
