@@ -18,13 +18,13 @@ class CredentialsManager {
         self.dependencyContainer = dependencyContainer
     }
     
-    func saveCredentials(email: String, password: String) {
+    public func saveCredentials(email: String, password: String) {
         keychain.set(email, forKey: Constants.usernameKey)
         keychain.set(password, forKey: Constants.passwordKey)
         dependencyContainer.userDefaultsManager.setLoggedIn()
     }
     
-    func getEncodedCredentials() -> (email: String, password: String)? {
+    public func getEncodedCredentials() -> (email: String, password: String)? {
         if let username = keychain.string(forKey: Constants.usernameKey), let password = keychain.string(forKey: Constants.passwordKey) {
             return (username, password)
         } else {
@@ -32,7 +32,7 @@ class CredentialsManager {
         }
     }
     
-    func removeCredentials() -> Bool {
+    public func removeCredentials() -> Bool {
         dependencyContainer.userDefaultsManager.setLoggedOut()
         return keychain.removeAllKeys()
     }
