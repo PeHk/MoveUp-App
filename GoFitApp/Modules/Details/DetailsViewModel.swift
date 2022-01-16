@@ -65,6 +65,7 @@ final class DetailsViewModel: ViewModelProtocol {
     fileprivate let networkManager: NetworkManager
     fileprivate let userManager: UserManager
     fileprivate let permissionManager: PermissionManager
+    fileprivate let loginManager: LoginManager
     
     var availableGenders: [GenderResource?] = []
     
@@ -81,6 +82,7 @@ final class DetailsViewModel: ViewModelProtocol {
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
         self.permissionManager = dependencyContainer.permissionManager
+        self.loginManager = dependencyContainer.loginManager
         
         action
             .sink(receiveValue: { [weak self] action in
@@ -184,6 +186,8 @@ final class DetailsViewModel: ViewModelProtocol {
     }
     
     private func showHealthKit() {
+        self.loginManager.registerForPushNotifications()
+        
         self.permissionManager.authorizeHealthKit { success in
             DispatchQueue.main.async {
                 self.stepper.send(.save)

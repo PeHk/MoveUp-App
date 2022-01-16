@@ -148,6 +148,7 @@ final class LoginViewModel: ViewModelProtocol {
     }
     
     private func showHealthKit() {
+        self.loginManager.registerForPushNotifications()
         self.permissionManager.authorizeHealthKit { success in
             DispatchQueue.main.async {
                 self.isLoading.send(false)

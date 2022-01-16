@@ -57,10 +57,6 @@ extension Endpoint {
         Endpoint(path: "auth/refresh")
     }
     
-    static var test: Self {
-        Endpoint(path: "api/test")
-    }
-    
     static var registration: Self {
         Endpoint(path: "api/register")
     }
@@ -75,5 +71,13 @@ extension Endpoint {
     
     static var sports: Self {
         Endpoint(path: "api/sports")
+    }
+    
+    static var apn: Self {
+        Endpoint(path: "api/apn")
+    }
+    
+    static var activity: Self {
+        Endpoint(path: "api/activity")
     }
 }

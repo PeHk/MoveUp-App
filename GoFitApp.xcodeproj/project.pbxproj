@@ -115,6 +115,7 @@
 		E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */; };
 		E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */; };
 		E16609C2271CA7870077DF6E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16609C1271CA7860077DF6E /* PrimaryButton.swift */; };
+		E16D8FC3279411DD00DA3575 /* TokenResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16D8FC2279411DD00DA3575 /* TokenResource.swift */; };
 		E17058BE2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */; };
 		E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513027552A1400C9917F /* ProfileViewController+TableView.swift */; };
 		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
@@ -307,6 +308,7 @@
 		E16609BC271CA2850077DF6E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E16609BE271CA39D0077DF6E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E16609C1271CA7860077DF6E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		E16D8FC2279411DD00DA3575 /* TokenResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResource.swift; sourceTree = "<group>"; };
 		E17058BD2736DDF700A530A8 /* DashboardViewController+TableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardViewController+TableDelegate.swift"; sourceTree = "<group>"; };
 		E177513027552A1400C9917F /* ProfileViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+TableView.swift"; sourceTree = "<group>"; };
 		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 				E134E93027523D4F00453781 /* BioDataResource.swift */,
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
 				E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */,
+				E16D8FC2279411DD00DA3575 /* TokenResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1494254278F793900D38EA6 /* ActivityHistoryDetailViewModel.swift in Sources */,
+				E16D8FC3279411DD00DA3575 /* TokenResource.swift in Sources */,
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
 				E13B447C27206DBF0062C44B /* DashboardCoordinator.swift in Sources */,
 				E1111F162768DBEB00B10529 /* ActivityDetailCoordinator.swift in Sources */,

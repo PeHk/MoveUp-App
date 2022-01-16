@@ -22,6 +22,12 @@ class LoginManager {
         self.credentialsManager = dependencyContainer.credentialsManager
     }
     
+    public func registerForPushNotifications() {
+        DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
     public func login(withForm: UserResource) -> Future<UserResource, NetworkError> {
         
         let loginPublisher: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.networkManager.request(
