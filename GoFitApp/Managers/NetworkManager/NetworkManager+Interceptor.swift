@@ -23,18 +23,18 @@ extension NetworkManager: RequestInterceptor {
     // MARK: Retry
     func retry(_ request: Request, for session: Session, dueTo error: Error,
                completion: @escaping (RetryResult) -> Void) {
-
         if request.retryCount < retryLimit {
-            self.refreshToken()
-                .sink { dataResponse in
-                    if let _ = dataResponse.error {
-                        completion(.doNotRetry)
-                    } else {
-                        self.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
+            print("\nretried; retry count: \(request.retryCount)\n")
+            refreshToken()
+                .sink { result in
+                    switch result {
+                    case .finished:
                         completion(.retry)
+                    case .failure:
+                        completion(.doNotRetry)
                     }
-                }
-                .store(in: &self.subscription)
+                } receiveValue: { _ in return }
+                .store(in: &subscription)
         } else {
             if !withCredentials {
                 self.refreshWithCredentials()
@@ -83,14 +83,25 @@ extension NetworkManager: RequestInterceptor {
     }
 
     // MARK: Refresh token
-    private func refreshToken() -> AnyPublisher<DataResponse<UserResource, NetworkError>, Never> {
-        let refreshRequest: AnyPublisher<DataResponse<UserResource, NetworkError>, Never> = self.request(
-            Endpoint.refresh.url,
-            method: .post,
-            parameters: [:]
-        )
-        
-        return refreshRequest
-                .eraseToAnyPublisher()
+    private func refreshToken() -> Future<Void, NetworkError> {
+        return Future { promise in
+            AF.request(
+                Endpoint.refresh.url,
+                method: .post,
+                parameters: [:]
+            )
+                .responseData(completionHandler: { response in
+                    if let confirmedCookies = HTTPCookieStorage.shared.cookies {
+                        for cookie in confirmedCookies {
+                            if cookie.name == Constants.accessToken {
+                                self.saveTokenFromCookies(cookies: HTTPCookieStorage.shared.cookies)
+                                promise(.success(()))
+                            }
+                        }
+                    } else {
+                        promise(.failure(NetworkError(initialError: nil, backendError: nil, NSError())))
+                    }
+                })
+        }
     }
 }
