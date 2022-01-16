@@ -1,6 +1,7 @@
 import Combine
 import Foundation
 import UIKit
+import Alamofire
 
 class ActivityDetailViewModel: ViewModelProtocol {
     
@@ -75,6 +76,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     fileprivate let healthKitManager: HealthKitManager
     fileprivate let activityManager: ActivityManager
     fileprivate let locationManager: LocationManager
+    fileprivate let networkManager: NetworkManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
@@ -86,6 +88,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.feedbackManager = dependencyContainer.feedbackManager
         self.healthKitManager = dependencyContainer.healthKitManager
         self.activityManager = dependencyContainer.activityManager
+        self.networkManager = dependencyContainer.networkManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -160,14 +163,42 @@ class ActivityDetailViewModel: ViewModelProtocol {
         locationManager.stop()
         self.feedbackManager.sendFeedbackNotification(.success)
         
-        let workout = ActivityResource(start_date: start, end_date: Date(), calories: totalCalories, name: sport.name ?? "", traveledDistance: currentDistance, route: locationManager.getRouteCoordinates())
+        let workout = ActivityResource(
+            start_date: Helpers.formatDate(from: start),
+            end_date: Helpers.formatDate(from: Date()),
+            calories: totalCalories,
+            name: sport.name ?? "",
+            traveled_distance: currentDistance,
+            route: locationManager.getRouteCoordinates())
 
-        if workout.duration > 60 {
+        if workout.duration ?? 0 > 60 {
             self.saveHealthKitWorkout(workout: workout)
         } else {
             self.isLoading.send(false)
             self.stepper.send(.endActivity)
         }
+    }
+    
+    private func saveBackendWorkout(workout: ActivityResource) {
+        let activityPublisher: AnyPublisher<DataResponse<ActivityResource, NetworkError>, Never> = self.networkManager.request(
+            Endpoint.activity.url,
+            method: .post,
+            parameters: workout.getJSON()
+        )
+    
+        activityPublisher
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    self.activityManager.fetchCurrentActivities()
+                    self.isLoading.send(false)
+                    self.stepper.send(.endActivity)
+                }
+            }
+            .store(in: &subscription)
+
+        
     }
     
     private func saveHealthKitWorkout(workout: ActivityResource) {
@@ -191,9 +222,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 }
             } receiveValue: { _ in
-                self.activityManager.fetchCurrentActivities()
-                self.isLoading.send(false)
-                self.stepper.send(.endActivity)
+                self.saveBackendWorkout(workout: workout)
             }
             .store(in: &subscription)
     }

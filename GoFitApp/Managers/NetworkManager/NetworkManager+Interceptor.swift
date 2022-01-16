@@ -23,6 +23,9 @@ extension NetworkManager: RequestInterceptor {
     // MARK: Retry
     func retry(_ request: Request, for session: Session, dueTo error: Error,
                completion: @escaping (RetryResult) -> Void) {
+        
+        print("CODE", request.response?.statusCode)
+        
         if request.retryCount < retryLimit {
             print("\nretried; retry count: \(request.retryCount)\n")
             refreshToken()

@@ -47,12 +47,12 @@ class ActivityManager {
         let action: Action = {
             let activity: Activity = self.coreDataStore.createEntity()
             activity.name = newActivity.name
-            activity.end_date = newActivity.end_date
-            activity.start_date = newActivity.start_date
+            activity.end_date = Helpers.getDateFromString(from: newActivity.end_date)
+            activity.start_date = Helpers.getDateFromString(from: newActivity.start_date)
             activity.calories = newActivity.calories
-            activity.duration = newActivity.duration
-            activity.traveledDistance = newActivity.traveledDistance
-            activity.locations = self.getDataFromArray(array: newActivity.route)
+            activity.duration = newActivity.duration ?? 0.0
+            activity.traveledDistance = newActivity.traveled_distance
+            activity.locations = self.getDataFromArray(array: newActivity.route ?? [])
             activity.sport = sport
         }
 

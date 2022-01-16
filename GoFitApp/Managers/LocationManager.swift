@@ -44,7 +44,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-            location.horizontalAccuracy <= 30.0
+            location.horizontalAccuracy <= 50.0
         }
         
         guard !filteredLocations.isEmpty else { return }
