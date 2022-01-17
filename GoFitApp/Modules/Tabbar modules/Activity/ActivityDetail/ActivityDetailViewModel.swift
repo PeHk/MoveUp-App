@@ -67,6 +67,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
     @Published var timeString = "00:00:00"
     @Published var caloriesString = "0 cal"
     @Published var distanceString = "0,00 km"
+    @Published var altitudeString = "0 m"
+    @Published var elevationGainedString = "0 m"
     
     var subscription = Set<AnyCancellable>()
     
@@ -120,6 +122,18 @@ class ActivityDetailViewModel: ViewModelProtocol {
                     self.currentDistance = tmpDistance
                     self.distanceString = String(format: "%.2f", self.currentDistance) + " km"
                 }
+            }
+            .store(in: &subscription)
+        
+        self.locationManager.currentAltitude
+            .sink { altitude in
+                self.altitudeString = String(format: "%.2f", altitude) + " m"
+            }
+            .store(in: &subscription)
+
+        self.locationManager.elevationGained
+            .sink { elevationGained in
+                self.elevationGainedString = String(format: "%.f", elevationGained) + " m"
             }
             .store(in: &subscription)
         
@@ -202,7 +216,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func saveHealthKitWorkout(workout: ActivityResource) {
-        self.healthKitManager.saveWorkout(workout: workout, sport: sport)
+        self.healthKitManager.saveWorkout(activity: workout, sport: sport)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure(let error) = completion {

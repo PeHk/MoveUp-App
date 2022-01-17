@@ -12,17 +12,19 @@ import Combine
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager
-    private let healthKitManager: HealthKitManager
     private var lastLocation: CLLocation!
+    private var lastAltitude: Double!
     private var route: [CLLocation]
     
     public var traveledDistance = CurrentValueSubject<Double, Never>(0.0)
+    public var currentAltitude = CurrentValueSubject<Double, Never>(0.0)
+    public var elevationGained = CurrentValueSubject<Double, Never>(0.0)
     
     // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.locationManager = CLLocationManager()
-        self.healthKitManager = dependencyContainer.healthKitManager
         self.lastLocation = locationManager.location
+        self.lastAltitude = locationManager.location?.altitude ?? 0.0
         self.route = []
         
         super.init()
@@ -57,9 +59,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         if let last = filteredLocations.last {
             self.route.append(last)
+            self.currentAltitude.send(last.altitude)
+            self.getElevationGained(latestLocation: last)
         }
-        
-        healthKitManager.addRouteToBuilder(location: filteredLocations)
     }
     
     private func getDistance(latestLocation: CLLocation?) {
@@ -72,6 +74,16 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             
             self.lastLocation = latestLocation
         }
+    }
+    
+    private func getElevationGained(latestLocation: CLLocation) {
+        guard lastAltitude < latestLocation.altitude else { return }
+        
+        let elevationCalculated = latestLocation.altitude - lastAltitude
+        let elevationGained = self.elevationGained.value + elevationCalculated
+        self.elevationGained.send(elevationGained)
+        
+        lastAltitude = latestLocation.altitude
     }
     
     public func getRouteCoordinates() -> [[Double]] {

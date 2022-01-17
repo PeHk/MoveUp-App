@@ -1,14 +1,16 @@
 import Combine
 import UIKit
 
-class ActivityDetailViewController: BaseViewController {
+class ActivityDetailViewController: BaseTableViewController {
     
+    @IBOutlet weak var elevationGainedLabel: UILabel!
+    @IBOutlet weak var altitudeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var caloriesLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var pauseString: UILabel!
     @IBOutlet weak var pauseImage: UIImageView!
-    @IBOutlet weak var caloriesLabel: UILabel!
-    @IBOutlet weak var paceLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var playView: UIView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: #selector(pauseTapped(_:)))
@@ -65,7 +67,7 @@ class ActivityDetailViewController: BaseViewController {
         
         viewModel.$timeString
             .sink { time in
-                self.timeLabel.text = time
+                self.durationLabel.text = time
             }
             .store(in: &subscription)
         
@@ -78,6 +80,18 @@ class ActivityDetailViewController: BaseViewController {
         viewModel.$distanceString
             .sink { distance in
                 self.distanceLabel.text = distance
+            }
+            .store(in: &subscription)
+        
+        viewModel.$altitudeString
+            .sink { altitude in
+                self.altitudeLabel.text = altitude
+            }
+            .store(in: &subscription)
+        
+        viewModel.$elevationGainedString
+            .sink { elevation in
+                self.elevationGainedLabel.text = elevation
             }
             .store(in: &subscription)
     }

@@ -15,14 +15,11 @@ class HealthKitManager {
     fileprivate let healthStore = HKHealthStore()
     fileprivate let workoutConfiguration = HKWorkoutConfiguration()
     fileprivate var subscription = Set<AnyCancellable>()
-    
-    fileprivate var routeBuilder: HKWorkoutRouteBuilder
-    
+        
     public var steps = CurrentValueSubject<Double, Never>(0)
     public var calories = CurrentValueSubject<Double, Never>(0)
     
     init(_ dependencyContainer: DependencyContainer) {
-        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: nil)
         self.refreshValues()
     }
     
@@ -32,88 +29,33 @@ class HealthKitManager {
     }
     
     // MARK: Save workout
-    func saveWorkout(workout: ActivityResource, sport: Sport) -> Future<Void, Error> {
+    public func saveWorkout(activity: ActivityResource, sport: Sport) -> Future<Void, Error> {
         Future { promise in
-            self.workoutConfiguration.activityType = sport.healthKitType?.hkWorkoutActivityType ?? .other
+            let totalEnergyBurned = HKQuantity(unit: HKUnit.kilocalorie(), doubleValue: activity.calories)
+            let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: activity.traveled_distance * 1000)
+            let type = sport.healthKitType?.hkWorkoutActivityType ?? .other
+            let start = Helpers.getDateFromString(from: activity.start_date)
+            let end = Helpers.getDateFromString(from: activity.end_date)
             
-            let builder = HKWorkoutBuilder(
-                healthStore: self.healthStore,
-                configuration: self.workoutConfiguration,
-                device: .local())
+            let workout = HKWorkout(
+                activityType: type,
+                start: start,
+                end: end,
+                duration: activity.duration ?? 0.0,
+                totalEnergyBurned: totalEnergyBurned,
+                totalDistance: distance,
+                device: .local(),
+                metadata: [:]
+            )
             
-            builder.beginCollection(withStart: Helpers.getDateFromString(from: workout.start_date)) { success, error in
+            self.healthStore.save(workout) { (success, error) in
                 guard success else {
-                    if let error = error {
-                        promise(.failure(error))
-                        return
-                    }
-                    else {
-                        return
-                    }
-                }
-                
-                guard let quantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
-                    promise(.failure(NSError(domain: "healthKit", code: 400, userInfo: nil)))
+                    promise(.failure(error ?? NSError()))
                     return
                 }
-                    
-                let unit = HKUnit.kilocalorie()
-                let totalEnergyBurned = workout.calories
-                let quantity = HKQuantity(unit: unit, doubleValue: Double(totalEnergyBurned))
                 
-                let sample = HKCumulativeQuantitySample(type: quantityType,
-                                                        quantity: quantity,
-                                                        start: Helpers.getDateFromString(from: workout.start_date),
-                                                        end: Helpers.getDateFromString(from: workout.end_date))
-                
-                builder.add([sample]) { (success, error) in
-                    guard success else {
-                        if let error = error {
-                            promise(.failure(error))
-                            return
-                        }
-                        else {
-                            return
-                        }
-                    }
-                    
-                    builder.endCollection(withEnd: Helpers.getDateFromString(from: workout.end_date)) { (success, error) in
-                        guard success else {
-                            if let error = error {
-                                promise(.failure(error))
-                                return
-                            } else {
-                                return
-                            }
-                        }
-
-                        builder.finishWorkout { (workout, error) in
-                            if let error = error {
-                                promise(.failure(error))
-                            } else {
-                                if let workout = workout {
-                                    self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
-                                        guard newRoute != nil else {
-                                            promise(.failure(error ?? NSError()))
-                                            return
-                                        }
-                                                                                
-                                        promise(.success(()))
-                                    }
-                                } else {
-                                    promise(.failure(error ?? NSError()))
-                                }
-                            }
-                        }
-                    }
-                }
+                promise(.success(()))
             }
-        }
-    }
-    
-    public func addRouteToBuilder(location: [CLLocation]) {
-        routeBuilder.insertRouteData(location) { (success, error) in
-            //
         }
     }
     
