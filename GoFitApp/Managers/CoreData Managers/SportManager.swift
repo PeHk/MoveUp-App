@@ -34,7 +34,8 @@ class SportManager {
             .store(in: &subscription)
     }
     
-    func getSports() -> AnyPublisher<CoreDataFetchResultsPublisher<Sport>.Output, NetworkError> {
+    // MARK: Get sports
+    private func getSports() -> AnyPublisher<CoreDataFetchResultsPublisher<Sport>.Output, NetworkError> {
         let request = NSFetchRequest<Sport>(entityName: Sport.entityName)
         
         return coreDataStore
@@ -45,16 +46,20 @@ class SportManager {
             .eraseToAnyPublisher()
     }
     
-    func saveSport(newSport: SportResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    // MARK: Save sports
+    /// Function will save all elements of [SportResource] to the CoreData
+    public func saveSports(newSports: [SportResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
-            let sport: Sport = self.coreDataStore.createEntity()
-            sport.name = newSport.name
-            sport.id = newSport.id
-            sport.met = newSport.met
-            sport.healthKitType = newSport.health_kit_type
-            sport.type = newSport.type
+            for newSport in newSports {
+                let sport: Sport = self.coreDataStore.createEntity()
+                sport.name = newSport.name
+                sport.id = newSport.id
+                sport.met = newSport.met
+                sport.healthKitType = newSport.health_kit_type
+                sport.type = newSport.type
+            }
         }
-
+        
         return coreDataStore
             .publicher(save: action)
             .mapError({ error in
@@ -63,7 +68,8 @@ class SportManager {
             .eraseToAnyPublisher()
     }
     
-    func deleteSports() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
+    // MARK: Delete sports
+    public func deleteSports() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Sport.entityName)
         request.predicate = NSPredicate(format: "id != nil")
         
@@ -77,7 +83,8 @@ class SportManager {
             .eraseToAnyPublisher()
     }
     
-    func saveSportToUser(user: User, sports: [Sport]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    // MARK: Save favourite sports
+    public func saveSportToUser(user: User, sports: [Sport]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
             user.favourite_sports = NSSet(array: sports)
         }

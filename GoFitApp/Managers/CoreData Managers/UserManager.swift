@@ -56,11 +56,118 @@ class UserManager {
     }
     
     // MARK: Get user
-    public func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NetworkError> {
+    private func getUser() -> AnyPublisher<CoreDataFetchResultsPublisher<User>.Output, NetworkError> {
         let request = NSFetchRequest<User>(entityName: User.entityName)
         
         return coreDataStore
             .publicher(fetch: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Save bio data after registration
+    ///Function will save BioDataResource with additional information (gender, date of birth)
+    ///as BioData record to
+    ///the current logged user
+    public func saveBioDataAfterRegistration(data: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let user = self.currentUser.value
+        var action: Action = {}
+        if let bioData = data.bio_data?.first {
+            action = {
+                user?.bio_data = user?.bio_data?.adding(self.getBioDataObject(data: bioData)) as NSSet?
+                user?.gender = data.gender
+                user?.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth ?? "")
+            }
+        }
+
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Save bio data
+    ///Function will save BioDataResource as BioData record to
+    ///the current logged user
+    public func saveBioData(data: BioDataResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let user = self.currentUser.value
+        
+        let action: Action = {
+            user?.bio_data = user?.bio_data?.adding(self.getBioDataObject(data: data)) as NSSet?
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Save user with BioData
+    ///Function will save UserResource with nested BioDataResource
+    ///as User with BioData records
+    public func saveUserWithBioData(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        
+        let action: Action = {
+            let user: User = self.getUserObject(data: newUser)
+            user.bio_data = NSSet(array: self.getBioDataArray(bioData: newUser.bio_data ?? []))
+        }
+    
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Update favourite sports
+    ///Function will save [SportResource] to the favourite sports of current logged user
+    ///- Warning: Function will create new Sport entity if there is no Sport available
+    public func updateUserFavouriteSports(sports: [SportResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let action: Action = {
+            var favouriteSportsArray: [Sport] = []
+            let actualSports = self.sportManager.currentSports.value
+            
+            for data in sports {
+                if let actualSport = actualSports.first(where: { $0.id == data.id }) {
+                    favouriteSportsArray.append(actualSport)
+                } else {
+                    let sport: Sport = self.coreDataStore.createEntity()
+                    sport.id = data.id
+                    sport.name = data.name
+                    sport.met = data.met
+                    
+                    favouriteSportsArray.append(sport)
+                }
+            }
+            
+            let user = self.currentUser.value
+            user?.favourite_sports = NSSet(array: favouriteSportsArray)
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Update user name
+    public func updateUserName(name: String) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError>  {
+        let user = self.currentUser.value
+        let action: Action = {
+            user?.name = name
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
             .mapError({ error in
             .init(initialError: nil, backendError: nil, error)
             })
@@ -81,37 +188,30 @@ class UserManager {
             })
             .eraseToAnyPublisher()
     }
-    
-    // MARK: Save bio data after registration
-    public func saveBioDataAfterRegistration(data: UserResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+}
+
+// MARK: Helping functions
+extension UserManager {
+    private func getBioDataArray(bioData: [BioDataResource]) -> [BioData] {
+        guard bioData.count > 0 else { return [] }
+        var array: [BioData] = []
         
-        let bioDataArray = data.bio_data?.first
-        
-        let bioData: BioData = self.coreDataStore.createEntity()
-        bioData.activity_minutes = bioDataArray?.activity_minutes ?? 0
-        bioData.weight = bioDataArray?.weight ?? 0
-        bioData.height = bioDataArray?.height ?? 0
-        bioData.bmi = bioDataArray?.bmi ?? 0
-        bioData.id = bioDataArray?.id ?? 0
-        bioData.created_at = self.coreDataStore.dateFormatter.date(from: bioDataArray?.created_at ?? "")
-        
-        let action: Action = {
-            user.bio_data = user.bio_data?.adding(bioData) as NSSet?
-            user.gender = data.gender
-            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth ?? "")
+        for data in bioData {
+            let bioData: BioData = self.coreDataStore.createEntity()
+            bioData.activity_minutes = data.activity_minutes ?? 0
+            bioData.weight = data.weight ?? 0
+            bioData.height = data.height ?? 0
+            bioData.bmi = data.bmi ?? 0
+            bioData.id = data.id ?? 0
+            bioData.created_at = self.coreDataStore.dateFormatter.date(from: data.created_at ?? "")
+            
+            array.append(bioData)
         }
         
-        return coreDataStore
-            .publicher(save: action)
-            .mapError({ error in
-            .init(initialError: nil, backendError: nil, error)
-            })
-            .eraseToAnyPublisher()
+        return array
     }
     
-    // MARK: Save bio data
-    public func saveBioData(data: BioDataResource, user: User) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
-        
+    private func getBioDataObject(data: BioDataResource) -> BioData {
         let bioData: BioData = self.coreDataStore.createEntity()
         bioData.activity_minutes = data.activity_minutes ?? 0
         bioData.weight = data.weight ?? 0
@@ -120,87 +220,19 @@ class UserManager {
         bioData.id = data.id ?? 0
         bioData.created_at = self.coreDataStore.dateFormatter.date(from: data.created_at ?? "")
         
-        let action: Action = {
-            user.bio_data = user.bio_data?.adding(bioData) as NSSet?
-        }
-        return coreDataStore
-            .publicher(save: action)
-            .mapError({ error in
-            .init(initialError: nil, backendError: nil, error)
-            })
-            .eraseToAnyPublisher()
+        return bioData
     }
     
-    // MARK: Save user with data
-    public func saveUserWithData(newUser: UserResource) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    private func getUserObject(data: UserResource) -> User {
+        let user: User = self.coreDataStore.createEntity()
+        user.id = data.id ?? 0
+        user.email = data.email
+        user.admin = data.admin ?? false
+        user.name = data.name
+        user.gender = data.gender
+        user.date_of_birth = self.coreDataStore.dateFormatter.date(from: data.date_of_birth ?? "")
+        user.registered_at = self.coreDataStore.dateFormatter.date(from: data.registered_at ?? "")
         
-        var bioDataArray: [BioData] = []
-        var favouriteSportsArray: [Sport] = []
-        
-        if let bio_data = newUser.bio_data {
-            for data in bio_data {
-                let bioData: BioData = self.coreDataStore.createEntity()
-                bioData.activity_minutes = data.activity_minutes ?? 0
-                bioData.weight = data.weight ?? 0
-                bioData.height = data.height ?? 0
-                bioData.bmi = data.bmi ?? 0
-                bioData.id = data.id ?? 0
-                bioData.created_at = self.coreDataStore.dateFormatter.date(from: data.created_at ?? "")
-                
-                bioDataArray.append(bioData)
-            }
-        }
-        
-        let actualSports = self.sportManager.currentSports.value
-        
-        if let sports = newUser.favourite_sports {
-            for data in sports {
-                if let actualSport = actualSports.first(where: { $0.id == data.id }) {
-                    favouriteSportsArray.append(actualSport)
-                } else {
-                    let sport: Sport = self.coreDataStore.createEntity()
-                    sport.id = data.id
-                    sport.name = data.name
-                    sport.met = data.met
-                    
-                    favouriteSportsArray.append(sport)
-                }
-            }
-        }
-
-        let action: Action = {
-            let user: User = self.coreDataStore.createEntity()
-            user.id = newUser.id ?? 0
-            user.email = newUser.email
-            user.admin = newUser.admin ?? false
-            user.name = newUser.name
-            user.gender = newUser.gender
-            user.date_of_birth = self.coreDataStore.dateFormatter.date(from: newUser.date_of_birth ?? "")
-            user.registered_at = self.coreDataStore.dateFormatter.date(from: newUser.registered_at ?? "")
-            
-            user.bio_data = NSSet(array: bioDataArray)
-            user.favourite_sports = NSSet(array: favouriteSportsArray)
-        }
-    
-        return coreDataStore
-            .publicher(save: action)
-            .mapError({ error in
-            .init(initialError: nil, backendError: nil, error)
-            })
-            .eraseToAnyPublisher()
-    }
-    
-    // MARK: Update user name
-    public func updateUserName(user: User, name: String) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError>  {
-        let action: Action = {
-            user.name = name
-        }
-        
-        return coreDataStore
-            .publicher(save: action)
-            .mapError({ error in
-            .init(initialError: nil, backendError: nil, error)
-            })
-            .eraseToAnyPublisher()
+        return user
     }
 }

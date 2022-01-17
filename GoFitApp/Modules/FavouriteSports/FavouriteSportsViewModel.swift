@@ -111,20 +111,16 @@ class FavouriteSportsViewModel: ViewModelProtocol {
     }
     
     private func saveSportsToCoreData(sports: [SportResource]) {
-        for sport in sports {
-            self.sportManager.saveSport(newSport: sport)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(error))
-                    }
-                } receiveValue: { _ in
-                    ()
+        self.sportManager.saveSports(newSports: sports)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
                 }
-                .store(in: &subscription)
-        }
-        
-        self.isLoading.send(false)
-        self.sportManager.fetchCurrentSports()
+            } receiveValue: { _ in
+                self.isLoading.send(false)
+                self.sportManager.fetchCurrentSports()
+            }
+            .store(in: &subscription)
     }
     
     private func updateSports(sports: [Sport]) {

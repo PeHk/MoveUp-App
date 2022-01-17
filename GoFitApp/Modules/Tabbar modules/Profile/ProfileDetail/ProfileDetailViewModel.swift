@@ -102,17 +102,15 @@ class ProfileDetailViewModel: ViewModelProtocol {
     }
     
     private func updateUser(name: String) {
-        if let user = currentUser.value {
-            userManager.updateUserName(user: user, name: name)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(error))
-                    }
-                } receiveValue: { _ in
-                    self.userManager.fetchCurrentUser()
-                    self.isLoading.send(false)
+        userManager.updateUserName(name: name)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
                 }
-                .store(in: &subscription)
-        } 
+            } receiveValue: { _ in
+                self.userManager.fetchCurrentUser()
+                self.isLoading.send(false)
+            }
+            .store(in: &subscription)
     }
 }

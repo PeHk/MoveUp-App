@@ -111,6 +111,7 @@ class GoalsDetailViewModel: ViewModelProtocol {
         self.reloadTableView.send(true)
     }
     
+    // MARK: Change calories
     private func changeCalories(calories: Int) {
         self.state.send(.loading)
         self.calories = calories
@@ -120,6 +121,7 @@ class GoalsDetailViewModel: ViewModelProtocol {
         self.reloadTableView.send(true)
     }
     
+    // MARK: Change minutes
     private func changeMinutes(minutes: Int) {
         self.state.send(.loading)
         
@@ -142,20 +144,19 @@ class GoalsDetailViewModel: ViewModelProtocol {
             .store(in: &subscription)
     }
     
+    // MARK: Update user
     private func updateUser(details: BioDataResource) {
-        if let user = currentUser.value {
-            self.userManager.saveBioData(data: details, user: user)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(error))
-                    }
-                } receiveValue: { _ in
-                    self.userManager.fetchCurrentUser()
-                    self.isLoading.send(false)
-                    self.reloadTableView.send(true)
+        self.userManager.saveBioData(data: details)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
                 }
-                .store(in: &subscription)
-        }
+            } receiveValue: { _ in
+                self.userManager.fetchCurrentUser()
+                self.isLoading.send(false)
+                self.reloadTableView.send(true)
+            }
+            .store(in: &subscription)
     }
     
     private func getLastActiveMinutes() {

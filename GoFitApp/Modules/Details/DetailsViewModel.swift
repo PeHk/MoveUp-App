@@ -78,6 +78,7 @@ final class DetailsViewModel: ViewModelProtocol {
     
     private var alreadySent: Bool = false
 
+    // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
@@ -138,7 +139,6 @@ final class DetailsViewModel: ViewModelProtocol {
                 }
             }
             .store(in: &self.subscription)
-
     }
     
     private func updateUserDetails() {
@@ -171,18 +171,16 @@ final class DetailsViewModel: ViewModelProtocol {
     }
     
     private func saveBioData(data: UserResource) {
-        if let user = currentUser.value {
-            self.userManager.saveBioDataAfterRegistration(data: data, user: user)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(error))
-                    }
-                } receiveValue: { _ in
-                    self.isLoading.send(false)
-                    self.action.send(.permissionsShowed)
+        self.userManager.saveBioDataAfterRegistration(data: data)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
                 }
-                .store(in: &subscription)
-        }
+            } receiveValue: { _ in
+                self.isLoading.send(false)
+                self.action.send(.permissionsShowed)
+            }
+            .store(in: &subscription)
     }
     
     private func showHealthKit() {

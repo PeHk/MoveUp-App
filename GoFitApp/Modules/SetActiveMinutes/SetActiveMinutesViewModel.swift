@@ -103,17 +103,15 @@ class SetActiveMinutesViewModel: ViewModelProtocol {
     }
     
     private func updateBioData(data: BioDataResource) {
-        if let user = currentUser.value {
-            self.userManager.saveBioData(data: data, user: user)
-                .sink { completion in
-                    if case .failure(let error) = completion {
-                        self.state.send(.error(error))
-                    }
-                } receiveValue: { _ in
-                    self.isLoading.send(false)
-                    self.stepper.send(.save)
+        self.userManager.saveBioData(data: data)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
                 }
-                .store(in: &subscription)
-        }
+            } receiveValue: { _ in
+                self.isLoading.send(false)
+                self.stepper.send(.save)
+            }
+            .store(in: &subscription)
     }
 }
