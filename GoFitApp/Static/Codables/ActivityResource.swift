@@ -15,7 +15,6 @@ struct ActivityResource: Codable {
     let name: String
     let traveled_distance: Double
     var locations: [[Double]]?
-    var route: [Coordinates]?
     
     var duration: TimeInterval? {
         Helpers.getDateFromString(from: end_date).timeIntervalSince(Helpers.getDateFromString(from: start_date))
@@ -28,28 +27,7 @@ struct ActivityResource: Codable {
             "calories": calories as Any,
             "name": name as Any,
             "traveled_distance": traveled_distance as Any,
-            "locations": getList() as Any
+            "locations": locations as Any
         ]
-    }
-    
-    private func getList() -> [[Double]] {
-        var list: [[Double]] = []
-        
-        if let route = route {
-            for coordinates in route {
-                list.append(coordinates.getList())
-            }
-        }
-        
-        return list
-    }
-}
-
-struct Coordinates: Codable {
-    let latitude: Double
-    let longitude: Double
-    
-    public func getList() -> [Double] {
-        return [latitude, longitude]
     }
 }

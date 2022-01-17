@@ -70,8 +70,11 @@ class Helpers {
         if let locations = activity.locations {
             if let array = getArrayFromData(data: locations) {
                 for location in array {
-                    let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                    coordinates.append(coordinate)
+                    if location.count == 2 {
+                        let coordinate = CLLocationCoordinate2D(latitude: location[0], longitude: location[1])
+                        coordinates.append(coordinate)
+                    }
+                    
                 }
             }
         }
@@ -79,14 +82,24 @@ class Helpers {
         return coordinates
     }
     
-    static func getArrayFromData(data: Data) -> [Coordinates]? {
+    static func getArrayFromData(data: Data) -> [[Double]]? {
         do {
-            let array = try PropertyListDecoder.init().decode([Coordinates].self, from: data)
+            let array = try PropertyListDecoder.init().decode([[Double]].self, from: data)
             return array
         } catch let error as NSError{
             print(error.localizedDescription)
         }
         
+        return nil
+    }
+    
+    static func getDataFromArray(array: [[Double]]) -> Data? {
+        do {
+            let data = try PropertyListEncoder.init().encode(array)
+            return data
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
         return nil
     }
 }

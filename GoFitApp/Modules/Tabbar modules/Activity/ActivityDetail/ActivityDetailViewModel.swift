@@ -169,7 +169,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
             calories: totalCalories,
             name: sport.name ?? "",
             traveled_distance: currentDistance,
-            route: locationManager.getRouteCoordinates())
+            locations: locationManager.getRouteCoordinates())
 
         if workout.duration ?? 0 > 60 {
             self.saveHealthKitWorkout(workout: workout)
@@ -215,7 +215,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func saveCoreDataWorkout(workout: ActivityResource) {
-        self.activityManager.saveActivity(newActivity: workout, sport: sport)
+        self.activityManager.saveActivities(newActivities: [workout])
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 if case .failure(let error) = completion {

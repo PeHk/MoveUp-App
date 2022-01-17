@@ -22,6 +22,7 @@ class ActivityManager {
         self.fetchCurrentActivities()
     }
     
+    // MARK: Fetch current activities
     public func fetchCurrentActivities() {
         self.getActivities()
             .sink { completion in
@@ -32,6 +33,7 @@ class ActivityManager {
             .store(in: &subscription)
     }
     
+    // MARK: Get activities
     private func getActivities() -> AnyPublisher<CoreDataFetchResultsPublisher<Activity>.Output, NetworkError> {
         let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
         
@@ -43,19 +45,12 @@ class ActivityManager {
             .eraseToAnyPublisher()
     }
     
+    // MARK: Save activity
     public func saveActivities(newActivities: [ActivityResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
             for newActivity in newActivities {
-                let activity: Activity = self.coreDataStore.createEntity()
-                activity.name = newActivity.name
-                activity.end_date = Helpers.getDateFromString(from: newActivity.end_date)
-                activity.start_date = Helpers.getDateFromString(from: newActivity.start_date)
-                activity.calories = newActivity.calories
-                activity.duration = newActivity.duration ?? 0.0
-                activity.traveledDistance = newActivity.traveled_distance
-                activity.locations = self.getDataFromLocations(array: newActivity.locations ?? [])
+                let _ = self.getActivityObject(data: newActivity)
             }
-            
         }
         
         return coreDataStore
@@ -66,56 +61,7 @@ class ActivityManager {
             .eraseToAnyPublisher()
     }
     
-    public func saveActivity(newActivity: ActivityResource, sport: Sport) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
-        let action: Action = {
-            let activity: Activity = self.coreDataStore.createEntity()
-            activity.name = newActivity.name
-            activity.end_date = Helpers.getDateFromString(from: newActivity.end_date)
-            activity.start_date = Helpers.getDateFromString(from: newActivity.start_date)
-            activity.calories = newActivity.calories
-            activity.duration = newActivity.duration ?? 0.0
-            activity.traveledDistance = newActivity.traveled_distance
-            activity.locations = self.getDataFromArray(array: newActivity.route ?? [])
-            activity.sport = sport
-        }
-
-        return coreDataStore
-            .publicher(save: action)
-            .mapError({ error in
-            .init(initialError: nil, backendError: nil, error)
-            })
-            .eraseToAnyPublisher()
-    }
-    
-    func getDataFromLocations(array: [[Double]]) -> Data? {
-        var coordinates: [Coordinates] = []
-        
-        for list in array {
-            if list.count == 2 {
-                let coordinate = Coordinates(latitude: list[0], longitude: list[1])
-                coordinates.append(coordinate)
-            }
-        }
-        
-        do {
-            let data = try PropertyListEncoder.init().encode(coordinates)
-            return data
-        } catch let error as NSError{
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-    
-    func getDataFromArray(array: [Coordinates]) -> Data? {
-        do {
-            let data = try PropertyListEncoder.init().encode(array)
-            return data
-        } catch let error as NSError{
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-    
+    // MARK: Delete activities
     func deleteActivities() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Activity.entityName)
         request.predicate = NSPredicate(format: "name != nil")
@@ -128,5 +74,21 @@ class ActivityManager {
             .init(initialError: nil, backendError: nil, error)
             })
             .eraseToAnyPublisher()
+    }
+}
+
+// MARK: Helper functions
+extension ActivityManager {
+    private func getActivityObject(data: ActivityResource) -> Activity {
+        let activity: Activity = self.coreDataStore.createEntity()
+        activity.name = data.name
+        activity.end_date = Helpers.getDateFromString(from: data.end_date)
+        activity.start_date = Helpers.getDateFromString(from: data.start_date)
+        activity.calories = data.calories
+        activity.duration = data.duration ?? 0.0
+        activity.traveledDistance = data.traveled_distance
+        activity.locations = Helpers.getDataFromArray(array: data.locations ?? [])
+        
+        return activity
     }
 }

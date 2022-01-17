@@ -18,6 +18,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     public var traveledDistance = CurrentValueSubject<Double, Never>(0.0)
     
+    // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.locationManager = CLLocationManager()
         self.healthKitManager = dependencyContainer.healthKitManager
@@ -32,15 +33,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.allowsBackgroundLocationUpdates = true
     }
     
+    // MARK: Start
     public func start() {
         self.lastLocation = locationManager.location
         self.locationManager.startUpdatingLocation()
     }
     
+    // MARK: Stop
     public func stop() {
         self.locationManager.stopUpdatingLocation()
     }
     
+    // MARK: Delegate function
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
@@ -70,12 +74,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    public func getRouteCoordinates() -> [Coordinates] {
-        var coordinates: [Coordinates] = []
+    public func getRouteCoordinates() -> [[Double]] {
+        var coordinates: [[Double]] = []
         
         for location in route {
-            let coordinate = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            coordinates.append(coordinate)
+            coordinates.append([location.coordinate.latitude, location.coordinate.longitude])
         }
         
         return coordinates
