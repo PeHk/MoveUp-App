@@ -12,6 +12,7 @@ import CoreData
 class ActivityManager {
     // MARK: Variables
     fileprivate let coreDataStore: CoreDataStore
+    fileprivate let sportManager: SportManager
     fileprivate var subscription = Set<AnyCancellable>()
     
     public var currentActivities = CurrentValueSubject<[Activity], Never>([])
@@ -19,6 +20,7 @@ class ActivityManager {
     // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.coreDataStore = dependencyContainer.coreDataStore
+        self.sportManager = dependencyContainer.sportManager
         self.fetchCurrentActivities()
     }
     
@@ -87,8 +89,14 @@ extension ActivityManager {
         activity.calories = data.calories
         activity.duration = data.duration ?? 0.0
         activity.pace = data.pace ?? 0.0
-        activity.traveledDistance = data.traveled_distance
-        activity.locations = Helpers.getDataFromArray(array: data.locations ?? [])
+        
+        (data.locations != nil) ? (activity.locations = Helpers.getDataFromArray(array: data.locations ?? [])) : ()
+        (data.traveled_distance != nil) ? (activity.traveledDistance = data.traveled_distance ?? 0.0): ()
+        (data.elevation_gain != nil) ? (activity.elevation_gain = data.elevation_gain ?? 0.0) : ()
+        
+        if let sport = self.sportManager.currentSports.value.first(where: { $0.id == data.sport_id }) {
+            activity.sport = sport
+        }
         
         return activity
     }

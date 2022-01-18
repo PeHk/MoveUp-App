@@ -120,28 +120,28 @@ final class LoginViewModel: ViewModelProtocol {
         self.userManager.deleteUser()
             .zip(self.sportManager.saveSports(newSports: user.sports ?? []))
             .zip(self.userManager.saveUserWithBioData(newUser: user))
-            .zip(self.activityManager.saveActivities(newActivities: user.activities ?? []))
             .sink { completion in
                 if case .failure(let error) = completion {
                     self.state.send(.error(error))
                 }
             } receiveValue: { _, _ in
-                self.activityManager.fetchCurrentActivities()
                 self.userManager.fetchCurrentUser()
                 self.sportManager.fetchCurrentSports()
-                self.saveFavouriteSports(sports: user.favourite_sports ?? [])
+                self.saveFavouriteSports(user: user)
             }
             .store(in: &subscription)
     }
     
     // MARK: Favourite sports
-    private func saveFavouriteSports(sports: [SportResource]) {
-        self.userManager.updateUserFavouriteSports(sports: sports)
+    private func saveFavouriteSports(user: UserResource) {
+        self.userManager.updateUserFavouriteSports(sports: user.favourite_sports ?? [])
+            .zip(self.activityManager.saveActivities(newActivities: user.activities ?? []))
             .sink { completion in
                 if case .failure(let error) = completion {
                     self.state.send(.error(error))
                 }
             } receiveValue: { _ in
+                self.activityManager.fetchCurrentActivities()
                 self.action.send(.permissionsShowed)
             }
             .store(in: &subscription)

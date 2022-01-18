@@ -178,13 +178,31 @@ class ActivityDetailViewModel: ViewModelProtocol {
         }
     }
     
+    // MARK: Start timer
     private func startTimer() {
         timerManager.startTimer()
         locationManager.start()
     }
     
+    // MARK: Pause timer
+    private func pauseTimer() {
+        self.feedbackManager.sendImpactFeedback(.rigid)
+        timerManager.isPaused = true
+        timerManager.pauseTimer()
+        locationManager.stop()
+    }
+    
+    // MARK: Resume timer
+    private func resumeTimer() {
+        self.feedbackManager.sendImpactFeedback(.rigid)
+        timerManager.isPaused = false
+        timerManager.startTimer()
+        locationManager.start()
+    }
+    
+    // MARK: Stop timer
     private func stopTimer() {
-        if start.timeIntervalSinceNow < 60 {
+        if abs(start.timeIntervalSinceNow) < 60 {
             self.action.send(.warning)
         } else {
             self.state.send(.loading)
@@ -192,13 +210,17 @@ class ActivityDetailViewModel: ViewModelProtocol {
             locationManager.stop()
             self.feedbackManager.sendFeedbackNotification(.success)
             
+            let elevation = locationManager.elevationGained.value
+            
             let workout = ActivityResource(
                 start_date: Helpers.formatDate(from: start),
                 end_date: Helpers.formatDate(from: Date()),
                 calories: totalCalories,
                 name: sport.name ?? "",
-                traveled_distance: currentDistance,
-                locations: locationManager.getRouteCoordinates())
+                sport_id: sport.id,
+                traveled_distance: currentDistance > 0 ? currentDistance : nil,
+                elevation_gain: elevation.rounded() > 0 ? elevation.rounded() : nil,
+                locations: locationManager.getRouteCoordinates().count > 0 ? locationManager.getRouteCoordinates() : nil)
 
             if workout.duration ?? 0 > 60 {
                 self.saveHealthKitWorkout(workout: workout)
@@ -209,6 +231,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         }
     }
     
+    // MARK: Save workout to backend
     private func saveBackendWorkout(workout: ActivityResource) {
         let activityPublisher: AnyPublisher<DataResponse<ActivityResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.activity.url,
@@ -227,10 +250,9 @@ class ActivityDetailViewModel: ViewModelProtocol {
                 }
             }
             .store(in: &subscription)
-
-        
     }
     
+    // MARK: Save workout to healthkit
     private func saveHealthKitWorkout(workout: ActivityResource) {
         self.healthKitManager.saveWorkout(activity: workout, sport: sport)
             .receive(on: DispatchQueue.main)
@@ -244,6 +266,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
             .store(in: &subscription)
     }
     
+    // MARK: Save workout to coreData
     private func saveCoreDataWorkout(workout: ActivityResource) {
         self.activityManager.saveActivities(newActivities: [workout])
             .receive(on: DispatchQueue.main)
@@ -255,19 +278,5 @@ class ActivityDetailViewModel: ViewModelProtocol {
                 self.saveBackendWorkout(workout: workout)
             }
             .store(in: &subscription)
-    }
-    
-    private func pauseTimer() {
-        self.feedbackManager.sendImpactFeedback(.rigid)
-        timerManager.isPaused = true
-        timerManager.pauseTimer()
-        locationManager.stop()
-    }
-    
-    private func resumeTimer() {
-        self.feedbackManager.sendImpactFeedback(.rigid)
-        timerManager.isPaused = false
-        timerManager.startTimer()
-        locationManager.start()
     }
 }

@@ -13,7 +13,9 @@ struct ActivityResource: Codable {
     let end_date: String
     let calories: Double
     let name: String
-    let traveled_distance: Double
+    let sport_id: Int64
+    let traveled_distance: Double?
+    var elevation_gain: Double?
     var locations: [[Double]]?
     
     var duration: TimeInterval? {
@@ -21,7 +23,7 @@ struct ActivityResource: Codable {
     }
     
     var pace: TimeInterval? {
-        if let duration = duration {
+        if let duration = duration, let traveled_distance = traveled_distance {
             let pace = 1 / (((traveled_distance * 1000) / duration) / 1000)
             return pace
         }
@@ -30,13 +32,26 @@ struct ActivityResource: Codable {
     }
 
     public func getJSON() -> [String: Any] {
-        [
+        var dict = [
             "start_date": start_date as Any,
             "end_date": end_date as Any,
             "calories": calories as Any,
             "name": name as Any,
-            "traveled_distance": traveled_distance as Any,
-            "locations": locations as Any
+            "sport_id": sport_id as Any
         ]
+        
+        if locations != nil {
+            dict["locations"] = locations! as Any
+        }
+
+        if traveled_distance != nil {
+            dict["traveled_distance"] = traveled_distance! as Any
+        }
+
+        if elevation_gain != nil {
+            dict["elevation_gain"] = elevation_gain! as Any
+        }
+
+        return dict
     }
 }

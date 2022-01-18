@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="fds-1g-a4x">
-                            <rect key="frame" x="0.0" y="417.5" width="414" height="136"/>
+                            <rect key="frame" x="0.0" y="467.5" width="414" height="136"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V57-D1-jfZ">
@@ -193,12 +193,37 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Uwx-aq-6Mh" detailTextLabel="jqN-0N-xW0" style="IBUITableViewCellStyleValue1" id="LMt-HN-qde">
+                                        <rect key="frame" x="20" y="199.5" width="374" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LMt-HN-qde" id="bLv-Zt-LDX">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Training type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uwx-aq-6Mh">
+                                                    <rect key="frame" x="20" y="15" width="94.5" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jqN-0N-xW0">
+                                                    <rect key="frame" x="349" y="15" width="5" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="GPS information" id="rtS-an-Otr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="ksP-Ao-fjx" detailTextLabel="9Vl-nT-HPB" style="IBUITableViewCellStyleValue1" id="PUJ-5h-tCW">
-                                        <rect key="frame" x="20" y="249.5" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="299.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PUJ-5h-tCW" id="hvw-KB-pCX">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -223,7 +248,7 @@
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="trF-yl-12Y" detailTextLabel="6JL-X5-2Su" style="IBUITableViewCellStyleValue1" id="pZQ-zY-GKh">
-                                        <rect key="frame" x="20" y="299.5" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="349.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pZQ-zY-GKh" id="9oB-3U-Eag">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -248,7 +273,7 @@
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="tmR-ba-D12" detailTextLabel="pbM-Wd-glc" style="IBUITableViewCellStyleValue1" id="19R-si-gzW">
-                                        <rect key="frame" x="20" y="349.5" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="399.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="19R-si-gzW" id="c5p-BA-oyc">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -291,6 +316,7 @@
                         <outlet property="pauseString" destination="0Eg-m8-4Bu" id="tMY-aT-Wfq"/>
                         <outlet property="playView" destination="rQC-pq-hYP" id="Hxm-e9-E0G"/>
                         <outlet property="stopView" destination="4Pb-4z-WGG" id="ora-P7-i09"/>
+                        <outlet property="trainingTypeLabel" destination="jqN-0N-xW0" id="5B3-n4-aAN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYo-4R-loz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

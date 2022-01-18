@@ -32,7 +32,7 @@ class HealthKitManager {
     public func saveWorkout(activity: ActivityResource, sport: Sport) -> Future<Void, Error> {
         Future { promise in
             let totalEnergyBurned = HKQuantity(unit: HKUnit.kilocalorie(), doubleValue: activity.calories)
-            let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: activity.traveled_distance * 1000)
+            let distance = HKQuantity(unit: HKUnit.meter(), doubleValue: (activity.traveled_distance ?? 0) * 1000)
             let type = sport.healthKitType?.hkWorkoutActivityType ?? .other
             let start = Helpers.getDateFromString(from: activity.start_date)
             let end = Helpers.getDateFromString(from: activity.end_date)

@@ -21,12 +21,20 @@ extension ActivityHistoryDetailViewController {
             case 2:
                 cell.detailTextLabel?.text = Helpers.formatTimeInterval(time: viewModel.activity.duration)
             case 3:
-                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.traveledDistance) + " km"
-            case 4:
                 cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.calories) + " kCal"
-            case 5:
-                cell.detailTextLabel?.text = Helpers.getTimeFromSeconds(from: viewModel.activity.pace) + "/km"
+            case 4:
+                cell.detailTextLabel?.text = viewModel.activity.sport?.type
+            default:
                 break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.traveledDistance) + " km"
+            case 1:
+                cell.detailTextLabel?.text = Helpers.getTimeFromSeconds(from: viewModel.activity.pace) + "/km"
+            case 2:
+                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.elevation_gain) + " m"
             default:
                 break
             }

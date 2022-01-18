@@ -3,6 +3,7 @@ import UIKit
 
 class ActivityDetailViewController: BaseTableViewController {
     
+    @IBOutlet weak var trainingTypeLabel: UILabel!
     @IBOutlet weak var elevationGainedLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -52,6 +53,7 @@ class ActivityDetailViewController: BaseTableViewController {
         self.navigationItem.hidesBackButton = true
         self.title = viewModel.sport.name
         self.isRunning = true
+        self.trainingTypeLabel.text = viewModel.sport.type
         self.viewModel.action.send(.start)
     }
     
