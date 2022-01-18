@@ -25,7 +25,6 @@ extension NetworkManager: RequestInterceptor {
                completion: @escaping (RetryResult) -> Void) {
 
         guard (request.response?.statusCode == 403 || request.response?.statusCode == 401) else {
-            print("CODE", request.response?.statusCode)
             completion(.doNotRetry)
             return
         }
