@@ -121,6 +121,7 @@
 		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
 		E17751352755326D00C9917F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751342755326D00C9917F /* LoginManager.swift */; };
 		E1805FE62792BC6100587EC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1805FE52792BC6100587EC1 /* MapKit.framework */; };
+		E1835BBB2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1835BBA2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift */; };
 		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
 		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
 		E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */; };
@@ -314,6 +315,7 @@
 		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
 		E17751342755326D00C9917F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		E1805FE52792BC6100587EC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E1835BBA2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityDetailViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
 		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
 		E19ABA162753C2FE004E6FDC /* FavouriteSportsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavouriteSportsViewController.storyboard; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				E1111F0C2768DBEB00B10529 /* ActivityDetailViewModel.swift */,
 				E1111F0D2768DBEB00B10529 /* ActivityDetailCoordinator.swift */,
 				E1111F0E2768DBEB00B10529 /* ActivityDetailViewController.storyboard */,
+				E1835BBA2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift */,
 			);
 			path = ActivityDetail;
 			sourceTree = "<group>";
@@ -1252,6 +1255,7 @@
 				E10AA401271DB7E80096B032 /* LoginViewModel.swift in Sources */,
 				E1EBC138271DC225009E9939 /* RegistrationCoordinator.swift in Sources */,
 				E16609BA271CA0A90077DF6E /* DependencyContainer.swift in Sources */,
+				E1835BBB2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift in Sources */,
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
@@ -1492,7 +1496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
@@ -1530,7 +1534,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.1;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;

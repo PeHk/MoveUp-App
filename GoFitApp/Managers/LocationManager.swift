@@ -48,7 +48,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     // MARK: Delegate function
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
             location.horizontalAccuracy <= 50.0
         }
@@ -88,6 +87,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     public func getRouteCoordinates() -> [[Double]] {
         var coordinates: [[Double]] = []
+        
+        guard route.count > 0 else { return [] }
         
         for location in route {
             coordinates.append([location.coordinate.latitude, location.coordinate.longitude])

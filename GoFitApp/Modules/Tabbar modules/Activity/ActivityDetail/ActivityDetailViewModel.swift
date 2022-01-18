@@ -65,6 +65,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
     private var totalCalories: Double = 0
     private var currentDistance: Double = 0
     
+    public var hideMapSection: Bool = false
+    
     var currentUser = CurrentValueSubject<User?, Never>(nil)
     
     @Published var timeString = "00:00:00"
@@ -87,6 +89,9 @@ class ActivityDetailViewModel: ViewModelProtocol {
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
         self.sport = sport
+        
+        if WorkoutType(rawValue: sport.type ?? "") == .indoor { self.hideMapSection = true }
+ 
         self.start = Date()
         self.timerManager = TimerManager()
         self.locationManager = LocationManager(dependencyContainer)
@@ -181,7 +186,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     // MARK: Start timer
     private func startTimer() {
         timerManager.startTimer()
-        locationManager.start()
+        hideMapSection ? () : locationManager.start()
     }
     
     // MARK: Pause timer
@@ -189,7 +194,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = true
         timerManager.pauseTimer()
-        locationManager.stop()
+        hideMapSection ? () : locationManager.stop()
     }
     
     // MARK: Resume timer
@@ -197,22 +202,24 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.feedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = false
         timerManager.startTimer()
-        locationManager.start()
+        hideMapSection ? () : locationManager.start()
     }
     
     // MARK: Stop timer
     private func stopTimer() {
         if abs(start.timeIntervalSinceNow) < 60 {
             self.action.send(.warning)
+            self.feedbackManager.sendFeedbackNotification(.warning)
         } else {
             self.state.send(.loading)
             timerManager.stopTimer()
-            locationManager.stop()
+            hideMapSection ? () : locationManager.stop()
+            
             self.feedbackManager.sendFeedbackNotification(.success)
             
             let elevation = locationManager.elevationGained.value
             
-            let workout = ActivityResource(
+            var workout = ActivityResource(
                 start_date: Helpers.formatDate(from: start),
                 end_date: Helpers.formatDate(from: Date()),
                 calories: totalCalories,
@@ -221,6 +228,12 @@ class ActivityDetailViewModel: ViewModelProtocol {
                 traveled_distance: currentDistance > 0 ? currentDistance : nil,
                 elevation_gain: elevation.rounded() > 0 ? elevation.rounded() : nil,
                 locations: locationManager.getRouteCoordinates().count > 0 ? locationManager.getRouteCoordinates() : nil)
+            
+            if hideMapSection {
+                workout.elevation_gain = nil
+                workout.traveled_distance = nil
+                workout.locations = nil
+            }
 
             if workout.duration ?? 0 > 60 {
                 self.saveHealthKitWorkout(workout: workout)

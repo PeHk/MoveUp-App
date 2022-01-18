@@ -106,7 +106,7 @@ class ActivityDetailViewController: BaseTableViewController {
         viewModel.action
             .sink { action in
                 if action == .warning {
-                    AlertManager.showAlertWithConfirmation(title: "Warning", message: "Workouts under one minute will be discarded", confirmTitle: "Discard", onConfirm: {
+                    AlertManager.showAlertWithConfirmation(title: "Warning!", message: "Workouts under one minute will be discarded.", confirmTitle: "Discard", onConfirm: {
                         self.viewModel.stepper.send(.endActivity)
                     }, over: self)
                 }

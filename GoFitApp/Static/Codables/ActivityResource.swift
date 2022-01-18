@@ -14,7 +14,7 @@ struct ActivityResource: Codable {
     let calories: Double
     let name: String
     let sport_id: Int64
-    let traveled_distance: Double?
+    var traveled_distance: Double?
     var elevation_gain: Double?
     var locations: [[Double]]?
     

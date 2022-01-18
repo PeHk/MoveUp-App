@@ -48,12 +48,18 @@ class ActivityHistoryDetailViewModel: ViewModelProtocol {
     
     @Published var coordinates: [CLLocationCoordinate2D] = []
     
+    public var hideMapSection: Bool = false
     public let activity: Activity
     public let edges = UIEdgeInsets(top: 30.0, left: 30.0, bottom: 30.0, right: 30.0)
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, activity: Activity) {
         self.activity = activity
+        
+        if WorkoutType(rawValue: self.activity.sport?.type ?? "") == .indoor {
+            self.hideMapSection = true
+        }
+        
         coordinates = Helpers.getCoreLocationObjects(from: activity)
         
         action.sink(receiveValue: { [weak self] action in

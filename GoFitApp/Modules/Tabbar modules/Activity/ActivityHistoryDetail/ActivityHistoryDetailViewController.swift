@@ -12,7 +12,7 @@ class ActivityHistoryDetailViewController: BaseTableViewController, MKMapViewDel
     
     var viewModel: ActivityHistoryDetailViewModel!
     var coordinator: ActivityHistoryDetailCoordinator!
-    var hideMapSection: Bool = false
+    
     
     private var subscription = Set<AnyCancellable>()
     
@@ -45,7 +45,7 @@ class ActivityHistoryDetailViewController: BaseTableViewController, MKMapViewDel
                     self.mapView.addOverlay(polyline)
                     self.setVisibleMapArea(polyline: polyline, edgeInsets: self.viewModel.edges)
                 } else {
-                    self.hideMapSection = true
+                    self.viewModel.hideMapSection = true
                     self.tableView.reloadData()
                 }
             }

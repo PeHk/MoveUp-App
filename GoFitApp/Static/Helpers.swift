@@ -19,6 +19,11 @@ struct Validators {
     }
 }
 
+enum WorkoutType: String {
+    case outdoor = "Outdoor"
+    case indoor = "Indoor"
+}
+
 class Helpers {
     static func getDateFromString(from string: String) -> Date {
         let dateFormatter: DateFormatter = {

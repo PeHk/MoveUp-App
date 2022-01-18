@@ -1,48 +1,14 @@
 //
-//  ActivityHistoryDetail+TableView.swift
+//  ActivityDetailViewController+TableViewDelegate.swift
 //  GoFitApp
 //
-//  Created by Peter Hlavatík on 15/01/2022.
+//  Created by Peter Hlavatík on 18/01/2022.
 //
 
 import Foundation
 import UIKit
 
-extension ActivityHistoryDetailViewController {
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
-            case 0:
-                cell.detailTextLabel?.text = Helpers.getTimeAndDateFormatted(from: viewModel.activity.start_date ?? Date())
-            case 1:
-                cell.detailTextLabel?.text = Helpers.getTimeAndDateFormatted(from: viewModel.activity.end_date ?? Date())
-            case 2:
-                cell.detailTextLabel?.text = Helpers.formatTimeInterval(time: viewModel.activity.duration)
-            case 3:
-                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.calories) + " kCal"
-            case 4:
-                cell.detailTextLabel?.text = viewModel.activity.sport?.type
-            default:
-                break
-            }
-        case 1:
-            switch indexPath.row {
-            case 0:
-                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.traveledDistance) + " km"
-            case 1:
-                cell.detailTextLabel?.text = Helpers.getTimeFromSeconds(from: viewModel.activity.pace) + "/km"
-            case 2:
-                cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.elevation_gain) + " m"
-            default:
-                break
-            }
-        default:
-            break
-        }
-    }
-    
+extension ActivityDetailViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as? UITableViewHeaderFooterView
         header?.textLabel?.font = UIFont.init(font: FontFamily.Roboto.regular, size: 15)
