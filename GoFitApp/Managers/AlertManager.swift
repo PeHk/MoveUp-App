@@ -19,10 +19,11 @@ final class AlertManager {
         viewController.present(ac, animated: true)
     }
     
-    static func showAlertWithConfirmation(title: String, message: String?, onConfirm: @escaping AlertAction, over viewController: UIViewController) {
+    static func showAlertWithConfirmation(title: String, message: String?, confirmTitle: String?, onConfirm: @escaping AlertAction, over viewController: UIViewController) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+        ac.addAction(.cancel)
+        ac.addAction(UIAlertAction(title: confirmTitle ?? "OK", style: .default, handler: { (_) in
             onConfirm()
         }))
 

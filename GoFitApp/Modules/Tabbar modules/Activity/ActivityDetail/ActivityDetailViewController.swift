@@ -100,6 +100,16 @@ class ActivityDetailViewController: BaseTableViewController {
                 self.paceLabel.text = pace
             }
             .store(in: &subscription)
+        
+        viewModel.action
+            .sink { action in
+                if action == .warning {
+                    AlertManager.showAlertWithConfirmation(title: "Warning", message: "Workouts under one minute will be discarded", confirmTitle: "Discard", onConfirm: {
+                        self.viewModel.stepper.send(.endActivity)
+                    }, over: self)
+                }
+            }
+            .store(in: &subscription)
     }
     
     private func changeIcon() {

@@ -11,6 +11,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         case stop
         case pause
         case resume
+        case warning
     }
     
     enum Step {
@@ -34,6 +35,8 @@ class ActivityDetailViewModel: ViewModelProtocol {
             self.pauseTimer()
         case .resume:
             self.resumeTimer()
+        default:
+            return
         }
     }
     
@@ -181,24 +184,28 @@ class ActivityDetailViewModel: ViewModelProtocol {
     }
     
     private func stopTimer() {
-        self.state.send(.loading)
-        timerManager.stopTimer()
-        locationManager.stop()
-        self.feedbackManager.sendFeedbackNotification(.success)
-        
-        let workout = ActivityResource(
-            start_date: Helpers.formatDate(from: start),
-            end_date: Helpers.formatDate(from: Date()),
-            calories: totalCalories,
-            name: sport.name ?? "",
-            traveled_distance: currentDistance,
-            locations: locationManager.getRouteCoordinates())
-
-        if workout.duration ?? 0 > 60 {
-            self.saveHealthKitWorkout(workout: workout)
+        if start.timeIntervalSinceNow < 60 {
+            self.action.send(.warning)
         } else {
-            self.isLoading.send(false)
-            self.stepper.send(.endActivity)
+            self.state.send(.loading)
+            timerManager.stopTimer()
+            locationManager.stop()
+            self.feedbackManager.sendFeedbackNotification(.success)
+            
+            let workout = ActivityResource(
+                start_date: Helpers.formatDate(from: start),
+                end_date: Helpers.formatDate(from: Date()),
+                calories: totalCalories,
+                name: sport.name ?? "",
+                traveled_distance: currentDistance,
+                locations: locationManager.getRouteCoordinates())
+
+            if workout.duration ?? 0 > 60 {
+                self.saveHealthKitWorkout(workout: workout)
+            } else {
+                self.isLoading.send(false)
+                self.stepper.send(.endActivity)
+            }
         }
     }
     
