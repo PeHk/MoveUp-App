@@ -94,6 +94,12 @@ class ActivityDetailViewController: BaseTableViewController {
                 self.elevationGainedLabel.text = elevation
             }
             .store(in: &subscription)
+        
+        viewModel.$paceString
+            .sink { pace in
+                self.paceLabel.text = pace
+            }
+            .store(in: &subscription)
     }
     
     private func changeIcon() {

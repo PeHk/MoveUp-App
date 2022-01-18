@@ -69,6 +69,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     @Published var distanceString = "0,00 km"
     @Published var altitudeString = "0 m"
     @Published var elevationGainedString = "0 m"
+    @Published var paceString = "00\'00\"/km"
     
     var subscription = Set<AnyCancellable>()
     
@@ -117,6 +118,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         
         self.locationManager.traveledDistance
             .sink { distance in
+                self.calculatePace(distance: distance)
                 let tmpDistance = distance.rounded() / 1000
                 if self.currentDistance < tmpDistance {
                     self.currentDistance = tmpDistance
@@ -150,6 +152,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
         if Float(timerManager.time) > 0 {
             totalCalories = caloriesConstant * timerManager.time
             caloriesString = "\(String(format: "%.2f", totalCalories)) cal"
+        }
+    }
+    
+    private func calculatePace(distance: Double) {
+        if timerManager.time > 0 && distance > 0 {
+            let pace = 1 / ((distance / timerManager.time) / 1000)
+            self.paceString = Helpers.getTimeFromSeconds(from: pace) + "/km"
         }
     }
     

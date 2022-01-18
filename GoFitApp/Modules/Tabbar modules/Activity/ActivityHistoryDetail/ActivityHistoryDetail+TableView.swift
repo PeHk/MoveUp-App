@@ -25,6 +25,7 @@ extension ActivityHistoryDetailViewController {
             case 4:
                 cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.calories) + " kCal"
             case 5:
+                cell.detailTextLabel?.text = Helpers.getTimeFromSeconds(from: viewModel.activity.pace) + "/km"
                 break
             default:
                 break

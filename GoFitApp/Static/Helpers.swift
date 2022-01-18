@@ -58,6 +58,14 @@ class Helpers {
         return dateFormatter.string(from: date)
     }
     
+    static func getTimeFromSeconds(from interval: Double) -> String {
+
+        let minutes = Int(interval / 60)
+        let seconds = Int(interval) - (Int(interval / 60) * 60)
+
+        return String(format: "%02d\'%02d\"", minutes, seconds)
+    }
+    
     static func getTimeAndDateFormatted(from date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm, dd/MM/YYYY"

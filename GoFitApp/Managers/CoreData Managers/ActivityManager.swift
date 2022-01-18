@@ -86,6 +86,7 @@ extension ActivityManager {
         activity.start_date = Helpers.getDateFromString(from: data.start_date)
         activity.calories = data.calories
         activity.duration = data.duration ?? 0.0
+        activity.pace = data.pace ?? 0.0
         activity.traveledDistance = data.traveled_distance
         activity.locations = Helpers.getDataFromArray(array: data.locations ?? [])
         

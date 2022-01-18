@@ -19,6 +19,15 @@ struct ActivityResource: Codable {
     var duration: TimeInterval? {
         Helpers.getDateFromString(from: end_date).timeIntervalSince(Helpers.getDateFromString(from: start_date))
     }
+    
+    var pace: TimeInterval? {
+        if let duration = duration {
+            let pace = 1 / (((traveled_distance * 1000) / duration) / 1000)
+            return pace
+        }
+       
+        return nil
+    }
 
     public func getJSON() -> [String: Any] {
         [
