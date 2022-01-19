@@ -37,6 +37,7 @@ class LogoutManager {
                 .sink { _ in
                     ()
                 } receiveValue: { _ in
+                    FeedbackManager.sendFeedbackNotification(.success)
                     self.logoutCompleted.send(fromInterceptor)
                 }
                 .store(in: &subscription)
