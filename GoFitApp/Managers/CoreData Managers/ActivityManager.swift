@@ -35,6 +35,36 @@ class ActivityManager {
             .store(in: &subscription)
     }
     
+    // MARK: Get recent sports
+    /// Function will return a unique set of three latest sports
+    public func getRecentSports() -> [Sport] {
+        var activities = currentActivities.value
+        var recentSports: Set<Sport> = []
+        
+        guard activities.count > 0 else { return [] }
+        
+        activities = activities.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
+        })
+        
+        if activities.count < 3 {
+            for activity in activities {
+                if let sport = activity.sport {
+                    recentSports.insert(sport)
+                }
+            }
+        } else {
+            for (index, activity) in activities.enumerated() {
+                if index > 3 { break }
+                
+                if let sport = activity.sport {
+                    recentSports.insert(sport)
+                }
+            }
+        }
+        
+        return recentSports.array
+    }
+    
     // MARK: Get activities
     private func getActivities() -> AnyPublisher<CoreDataFetchResultsPublisher<Activity>.Output, NetworkError> {
         let request = NSFetchRequest<Activity>(entityName: Activity.entityName)

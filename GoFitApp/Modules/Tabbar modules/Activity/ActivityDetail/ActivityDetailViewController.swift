@@ -3,6 +3,13 @@ import UIKit
 
 class ActivityDetailViewController: BaseTableViewController {
     
+    @IBOutlet weak var averagePaceCell: UITableViewCell! {
+        didSet {
+            if self.viewModel.hideMapSection {
+                averagePaceCell.isHidden = true
+            }
+        }
+    }
     @IBOutlet weak var trainingTypeLabel: UILabel!
     @IBOutlet weak var elevationGainedLabel: UILabel!
     @IBOutlet weak var altitudeLabel: UILabel!

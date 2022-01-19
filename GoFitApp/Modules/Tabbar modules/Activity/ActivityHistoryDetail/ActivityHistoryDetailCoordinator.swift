@@ -38,7 +38,7 @@ class ActivityHistoryDetailCoordinator: NSObject, Coordinator {
         viewController.coordinator = self
         
         viewController.viewModel.stepper
-            .sink { [weak self] event in
+            .sink { event in
                 
             }
             .store(in: &subscription)

@@ -43,11 +43,13 @@ class ActivityPickerViewModel: ViewModelProtocol {
     
     var subscription = Set<AnyCancellable>()
     let sportManager: SportManager
+    let activityManager: ActivityManager
     var sections = CurrentValueSubject<[SportSectionData], Never>([])
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.sportManager = dependencyContainer.sportManager
+        self.activityManager = dependencyContainer.activityManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -67,7 +69,12 @@ class ActivityPickerViewModel: ViewModelProtocol {
                 
                 var sections: [SportSectionData] = keys.map{ SportSectionData(sectionIndexName: String($0), sectionName: String($0), sectionItems: grouppedSports[$0]!.sorted(by: { $0.name ?? "" < $1.name ?? "" }))}
                 
-//                sections.insert(SectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: []), at: 0)
+                let recents = self.activityManager.getRecentSports()
+                
+                if recents.count > 0 {
+                    sections.insert(SportSectionData(sectionIndexName: "★", sectionName: "Recent", sectionItems: recents), at: 0)
+                }
+                
                 
                 self.sections.send(sections)
             }

@@ -14,3 +14,9 @@ extension NSSet {
   }
 }
 
+extension Set {
+    var array: [Element] {
+        return Array(self)
+    }
+}
+
