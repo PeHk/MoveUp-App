@@ -12,7 +12,7 @@ import Combine
 class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager
-    private var lastLocation: CLLocation!
+    private var lastLocation: CLLocation?
     private var lastAltitude: Double!
     private var route: [CLLocation]
     
@@ -23,8 +23,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
         self.locationManager = CLLocationManager()
-        self.lastLocation = locationManager.location
-        self.lastAltitude = locationManager.location?.altitude ?? 0.0
         self.route = []
         
         super.init()
@@ -35,6 +33,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.allowsBackgroundLocationUpdates = true
         
         self.askForPermission()
+        
+        self.lastLocation = locationManager.location
+        self.lastAltitude = locationManager.location?.altitude ?? 0.0
     }
     
     // MARK: Start
@@ -70,10 +71,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     private func getDistance(latestLocation: CLLocation?) {
-        if let latestLocation = latestLocation {
+        if let latestLocation = latestLocation, let lastLocation = self.lastLocation {
             var traveledDistance = self.traveledDistance.value
             
-            traveledDistance += latestLocation.distance(from: self.lastLocation)
+            traveledDistance += latestLocation.distance(from: lastLocation)
             
             self.traveledDistance.send(traveledDistance)
             
