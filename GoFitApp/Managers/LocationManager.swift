@@ -33,6 +33,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.activityType = .fitness
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.allowsBackgroundLocationUpdates = true
+        
+        self.askForPermission()
     }
     
     // MARK: Start
@@ -46,7 +48,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
-    // MARK: Delegate function
+    // MARK: Delegate functions
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        askForPermission()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
             location.horizontalAccuracy <= 50.0
@@ -97,4 +103,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         return coordinates
     }
     
+    private func askForPermission() {
+        if locationManager.authorizationStatus == .denied || locationManager.authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }
+    }
 }
