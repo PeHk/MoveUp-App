@@ -13,6 +13,7 @@ import CoreLocation
 class HealthKitManager {
     
     fileprivate let healthStore = HKHealthStore()
+    fileprivate var routeBuilder: HKWorkoutRouteBuilder
     fileprivate let workoutConfiguration = HKWorkoutConfiguration()
     fileprivate var subscription = Set<AnyCancellable>()
         
@@ -20,6 +21,7 @@ class HealthKitManager {
     public var calories = CurrentValueSubject<Double, Never>(0)
     
     init(_ dependencyContainer: DependencyContainer) {
+        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: .local())
         self.refreshValues()
     }
     
@@ -54,7 +56,14 @@ class HealthKitManager {
                     return
                 }
                 
-                promise(.success(()))
+                self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
+                    guard newRoute != nil else {
+                        promise(.failure(error ?? NSError()))
+                        return
+                    }
+                    
+                    promise(.success(()))
+                }
             }
         }
     }
@@ -111,5 +120,12 @@ class HealthKitManager {
         }
         
         self.healthStore.execute(query)
+    }
+    
+    // MARK: Route builder delegate
+    public func addRouteToBuilder(location: [CLLocation]) {
+        routeBuilder.insertRouteData(location) { (success, error) in
+            //
+        }
     }
 }

@@ -8,15 +8,14 @@
 import Foundation
 import UIKit
 
-class FeedbackManager {
-    
-    let notificationFeedback = UINotificationFeedbackGenerator()
-   
-    func sendFeedbackNotification(_ notificationType: UINotificationFeedbackGenerator.FeedbackType) {
+final class FeedbackManager {
+
+    static func sendFeedbackNotification(_ notificationType: UINotificationFeedbackGenerator.FeedbackType) {
+        let notificationFeedback = UINotificationFeedbackGenerator()
         notificationFeedback.notificationOccurred(notificationType)
     }
     
-    func sendImpactFeedback(_ type: UIImpactFeedbackGenerator.FeedbackStyle) {
+    static func sendImpactFeedback(_ type: UIImpactFeedbackGenerator.FeedbackStyle) {
         let hapticFeedback = UIImpactFeedbackGenerator(style: type)
         hapticFeedback.impactOccurred()
     }

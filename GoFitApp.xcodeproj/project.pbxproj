@@ -785,19 +785,18 @@
 		E16609B8271CA09A0077DF6E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E1BFA24C279812CA009121CC /* Static */,
 				E1111F1C2768F62000B10529 /* CoreData Managers */,
 				E1E51092274C066A00C9C266 /* NetworkManager */,
 				E16609B9271CA0A90077DF6E /* DependencyContainer.swift */,
 				E1E5108C274C04F700C9C266 /* UserDefaultsManager.swift */,
 				E1E51090274C066200C9C266 /* CredentialsManager.swift */,
-				E12E6BA8274FC5D7009B211C /* AlertManager.swift */,
 				E12E6BAA274FC872009B211C /* RegistrationManager.swift */,
 				E177513227552B7100C9917F /* LogoutManager.swift */,
 				E17751342755326D00C9917F /* LoginManager.swift */,
 				E10E45D2275E61C50073F2A6 /* PermissionManager.swift */,
 				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
 				E1264453277EFCCE000116F8 /* TimerManager.swift */,
-				E110FE29277F456900DE4681 /* FeedbackManager.swift */,
 				E10B294C2791DD2000E551CB /* LocationManager.swift */,
 			);
 			path = Managers;
@@ -869,6 +868,15 @@
 				E144515A2764B5E900DEBA8E /* CredentialsManager */,
 			);
 			path = GoFitAppTests;
+			sourceTree = "<group>";
+		};
+		E1BFA24C279812CA009121CC /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				E12E6BA8274FC5D7009B211C /* AlertManager.swift */,
+				E110FE29277F456900DE4681 /* FeedbackManager.swift */,
+			);
+			path = Static;
 			sourceTree = "<group>";
 		};
 		E1CB6081275793D500E4F39D /* FavouriteSportsDetail */ = {
@@ -1496,7 +1504,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
@@ -1513,6 +1521,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1534,7 +1543,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
@@ -1551,6 +1560,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -80,7 +80,6 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     fileprivate let timerManager: TimerManager
     fileprivate let userManager: UserManager
-    fileprivate let feedbackManager: FeedbackManager
     fileprivate let healthKitManager: HealthKitManager
     fileprivate let activityManager: ActivityManager
     fileprivate let locationManager: LocationManager
@@ -96,7 +95,6 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.timerManager = TimerManager()
         self.locationManager = LocationManager(dependencyContainer)
         self.userManager = dependencyContainer.userManager
-        self.feedbackManager = dependencyContainer.feedbackManager
         self.healthKitManager = dependencyContainer.healthKitManager
         self.activityManager = dependencyContainer.activityManager
         self.networkManager = dependencyContainer.networkManager
@@ -191,7 +189,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     // MARK: Pause timer
     private func pauseTimer() {
-        self.feedbackManager.sendImpactFeedback(.rigid)
+        FeedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = true
         timerManager.pauseTimer()
         hideMapSection ? () : locationManager.stop()
@@ -199,7 +197,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     
     // MARK: Resume timer
     private func resumeTimer() {
-        self.feedbackManager.sendImpactFeedback(.rigid)
+        FeedbackManager.sendImpactFeedback(.rigid)
         timerManager.isPaused = false
         timerManager.startTimer()
         hideMapSection ? () : locationManager.start()
@@ -209,13 +207,13 @@ class ActivityDetailViewModel: ViewModelProtocol {
     private func stopTimer() {
         if abs(start.timeIntervalSinceNow) < 60 {
             self.action.send(.warning)
-            self.feedbackManager.sendFeedbackNotification(.warning)
+            FeedbackManager.sendFeedbackNotification(.warning)
         } else {
             self.state.send(.loading)
             timerManager.stopTimer()
             hideMapSection ? () : locationManager.stop()
             
-            self.feedbackManager.sendFeedbackNotification(.success)
+            FeedbackManager.sendFeedbackNotification(.success)
             
             let elevation = locationManager.elevationGained.value
             

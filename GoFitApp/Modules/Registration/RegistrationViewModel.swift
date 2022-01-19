@@ -109,6 +109,7 @@ final class RegistrationViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 }
             } receiveValue: { user in
+                FeedbackManager.sendFeedbackNotification(.success)
                 self.saveUser(user: user)
             }
             .store(in: &subscription)
