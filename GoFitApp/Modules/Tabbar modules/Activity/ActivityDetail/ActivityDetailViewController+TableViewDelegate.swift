@@ -15,6 +15,15 @@ extension ActivityDetailViewController {
         header?.tintColor = Asset.backgroundColor.color
     }
     
+    override func tableView(_ tableView: UITableView,
+                            heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if viewModel.hideMapSection && indexPath.row == 2 {
+            return 0
+        }
+            
+        return tableView.rowHeight
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 1) && self.viewModel.hideMapSection {
             return nil

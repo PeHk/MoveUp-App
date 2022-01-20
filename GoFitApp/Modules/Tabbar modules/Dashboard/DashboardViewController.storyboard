@@ -31,16 +31,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3Uo-EL-yfK">
-                                    <rect key="frame" x="15" y="0.0" width="389" height="248"/>
+                                    <rect key="frame" x="15" y="0.0" width="384" height="248"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mYq-VR-1h6">
-                                            <rect key="frame" x="0.0" y="0.0" width="389" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="384" height="180"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-mb-xk9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="184.5" height="180"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="180"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RI2-9y-rrw">
-                                                            <rect key="frame" x="10" y="10" width="164.5" height="30"/>
+                                                            <rect key="frame" x="10" y="10" width="162" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="MV3-UP-YhC"/>
                                                             </constraints>
@@ -49,10 +49,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHo-Pv-vJb" customClass="ALProgressRing" customModule="ALProgressView">
-                                                            <rect key="frame" x="30" y="50" width="124.5" height="110"/>
+                                                            <rect key="frame" x="30" y="50" width="122" height="110"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSF-0l-zrd">
-                                                                    <rect key="frame" x="43" y="45" width="39" height="20"/>
+                                                                    <rect key="frame" x="41.5" y="45" width="39" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -77,10 +77,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pae-7h-YNS">
-                                                    <rect key="frame" x="204.5" y="0.0" width="184.5" height="180"/>
+                                                    <rect key="frame" x="202" y="0.0" width="182" height="180"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-CK-N8s">
-                                                            <rect key="frame" x="10" y="10" width="164.5" height="30"/>
+                                                            <rect key="frame" x="10" y="10" width="162" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="dnS-Ku-qJY"/>
                                                             </constraints>
@@ -89,10 +89,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNp-ev-7sD" customClass="ALProgressRing" customModule="ALProgressView">
-                                                            <rect key="frame" x="30" y="50" width="124.5" height="110"/>
+                                                            <rect key="frame" x="30" y="50" width="122" height="110"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="820" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEz-Xf-Kzg">
-                                                                    <rect key="frame" x="48" y="45" width="29" height="20"/>
+                                                                    <rect key="frame" x="46.5" y="45" width="29" height="20"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                             </constraints>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We recommend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-rf-kpb">
-                                            <rect key="frame" x="0.0" y="210.5" width="389" height="37.5"/>
+                                            <rect key="frame" x="0.0" y="210.5" width="384" height="37.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -136,7 +136,7 @@
                                 <constraint firstItem="3Uo-EL-yfK" firstAttribute="leading" secondItem="gUa-gY-GBX" secondAttribute="leading" constant="15" id="9WL-0t-6q3"/>
                                 <constraint firstItem="3Uo-EL-yfK" firstAttribute="top" secondItem="gUa-gY-GBX" secondAttribute="top" id="Ald-6f-cHw"/>
                                 <constraint firstAttribute="bottom" secondItem="3Uo-EL-yfK" secondAttribute="bottom" constant="10" id="DDP-yQ-T0p"/>
-                                <constraint firstAttribute="trailing" secondItem="3Uo-EL-yfK" secondAttribute="trailing" constant="10" id="wmL-BC-3Nf"/>
+                                <constraint firstAttribute="trailing" secondItem="3Uo-EL-yfK" secondAttribute="trailing" constant="15" id="wmL-BC-3Nf"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="9Eg-z5-sqV">

@@ -307,7 +307,6 @@
                     </tableView>
                     <connections>
                         <outlet property="altitudeLabel" destination="6JL-X5-2Su" id="gCi-sp-VZd"/>
-                        <outlet property="averagePaceCell" destination="Csx-lj-ogt" id="Eis-b6-vK8"/>
                         <outlet property="caloriesLabel" destination="0EQ-rz-Rug" id="GQ4-5m-6W1"/>
                         <outlet property="distanceLabel" destination="9Vl-nT-HPB" id="GUp-o1-z2H"/>
                         <outlet property="durationLabel" destination="AVs-sB-alz" id="Sla-Wq-vx2"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,20 +27,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Afh-dW-iWM">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Afh-dW-iWM">
                                 <rect key="frame" x="30" y="54" width="354" height="778"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="99c-F6-3fF">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="438"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="458"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="But first, we need more info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-KC-YI9">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="318"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="But first, we need more info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-KC-YI9">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="338"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if5-nZ-LvN">
-                                                <rect key="frame" x="0.0" y="328" width="354" height="110"/>
+                                                <rect key="frame" x="0.0" y="348" width="354" height="110"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8J4-4p-BEU">
                                                         <rect key="frame" x="5" y="10" width="344" height="90"/>
@@ -71,7 +71,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vIe-Id-few">
-                                        <rect key="frame" x="0.0" y="468" width="354" height="230"/>
+                                        <rect key="frame" x="0.0" y="478" width="354" height="230"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TbB-v2-MKf" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
@@ -238,19 +238,19 @@
     </scenes>
     <designables>
         <designable name="R9g-6t-x4e">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="TbB-v2-MKf">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="U3a-SR-vGS">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="atb-Wm-aee">
-            <size key="intrinsicContentSize" width="354" height="38.823671875000002"/>
+            <size key="intrinsicContentSize" width="354" height="38.919921875"/>
         </designable>
         <designable name="xpd-7S-rfO">
-            <size key="intrinsicContentSize" width="61" height="34"/>
+            <size key="intrinsicContentSize" width="58" height="32"/>
         </designable>
     </designables>
     <resources>

@@ -94,7 +94,7 @@ class ActivityManager {
     }
     
     // MARK: Delete activities
-    func deleteActivities() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
+    public func deleteActivities() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Activity.entityName)
         request.predicate = NSPredicate(format: "name != nil")
         
@@ -106,6 +106,38 @@ class ActivityManager {
             .init(initialError: nil, backendError: nil, error)
             })
             .eraseToAnyPublisher()
+    }
+    
+    public func findMissingActivities(serverDate: Date) -> [ActivityResource] {
+        var activities: [ActivityResource] = []
+        let currentActivities = self.currentActivities.value.sorted(by: {
+            Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())})
+        
+        guard currentActivities.count > 0 else { return [] }
+        
+        if let latestActivity = currentActivities.first {
+            if let latestEndDate = latestActivity.end_date {
+                if latestEndDate > serverDate {
+                    activities = getActivitiesByDate(date: serverDate, currentActivities: currentActivities)
+                }
+            }
+        }
+        
+        return activities
+    }
+    
+    private func getActivitiesByDate(date: Date, currentActivities: [Activity]) -> [ActivityResource] {
+        var activities: [ActivityResource] = []
+        
+        for activity in currentActivities {
+            if let endDate = activity.end_date {
+                if endDate > date {
+                    activities.append(self.getActivityResourceObject(data: activity))
+                }
+            }
+        }
+        
+        return activities
     }
 }
 
@@ -129,5 +161,18 @@ extension ActivityManager {
         }
         
         return activity
+    }
+    
+    private func getActivityResourceObject(data: Activity) -> ActivityResource {
+        return ActivityResource(
+            start_date: Helpers.formatDate(from: data.start_date ?? Date()),
+            end_date: Helpers.formatDate(from: data.end_date ?? Date()),
+            calories: data.calories,
+            name: data.name ?? "",
+            sport_id: data.sport?.id ?? 0,
+            traveled_distance: data.traveledDistance,
+            elevation_gain: data.elevation_gain,
+            locations: Helpers.getArrayFromData(data: data.locations ?? Data())
+        )
     }
 }

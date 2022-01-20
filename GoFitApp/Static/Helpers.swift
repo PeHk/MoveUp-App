@@ -25,6 +25,16 @@ enum WorkoutType: String {
 }
 
 class Helpers {
+    static func getDateFromStringWithout(from string: String) -> Date {
+        let dateFormatter: DateFormatter = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            return dateFormatter
+        }()
+        
+        return dateFormatter.date(from: string) ?? Date()
+    }
+    
     static func getDateFromString(from string: String) -> Date {
         let dateFormatter: DateFormatter = {
             let dateFormatter = DateFormatter()
@@ -114,5 +124,15 @@ class Helpers {
             print(error.localizedDescription)
         }
         return nil
+    }
+    
+    static func getJSONFromActivityResourceArray(array: [ActivityResource]) -> [[String: Any]] {
+        var jsonArray: [[String: Any]] = []
+        
+        for activity in array {
+            jsonArray.append(activity.getJSON())
+        }
+        
+        return jsonArray
     }
 }

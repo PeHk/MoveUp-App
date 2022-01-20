@@ -55,15 +55,19 @@ class HealthKitManager {
                     promise(.failure(error ?? NSError()))
                     return
                 }
-                
-                self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
-                    guard newRoute != nil else {
-                        promise(.failure(error ?? NSError()))
-                        return
+                if WorkoutType(rawValue: sport.type ?? "") == .outdoor {
+                    self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
+                        guard newRoute != nil else {
+                            promise(.failure(error ?? NSError()))
+                            return
+                        }
+                        
+                        promise(.success(()))
                     }
-                    
+                } else {
                     promise(.success(()))
                 }
+                
             }
         }
     }

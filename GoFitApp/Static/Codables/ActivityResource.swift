@@ -55,3 +55,7 @@ struct ActivityResource: Codable {
         return dict
     }
 }
+
+struct LastUpdatedActivityResource: Codable {
+    let last_activity_update: String
+}
