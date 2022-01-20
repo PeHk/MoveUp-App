@@ -16,6 +16,7 @@ class ProfileViewModel: ViewModelProtocol {
         case sports
         case goals
         case notifications
+        case backup
     }
     
     enum State {

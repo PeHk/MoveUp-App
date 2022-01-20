@@ -126,13 +126,13 @@ class Helpers {
         return nil
     }
     
-    static func getJSONFromActivityResourceArray(array: [ActivityResource]) -> [[String: Any]] {
+    static func getJSONFromActivityResourceArray(array: [ActivityResource]) -> [String: Any] {
         var jsonArray: [[String: Any]] = []
         
         for activity in array {
             jsonArray.append(activity.getJSON())
         }
         
-        return jsonArray
+        return [ "activities": jsonArray as Any]
     }
 }

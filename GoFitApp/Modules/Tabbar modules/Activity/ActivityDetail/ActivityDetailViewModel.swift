@@ -242,27 +242,6 @@ class ActivityDetailViewModel: ViewModelProtocol {
         }
     }
     
-    // MARK: Save workout to backend
-    private func saveBackendWorkout(workout: ActivityResource) {
-        let activityPublisher: AnyPublisher<DataResponse<ActivityResource, NetworkError>, Never> = self.networkManager.request(
-            Endpoint.activity.url,
-            method: .post,
-            parameters: workout.getJSON()
-        )
-    
-        activityPublisher
-            .sink { dataResponse in
-                if let error = dataResponse.error {
-                    self.state.send(.error(error))
-                } else {
-                    self.activityManager.fetchCurrentActivities()
-                    self.isLoading.send(false)
-                    self.stepper.send(.endActivity)
-                }
-            }
-            .store(in: &subscription)
-    }
-    
     // MARK: Save workout to healthkit
     private func saveHealthKitWorkout(workout: ActivityResource) {
         self.healthKitManager.saveWorkout(activity: workout, sport: sport)
@@ -286,7 +265,9 @@ class ActivityDetailViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 }
             } receiveValue: { _ in
-                self.saveBackendWorkout(workout: workout)
+                self.activityManager.fetchCurrentActivities()
+                self.isLoading.send(false)
+                self.stepper.send(.endActivity)
             }
             .store(in: &subscription)
     }

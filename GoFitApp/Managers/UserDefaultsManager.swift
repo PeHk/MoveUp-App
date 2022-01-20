@@ -44,4 +44,8 @@ class UserDefaultsManager {
             defaults.removeObject(forKey: key)
         }
     }
+    
+    public func setNewBackupDate() {
+        self.set(value: Date(), forKey: Constants.backupDate)
+    }
 }

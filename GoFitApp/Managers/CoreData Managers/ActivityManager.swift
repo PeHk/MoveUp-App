@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreData
+import Alamofire
 
 class ActivityManager {
     // MARK: Variables
@@ -108,12 +109,12 @@ class ActivityManager {
             .eraseToAnyPublisher()
     }
     
-    public func findMissingActivities(serverDate: Date) -> [ActivityResource] {
+    public func fetchMissingActivities(serverDate: Date) -> [ActivityResource] {
         var activities: [ActivityResource] = []
         let currentActivities = self.currentActivities.value.sorted(by: {
             Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())})
         
-        guard currentActivities.count > 0 else { return [] }
+        guard currentActivities.count > 0 else { return []}
         
         if let latestActivity = currentActivities.first {
             if let latestEndDate = latestActivity.end_date {
@@ -164,15 +165,23 @@ extension ActivityManager {
     }
     
     private func getActivityResourceObject(data: Activity) -> ActivityResource {
+        var locations: [[Double]] = []
+        
+        if let dataLocations = data.locations {
+            if let arr = Helpers.getArrayFromData(data: dataLocations) {
+                locations = arr
+            }
+        }
+        
         return ActivityResource(
             start_date: Helpers.formatDate(from: data.start_date ?? Date()),
             end_date: Helpers.formatDate(from: data.end_date ?? Date()),
             calories: data.calories,
             name: data.name ?? "",
             sport_id: data.sport?.id ?? 0,
-            traveled_distance: data.traveledDistance,
-            elevation_gain: data.elevation_gain,
-            locations: Helpers.getArrayFromData(data: data.locations ?? Data())
+            traveled_distance: data.traveledDistance > 0 ? data.traveledDistance : nil,
+            elevation_gain: data.elevation_gain > 0 ? data.elevation_gain : nil,
+            locations: locations.count > 0 ? locations : nil
         )
     }
 }

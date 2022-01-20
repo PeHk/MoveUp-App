@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Vif-lx-bOO">
-                            <rect key="frame" x="0.0" y="417.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="467.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="backgroundColor"/>
                         </view>
@@ -76,21 +76,45 @@
                                         <color key="backgroundColor" name="insideBackgroundColor"/>
                                         <color key="tintColor" name="primary"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="wld-xq-xH6" imageView="TKa-je-Zyg" style="IBUITableViewCellStyleDefault" id="ha2-nd-WtP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="wld-xq-xH6" imageView="TKa-je-Zyg" style="IBUITableViewCellStyleDefault" id="ha2-nd-WtP">
                                         <rect key="frame" x="20" y="149.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ha2-nd-WtP" id="zHe-bB-GIl">
+                                            <rect key="frame" x="0.0" y="0.0" width="345.5" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Backup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wld-xq-xH6">
+                                                    <rect key="frame" x="57.25" y="0.0" width="280.25" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="arrow.clockwise.icloud.fill" catalog="system" id="TKa-je-Zyg">
+                                                    <rect key="frame" x="18.25" y="16" width="24" height="16.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="insideBackgroundColor"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="insideBackgroundColor"/>
+                                        <color key="tintColor" name="primary"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="6aJ-PC-fMY" imageView="2T8-pL-US0" style="IBUITableViewCellStyleDefault" id="TPj-Oc-wNK">
+                                        <rect key="frame" x="20" y="199.5" width="374" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TPj-Oc-wNK" id="rJt-68-Stz">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wld-xq-xH6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6aJ-PC-fMY">
                                                     <rect key="frame" x="57" y="0.0" width="297" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="rectangle.portrait.and.arrow.right.fill" catalog="system" id="TKa-je-Zyg">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="rectangle.portrait.and.arrow.right.fill" catalog="system" id="2T8-pL-US0">
                                                     <rect key="frame" x="18.5" y="15" width="23.5" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -105,7 +129,7 @@
                             <tableViewSection headerTitle="Preferences" id="Rjx-wj-fio">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="pjC-Cl-9Te" imageView="ew5-Zl-iJy" style="IBUITableViewCellStyleDefault" id="9db-lJ-k72">
-                                        <rect key="frame" x="20" y="249.5" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="299.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9db-lJ-k72" id="wPW-ku-Ozg">
                                             <rect key="frame" x="0.0" y="0.0" width="345.5" height="50"/>
@@ -133,7 +157,7 @@
                             <tableViewSection headerTitle="Support" id="0PQ-x5-z6M">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingsCell" textLabel="fCl-Iw-ar0" imageView="iqm-c0-SRc" style="IBUITableViewCellStyleDefault" id="24W-eO-b6w">
-                                        <rect key="frame" x="20" y="349.5" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="399.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="24W-eO-b6w" id="SVd-Oy-FeX">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -170,10 +194,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7l-KZ-5gb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="640.57971014492762" y="61.607142857142854"/>
+            <point key="canvasLocation" x="504" y="61"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise.icloud.fill" catalog="system" width="128" height="88"/>
         <image name="circle.hexagonpath" catalog="system" width="128" height="112"/>
         <image name="icons8-customer-50" width="23" height="23.5"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

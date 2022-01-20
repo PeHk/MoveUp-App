@@ -44,6 +44,8 @@ class ProfileCoordinator: NSObject, Coordinator {
                     self?.showSports()
                 case .goals:
                     self?.showGoals()
+                case .backup:
+                    self?.showBackup()
                 default:
                     return
                 }
@@ -74,6 +76,13 @@ class ProfileCoordinator: NSObject, Coordinator {
         goalsDetailCoordinator.start()
         childCoordinators.append(goalsDetailCoordinator)
     }
+    
+    private func showBackup() {
+        let backupDetailCoordinator = BackupDetailCoordinator(navigationController, dependencyContainer)
+        backupDetailCoordinator.finishDelegate = self
+        backupDetailCoordinator.start()
+        childCoordinators.append(backupDetailCoordinator)
+    }
 }
 
 // MARK: Navigation controller extensions
@@ -87,6 +96,8 @@ extension ProfileCoordinator: CoordinatorFinishDelegate {
         case .sportsDetail:
             navigationController.popViewController(animated: true)
         case .goalsDetail:
+            navigationController.popViewController(animated: true)
+        case .backup:
             navigationController.popViewController(animated: true)
         default:
             break
@@ -114,6 +125,10 @@ extension ProfileCoordinator: UINavigationControllerDelegate {
             }
         } else if let goalsDetailController = fromViewController as? GoalsDetailViewController {
             if let coordinator = goalsDetailController.coordinator {
+                coordinatorDidFinish(childCoordinator: coordinator)
+            }
+        } else if let backupDetailController = fromViewController as? BackupDetailViewController {
+            if let coordinator = backupDetailController.coordinator {
                 coordinatorDidFinish(childCoordinator: coordinator)
             }
         }

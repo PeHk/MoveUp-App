@@ -18,6 +18,8 @@ extension ProfileViewController {
             case 1:
                 viewModel.stepper.send(.sports)
             case 2:
+                viewModel.stepper.send(.backup)
+            case 3:
                 viewModel.action.send(.logout)
             default:
                 break

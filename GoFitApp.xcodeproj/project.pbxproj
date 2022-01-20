@@ -86,6 +86,11 @@
 		E13D271E278F30C000EEF255 /* ActivityHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D271D278F30C000EEF255 /* ActivityHistoryTableViewCell.swift */; };
 		E13D2720278F313A00EEF255 /* ActivityHistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D271F278F313A00EEF255 /* ActivityHistoryCellViewModel.swift */; };
 		E13D2722278F3ADA00EEF255 /* ActivitySectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D2721278F3ADA00EEF255 /* ActivitySectionData.swift */; };
+		E143E75B27997611001DB5BC /* BackupDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E143E75727997610001DB5BC /* BackupDetailViewController.storyboard */; };
+		E143E75C27997611001DB5BC /* BackupDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143E75827997610001DB5BC /* BackupDetailCoordinator.swift */; };
+		E143E75D27997611001DB5BC /* BackupDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143E75927997610001DB5BC /* BackupDetailViewModel.swift */; };
+		E143E75E27997611001DB5BC /* BackupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143E75A27997610001DB5BC /* BackupDetailViewController.swift */; };
+		E143E76027997979001DB5BC /* BackupTableViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143E75F27997979001DB5BC /* BackupTableViewController+Delegate.swift */; };
 		E14451532763C86700DEBA8E /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451522763C86700DEBA8E /* UserManagerTests.swift */; };
 		E14451572764B02500DEBA8E /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */; };
 		E14451592764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14451582764B1D400DEBA8E /* UserDefaultsManagerTestsConstants.swift */; };
@@ -277,6 +282,11 @@
 		E13D271D278F30C000EEF255 /* ActivityHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		E13D271F278F313A00EEF255 /* ActivityHistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistoryCellViewModel.swift; sourceTree = "<group>"; };
 		E13D2721278F3ADA00EEF255 /* ActivitySectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySectionData.swift; sourceTree = "<group>"; };
+		E143E75727997610001DB5BC /* BackupDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BackupDetailViewController.storyboard; sourceTree = "<group>"; };
+		E143E75827997610001DB5BC /* BackupDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupDetailCoordinator.swift; sourceTree = "<group>"; };
+		E143E75927997610001DB5BC /* BackupDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupDetailViewModel.swift; sourceTree = "<group>"; };
+		E143E75A27997610001DB5BC /* BackupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupDetailViewController.swift; sourceTree = "<group>"; };
+		E143E75F27997979001DB5BC /* BackupTableViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackupTableViewController+Delegate.swift"; sourceTree = "<group>"; };
 		E14451522763C86700DEBA8E /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
 		E14451542763CBC200DEBA8E /* GoFitApp-IntegrationTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-IntegrationTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E14451562764B02500DEBA8E /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
@@ -583,6 +593,7 @@
 		E13B449427206DE30062C44B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				E143E75627997610001DB5BC /* BackupDetail */,
 				E1A788C8276B5E57007C406E /* GoalsDetail */,
 				E1CB6081275793D500E4F39D /* FavouriteSportsDetail */,
 				E11FAABF2757762C0075F74D /* ProfileDetail */,
@@ -622,6 +633,18 @@
 				E13D2721278F3ADA00EEF255 /* ActivitySectionData.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		E143E75627997610001DB5BC /* BackupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E143E75727997610001DB5BC /* BackupDetailViewController.storyboard */,
+				E143E75827997610001DB5BC /* BackupDetailCoordinator.swift */,
+				E143E75927997610001DB5BC /* BackupDetailViewModel.swift */,
+				E143E75A27997610001DB5BC /* BackupDetailViewController.swift */,
+				E143E75F27997979001DB5BC /* BackupTableViewController+Delegate.swift */,
+			);
+			path = BackupDetail;
 			sourceTree = "<group>";
 		};
 		E14451512763C85100DEBA8E /* UserManager */ = {
@@ -1078,6 +1101,7 @@
 				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
 				E1111F182768DBEB00B10529 /* ActivityPickerViewController.storyboard in Resources */,
 				E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */,
+				E143E75B27997611001DB5BC /* BackupDetailViewController.storyboard in Resources */,
 				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
 				E10AA3F4271DB33D0096B032 /* Roboto-Regular.ttf in Resources */,
 				E10AA3EE271DB33D0096B032 /* Roboto-MediumItalic.ttf in Resources */,
@@ -1168,6 +1192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E143E75E27997611001DB5BC /* BackupDetailViewController.swift in Sources */,
 				E1494254278F793900D38EA6 /* ActivityHistoryDetailViewModel.swift in Sources */,
 				E16D8FC3279411DD00DA3575 /* TokenResource.swift in Sources */,
 				E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */,
@@ -1200,11 +1225,13 @@
 				E13B449927206DE30062C44B /* ProfileCoordinator.swift in Sources */,
 				E13D271E278F30C000EEF255 /* ActivityHistoryTableViewCell.swift in Sources */,
 				E153BCC2276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift in Sources */,
+				E143E76027997979001DB5BC /* BackupTableViewController+Delegate.swift in Sources */,
 				E1111F1A2768DBEB00B10529 /* ActivityPickerViewController.swift in Sources */,
 				E10AA3FF271DB7DF0096B032 /* LoginCoordinator.swift in Sources */,
 				E1CB6089275793D500E4F39D /* FavouriteSportsDetailViewModel.swift in Sources */,
 				E1111F1E2768F64100B10529 /* SportManager.swift in Sources */,
 				E17751352755326D00C9917F /* LoginManager.swift in Sources */,
+				E143E75D27997611001DB5BC /* BackupDetailViewModel.swift in Sources */,
 				E1E5108D274C04F700C9C266 /* UserDefaultsManager.swift in Sources */,
 				E134E93127523D4F00453781 /* BioDataResource.swift in Sources */,
 				E1E51085274C00D900C9C266 /* NetworkManager+Requests.swift in Sources */,
@@ -1245,6 +1272,7 @@
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E10B294D2791DD2000E551CB /* LocationManager.swift in Sources */,
+				E143E75C27997611001DB5BC /* BackupDetailCoordinator.swift in Sources */,
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */,

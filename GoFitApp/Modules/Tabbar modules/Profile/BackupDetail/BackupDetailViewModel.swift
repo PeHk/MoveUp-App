@@ -2,16 +2,16 @@ import Combine
 import Foundation
 import Alamofire
 
-class ActivityViewModel: ViewModelProtocol {
+class BackupDetailViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case backup
+        case reload
     }
     
     enum Step {
-        case startActivity
-        case showActivityHistory(activity: Activity)
+        
     }
     
     enum State {
@@ -22,7 +22,12 @@ class ActivityViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .reload:
+            self.checkActivities()
+        case .backup:
+            return
+        }
     }
     
     func processState(_ state: State) {
@@ -43,24 +48,20 @@ class ActivityViewModel: ViewModelProtocol {
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var reloadTable = PassthroughSubject<Bool, Never>()
+    var backupDate: String = "Not yet"
     
-    var sections = CurrentValueSubject<[ActivitySectionData], Never>([])
-    
-    var configuration: Configuration
-    var subscription = Set<AnyCancellable>()
-    
-    fileprivate let activityManager: ActivityManager
-    fileprivate let networkManager: NetworkManager
     fileprivate let userDefaultsManager: UserDefaultsManager
-    fileprivate let userManager: UserManager
+    fileprivate let networkManager: NetworkManager
+    fileprivate let activityManager: ActivityManager
+    
+    var subscription = Set<AnyCancellable>()
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
-        self.configuration = Configuration(.activities)
-        self.activityManager = dependencyContainer.activityManager
-        self.networkManager = dependencyContainer.networkManager
-        self.userManager = dependencyContainer.userManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
+        self.networkManager = dependencyContainer.networkManager
+        self.activityManager = dependencyContainer.activityManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -72,25 +73,19 @@ class ActivityViewModel: ViewModelProtocol {
         })
             .store(in: &subscription)
         
-        self.activityManager.currentActivities
-            .sink { activities in
-                let grouppedActivities = Dictionary(grouping: activities, by: { Helpers.printDate(from: $0.end_date ?? Date()) })
-                
-                let keys = grouppedActivities.keys.sorted(by: >)
-                
-                let sections: [ActivitySectionData] = keys.map{ ActivitySectionData(sectionIndexName: $0, sectionName: $0, sectionItems: grouppedActivities[$0]!.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
-                }))}
-                
-                
-                self.sections.send(sections)
-            }
-            .store(in: &subscription)
-        
-        self.checkActivities()
+        self.getBackupDate()
     }
     
     internal func initializeView() {
         isLoading.send(false)
+    }
+    
+    private func getBackupDate() {
+        let backup: Date? = self.userDefaultsManager.get(forKey: Constants.backupDate) as? Date
+        
+        if backup != nil {
+            self.backupDate = Helpers.getTimeAndDateFormatted(from: backup!)
+        }
     }
     
     private func checkActivities() {
@@ -101,13 +96,18 @@ class ActivityViewModel: ViewModelProtocol {
         
         statusPublisher
             .sink { dataResponse in
-                if dataResponse.error == nil {
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
                     if let value = dataResponse.value {
                         let serverDate = Helpers.getDateFromStringWithout(from: value.last_activity_update)
                         let activities = self.activityManager.fetchMissingActivities(serverDate: serverDate)
                         
                         guard activities.count > 0 else {
                             self.userDefaultsManager.setNewBackupDate()
+                            self.getBackupDate()
+                            self.reloadTable.send(true)
+                            self.isLoading.send(false)
                             return
                         }
                         
@@ -127,15 +127,15 @@ class ActivityViewModel: ViewModelProtocol {
         
         activityPublisher
             .sink { dataResponse in
-                if dataResponse.error == nil {
-                    self.userDefaultsManager.set(value: Date(), forKey: Constants.backupDate)
+                if let error = dataResponse.error {
+                    self.state.send(.error(error))
+                } else {
+                    self.userDefaultsManager.setNewBackupDate()
+                    self.getBackupDate()
+                    self.reloadTable.send(true)
+                    self.isLoading.send(false)
                 }
             }
             .store(in: &subscription)
-    }
-
-    // MARK: ViewModels
-    func createActivityHistoryCellViewModel(activity: Activity) -> ActivityHistoryCellViewModel {
-        ActivityHistoryCellViewModel(name: activity.name ?? "None", duration: activity.duration, calories: activity.calories)
     }
 }
