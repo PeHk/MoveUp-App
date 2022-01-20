@@ -23,11 +23,11 @@ class BackupDetailViewController: BaseTableViewController {
             .assign(to: \.isLoading, on: self)
             .store(in: &subscription)
         
-//        viewModel.reloadTableView
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//                self.tableView.reloadData()
-//            }
-//            .store(in: &subscription)
+        viewModel.reloadTableView
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                self.tableView.reloadData()
+            }
+            .store(in: &subscription)
     }
 }

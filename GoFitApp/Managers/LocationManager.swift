@@ -38,6 +38,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         self.lastLocation = locationManager.location
         self.lastAltitude = locationManager.location?.altitude ?? 0.0
+        
+        print("Location Manager Init")
+        self.healthKitManager.reinit()
+    }
+    
+    deinit {
+        print("Location manager deinit")
     }
     
     // MARK: Start

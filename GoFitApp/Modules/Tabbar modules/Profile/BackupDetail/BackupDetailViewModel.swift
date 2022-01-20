@@ -48,7 +48,7 @@ class BackupDetailViewModel: ViewModelProtocol {
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
-    var reloadTable = PassthroughSubject<Bool, Never>()
+    var reloadTableView = PassthroughSubject<Bool, Never>()
     var backupDate: String = "Not yet"
     
     fileprivate let userDefaultsManager: UserDefaultsManager
@@ -106,7 +106,7 @@ class BackupDetailViewModel: ViewModelProtocol {
                         guard activities.count > 0 else {
                             self.userDefaultsManager.setNewBackupDate()
                             self.getBackupDate()
-                            self.reloadTable.send(true)
+                            self.reloadTableView.send(true)
                             self.isLoading.send(false)
                             return
                         }
@@ -132,7 +132,7 @@ class BackupDetailViewModel: ViewModelProtocol {
                 } else {
                     self.userDefaultsManager.setNewBackupDate()
                     self.getBackupDate()
-                    self.reloadTable.send(true)
+                    self.reloadTableView.send(true)
                     self.isLoading.send(false)
                 }
             }

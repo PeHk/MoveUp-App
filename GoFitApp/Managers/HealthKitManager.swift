@@ -25,9 +25,17 @@ class HealthKitManager {
         self.refreshValues()
     }
     
+    deinit {
+        print("HealthKit deinit")
+    }
+    
     public func refreshValues() {
         self.getTodaysSteps()
         self.getTodaysCalories()
+    }
+    
+    public func reinit() {
+        self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: .local())
     }
     
     // MARK: Save workout
