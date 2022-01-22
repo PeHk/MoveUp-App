@@ -51,6 +51,7 @@ class ActivityViewModel: ViewModelProtocol {
     
     fileprivate let activityManager: ActivityManager
     fileprivate let networkManager: NetworkManager
+    fileprivate let sportsManager: SportManager
     fileprivate let userDefaultsManager: UserDefaultsManager
     fileprivate let userManager: UserManager
     
@@ -60,6 +61,7 @@ class ActivityViewModel: ViewModelProtocol {
         self.activityManager = dependencyContainer.activityManager
         self.networkManager = dependencyContainer.networkManager
         self.userManager = dependencyContainer.userManager
+        self.sportsManager = dependencyContainer.sportManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         
         action.sink(receiveValue: { [weak self] action in
@@ -87,6 +89,7 @@ class ActivityViewModel: ViewModelProtocol {
             .store(in: &subscription)
         
         self.checkActivities()
+        self.fetchSports()
     }
     
     internal func initializeView() {
@@ -129,6 +132,46 @@ class ActivityViewModel: ViewModelProtocol {
             .sink { dataResponse in
                 if dataResponse.error == nil {
                     self.userDefaultsManager.set(value: Date(), forKey: Constants.backupDate)
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    private func fetchSports() {
+        let dateToStart: Date? = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+        
+        guard dateToStart != nil else { return }
+        var date: Date = self.userDefaultsManager.get(forKey: Constants.sportBackupDate) as? Date ?? dateToStart!
+        
+        date = Calendar.current.date(byAdding: .minute, value: -60, to: date) ?? date
+        let resource = SportUpdateResource(date: date)
+        
+        let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+            Endpoint.sportsStatus.url,
+            method: .post,
+            parameters: resource.getDateJSON()
+        )
+        
+        print(resource.getDateJSON())
+        
+        sportsPublisher
+            .sink { dataResponse in
+                if dataResponse.error == nil {
+                    if let sports = dataResponse.value {
+                        guard sports.count > 0 else {
+                            self.userDefaultsManager.setNewSportBackupDate()
+                            return
+                        }
+                        
+                        self.sportsManager.saveSports(newSports: sports)
+                            .sink { _ in
+                                ()
+                            } receiveValue: { _ in
+                                self.userDefaultsManager.setNewSportBackupDate()
+                                self.sportsManager.fetchCurrentSports()
+                            }
+                            .store(in: &self.subscription)
+                    }
                 }
             }
             .store(in: &subscription)

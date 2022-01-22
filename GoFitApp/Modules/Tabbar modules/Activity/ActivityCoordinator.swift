@@ -88,6 +88,7 @@ extension ActivityCoordinator: CoordinatorFinishDelegate {
         case .historyDetail:
             navigationController.popViewController(animated: true)
         case .activityDetail:
+            print("Ending activity?")
             navigationController.popViewController(animated: true)
         default:
             break

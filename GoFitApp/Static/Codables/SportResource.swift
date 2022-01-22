@@ -15,3 +15,13 @@ struct SportResource: Codable {
     let health_kit_type: String
     let type: String
 }
+
+struct SportUpdateResource: Codable {
+    let date: Date
+    
+    public func getDateJSON() -> [String: Any] {
+        [
+            "last_update": Helpers.formatDate(from: self.date)
+        ]
+    }
+}

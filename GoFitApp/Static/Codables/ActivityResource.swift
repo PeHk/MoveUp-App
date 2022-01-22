@@ -41,7 +41,7 @@ struct ActivityResource: Codable {
         ]
         
         if locations != nil {
-            dict["locations"] = locations! as Any
+            dict["locations"] = Helpers.reduceLocations(locations: locations!) as Any
         }
 
         if traveled_distance != nil {

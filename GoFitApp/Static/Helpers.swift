@@ -135,4 +135,11 @@ class Helpers {
         
         return [ "activities": jsonArray as Any]
     }
+    
+    static func reduceLocations(locations: [[Double]]) -> [[Double]] {
+        let maximumCount = 150
+        let coeficient = locations.count / maximumCount
+        
+        return locations.enumerated().compactMap { index, element in index % coeficient != 0 ? nil : element }
+    }
 }
