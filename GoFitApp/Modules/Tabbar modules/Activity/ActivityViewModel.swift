@@ -106,8 +106,11 @@ class ActivityViewModel: ViewModelProtocol {
             .sink { dataResponse in
                 if dataResponse.error == nil {
                     if let value = dataResponse.value {
-                        let serverDate = Helpers.getDateFromStringWithout(from: value.last_activity_update)
+                        var serverDate = Helpers.getDateFromStringWithout(from: value.last_activity_update)
+                        serverDate = Calendar.current.date(byAdding: .hour, value: 1, to: serverDate) ?? serverDate
+                        print("[server_date: \(serverDate)]")
                         let activities = self.activityManager.fetchMissingActivities(serverDate: serverDate)
+                        print("[activities_count: \(activities.count)]")
                         
                         guard activities.count > 0 else {
                             self.userDefaultsManager.setNewBackupDate()

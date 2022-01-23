@@ -112,7 +112,7 @@ class ActivityManager {
     public func fetchMissingActivities(serverDate: Date) -> [ActivityResource] {
         var activities: [ActivityResource] = []
         let currentActivities = self.currentActivities.value.sorted(by: {
-            Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())})
+            $0.end_date ?? Date() > $1.end_date ?? Date()})
         
         guard currentActivities.count > 0 else { return []}
         

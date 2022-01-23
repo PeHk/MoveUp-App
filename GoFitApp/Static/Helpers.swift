@@ -137,8 +137,11 @@ class Helpers {
     }
     
     static func reduceLocations(locations: [[Double]]) -> [[Double]] {
-        let maximumCount = 150
-        let coeficient = locations.count / maximumCount
+        let maximumCount: Int = 150
+        
+        guard locations.count > maximumCount else { return locations }
+        
+        let coeficient: Int = locations.count / maximumCount
         
         return locations.enumerated().compactMap { index, element in index % coeficient != 0 ? nil : element }
     }
