@@ -58,11 +58,22 @@ class HealthKitManager {
                 metadata: [:]
             )
             
+            let caloriesSample = HKQuantitySample(type: HKQuantityType(.activeEnergyBurned), quantity: totalEnergyBurned, start: workout.startDate, end: workout.endDate)
+            
+            
             self.healthStore.save(workout) { (success, error) in
                 guard success else {
                     promise(.failure(error ?? NSError()))
                     return
                 }
+                
+                self.healthStore.add([caloriesSample], to: workout) { (success, error) in
+                    guard success else {
+                        promise(.failure(error ?? NSError()))
+                        return
+                    }
+                }
+                
                 if WorkoutType(rawValue: sport.type ?? "") == .outdoor {
                     self.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
                         guard newRoute != nil else {
@@ -109,28 +120,27 @@ class HealthKitManager {
     
     // MARK: Get calories
     private func getTodaysCalories() {
-        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        
-        let now = Date()
-        let startOfDay = Calendar.current.startOfDay(for: now)
-        let predicate = HKQuery.predicateForSamples(
-            withStart: startOfDay,
-            end: now,
-            options: .strictStartDate
-        )
-        
-        let query = HKStatisticsQuery(
-            quantityType: stepsQuantityType,
-            quantitySamplePredicate: predicate,
-            options: .cumulativeSum
-        ) { _, result, _ in
-            guard let result = result, let sum = result.sumQuantity() else {
-                self.calories.send(0)
-                return
-            }
-            self.calories.send(sum.doubleValue(for: HKUnit.kilocalorie()))
+        func createPredicate() -> NSPredicate? {
+            let calendar = Calendar.autoupdatingCurrent
+            var dateComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+            dateComponents.calendar = calendar
+            let predicate = HKQuery.predicateForActivitySummary(with: dateComponents)
+            return predicate
         }
         
+        let queryPredicate = createPredicate()
+            let query = HKActivitySummaryQuery(predicate: queryPredicate) { (query, summaries, error) -> Void in
+                guard let summaries = summaries, summaries.count > 0
+                else {
+                    self.calories.send(0)
+                    return
+                }
+
+                for summary in summaries {
+                    self.calories.send(summary.activeEnergyBurned.doubleValue(for: HKUnit.kilocalorie()))
+                }
+            }
+
         self.healthStore.execute(query)
     }
     

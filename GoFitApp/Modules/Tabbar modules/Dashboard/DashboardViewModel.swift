@@ -6,6 +6,7 @@ class DashboardViewModel: ViewModelProtocol {
     // MARK: - Enums
     enum Action {
         case update
+        case checkPermissions
     }
     
     enum Step {
@@ -23,6 +24,8 @@ class DashboardViewModel: ViewModelProtocol {
         switch action {
         case .update:
             self.refreshValues()
+        case .checkPermissions:
+            self.showAdditionalPermissions()
         }
     }
     
@@ -54,12 +57,14 @@ class DashboardViewModel: ViewModelProtocol {
     
     let healthKitManager: HealthKitManager
     let userDefaultsManager: UserDefaultsManager
+    let permissionManager: PermissionManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
         self.configuration = Configuration(.recommendations)
         self.healthKitManager = dependencyContainer.healthKitManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
+        self.permissionManager = dependencyContainer.permissionManager
         
         self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -87,6 +92,8 @@ class DashboardViewModel: ViewModelProtocol {
                 self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
             }
             .store(in: &subscription)
+        
+        self.action.send(.checkPermissions)
     }
     
     internal func initializeView() {
@@ -95,5 +102,15 @@ class DashboardViewModel: ViewModelProtocol {
     
     private func refreshValues() {
         self.healthKitManager.refreshValues()
+    }
+    
+    private func showAdditionalPermissions() {
+        let permissions = userDefaultsManager.get(forKey: Constants.permissions) as? Bool
+        if permissions == nil || permissions == false {
+            self.permissionManager.authorizeHealthKit { success in
+                self.refreshValues()
+                self.userDefaultsManager.set(value: true, forKey: Constants.permissions)
+            }
+        }
     }
 }
