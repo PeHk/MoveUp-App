@@ -93,6 +93,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
  
         self.start = Date()
         self.timerManager = TimerManager()
+        self.timerManager.isPaused = false
         self.locationManager = LocationManager(dependencyContainer)
         self.userManager = dependencyContainer.userManager
         self.healthKitManager = dependencyContainer.healthKitManager
@@ -145,7 +146,20 @@ class ActivityDetailViewModel: ViewModelProtocol {
             }
             .store(in: &subscription)
         
-        timerManager.isPaused = false
+        NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification, object: nil)
+            .sink { _ in
+                self.isLoading.send(true)
+            }
+            .store(in: &subscription)
+        
+        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification, object: nil)
+            .sink { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.isLoading.send(false)
+                })
+                
+            }
+            .store(in: &subscription)
     }
     
     private var caloriesConstant: Double {

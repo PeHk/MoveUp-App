@@ -1,5 +1,6 @@
 import Combine
 import Foundation
+import UIKit
 
 class DashboardViewModel: ViewModelProtocol {
     
@@ -94,6 +95,12 @@ class DashboardViewModel: ViewModelProtocol {
             .store(in: &subscription)
         
         self.action.send(.checkPermissions)
+        
+        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification, object: nil)
+            .sink { _ in
+                self.refreshValues()
+            }
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
