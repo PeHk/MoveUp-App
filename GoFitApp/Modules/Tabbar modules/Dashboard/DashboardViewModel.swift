@@ -56,9 +56,10 @@ class DashboardViewModel: ViewModelProtocol {
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
     
-    let healthKitManager: HealthKitManager
-    let userDefaultsManager: UserDefaultsManager
-    let permissionManager: PermissionManager
+    fileprivate let healthKitManager: HealthKitManager
+    fileprivate let userDefaultsManager: UserDefaultsManager
+    fileprivate let permissionManager: PermissionManager
+    fileprivate let activityManager: ActivityManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -66,6 +67,7 @@ class DashboardViewModel: ViewModelProtocol {
         self.healthKitManager = dependencyContainer.healthKitManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.permissionManager = dependencyContainer.permissionManager
+        self.activityManager = dependencyContainer.activityManager
         
         self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -99,6 +101,14 @@ class DashboardViewModel: ViewModelProtocol {
         NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification, object: nil)
             .sink { _ in
                 self.refreshValues()
+            }
+            .store(in: &subscription)
+        
+        self.healthKitManager.getWorkouts()
+            .sink { _ in
+                
+            } receiveValue: { workouts in
+                self.activityManager.saveHealtKitWorkouts(workouts: workouts)
             }
             .store(in: &subscription)
     }

@@ -84,6 +84,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
     fileprivate let activityManager: ActivityManager
     fileprivate let locationManager: LocationManager
     fileprivate let networkManager: NetworkManager
+    fileprivate let userDefaultsManager: UserDefaultsManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer, sport: Sport) {
@@ -99,6 +100,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
         self.healthKitManager = dependencyContainer.healthKitManager
         self.activityManager = dependencyContainer.activityManager
         self.networkManager = dependencyContainer.networkManager
+        self.userDefaultsManager = dependencyContainer.userDefaultsManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -279,6 +281,7 @@ class ActivityDetailViewModel: ViewModelProtocol {
                     self.state.send(.error(error))
                 }
             } receiveValue: { _ in
+                self.userDefaultsManager.set(value: Date(), forKey: Constants.workoutsUpdated)
                 self.activityManager.fetchCurrentActivities()
                 self.isLoading.send(false)
                 self.stepper.send(.endActivity)

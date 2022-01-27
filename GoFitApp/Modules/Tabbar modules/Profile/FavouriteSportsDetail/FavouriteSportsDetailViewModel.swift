@@ -65,7 +65,8 @@ class FavouriteSportsDetailViewModel: ViewModelProtocol {
             .store(in: &subscription)
         
         self.sportManager.currentSports
-            .sink(receiveValue: { sports in
+            .sink(receiveValue: { allSports in
+                let sports = allSports.filter { $0.name != Constants.healthKitSportName }
                 self.sports.send(sports)
             })
             .store(in: &subscription)

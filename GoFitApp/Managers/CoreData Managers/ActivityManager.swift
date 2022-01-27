@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import CoreData
 import Alamofire
+import HealthKit
 
 class ActivityManager {
     // MARK: Variables
@@ -140,10 +141,62 @@ class ActivityManager {
         
         return activities
     }
+    
+    public func saveHealtKitWorkouts(workouts: [HKWorkout]) {
+        var activities: [ActivityResource] = []
+        var activitiesToSave: [ActivityResource] = []
+        let currentActivities = self.currentActivities.value.sorted(by: {
+            $0.end_date ?? Date() > $1.end_date ?? Date()})
+        
+        for workout in workouts {
+            activities.append(self.getActivityFromHKWourkout(data: workout))
+        }
+        
+        if currentActivities.count > 0 {
+            for activity in activities {
+                let activityStartDate = Helpers.getDateFromString(from: activity.start_date)
+                
+                if activityStartDate > currentActivities.first?.end_date ?? Date() {
+                    activitiesToSave.append(activity)
+                }
+            }
+            
+        } else {
+            activitiesToSave = activities
+        }
+        
+        self.saveActivities(newActivities: activitiesToSave)
+            .sink { _ in
+                ()
+            } receiveValue: { _ in
+                self.fetchCurrentActivities()
+            }
+            .store(in: &subscription)
+
+        
+    }
 }
 
 // MARK: Helper functions
 extension ActivityManager {
+    private func getActivityFromHKWourkout(data: HKWorkout) -> ActivityResource {
+        let sports = self.sportManager.currentSports.value
+        let sport = sports.first(where: { $0.healthKitType?.hkWorkoutActivityType == data.workoutActivityType})
+        let healthKitSport = sports.first(where: { $0.name == Constants.healthKitSportName })
+        
+        return ActivityResource(
+            start_date: Helpers.formatDate(from: data.startDate),
+            end_date: Helpers.formatDate(from: data.endDate),
+            calories: data.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
+            name: data.workoutActivityType.name,
+            sport_id: sport != nil ? sport!.id : (healthKitSport?.id ?? 0),
+            traveled_distance: data.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0,
+            elevation_gain: nil,
+            locations: nil,
+            external: true
+        )
+    }
+    
     private func getActivityObject(data: ActivityResource) -> Activity {
         let activity: Activity = self.coreDataStore.createEntity()
         activity.name = data.name
@@ -152,6 +205,7 @@ extension ActivityManager {
         activity.calories = data.calories
         activity.duration = data.duration ?? 0.0
         activity.pace = data.pace ?? 0.0
+        activity.externalType = data.external ?? false
         
         (data.locations != nil) ? (activity.locations = Helpers.getDataFromArray(array: data.locations ?? [])) : ()
         (data.traveled_distance != nil) ? (activity.traveledDistance = data.traveled_distance ?? 0.0): ()

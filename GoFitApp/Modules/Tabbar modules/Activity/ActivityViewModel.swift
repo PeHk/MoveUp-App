@@ -182,6 +182,6 @@ class ActivityViewModel: ViewModelProtocol {
 
     // MARK: ViewModels
     func createActivityHistoryCellViewModel(activity: Activity) -> ActivityHistoryCellViewModel {
-        ActivityHistoryCellViewModel(name: activity.name ?? "None", duration: activity.duration, calories: activity.calories)
+        ActivityHistoryCellViewModel(name: activity.name ?? "None", duration: activity.duration, calories: activity.calories, external: activity.externalType)
     }
 }

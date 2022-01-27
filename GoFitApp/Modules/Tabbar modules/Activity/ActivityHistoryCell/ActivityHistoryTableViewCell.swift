@@ -9,6 +9,7 @@ import UIKit
 
 class ActivityHistoryTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var external: UIImageView!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var calories: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -18,6 +19,7 @@ class ActivityHistoryTableViewCell: UITableViewCell {
             self.duration.text = Helpers.formatTimeInterval(time: viewModel?.duration ?? 0)
             self.calories.text = "\(viewModel?.calories.rounded() ?? 0) kCal"
             self.name.text = viewModel?.name
+            self.external.isHidden = !(viewModel?.external ?? false)
         }
     }
     

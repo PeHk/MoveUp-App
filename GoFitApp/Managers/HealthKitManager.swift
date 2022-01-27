@@ -16,12 +16,15 @@ class HealthKitManager {
     fileprivate var routeBuilder: HKWorkoutRouteBuilder
     fileprivate let workoutConfiguration = HKWorkoutConfiguration()
     fileprivate var subscription = Set<AnyCancellable>()
-        
+    fileprivate let userDefaultsManager: UserDefaultsManager
+    
     public var steps = CurrentValueSubject<Double, Never>(0)
     public var calories = CurrentValueSubject<Double, Never>(0)
+
     
     init(_ dependencyContainer: DependencyContainer) {
         self.routeBuilder = HKWorkoutRouteBuilder(healthStore: healthStore, device: .local())
+        self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.refreshValues()
     }
     
@@ -142,6 +145,39 @@ class HealthKitManager {
             }
 
         self.healthStore.execute(query)
+    }
+    
+    public func getWorkouts() -> Future<[HKWorkout], Error> {
+        return Future { promise in
+            
+            guard let latestDate = self.userDefaultsManager.get(forKey: Constants.workoutsUpdated) as? Date else {
+                print("[saving_health_kit_date: \(Date())]")
+                self.userDefaultsManager.set(value: Date(), forKey: Constants.workoutsUpdated)
+                promise(.success([]))
+                return
+            }
+            
+            print("[last_update_health_kit: \(latestDate)]")
+            
+            
+            let workoutPredicate = HKQuery.predicateForWorkouts(with: .greaterThan, totalEnergyBurned: HKQuantity.init(unit: .smallCalorie(), doubleValue: 0))
+            let timePredicate = HKQuery.predicateForSamples(withStart: latestDate, end: Date(), options: [])
+            
+            let combined = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, workoutPredicate])
+            
+            let query = HKSampleQuery(sampleType: .workoutType(), predicate: combined, limit: 0, sortDescriptors: nil) { (query, samples, error) in
+                DispatchQueue.main.async {
+                    guard let samples = samples as? [HKWorkout], error == nil else {
+                        promise(.failure(error ?? NSError()))
+                        return
+                    }
+                    self.userDefaultsManager.set(value: Date(), forKey: Constants.workoutsUpdated)
+                    promise(.success(samples))
+                }
+            }
+            
+            self.healthStore.execute(query)
+        }
     }
     
     // MARK: Route builder delegate

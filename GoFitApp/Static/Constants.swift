@@ -36,6 +36,8 @@ struct Constants {
     static let backupDate = "backupDate"
     static let sportBackupDate = "sportBackupDate"
     static let permissions = "healthPermissions"
+    static let workoutsUpdated = "workoutsUpdated"
+    static let healthKitSportName = "HealthKit"
     
     static let errorWhileSaving = "Error while saving the data"
     static let errorWhileGetting = "Error while getting the data"

@@ -12,4 +12,5 @@ struct ActivityHistoryCellViewModel {
     var name: String
     var duration: TimeInterval
     var calories: Double
+    var external: Bool
 }

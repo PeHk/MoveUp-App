@@ -17,6 +17,7 @@ struct ActivityResource: Codable {
     var traveled_distance: Double?
     var elevation_gain: Double?
     var locations: [[Double]]?
+    var external: Bool?
     
     var duration: TimeInterval? {
         Helpers.getDateFromString(from: end_date).timeIntervalSince(Helpers.getDateFromString(from: start_date))

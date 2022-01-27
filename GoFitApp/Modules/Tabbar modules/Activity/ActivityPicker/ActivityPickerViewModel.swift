@@ -62,7 +62,9 @@ class ActivityPickerViewModel: ViewModelProtocol {
             .store(in: &subscription)
         
         self.sportManager.currentSports
-            .sink { sports in
+            .sink { allSports in
+                let sports = allSports.filter {$0.name != Constants.healthKitSportName}
+                
                 let grouppedSports = Dictionary(grouping: sports, by: { $0.name?.prefix(1) ?? "" })
                 
                 let keys = grouppedSports.keys.sorted()

@@ -23,7 +23,11 @@ extension ActivityHistoryDetailViewController {
             case 3:
                 cell.detailTextLabel?.text = String(format: "%.2f", viewModel.activity.calories) + " kCal"
             case 4:
-                cell.detailTextLabel?.text = viewModel.activity.sport?.type
+                if !viewModel.activity.externalType {
+                    cell.detailTextLabel?.text = viewModel.activity.sport?.type
+                } else {
+                    cell.detailTextLabel?.text = "External"
+                }
             default:
                 break
             }
