@@ -41,6 +41,10 @@ struct ActivityResource: Codable {
             "sport_id": sport_id as Any
         ]
         
+        if external != nil {
+            dict["external"] = external! as Any
+        }
+        
         if locations != nil {
             dict["locations"] = Helpers.reduceLocations(locations: locations!) as Any
         }

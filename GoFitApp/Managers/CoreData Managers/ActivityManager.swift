@@ -190,7 +190,7 @@ extension ActivityManager {
             calories: data.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
             name: data.workoutActivityType.name,
             sport_id: sport != nil ? sport!.id : (healthKitSport?.id ?? 0),
-            traveled_distance: data.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0,
+            traveled_distance: data.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? nil,
             elevation_gain: nil,
             locations: nil,
             external: true
@@ -235,7 +235,8 @@ extension ActivityManager {
             sport_id: data.sport?.id ?? 0,
             traveled_distance: data.traveledDistance > 0 ? data.traveledDistance : nil,
             elevation_gain: data.elevation_gain > 0 ? data.elevation_gain : nil,
-            locations: locations.count > 0 ? locations : nil
+            locations: locations.count > 0 ? locations : nil,
+            external: data.externalType
         )
     }
 }

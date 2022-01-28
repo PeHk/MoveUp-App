@@ -56,7 +56,7 @@ class ActivityHistoryDetailViewModel: ViewModelProtocol {
     init(_ dependencyContainer: DependencyContainer, activity: Activity) {
         self.activity = activity
         
-        if WorkoutType(rawValue: self.activity.sport?.type ?? "") == .indoor {
+        if WorkoutType(rawValue: self.activity.sport?.type ?? "") == .indoor || activity.externalType != false {
             self.hideMapSection = true
         }
         
