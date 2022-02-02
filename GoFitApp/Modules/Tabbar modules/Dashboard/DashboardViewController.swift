@@ -46,6 +46,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.sizeToFit()
         self.viewModel.action.send(.update)
+        self.viewModel.action.send(.checkWorkouts)
     }
     
     private func setupView() {

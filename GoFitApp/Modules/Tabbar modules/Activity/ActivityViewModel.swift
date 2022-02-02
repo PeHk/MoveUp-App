@@ -76,11 +76,21 @@ class ActivityViewModel: ViewModelProtocol {
         
         self.activityManager.currentActivities
             .sink { activities in
-                let grouppedActivities = Dictionary(grouping: activities, by: { Helpers.printDate(from: $0.end_date ?? Date()) })
                 
-                let keys = grouppedActivities.keys.sorted(by: >)
+                let empty: [Date: [Activity]] = [:]
+                let groupedByDate = activities.reduce(into: empty) { acc, cur in
+                    let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.end_date ?? Date())
+                    let date = Calendar.current.date(from: components)!
+                    let existing = acc[date] ?? []
+                    acc[date] = existing + [cur]
+                }
+            
+                let keys = groupedByDate.keys.sorted(by: >)
                 
-                let sections: [ActivitySectionData] = keys.map{ ActivitySectionData(sectionIndexName: $0, sectionName: $0, sectionItems: grouppedActivities[$0]!.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
+                let sections: [ActivitySectionData] = keys.map { ActivitySectionData(
+                    sectionIndexName: Helpers.printDate(from: $0),
+                    sectionName: Helpers.printDate(from: $0),
+                    sectionItems: groupedByDate[$0]!.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
                 }))}
                 
                 

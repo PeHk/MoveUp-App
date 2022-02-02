@@ -7,6 +7,7 @@ class DashboardViewModel: ViewModelProtocol {
     // MARK: - Enums
     enum Action {
         case update
+        case checkWorkouts
         case checkPermissions
     }
     
@@ -27,6 +28,8 @@ class DashboardViewModel: ViewModelProtocol {
             self.refreshValues()
         case .checkPermissions:
             self.showAdditionalPermissions()
+        case .checkWorkouts:
+            self.checkWorkouts()
         }
     }
     
@@ -103,14 +106,6 @@ class DashboardViewModel: ViewModelProtocol {
                 self.refreshValues()
             }
             .store(in: &subscription)
-        
-        self.healthKitManager.getWorkouts()
-            .sink { _ in
-                
-            } receiveValue: { workouts in
-                self.activityManager.saveHealtKitWorkouts(workouts: workouts)
-            }
-            .store(in: &subscription)
     }
     
     internal func initializeView() {
@@ -119,6 +114,16 @@ class DashboardViewModel: ViewModelProtocol {
     
     private func refreshValues() {
         self.healthKitManager.refreshValues()
+    }
+    
+    private func checkWorkouts() {
+        self.healthKitManager.getWorkouts()
+            .sink { _ in
+                
+            } receiveValue: { workouts in
+                self.activityManager.saveHealtKitWorkouts(workouts: workouts)
+            }
+            .store(in: &subscription)
     }
     
     private func showAdditionalPermissions() {
