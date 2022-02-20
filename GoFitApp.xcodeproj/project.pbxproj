@@ -106,6 +106,7 @@
 		E153BCC2276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */; };
 		E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */; };
 		E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162218F275B9C6F00A7A46D /* String+Extensions.swift */; };
+		E164812A27BCE4770011F0D4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E164812927BCE4770011F0D4 /* NetworkMonitor.swift */; };
 		E1660990271C9F4B0077DF6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166098F271C9F4B0077DF6E /* AppDelegate.swift */; };
 		E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1660998271C9F4B0077DF6E /* GoFitApp.xcdatamodeld */; };
 		E166099C271C9F4E0077DF6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E166099B271C9F4E0077DF6E /* Assets.xcassets */; };
@@ -303,6 +304,7 @@
 		E153BCC1276A7C800093D05E /* FavouriteSportsDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		E153BCC3276A822F0093D05E /* NSSet+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSSet+Extensions.swift"; sourceTree = "<group>"; };
 		E162218F275B9C6F00A7A46D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E164812927BCE4770011F0D4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		E166098C271C9F4B0077DF6E /* GoFitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoFitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E166098F271C9F4B0077DF6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1660999271C9F4B0077DF6E /* GoFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoFitApp.xcdatamodel; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				E1A95832276B3E9A000EB73E /* HealthKitManager.swift */,
 				E1264453277EFCCE000116F8 /* TimerManager.swift */,
 				E10B294C2791DD2000E551CB /* LocationManager.swift */,
+				E164812927BCE4770011F0D4 /* NetworkMonitor.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1257,6 +1260,7 @@
 				E1E51089274C020B00C9C266 /* NetworkManager+Interceptor.swift in Sources */,
 				E1E51087274C014E00C9C266 /* ServerError.swift in Sources */,
 				E1111F192768DBEB00B10529 /* ActivityPickerViewModel.swift in Sources */,
+				E164812A27BCE4770011F0D4 /* NetworkMonitor.swift in Sources */,
 				E16609B4271CA0230077DF6E /* AppCoordinator.swift in Sources */,
 				E1EBC141271DCE68009E9939 /* DetailsCoordinator.swift in Sources */,
 				E1515879275380D20045CBCB /* Optional+Extensions.swift in Sources */,
@@ -1532,7 +1536,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
@@ -1572,7 +1576,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.4;
+				CURRENT_PROJECT_VERSION = 1.1.6;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;

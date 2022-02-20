@@ -24,6 +24,11 @@ extension NetworkManager: RequestInterceptor {
     func retry(_ request: Request, for session: Session, dueTo error: Error,
                completion: @escaping (RetryResult) -> Void) {
         
+        guard self.networkMonitor.isReachable else {
+            completion(.doNotRetry)
+            return
+        }
+        
         if request.retryCount < retryLimit {
             print("\nretried; retry count: \(request.retryCount)\n")
             refreshToken()

@@ -14,6 +14,11 @@ class ActivityViewController: BaseTableViewController, EmptyDataSetSource, Empty
         setupView()
         setupBindings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.action.send(.checkActivities)
+    }
 
     private func setupView() {
         self.navigationItem.leftBarButtonItem = nil

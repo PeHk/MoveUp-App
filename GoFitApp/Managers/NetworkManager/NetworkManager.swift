@@ -15,6 +15,7 @@ class NetworkManager {
     let credentialsManager: CredentialsManager
     let userDefaultsManager: UserDefaultsManager
     let logoutManager: LogoutManager
+    let networkMonitor: NetworkMonitor
     
     var request: Alamofire.Request?
     var retryLimit = 3
@@ -28,5 +29,6 @@ class NetworkManager {
         self.credentialsManager = dependencyContainer.credentialsManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.logoutManager = dependencyContainer.logoutManager
+        self.networkMonitor = dependencyContainer.networkMonitor
     }
 }

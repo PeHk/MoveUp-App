@@ -6,7 +6,7 @@ class ActivityViewModel: ViewModelProtocol {
     
     // MARK: - Enums
     enum Action {
-        
+        case checkActivities
     }
     
     enum Step {
@@ -22,7 +22,13 @@ class ActivityViewModel: ViewModelProtocol {
     
     // MARK: Actions and States
     func processAction(_ action: Action) {
-        return
+        switch action {
+        case .checkActivities:
+            if networkMonitor.isReachable {
+                self.fetchSports()
+                self.checkActivities()
+            }
+        }
     }
     
     func processState(_ state: State) {
@@ -54,6 +60,7 @@ class ActivityViewModel: ViewModelProtocol {
     fileprivate let sportsManager: SportManager
     fileprivate let userDefaultsManager: UserDefaultsManager
     fileprivate let userManager: UserManager
+    fileprivate let networkMonitor: NetworkMonitor
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -63,6 +70,7 @@ class ActivityViewModel: ViewModelProtocol {
         self.userManager = dependencyContainer.userManager
         self.sportsManager = dependencyContainer.sportManager
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
+        self.networkMonitor = dependencyContainer.networkMonitor
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -97,16 +105,15 @@ class ActivityViewModel: ViewModelProtocol {
                 self.sections.send(sections)
             }
             .store(in: &subscription)
-        
-        self.checkActivities()
-        self.fetchSports()
     }
     
     internal func initializeView() {
         isLoading.send(false)
     }
     
+    // MARK: Functions
     private func checkActivities() {
+        
         let statusPublisher: AnyPublisher<DataResponse<LastUpdatedActivityResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.activityStatus.url,
             method: .get
@@ -164,9 +171,7 @@ class ActivityViewModel: ViewModelProtocol {
             method: .post,
             parameters: resource.getDateJSON()
         )
-        
-        print(resource.getDateJSON())
-        
+            
         sportsPublisher
             .sink { dataResponse in
                 if dataResponse.error == nil {

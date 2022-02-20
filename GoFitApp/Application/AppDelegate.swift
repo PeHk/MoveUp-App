@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.dependencyContainer = DependencyContainer()
         self.networkManager = dependencyContainer?.networkManager
+        self.dependencyContainer?.networkMonitor.startMonitoring()
         
         let navigationController: UINavigationController = .init()
         
