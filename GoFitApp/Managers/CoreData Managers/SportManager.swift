@@ -68,6 +68,39 @@ class SportManager {
             .eraseToAnyPublisher()
     }
     
+    public func updateSports(sportsToUpdate: [SportResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let sports = currentSports.value
+        var action: Action = {}
+        
+        for sportToUpdate in sportsToUpdate {
+            if let i = sports.firstIndex(where: { $0.id == sportToUpdate.id }) {
+                print("Founded sport \(sportToUpdate.name)")
+                action = {
+                    sports[i].name = sportToUpdate.name
+                    sports[i].met = sportToUpdate.met
+                    sports[i].healthKitType = sportToUpdate.health_kit_type
+                    sports[i].type = sportToUpdate.type
+                }
+            } else {
+                action = {
+                    let sport: Sport = self.coreDataStore.createEntity()
+                    sport.name = sportToUpdate.name
+                    sport.id = sportToUpdate.id
+                    sport.met = sportToUpdate.met
+                    sport.healthKitType = sportToUpdate.health_kit_type
+                    sport.type = sportToUpdate.type
+                }
+            }
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
     // MARK: Delete sports
     public func deleteSports() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Sport.entityName)

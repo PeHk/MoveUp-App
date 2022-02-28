@@ -25,7 +25,7 @@ class ActivityViewModel: ViewModelProtocol {
         switch action {
         case .checkActivities:
             if networkMonitor.isReachable {
-                self.fetchSports()
+                self.checkLastSportUpdate()
                 self.checkActivities()
             }
         }
@@ -156,33 +156,49 @@ class ActivityViewModel: ViewModelProtocol {
             }
             .store(in: &subscription)
     }
-    
-    private func fetchSports() {
-        let dateToStart: Date? = Calendar.current.date(byAdding: .day, value: -1, to: Date())
-        
-        guard dateToStart != nil else { return }
-        var date: Date = self.userDefaultsManager.get(forKey: Constants.sportBackupDate) as? Date ?? dateToStart!
+    // MARK: Check last updated sports
+    private func checkLastSportUpdate() {
+        var date: Date = self.userDefaultsManager.get(forKey: Constants.sportBackupDate) as? Date ?? Date()
         
         date = Calendar.current.date(byAdding: .minute, value: -60, to: date) ?? date
-        let resource = SportUpdateResource(date: date)
-        
-        let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+
+        let datePublisher: AnyPublisher<DataResponse<SportUpdateResource, NetworkError>, Never> = self.networkManager.request(
             Endpoint.sportsStatus.url,
-            method: .post,
-            parameters: resource.getDateJSON()
+            method: .get
         )
             
+        datePublisher
+            .sink { dataResponse in
+                if dataResponse.error == nil {
+                    if let serverDate = dataResponse.value {
+                        print("[last_update_sports: \(Helpers.getDateFromStringWithout(from: serverDate.date))]")
+                        print("[last_update_local: \(date)]")
+                
+                        if Helpers.getDateFromStringWithout(from: serverDate.date) > date {
+                            print("Downloading new sports!")
+                            self.downloadNewSports()
+                        } else {
+                            self.userDefaultsManager.setNewSportBackupDate()
+                        }
+                    }
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    // MARK: Download new sports
+    private func downloadNewSports() {
+        let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+            Endpoint.sports.url,
+            method: .get
+        )
+        
         sportsPublisher
             .sink { dataResponse in
                 if dataResponse.error == nil {
-                    if let sports = dataResponse.value {
-                        guard sports.count > 0 else {
-                            self.userDefaultsManager.setNewSportBackupDate()
-                            return
-                        }
-                        
-                        self.sportsManager.saveSports(newSports: sports)
-                            .sink { _ in
+                    if let newSports = dataResponse.value {
+                        self.sportsManager.updateSports(sportsToUpdate: newSports)
+                            .sink { completion in
                                 ()
                             } receiveValue: { _ in
                                 self.userDefaultsManager.setNewSportBackupDate()

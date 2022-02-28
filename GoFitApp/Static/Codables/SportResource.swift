@@ -17,11 +17,5 @@ struct SportResource: Codable {
 }
 
 struct SportUpdateResource: Codable {
-    let date: Date
-    
-    public func getDateJSON() -> [String: Any] {
-        [
-            "last_update": Helpers.formatDate(from: self.date)
-        ]
-    }
+    let date: String
 }
