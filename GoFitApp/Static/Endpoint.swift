@@ -88,4 +88,8 @@ extension Endpoint {
     static var activityStatus: Self {
         Endpoint(path: "api/last_activity")
     }
+    
+    static var recommendation: Self {
+        Endpoint(path: "api/recommendations")
+    }
 }

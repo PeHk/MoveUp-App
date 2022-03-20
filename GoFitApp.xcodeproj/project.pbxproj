@@ -60,6 +60,9 @@
 		E12E6BA9274FC5D7009B211C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BA8274FC5D7009B211C /* AlertManager.swift */; };
 		E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAA274FC872009B211C /* RegistrationManager.swift */; };
 		E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */; };
+		E12F8D3927E7363100BA05CE /* RecommendationResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F8D3827E7363100BA05CE /* RecommendationResource.swift */; };
+		E12F8D3C27E73E8400BA05CE /* SportRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F8D3B27E73E8400BA05CE /* SportRecommendationCell.swift */; };
+		E12F8D3E27E73F8900BA05CE /* SportRecommendationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F8D3D27E73F8900BA05CE /* SportRecommendationCellViewModel.swift */; };
 		E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */; };
 		E134E93127523D4F00453781 /* BioDataResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E93027523D4F00453781 /* BioDataResource.swift */; };
 		E134E934275257DD00453781 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134E933275257DD00453781 /* AuthenticationServices.framework */; };
@@ -256,6 +259,9 @@
 		E12E6BA8274FC5D7009B211C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		E12E6BAA274FC872009B211C /* RegistrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationManager.swift; sourceTree = "<group>"; };
 		E12E6BAC274FCBD4009B211C /* NetworkManager+CookieStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+CookieStorage.swift"; sourceTree = "<group>"; };
+		E12F8D3827E7363100BA05CE /* RecommendationResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationResource.swift; sourceTree = "<group>"; };
+		E12F8D3B27E73E8400BA05CE /* SportRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportRecommendationCell.swift; sourceTree = "<group>"; };
+		E12F8D3D27E73F8900BA05CE /* SportRecommendationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportRecommendationCellViewModel.swift; sourceTree = "<group>"; };
 		E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Extensions.swift"; sourceTree = "<group>"; };
 		E134E93027523D4F00453781 /* BioDataResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioDataResource.swift; sourceTree = "<group>"; };
 		E134E932275257DC00453781 /* GoFitApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoFitApp.entitlements; sourceTree = "<group>"; };
@@ -553,6 +559,15 @@
 			path = ProfileDetail;
 			sourceTree = "<group>";
 		};
+		E12F8D3A27E73E4B00BA05CE /* DashboardSportCell */ = {
+			isa = PBXGroup;
+			children = (
+				E12F8D3B27E73E8400BA05CE /* SportRecommendationCell.swift */,
+				E12F8D3D27E73F8900BA05CE /* SportRecommendationCellViewModel.swift */,
+			);
+			path = DashboardSportCell;
+			sourceTree = "<group>";
+		};
 		E13B445D27206D290062C44B /* SetActiveMinutes */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +582,7 @@
 		E13B447027206DBF0062C44B /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E12F8D3A27E73E4B00BA05CE /* DashboardSportCell */,
 				E13B447127206DBF0062C44B /* DashboardViewController.swift */,
 				E13B447227206DBF0062C44B /* DashboardViewModel.swift */,
 				E13B447327206DBF0062C44B /* DashboardCoordinator.swift */,
@@ -960,6 +976,7 @@
 				E19ABA1C2753C3D1004E6FDC /* SportResource.swift */,
 				E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */,
 				E16D8FC2279411DD00DA3575 /* TokenResource.swift */,
+				E12F8D3827E7363100BA05CE /* RecommendationResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -1241,6 +1258,7 @@
 				E134E93627525BD900453781 /* CoreDataManager.swift in Sources */,
 				E1111F152768DBEB00B10529 /* ActivityDetailViewModel.swift in Sources */,
 				E112B643271FEFBE00A3BB8F /* UIView+Extensions.swift in Sources */,
+				E12F8D3927E7363100BA05CE /* RecommendationResource.swift in Sources */,
 				E13B449F27206E6C0062C44B /* TabBarCoordinator.swift in Sources */,
 				E13B44A1272094950062C44B /* BaseViewController.swift in Sources */,
 				E16609BD271CA2850077DF6E /* UIViewController+Extensions.swift in Sources */,
@@ -1248,6 +1266,7 @@
 				E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */,
 				E1A788D2276B637C007C406E /* GoalsDetailViewController+TableView.swift in Sources */,
 				E1111F252768FD8400B10529 /* ActivityTableViewCell.swift in Sources */,
+				E12F8D3E27E73F8900BA05CE /* SportRecommendationCellViewModel.swift in Sources */,
 				E16609B1271C9FE70077DF6E /* HomeViewModel.swift in Sources */,
 				E1CAAB4F279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift in Sources */,
 				E16609AB271C9FBE0077DF6E /* HomeCoordinator.swift in Sources */,
@@ -1283,6 +1302,7 @@
 				E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
+				E12F8D3C27E73E8400BA05CE /* SportRecommendationCell.swift in Sources */,
 				E1111F232768FD5100B10529 /* ActivityCellViewModel.swift in Sources */,
 				E1D630AA2765249D00AF12F2 /* Configuration.swift in Sources */,
 				E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */,

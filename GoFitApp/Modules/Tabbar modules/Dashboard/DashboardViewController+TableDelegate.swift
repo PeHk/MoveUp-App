@@ -10,12 +10,21 @@ import UIKit
 extension DashboardViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.recommendations.value.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recommendationCell", for: indexPath)
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SportRecommendationCell.reuseIdentifier(), for: indexPath) as? SportRecommendationCell {
+            // TODO
+            
+            let cellViewModel = viewModel.createSportRecommendationCellViewModel(recommendation: viewModel.recommendations.value[indexPath.row])
+            
+            cell.viewModel = cellViewModel
+            
+            return cell
+        }
+        else {
+            fatalError("Unexpected kind!")
+        }
     }
 }

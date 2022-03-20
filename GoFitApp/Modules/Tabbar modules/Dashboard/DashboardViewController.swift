@@ -47,6 +47,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
         self.navigationController?.navigationBar.sizeToFit()
         self.viewModel.action.send(.update)
         self.viewModel.action.send(.checkWorkouts)
+        self.viewModel.action.send(.checkRecommendations)
     }
     
     private func setupView() {
@@ -86,6 +87,12 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
             .sink { calories in
                 self.caloriesLabel.text = "\(Int(calories))"
                 self.caloriesRing.setProgress(Float(calories) / Float(self.viewModel.caloriesGoal), animated: true)
+            }
+            .store(in: &subscription)
+        
+        viewModel.recommendations
+            .sink { _ in
+                self.tableView.reloadData()
             }
             .store(in: &subscription)
     }

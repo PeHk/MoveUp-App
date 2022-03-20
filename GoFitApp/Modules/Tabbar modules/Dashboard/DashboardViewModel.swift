@@ -1,6 +1,7 @@
 import Combine
 import Foundation
 import UIKit
+import Alamofire
 
 class DashboardViewModel: ViewModelProtocol {
     
@@ -9,6 +10,7 @@ class DashboardViewModel: ViewModelProtocol {
         case update
         case checkWorkouts
         case checkPermissions
+        case checkRecommendations
     }
     
     enum Step {
@@ -30,6 +32,10 @@ class DashboardViewModel: ViewModelProtocol {
             self.showAdditionalPermissions()
         case .checkWorkouts:
             self.checkWorkouts()
+        case .checkRecommendations:
+            if networkMonitor.isReachable {
+                self.checkRecommendations()
+            }
         }
     }
     
@@ -55,6 +61,7 @@ class DashboardViewModel: ViewModelProtocol {
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
+    var recommendations = CurrentValueSubject<[RecommendationResource], Never>([])
     
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
@@ -63,6 +70,8 @@ class DashboardViewModel: ViewModelProtocol {
     fileprivate let userDefaultsManager: UserDefaultsManager
     fileprivate let permissionManager: PermissionManager
     fileprivate let activityManager: ActivityManager
+    fileprivate let networkMonitor: NetworkMonitor
+    fileprivate let networkManager: NetworkManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -71,6 +80,8 @@ class DashboardViewModel: ViewModelProtocol {
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.permissionManager = dependencyContainer.permissionManager
         self.activityManager = dependencyContainer.activityManager
+        self.networkMonitor = dependencyContainer.networkMonitor
+        self.networkManager = dependencyContainer.networkManager
         
         self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -134,5 +145,28 @@ class DashboardViewModel: ViewModelProtocol {
                 self.userDefaultsManager.set(value: true, forKey: Constants.permissions)
             }
         }
+    }
+    
+    private func checkRecommendations() {
+        let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
+            Endpoint.recommendation.url,
+            method: .get
+        )
+        
+        recommendationsPublisher
+            .sink { dataResponse in
+                if let error = dataResponse.error {
+                    print("Recommendations error:", error)
+                } else {
+                    print("Recommendations received:", dataResponse.value!)
+                    self.recommendations.send(dataResponse.value!)
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    // MARK: ViewModels
+    func createSportRecommendationCellViewModel(recommendation: RecommendationResource) -> SportRecommendationCellViewModel {
+        SportRecommendationCellViewModel(type: recommendation.type)
     }
 }
