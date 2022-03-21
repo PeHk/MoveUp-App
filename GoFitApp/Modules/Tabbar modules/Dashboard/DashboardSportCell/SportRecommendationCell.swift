@@ -6,20 +6,36 @@
 //
 
 import UIKit
+import HeartButton
 
 class SportRecommendationCell: UITableViewCell {
     
+    @IBOutlet weak var heartView: UIView! {
+        didSet {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(heartTapped(_:)))
+            heartView.addGestureRecognizer(tap)
+            heartView.isUserInteractionEnabled = true
+        }
+    }
+    @IBOutlet weak var addToFavourites: HeartButton!
     @IBOutlet weak var title: UILabel!
     
     var viewModel: SportRecommendationCellViewModel? {
         didSet {
-            self.title.text = viewModel?.type
+            self.title.text = viewModel?.sport?.name
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.addToFavourites.stateChanged = { sender, isOn in
+            if isOn {
+                FeedbackManager.sendFeedbackNotification(.warning)
+            } else {
+                FeedbackManager.sendFeedbackNotification(.success)
+            }
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,6 +46,10 @@ class SportRecommendationCell: UITableViewCell {
     
     static func reuseIdentifier() -> String {
         return "sportRecommendationCell"
+    }
+    
+    @objc func heartTapped(_ sender: UITapGestureRecognizer) {
+        self.addToFavourites.setOn(!self.addToFavourites.isOn, animated: true)
     }
 
 }

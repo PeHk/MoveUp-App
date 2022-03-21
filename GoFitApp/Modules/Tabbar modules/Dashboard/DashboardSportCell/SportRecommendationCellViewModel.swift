@@ -10,4 +10,5 @@ import UIKit
 
 struct SportRecommendationCellViewModel {
     var type: String
+    var sport: Sport?
 }

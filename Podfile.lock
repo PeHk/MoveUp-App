@@ -1,20 +1,23 @@
 PODS:
-  - Alamofire (5.4.4)
+  - Alamofire (5.5.0)
   - ALProgressView (2.0.0)
   - EmptyDataSet-Swift (5.0.0)
-  - IQKeyboardManagerSwift (6.5.6)
+  - HeartButton (1.1.0)
+  - IQKeyboardManagerSwift (6.5.9)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - SkyFloatingLabelTextField (3.8.0)
-  - SPPermissions/Calendar (6.8.4):
+  - SPPermissions/Calendar (7.1.5):
     - SPPermissions/Core
-  - SPPermissions/Core (6.8.4)
-  - SPPermissions/Health (6.8.4):
+  - SPPermissions/Core (7.1.5)
+  - SPPermissions/Health (7.1.5):
     - SPPermissions/Core
-  - SPPermissions/LocationAlways (6.8.4):
+  - SPPermissions/LocationAlways (7.1.5):
     - SPPermissions/Core
-  - SPPermissions/Notification (6.8.4):
+    - SPPermissions/LocationExtension
+  - SPPermissions/LocationExtension (7.1.5)
+  - SPPermissions/Notification (7.1.5):
     - SPPermissions/Core
   - SwiftGen (6.5.1)
   - SwiftyBase64 (1.1.1)
@@ -23,6 +26,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.4)
   - ALProgressView
   - EmptyDataSet-Swift (~> 5.0.0)
+  - HeartButton
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
   - SkyFloatingLabelTextField (~> 3.0)
@@ -38,6 +42,7 @@ SPEC REPOS:
     - Alamofire
     - ALProgressView
     - EmptyDataSet-Swift
+    - HeartButton
     - IQKeyboardManagerSwift
     - NVActivityIndicatorView
     - SkyFloatingLabelTextField
@@ -46,16 +51,17 @@ SPEC REPOS:
     - SwiftyBase64
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   ALProgressView: 547883405970e932d8f1f12b605aa4f6df08f155
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  HeartButton: 0d75e41d05292add5f1490c3a616ad24d7db4990
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SPPermissions: 5bcd18d1f599bdd008182bcbcc0b1c9eb59787a5
+  SPPermissions: c63ac1132badad39917de03a3c9dc2429ace94be
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftyBase64: 8de4de96a08454e742fdda614dff12d2c62ecbe9
 
-PODFILE CHECKSUM: 87257fb71966296f8bfaa3170a27becd96121ba0
+PODFILE CHECKSUM: a400e1dc19e507e265970b832ced5889b6479ff6
 
 COCOAPODS: 1.11.2

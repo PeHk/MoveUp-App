@@ -25,3 +25,16 @@ struct RecommendationResource: Codable {
         ]
     }
 }
+
+struct Recommendation {
+    var id: Int64
+    var type: String
+    var created_at: String
+    var start_time: String?
+    var end_time: String?
+    var sport_id: Int64?
+    var rating: Int64?
+    var activity_id: Int64?
+    var accepted_at: String?
+    var sport: Sport?
+}
