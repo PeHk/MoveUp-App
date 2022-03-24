@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class PrimaryButton: UIButton {
     
-    @IBInspectable var cornerRadius: CGFloat = 25
+//    @IBInspectable var cornerRadius: CGFloat = 25
     @IBInspectable var backgroundColorDisabled: UIColor = UIColor.lightGray
     @IBInspectable var backgroundColorEnabled: UIColor = Asset.primary.color
     
@@ -30,7 +30,7 @@ import UIKit
     }
 
     override func draw(_ rect: CGRect) {
-        self.layer.cornerRadius = cornerRadius
+        self.layer.cornerRadius = 25
         self.layer.masksToBounds = true
         
         if isEnabled {

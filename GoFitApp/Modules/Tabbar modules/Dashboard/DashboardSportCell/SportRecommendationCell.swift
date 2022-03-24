@@ -7,6 +7,7 @@
 
 import UIKit
 import HeartButton
+import Combine
 
 class SportRecommendationCell: UITableViewCell {
     
@@ -19,6 +20,8 @@ class SportRecommendationCell: UITableViewCell {
     }
     @IBOutlet weak var addToFavourites: HeartButton!
     @IBOutlet weak var title: UILabel!
+    
+    var cellButton = PassthroughSubject<Void, Never>()
     
     var viewModel: SportRecommendationCellViewModel? {
         didSet {
@@ -35,6 +38,8 @@ class SportRecommendationCell: UITableViewCell {
             } else {
                 FeedbackManager.sendFeedbackNotification(.success)
             }
+            
+            self.cellButton.send(())
         }
     }
 

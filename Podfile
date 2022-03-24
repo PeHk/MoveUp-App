@@ -18,5 +18,7 @@ target 'GoFitApp' do
   pod 'SwiftyBase64', '~> 1.0'
   pod 'EmptyDataSet-Swift', '~> 5.0.0'
   pod 'HeartButton'
+  pod 'EmptyStateKit'
+  pod 'ContentLoader'
 
 end

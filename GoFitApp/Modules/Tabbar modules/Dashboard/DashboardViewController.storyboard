@@ -161,6 +161,9 @@
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLoadable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hBG-xf-fR8">
                                             <rect key="frame" x="15" y="30" width="313" height="50"/>
@@ -173,12 +176,18 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="bBk-x7-76N"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLoadable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8S-4c-mkf">
                                                             <rect key="frame" x="40" y="0.0" width="203" height="50"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLoadable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktT-9F-Sqb">
                                                             <rect key="frame" x="263" y="0.0" width="50" height="50"/>
@@ -206,15 +215,18 @@
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
                                                                             <color key="value" name="primary"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isOn" value="NO"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstItem="XHb-Xg-vyq" firstAttribute="centerX" secondItem="ktT-9F-Sqb" secondAttribute="centerX" id="b14-LX-D6B"/>
                                                                 <constraint firstItem="XHb-Xg-vyq" firstAttribute="centerY" secondItem="ktT-9F-Sqb" secondAttribute="centerY" id="hc1-vO-2Tg"/>
                                                                 <constraint firstAttribute="width" constant="50" id="n0a-Rw-WXU"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isLoadable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
@@ -235,6 +247,9 @@
                                         <constraint firstItem="hBG-xf-fR8" firstAttribute="leading" secondItem="Xd7-N1-3eX" secondAttribute="leading" constant="15" id="nwx-gf-Snq"/>
                                         <constraint firstItem="yBc-7x-vc2" firstAttribute="leading" secondItem="Xd7-N1-3eX" secondAttribute="leading" constant="15" id="sNT-wa-7eM"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isLoadable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="backgroundColor"/>
                                 <color key="tintColor" name="primary"/>

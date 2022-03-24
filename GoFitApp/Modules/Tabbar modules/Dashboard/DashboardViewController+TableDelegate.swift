@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ContentLoader
 
 extension DashboardViewController {
     
@@ -21,10 +22,34 @@ extension DashboardViewController {
             
             cell.viewModel = cellViewModel
             
+            cell.cellButton
+                .sink { _ in
+                    print("Button on cell", indexPath.row)
+                }
+                .store(in: &subscription)
+            
             return cell
         }
         else {
             fatalError("Unexpected kind!")
         }
+    }
+}
+
+extension DashboardViewController {
+
+    /// Number of sections you would like to show in loader
+    func numSections(in contentLoaderView: UIView) -> Int {
+        return 1
+    }
+
+    /// Number of rows you would like to show in loader
+    func contentLoaderView(_ contentLoaderView: UIView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+
+    /// Cell reuse identifier you would like to use (ContenLoader will search loadable objects here!)
+    func contentLoaderView(_ contentLoaderView: UIView, cellIdentifierForItemAt indexPath: IndexPath) -> String {
+        return SportRecommendationCell.reuseIdentifier()
     }
 }

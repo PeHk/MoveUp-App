@@ -59,6 +59,7 @@ class DashboardViewModel: ViewModelProtocol {
     var stepper = PassthroughSubject<Step, Never>()
     var errorState = PassthroughSubject<NetworkError, Never>()
     var isLoading = CurrentValueSubject<Bool, Never>(false)
+    var tableLoading = CurrentValueSubject<Bool, Never>(true)
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
     var recommendations = CurrentValueSubject<[Recommendation], Never>([])
@@ -151,6 +152,8 @@ class DashboardViewModel: ViewModelProtocol {
     }
     
     private func checkRecommendations() {
+        self.tableLoading.send(true)
+        
         let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
             Endpoint.recommendation.url,
             method: .get
@@ -180,6 +183,7 @@ class DashboardViewModel: ViewModelProtocol {
         }
         
         self.recommendations.send(finalRecommendations)
+        self.tableLoading.send((false))
     }
     
     // MARK: ViewModels

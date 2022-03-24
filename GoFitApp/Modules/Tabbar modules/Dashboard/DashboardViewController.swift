@@ -1,9 +1,11 @@
 import Combine
 import UIKit
 import ALProgressView
+import ContentLoader
 import EmptyDataSet_Swift
 
-class DashboardViewController: BaseTableViewController, EmptyDataSetSource, EmptyDataSetDelegate {
+class DashboardViewController: BaseTableViewController, EmptyDataSetSource, ContentLoaderDataSource, EmptyDataSetDelegate {
+
     // MARK: Outlet
     @IBOutlet weak var caloriesRing: ALProgressRing! {
         didSet {
@@ -52,14 +54,16 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
     
     private func setupView() {
         navigationItem.leftBarButtonItem = nil
-
+        
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
+        tableView.startLoading()
         
         tableView.emptyDataSetView { [weak self] view in
             if self != nil {
                 view.titleLabelString(self?.viewModel.configuration.titleString)
                     .isScrollAllowed(true)
+                    .detailLabelString(self?.viewModel.configuration.detailString)
             }
         }
     }
@@ -90,9 +94,11 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Empt
             }
             .store(in: &subscription)
         
-        viewModel.recommendations
-            .sink { _ in
-                self.tableView.reloadData()
+        viewModel.tableLoading
+            .sink { state in
+                if state == false {
+                    self.tableView.hideLoading()
+                }
             }
             .store(in: &subscription)
     }
