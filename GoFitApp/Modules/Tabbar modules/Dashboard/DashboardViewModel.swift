@@ -10,7 +10,7 @@ class DashboardViewModel: ViewModelProtocol {
         case update
         case checkWorkouts
         case checkPermissions
-        case checkRecommendations
+        case checkRecommendations(withLoading: Bool)
         case showAlert(title: String, message: String)
         case presentRatingView(recommendation: Recommendation)
         case ratingReceived(rating: Int, recommendation: Recommendation)
@@ -35,8 +35,12 @@ class DashboardViewModel: ViewModelProtocol {
             self.showAdditionalPermissions()
         case .checkWorkouts:
             self.checkWorkouts()
-        case .checkRecommendations:
+        case .checkRecommendations(let loading):
             if networkMonitor.isReachable {
+                if loading {
+                    self.state.send(.loading)
+                }
+                
                 self.checkRecommendations()
             }
         case .ratingReceived(let rating, let rec):
@@ -81,6 +85,7 @@ class DashboardViewModel: ViewModelProtocol {
     fileprivate let networkMonitor: NetworkMonitor
     fileprivate let networkManager: NetworkManager
     fileprivate let sportManager: SportManager
+    fileprivate let userManager: UserManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -92,6 +97,7 @@ class DashboardViewModel: ViewModelProtocol {
         self.networkMonitor = dependencyContainer.networkMonitor
         self.networkManager = dependencyContainer.networkManager
         self.sportManager = dependencyContainer.sportManager
+        self.userManager = dependencyContainer.userManager
         
         self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -159,7 +165,6 @@ class DashboardViewModel: ViewModelProtocol {
     }
     
     private func checkRecommendations() {
-        self.isLoading.send(false)
         self.tableLoading.send(true)
         
         let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
@@ -192,15 +197,17 @@ class DashboardViewModel: ViewModelProtocol {
         
         self.recommendations.send(finalRecommendations)
         self.tableLoading.send((false))
+        self.isLoading.send(false)
     }
     
+    // MARK: Handle recommendation
     public func handleRecommendation(recommendation: Recommendation, state: Bool) {
         if self.networkMonitor.isReachable {
             self.state.send(.loading)
             let acceptancePublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
                 Endpoint.recommendationUpdate(id: recommendation.id).url,
                 method: .put,
-                parameters: ["type": 2]
+                parameters: ["type": 2, "acceptance": state]
             )
             
             acceptancePublisher
@@ -208,8 +215,12 @@ class DashboardViewModel: ViewModelProtocol {
                     if let error = dataResponse.error {
                         self.state.send(.error(error))
                     } else {
-                        print(dataResponse.value!)
-                        self.action.send(.presentRatingView(recommendation: recommendation))
+                        if state {
+                            self.updateSport(sportId: recommendation.sport_id)
+                            self.action.send(.presentRatingView(recommendation: recommendation))
+                        } else {
+                            self.action.send(.checkRecommendations(withLoading: false))
+                        }
                     }
                 }
                 .store(in: &subscription)
@@ -218,6 +229,7 @@ class DashboardViewModel: ViewModelProtocol {
         }
     }
     
+    // MARK: Handle rating
     private func handleRating(rating: Int, recommendation: Recommendation) {
         if self.networkMonitor.isReachable {
             self.state.send(.loading)
@@ -238,6 +250,29 @@ class DashboardViewModel: ViewModelProtocol {
                 .store(in: &subscription)
         } else {
             self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))        }
+    }
+    
+    // MARK: Update local sport
+    private func updateSport(sportId: Int64?) {
+        guard let sportId = sportId else {
+            return
+        }
+
+        if let user = self.userManager.currentUser.value {
+            let sports = self.sportManager.currentSports.value
+            
+            if let currentSport = sports.first(where: { $0.id == sportId }) {
+                self.sportManager.appendSportToUser(user: user, sport: currentSport)
+                    .sink { completion in
+                        if case .failure(let error) = completion {
+                            self.state.send(.error(error))
+                        }
+                    } receiveValue: { _ in
+                        self.sportManager.fetchCurrentSports()
+                    }
+                    .store(in: &subscription)
+            }
+        }
     }
     
     // MARK: ViewModels

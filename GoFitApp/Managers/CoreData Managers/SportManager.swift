@@ -129,4 +129,21 @@ class SportManager {
             })
             .eraseToAnyPublisher()
     }
+    
+    // MARK: Save favourite sport to existing ones
+    public func appendSportToUser(user: User, sport: Sport) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        
+        let sports = user.favourite_sports?.adding(sport)
+                
+        let action: Action = {
+            user.favourite_sports = sports as NSSet?
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
 }

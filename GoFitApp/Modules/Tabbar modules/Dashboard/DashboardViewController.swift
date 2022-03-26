@@ -49,7 +49,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         self.navigationController?.navigationBar.sizeToFit()
         self.viewModel.action.send(.update)
         self.viewModel.action.send(.checkWorkouts)
-        self.viewModel.action.send(.checkRecommendations)
+        self.viewModel.action.send(.checkRecommendations(withLoading: true))
     }
     
     private func setupView() {
@@ -98,6 +98,14 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
             .sink { state in
                 if state == false {
                     self.tableView.hideLoading()
+                }
+            }
+            .store(in: &subscription)
+        
+        viewModel.isLoading
+            .sink { state in
+                if !state {
+                    self.tableView.reloadData()
                 }
             }
             .store(in: &subscription)
