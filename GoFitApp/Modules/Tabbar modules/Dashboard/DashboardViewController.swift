@@ -98,7 +98,6 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
             .sink { state in
                 if state == false {
                     self.tableView.hideLoading()
-                    self.presentRatingView()
                 }
             }
             .store(in: &subscription)
@@ -108,6 +107,8 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                 switch action {
                 case .showAlert(let title, let message):
                     AlertManager.showAlert(title: title, message: message, over: self)
+                case .presentRatingView(let recommendation):
+                    self.presentRatingView(recommendation: recommendation)
                 default:
                     break
                 }
@@ -115,13 +116,21 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
             .store(in: &subscription)
     }
     
-    private func presentRatingView() {
+    // MARK: Rating view
+    private func presentRatingView(recommendation: Recommendation) {
         let ratingView = RatingView()
         ratingView.frame = self.view.bounds
         
         if let keyWindow = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }) {
             ratingView.frame = keyWindow.bounds
             keyWindow.addSubview(ratingView)
+            
+            ratingView.rating
+                .sink { rating in
+                    self.viewModel.action.send(.ratingReceived(rating: rating, recommendation: recommendation))
+                    ratingView.removeFromSuperview()
+                }
+                .store(in: &subscription)
         }
     }
 }

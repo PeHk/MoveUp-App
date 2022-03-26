@@ -12,6 +12,8 @@ class DashboardViewModel: ViewModelProtocol {
         case checkPermissions
         case checkRecommendations
         case showAlert(title: String, message: String)
+        case presentRatingView(recommendation: Recommendation)
+        case ratingReceived(rating: Int, recommendation: Recommendation)
     }
     
     enum Step {
@@ -37,6 +39,8 @@ class DashboardViewModel: ViewModelProtocol {
             if networkMonitor.isReachable {
                 self.checkRecommendations()
             }
+        case .ratingReceived(let rating, let rec):
+            self.handleRating(rating: rating, recommendation: rec)
         default:
             break
         }
@@ -155,6 +159,7 @@ class DashboardViewModel: ViewModelProtocol {
     }
     
     private func checkRecommendations() {
+        self.isLoading.send(false)
         self.tableLoading.send(true)
         
         let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
@@ -204,12 +209,35 @@ class DashboardViewModel: ViewModelProtocol {
                         self.state.send(.error(error))
                     } else {
                         print(dataResponse.value!)
+                        self.action.send(.presentRatingView(recommendation: recommendation))
                     }
                 }
                 .store(in: &subscription)
         } else {
             self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))
         }
+    }
+    
+    private func handleRating(rating: Int, recommendation: Recommendation) {
+        if self.networkMonitor.isReachable {
+            self.state.send(.loading)
+            let ratingPublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
+                Endpoint.recommendationUpdate(id: recommendation.id).url,
+                method: .put,
+                parameters: ["type": 1, "rating": rating]
+            )
+            
+            ratingPublisher
+                .sink { dataResponse in
+                    if let error = dataResponse.error {
+                        self.state.send(.error(error))
+                    } else {
+                        self.checkRecommendations()
+                    }
+                }
+                .store(in: &subscription)
+        } else {
+            self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))        }
     }
     
     // MARK: ViewModels
