@@ -130,6 +130,8 @@
 		E177513327552B7100C9917F /* LogoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177513227552B7100C9917F /* LogoutManager.swift */; };
 		E17751352755326D00C9917F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17751342755326D00C9917F /* LoginManager.swift */; };
 		E1805FE62792BC6100587EC1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1805FE52792BC6100587EC1 /* MapKit.framework */; };
+		E181F0DB27EF146300B74D62 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181F0DA27EF146300B74D62 /* RatingView.swift */; };
+		E181F0DD27EF147000B74D62 /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E181F0DC27EF147000B74D62 /* RatingView.xib */; };
 		E1835BBB2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1835BBA2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift */; };
 		E19ABA182753C2FE004E6FDC /* FavouriteSportsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */; };
 		E19ABA192753C2FE004E6FDC /* FavouriteSportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */; };
@@ -333,6 +335,8 @@
 		E177513227552B7100C9917F /* LogoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutManager.swift; sourceTree = "<group>"; };
 		E17751342755326D00C9917F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		E1805FE52792BC6100587EC1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E181F0DA27EF146300B74D62 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		E181F0DC27EF147000B74D62 /* RatingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		E1835BBA2796F4DA00338289 /* ActivityDetailViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityDetailViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E19ABA142753C2FE004E6FDC /* FavouriteSportsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsCoordinator.swift; sourceTree = "<group>"; };
 		E19ABA152753C2FE004E6FDC /* FavouriteSportsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteSportsViewModel.swift; sourceTree = "<group>"; };
@@ -865,11 +869,21 @@
 		E16609C0271CA75F0077DF6E /* Designs */ = {
 			isa = PBXGroup;
 			children = (
+				E181F0D927EF142800B74D62 /* RatingView */,
 				E16609C1271CA7860077DF6E /* PrimaryButton.swift */,
 				E10AA3FC271DB42C0096B032 /* SecondaryButton.swift */,
 				E1DF2E23274ECB6000741038 /* LoadingView.swift */,
 			);
 			path = Designs;
+			sourceTree = "<group>";
+		};
+		E181F0D927EF142800B74D62 /* RatingView */ = {
+			isa = PBXGroup;
+			children = (
+				E181F0DA27EF146300B74D62 /* RatingView.swift */,
+				E181F0DC27EF147000B74D62 /* RatingView.xib */,
+			);
+			path = RatingView;
 			sourceTree = "<group>";
 		};
 		E19ABA132753C2FE004E6FDC /* FavouriteSports */ = {
@@ -1120,6 +1134,7 @@
 				E1EBC13E271DC2A0009E9939 /* RegistrationViewController.storyboard in Resources */,
 				E10AA3FB271DB3450096B032 /* Roboto-Light.ttf in Resources */,
 				E1111F182768DBEB00B10529 /* ActivityPickerViewController.storyboard in Resources */,
+				E181F0DD27EF147000B74D62 /* RatingView.xib in Resources */,
 				E19ABA1A2753C2FE004E6FDC /* FavouriteSportsViewController.storyboard in Resources */,
 				E143E75B27997611001DB5BC /* BackupDetailViewController.storyboard in Resources */,
 				E10AA3F3271DB33D0096B032 /* Roboto-Italic.ttf in Resources */,
@@ -1319,6 +1334,7 @@
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
+				E181F0DB27EF146300B74D62 /* RatingView.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,

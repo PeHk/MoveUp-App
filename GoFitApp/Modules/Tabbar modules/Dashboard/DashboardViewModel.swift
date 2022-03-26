@@ -191,7 +191,22 @@ class DashboardViewModel: ViewModelProtocol {
     
     public func handleRecommendation(recommendation: Recommendation, state: Bool) {
         if self.networkMonitor.isReachable {
+            self.state.send(.loading)
+            let acceptancePublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
+                Endpoint.recommendationUpdate(id: recommendation.id).url,
+                method: .put,
+                parameters: ["type": 2]
+            )
             
+            acceptancePublisher
+                .sink { dataResponse in
+                    if let error = dataResponse.error {
+                        self.state.send(.error(error))
+                    } else {
+                        print(dataResponse.value!)
+                    }
+                }
+                .store(in: &subscription)
         } else {
             self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))
         }

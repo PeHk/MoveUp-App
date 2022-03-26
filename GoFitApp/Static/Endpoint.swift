@@ -92,4 +92,8 @@ extension Endpoint {
     static var recommendation: Self {
         Endpoint(path: "api/recommendations")
     }
+    
+    static func recommendationUpdate(id: Int64) -> Self {
+        Endpoint(path: "api/recommendation/\(id)")
+    }
 }

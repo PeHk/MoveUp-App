@@ -98,6 +98,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
             .sink { state in
                 if state == false {
                     self.tableView.hideLoading()
+                    self.presentRatingView()
                 }
             }
             .store(in: &subscription)
@@ -112,5 +113,15 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                 }
             }
             .store(in: &subscription)
+    }
+    
+    private func presentRatingView() {
+        let ratingView = RatingView()
+        ratingView.frame = self.view.bounds
+        
+        if let keyWindow = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }) {
+            ratingView.frame = keyWindow.bounds
+            keyWindow.addSubview(ratingView)
+        }
     }
 }
