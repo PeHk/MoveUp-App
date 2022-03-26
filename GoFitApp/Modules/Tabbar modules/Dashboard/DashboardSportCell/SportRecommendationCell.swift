@@ -6,23 +6,28 @@
 //
 
 import UIKit
-import HeartButton
 import Combine
 
 class SportRecommendationCell: UITableViewCell {
-    
-    @IBOutlet weak var heartView: UIView! {
+    // MARK: Outlets
+    @IBOutlet weak var acceptButton: UIView! {
         didSet {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(heartTapped(_:)))
-            heartView.addGestureRecognizer(tap)
-            heartView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(acceptTapped(_:)))
+            acceptButton.addGestureRecognizer(tap)
+            acceptButton.isUserInteractionEnabled = true
         }
     }
-    @IBOutlet weak var addToFavourites: HeartButton!
+    @IBOutlet weak var rejectButton: UIView! {
+        didSet {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(rejectTapped(_:)))
+            rejectButton.addGestureRecognizer(tap)
+            rejectButton.isUserInteractionEnabled = true
+        }
+    }
     @IBOutlet weak var title: UILabel!
     
-    var cellButton = PassthroughSubject<Void, Never>()
-    
+    // MARK: Variables
+    var cellButton = PassthroughSubject<Bool, Never>()
     var viewModel: SportRecommendationCellViewModel? {
         didSet {
             self.title.text = viewModel?.sport?.name
@@ -31,30 +36,23 @@ class SportRecommendationCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.addToFavourites.stateChanged = { sender, isOn in
-            if isOn {
-                FeedbackManager.sendFeedbackNotification(.warning)
-            } else {
-                FeedbackManager.sendFeedbackNotification(.success)
-            }
-            
-            self.cellButton.send(())
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     static func reuseIdentifier() -> String {
         return "sportRecommendationCell"
     }
     
-    @objc func heartTapped(_ sender: UITapGestureRecognizer) {
-        self.addToFavourites.setOn(!self.addToFavourites.isOn, animated: true)
+    @objc func acceptTapped(_ sender: UITapGestureRecognizer) {
+        FeedbackManager.sendFeedbackNotification(.success)
+        cellButton.send(true)
     }
-
+    
+    @objc func rejectTapped(_ sender: UITapGestureRecognizer) {
+        FeedbackManager.sendFeedbackNotification(.warning)
+        cellButton.send(false)
+    }
 }

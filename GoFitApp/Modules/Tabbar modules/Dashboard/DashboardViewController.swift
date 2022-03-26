@@ -101,5 +101,16 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                 }
             }
             .store(in: &subscription)
+        
+        viewModel.action
+            .sink { action in
+                switch action {
+                case .showAlert(let title, let message):
+                    AlertManager.showAlert(title: title, message: message, over: self)
+                default:
+                    break
+                }
+            }
+            .store(in: &subscription)
     }
 }

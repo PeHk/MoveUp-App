@@ -11,6 +11,7 @@ class DashboardViewModel: ViewModelProtocol {
         case checkWorkouts
         case checkPermissions
         case checkRecommendations
+        case showAlert(title: String, message: String)
     }
     
     enum Step {
@@ -36,6 +37,8 @@ class DashboardViewModel: ViewModelProtocol {
             if networkMonitor.isReachable {
                 self.checkRecommendations()
             }
+        default:
+            break
         }
     }
     
@@ -184,6 +187,14 @@ class DashboardViewModel: ViewModelProtocol {
         
         self.recommendations.send(finalRecommendations)
         self.tableLoading.send((false))
+    }
+    
+    public func handleRecommendation(recommendation: Recommendation, state: Bool) {
+        if self.networkMonitor.isReachable {
+            
+        } else {
+            self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))
+        }
     }
     
     // MARK: ViewModels

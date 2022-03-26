@@ -16,15 +16,16 @@ extension DashboardViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: SportRecommendationCell.reuseIdentifier(), for: indexPath) as? SportRecommendationCell {
-            // TODO
             
-            let cellViewModel = viewModel.createSportRecommendationCellViewModel(recommendation: viewModel.recommendations.value[indexPath.row])
+            let recommendation = viewModel.recommendations.value[indexPath.row]
+            
+            let cellViewModel = viewModel.createSportRecommendationCellViewModel(recommendation: recommendation)
             
             cell.viewModel = cellViewModel
             
             cell.cellButton
-                .sink { _ in
-                    print("Button on cell", indexPath.row)
+                .sink { [weak self] state in
+                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: state)
                 }
                 .store(in: &subscription)
             
