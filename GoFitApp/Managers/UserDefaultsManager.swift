@@ -48,8 +48,4 @@ class UserDefaultsManager {
     public func setNewBackupDate() {
         self.set(value: Date(), forKey: Constants.backupDate)
     }
-    
-    public func setNewSportBackupDate() {
-        self.set(value: Date(), forKey: Constants.sportBackupDate)
-    }
 }

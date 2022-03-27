@@ -38,20 +38,20 @@
                             <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m1y-zy-QIc">
-                                    <rect key="frame" x="53.5" y="0.0" width="143.5" height="70"/>
+                                    <rect key="frame" x="32" y="0.0" width="186" height="70"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are we doing?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-hK-bjX">
-                                            <rect key="frame" x="0.0" y="0.0" width="143.5" height="55"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us how we are doing" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7f-hK-bjX">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="55"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate recommendation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-ss-oPE">
-                                            <rect key="frame" x="0.0" y="55" width="143.5" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate recommendation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-ss-oPE">
+                                            <rect key="frame" x="0.0" y="55" width="186" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="fD3-PT-XFT"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="11"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>

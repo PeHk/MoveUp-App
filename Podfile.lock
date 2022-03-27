@@ -9,6 +9,7 @@ PODS:
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - SkyFloatingLabelTextField (3.8.0)
+  - SPIndicator (1.6.4)
   - SPPermissions/Calendar (7.1.5):
     - SPPermissions/Core
   - SPPermissions/Core (7.1.5)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
   - SkyFloatingLabelTextField (~> 3.0)
+  - SPIndicator
   - SPPermissions/Calendar
   - SPPermissions/Health
   - SPPermissions/LocationAlways
@@ -49,6 +51,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - NVActivityIndicatorView
     - SkyFloatingLabelTextField
+    - SPIndicator
     - SPPermissions
     - SwiftGen
     - SwiftyBase64
@@ -62,10 +65,11 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SPIndicator: 93e0a4fb23de51294ac48e874c0f081a5e293e4f
   SPPermissions: c63ac1132badad39917de03a3c9dc2429ace94be
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
   SwiftyBase64: 8de4de96a08454e742fdda614dff12d2c62ecbe9
 
-PODFILE CHECKSUM: 8d25f8c85432e89a60dec2c5891305920482938d
+PODFILE CHECKSUM: 1769b283db1d89cde8bb07f9f2c9c33005472e1a
 
 COCOAPODS: 1.11.2

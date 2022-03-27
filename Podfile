@@ -19,5 +19,6 @@ target 'GoFitApp' do
   pod 'EmptyDataSet-Swift', '~> 5.0.0'
   pod 'ContentLoader'
   pod 'Cosmos', '~> 23.0'
+  pod 'SPIndicator'
 
 end

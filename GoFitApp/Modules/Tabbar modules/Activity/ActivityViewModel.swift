@@ -25,7 +25,7 @@ class ActivityViewModel: ViewModelProtocol {
         switch action {
         case .checkActivities:
             if networkMonitor.isReachable {
-                self.checkLastSportUpdate()
+                self.downloadNewSports()
                 self.checkActivities()
             }
         }
@@ -156,35 +156,6 @@ class ActivityViewModel: ViewModelProtocol {
             }
             .store(in: &subscription)
     }
-    // MARK: Check last updated sports
-    private func checkLastSportUpdate() {
-        var date: Date = self.userDefaultsManager.get(forKey: Constants.sportBackupDate) as? Date ?? Date()
-        
-        date = Calendar.current.date(byAdding: .minute, value: -60, to: date) ?? date
-
-        let datePublisher: AnyPublisher<DataResponse<SportUpdateResource, NetworkError>, Never> = self.networkManager.request(
-            Endpoint.sportsStatus.url,
-            method: .get
-        )
-            
-        datePublisher
-            .sink { dataResponse in
-                if dataResponse.error == nil {
-                    if let serverDate = dataResponse.value {
-                        print("[last_update_sports: \(Helpers.getDateFromStringWithout(from: serverDate.date))]")
-                        print("[last_update_local: \(date)]")
-                
-                        if Helpers.getDateFromStringWithout(from: serverDate.date) > date {
-                            print("Downloading new sports!")
-                            self.downloadNewSports()
-                        } else {
-                            self.userDefaultsManager.setNewSportBackupDate()
-                        }
-                    }
-                }
-            }
-            .store(in: &subscription)
-    }
     
     // MARK: Download new sports
     private func downloadNewSports() {
@@ -197,18 +168,39 @@ class ActivityViewModel: ViewModelProtocol {
             .sink { dataResponse in
                 if dataResponse.error == nil {
                     if let newSports = dataResponse.value {
-                        self.sportsManager.updateSports(sportsToUpdate: newSports)
-                            .sink { completion in
-                                ()
-                            } receiveValue: { _ in
-                                self.userDefaultsManager.setNewSportBackupDate()
-                                self.sportsManager.fetchCurrentSports()
-                            }
-                            .store(in: &self.subscription)
+                        self.saveNewSports(sports: newSports)
                     }
                 }
             }
             .store(in: &subscription)
+    }
+    
+    private func saveNewSports(sports: [SportResource]) {
+        let currentSports = self.sportsManager.currentSports.value
+        
+        for sport in sports {
+            if let dbSport = currentSports.first(where: {$0.id == sport.id}) {
+                if dbSport.name != sport.name || dbSport.met != sport.met || dbSport.type != sport.type || dbSport.healthKitType != sport.health_kit_type {
+                    self.sportsManager.updateOneSport(sportToUpdate: sport, currSport: dbSport)
+                        .sink { _ in
+                            ()
+                        } receiveValue: { _ in
+                            ()
+                        }
+                        .store(in: &subscription)
+                }
+            } else {
+                self.sportsManager.saveSports(newSports: [sport])
+                    .sink { _ in
+                        ()
+                    } receiveValue: { _ in
+                        ()
+                    }
+                    .store(in: &subscription)
+            }
+        }
+        
+        self.sportsManager.fetchCurrentSports()
     }
 
     // MARK: ViewModels

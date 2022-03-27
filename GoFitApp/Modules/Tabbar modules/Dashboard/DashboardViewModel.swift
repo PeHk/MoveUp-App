@@ -40,8 +40,9 @@ class DashboardViewModel: ViewModelProtocol {
                 if loading {
                     self.state.send(.loading)
                 }
-                
                 self.checkRecommendations()
+            } else {
+                self.tableLoading.send(false)
             }
         case .ratingReceived(let rating, let rec):
             self.handleRating(rating: rating, recommendation: rec)
@@ -74,6 +75,7 @@ class DashboardViewModel: ViewModelProtocol {
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
     var recommendations = CurrentValueSubject<[Recommendation], Never>([])
+    var presentDoneAlert = CurrentValueSubject<Bool, Never>(false)
     
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
@@ -140,6 +142,11 @@ class DashboardViewModel: ViewModelProtocol {
     }
     
     // MARK: Functions
+    private(set) lazy var showAlert = Publishers.CombineLatest(isLoading, presentDoneAlert)
+        .map { $0 == false && $1 == true }
+        .eraseToAnyPublisher()
+    
+    
     private func refreshValues() {
         self.healthKitManager.refreshValues()
     }
@@ -198,6 +205,7 @@ class DashboardViewModel: ViewModelProtocol {
         self.recommendations.send(finalRecommendations)
         self.tableLoading.send((false))
         self.isLoading.send(false)
+        self.presentDoneAlert.send(false)
     }
     
     // MARK: Handle recommendation
@@ -245,6 +253,7 @@ class DashboardViewModel: ViewModelProtocol {
                         self.state.send(.error(error))
                     } else {
                         self.checkRecommendations()
+                        self.presentDoneAlert.send(true)
                     }
                 }
                 .store(in: &subscription)

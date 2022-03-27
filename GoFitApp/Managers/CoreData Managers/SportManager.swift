@@ -68,13 +68,30 @@ class SportManager {
             .eraseToAnyPublisher()
     }
     
+    // MARK: Update one sport
+    public func updateOneSport(sportToUpdate: SportResource, currSport: Sport) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let action: Action = {
+            currSport.name = sportToUpdate.name
+            currSport.healthKitType = sportToUpdate.health_kit_type
+            currSport.met = sportToUpdate.met
+            currSport.type = sportToUpdate.type
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
     public func updateSports(sportsToUpdate: [SportResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let sports = currentSports.value
         var action: Action = {}
         
         for sportToUpdate in sportsToUpdate {
             if let i = sports.firstIndex(where: { $0.id == sportToUpdate.id }) {
-                print("Founded sport \(sportToUpdate.name)")
+
                 action = {
                     sports[i].name = sportToUpdate.name
                     sports[i].met = sportToUpdate.met

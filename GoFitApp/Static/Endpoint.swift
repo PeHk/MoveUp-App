@@ -73,10 +73,6 @@ extension Endpoint {
         Endpoint(path: "api/sports")
     }
     
-    static var sportsStatus: Self {
-        Endpoint(path: "api/last_updated_sport")
-    }
-    
     static var apn: Self {
         Endpoint(path: "api/apn")
     }

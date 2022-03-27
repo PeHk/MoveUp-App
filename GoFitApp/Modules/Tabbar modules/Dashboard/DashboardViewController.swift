@@ -3,6 +3,7 @@ import UIKit
 import ALProgressView
 import ContentLoader
 import EmptyDataSet_Swift
+import SPIndicator
 
 class DashboardViewController: BaseTableViewController, EmptyDataSetSource, ContentLoaderDataSource, EmptyDataSetDelegate {
 
@@ -49,7 +50,13 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         self.navigationController?.navigationBar.sizeToFit()
         self.viewModel.action.send(.update)
         self.viewModel.action.send(.checkWorkouts)
-        self.viewModel.action.send(.checkRecommendations(withLoading: true))
+        
+        
+        if isBeingPresented || isMovingToParent {
+            self.viewModel.action.send(.checkRecommendations(withLoading: false))
+        } else {
+            self.viewModel.action.send(.checkRecommendations(withLoading: true))
+        }
     }
     
     private func setupView() {
@@ -68,6 +75,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         }
     }
     
+    // MARK: Bindings
     private func setupBindings() {
         viewModel.errorState
             .compactMap( { $0 })
@@ -122,14 +130,28 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                 }
             }
             .store(in: &subscription)
+        
+        viewModel.showAlert
+            .sink { state in
+                print(state)
+                if state {
+                    self.showSPAlert()
+                }
+            }
+            .store(in: &subscription)
     }
     
     // MARK: Rating view
     private func presentRatingView(recommendation: Recommendation) {
-        let ratingView = RatingView()
-        ratingView.frame = self.view.bounds
+        print("Volam sa znova?")
         
         if let keyWindow = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }) {
+            
+            if keyWindow.subviews.contains(where: {($0 as? RatingView) != nil}) {
+                return
+            }
+            
+            let ratingView = RatingView()
             ratingView.frame = keyWindow.bounds
             keyWindow.addSubview(ratingView)
             
@@ -140,5 +162,12 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                 }
                 .store(in: &subscription)
         }
+    }
+    
+    private func showSPAlert() {
+        let spView = SPIndicatorView(title: "Sport added to favourites", preset: .done)
+        spView.presentSide = .top
+        spView.tintColor = Asset.primary.color
+        spView.present(duration: 4, haptic: .success)
     }
 }

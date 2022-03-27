@@ -11,6 +11,7 @@ import UIKit
 enum ControllerType {
     case activities
     case recommendations
+    case noInternet
 }
 
 struct Configuration {
@@ -33,6 +34,10 @@ struct Configuration {
             textColor = UIColor.label
         case .recommendations:
             text = "No recommendations for today"
+            font = UIFont(font: FontFamily.Roboto.bold, size: 17)
+            textColor = UIColor.label
+        case .noInternet:
+            text = "No internet connection"
             font = UIFont(font: FontFamily.Roboto.bold, size: 17)
             textColor = UIColor.label
         }
@@ -62,6 +67,10 @@ struct Configuration {
             textColor = UIColor.label
         case .recommendations:
             text = "Recommendations are generated automatically"
+            font = UIFont(font: FontFamily.Roboto.regular, size: 15)
+            textColor = UIColor.label
+        case .noInternet:
+            text = "Start with connecting your device to internet"
             font = UIFont(font: FontFamily.Roboto.regular, size: 15)
             textColor = UIColor.label
         }
