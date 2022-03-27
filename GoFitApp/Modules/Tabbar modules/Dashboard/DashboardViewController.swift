@@ -133,7 +133,6 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         
         viewModel.showAlert
             .sink { state in
-                print(state)
                 if state {
                     self.showSPAlert()
                 }
@@ -143,8 +142,6 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
     
     // MARK: Rating view
     private func presentRatingView(recommendation: Recommendation) {
-        print("Volam sa znova?")
-        
         if let keyWindow = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }) {
             
             if keyWindow.subviews.contains(where: {($0 as? RatingView) != nil}) {
