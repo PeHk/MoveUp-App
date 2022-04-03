@@ -180,6 +180,29 @@ class HealthKitManager {
         }
     }
     
+    public func getWorkoutsByTimeInterval(date: Date = Date().addingTimeInterval(-TimeInterval.year())) -> Future<[HKWorkout], Error> {
+        
+        return Future { promise in
+            let workoutPredicate = HKQuery.predicateForWorkouts(with: .greaterThan, totalEnergyBurned: HKQuantity.init(unit: .smallCalorie(), doubleValue: 0))
+            
+            let timePredicate = HKQuery.predicateForSamples(withStart: date, end: Date(), options: [])
+            
+            let combined = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, workoutPredicate])
+            
+            let query = HKSampleQuery(sampleType: .workoutType(), predicate: combined, limit: 0, sortDescriptors: nil) { (query, samples, error) in
+                DispatchQueue.main.async {
+                    guard let samples = samples as? [HKWorkout], error == nil else {
+                        promise(.failure(error ?? NSError()))
+                        return
+                    }
+                    promise(.success(samples))
+                }
+            }
+            
+            self.healthStore.execute(query)
+        }
+    }
+    
     // MARK: Route builder delegate
     public func addRouteToBuilder(location: [CLLocation]) {
         routeBuilder.insertRouteData(location) { (success, error) in

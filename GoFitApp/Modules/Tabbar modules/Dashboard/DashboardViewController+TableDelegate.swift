@@ -23,11 +23,13 @@ extension DashboardViewController {
             
             cell.viewModel = cellViewModel
             
-            cell.cellButton
-                .sink { [weak self] state in
-                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: state)
-                }
-                .store(in: &subscription)
+            cell.acceptAction = { [weak self] () in
+                self?.viewModel.handleRecommendation(recommendation: recommendation, state: true)
+            }
+            
+            cell.rejectAction = { [weak self] () in
+                self?.viewModel.handleRecommendation(recommendation: recommendation, state: false)
+            }
             
             return cell
         }

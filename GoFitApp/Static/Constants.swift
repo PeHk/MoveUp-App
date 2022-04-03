@@ -14,6 +14,8 @@ struct Constants {
     static let serviceName = "goFitApp"
     static let accessToken = "access_token_cookie"
     static let refreshToken = "refresh_token_cookie"
+    
+    static let weatherKey = "27327144ce24edffe6a6f06a0f9a85fa"
        
 // MARK: LOCAL CONFIG
 //    static let cookieDomain = "192.168.0.104"

@@ -143,6 +143,7 @@
 		E19ABA212753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */; };
 		E19ABA232753C822004E6FDC /* SportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA222753C822004E6FDC /* SportTableViewCell.swift */; };
 		E19ABA252753C891004E6FDC /* SportCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19ABA242753C891004E6FDC /* SportCellViewModel.swift */; };
+		E1A0FABC27F86DAC00DC8A3E /* RecommendationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A0FABB27F86DAC00DC8A3E /* RecommendationsManager.swift */; };
 		E1A788CD276B5E58007C406E /* GoalsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A788C9276B5E57007C406E /* GoalsDetailViewModel.swift */; };
 		E1A788CE276B5E58007C406E /* GoalsDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A788CA276B5E57007C406E /* GoalsDetailCoordinator.swift */; };
 		E1A788CF276B5E58007C406E /* GoalsDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A788CB276B5E57007C406E /* GoalsDetailViewController.storyboard */; };
@@ -187,6 +188,8 @@
 		E1EBC147271DCED0009E9939 /* DetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */; };
 		E1FC4752275FEE7000DC9479 /* LoginFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */; };
 		E1FC4754275FF0B800DC9479 /* HomeFlowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */; };
+		E1FD7A1027F8961200BB6FDC /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD7A0F27F8961200BB6FDC /* TimeInterval+Extensions.swift */; };
+		E1FD7A1227F89EC000BB6FDC /* WeatherResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD7A1127F89EC000BB6FDC /* WeatherResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,6 +352,7 @@
 		E19ABA202753C7AE004E6FDC /* FavouriteSportsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteSportsViewController+TableView.swift"; sourceTree = "<group>"; };
 		E19ABA222753C822004E6FDC /* SportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportTableViewCell.swift; sourceTree = "<group>"; };
 		E19ABA242753C891004E6FDC /* SportCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportCellViewModel.swift; sourceTree = "<group>"; };
+		E1A0FABB27F86DAC00DC8A3E /* RecommendationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsManager.swift; sourceTree = "<group>"; };
 		E1A788C9276B5E57007C406E /* GoalsDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsDetailViewModel.swift; sourceTree = "<group>"; };
 		E1A788CA276B5E57007C406E /* GoalsDetailCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsDetailCoordinator.swift; sourceTree = "<group>"; };
 		E1A788CB276B5E57007C406E /* GoalsDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GoalsDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 		E1EBC146271DCED0009E9939 /* DetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsViewController.storyboard; sourceTree = "<group>"; };
 		E1FC4751275FEE7000DC9479 /* LoginFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlowUITests.swift; sourceTree = "<group>"; };
 		E1FC4753275FF0B800DC9479 /* HomeFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowUITests.swift; sourceTree = "<group>"; };
+		E1FD7A0F27F8961200BB6FDC /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		E1FD7A1127F89EC000BB6FDC /* WeatherResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResource.swift; sourceTree = "<group>"; };
 		F2B419583325E29242541084 /* Pods-GoFitApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoFitApp.debug.xcconfig"; path = "Target Support Files/Pods-GoFitApp/Pods-GoFitApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -846,6 +852,7 @@
 				E1264453277EFCCE000116F8 /* TimerManager.swift */,
 				E10B294C2791DD2000E551CB /* LocationManager.swift */,
 				E164812927BCE4770011F0D4 /* NetworkMonitor.swift */,
+				E1A0FABB27F86DAC00DC8A3E /* RecommendationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -865,6 +872,7 @@
 				E12F9868276BAA6300C71B68 /* UIAlertViewController+Extensions.swift */,
 				E1CAAB4E279327CD00D4A81D /* HKWorkoutActivityType+Extensions.swift */,
 				E181F0DE27EF22F200B74D62 /* Double+Extension.swift */,
+				E1FD7A0F27F8961200BB6FDC /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -994,6 +1002,7 @@
 				E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */,
 				E16D8FC2279411DD00DA3575 /* TokenResource.swift */,
 				E12F8D3827E7363100BA05CE /* RecommendationResource.swift */,
+				E1FD7A1127F89EC000BB6FDC /* WeatherResource.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -1255,6 +1264,7 @@
 				E13B449C27206DE30062C44B /* ProfileViewModel.swift in Sources */,
 				E13D2722278F3ADA00EEF255 /* ActivitySectionData.swift in Sources */,
 				E1A95833276B3E9A000EB73E /* HealthKitManager.swift in Sources */,
+				E1FD7A1027F8961200BB6FDC /* TimeInterval+Extensions.swift in Sources */,
 				E13D2720278F313A00EEF255 /* ActivityHistoryCellViewModel.swift in Sources */,
 				E1A788CD276B5E58007C406E /* GoalsDetailViewModel.swift in Sources */,
 				E1A788D0276B5E58007C406E /* GoalsDetailViewController.swift in Sources */,
@@ -1341,9 +1351,11 @@
 				E181F0DB27EF146300B74D62 /* RatingView.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,
+				E1FD7A1227F89EC000BB6FDC /* WeatherResource.swift in Sources */,
 				E16609AF271C9FDD0077DF6E /* HomeViewController.swift in Sources */,
 				E1622190275B9C6F00A7A46D /* String+Extensions.swift in Sources */,
 				E1111F142768DBEB00B10529 /* ActivityDetailViewController.swift in Sources */,
+				E1A0FABC27F86DAC00DC8A3E /* RecommendationsManager.swift in Sources */,
 				E10E45D3275E61C50073F2A6 /* PermissionManager.swift in Sources */,
 				E1DF2E24274ECB6000741038 /* LoadingView.swift in Sources */,
 				E153BCC4276A822F0093D05E /* NSSet+Extensions.swift in Sources */,
@@ -1576,13 +1588,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to generate recommendations";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";
@@ -1616,13 +1629,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoFitApp/GoFitApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2.1;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = 8Z38328C5Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoFitApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Move up!";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Access needed for better recommendations";
+				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to generate recommendations";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "App needs to see all the health records";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "App can share your health data to your friends with your permission";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "App can update your healthkit data";

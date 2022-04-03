@@ -88,6 +88,7 @@ class DashboardViewModel: ViewModelProtocol {
     fileprivate let networkManager: NetworkManager
     fileprivate let sportManager: SportManager
     fileprivate let userManager: UserManager
+    fileprivate let recommendationsManager: RecommendationsManager
     
     // MARK: - Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -100,6 +101,7 @@ class DashboardViewModel: ViewModelProtocol {
         self.networkManager = dependencyContainer.networkManager
         self.sportManager = dependencyContainer.sportManager
         self.userManager = dependencyContainer.userManager
+        self.recommendationsManager = dependencyContainer.recommendationsManager
         
         self.stepsGoal = self.userDefaultsManager.get(forKey: Constants.stepsGoal) as? Int ?? 10000
         self.caloriesGoal = self.userDefaultsManager.get(forKey: Constants.caloriesGoal) as? Int ?? 800
@@ -198,8 +200,10 @@ class DashboardViewModel: ViewModelProtocol {
         for r in recommendations {
             let recSport = sports.first(where: {$0.id == r.sport_id })
             
-            let finalRecommendation: Recommendation = Recommendation(id: r.id, type: r.type, created_at: r.created_at, start_time: r.start_time, end_time: r.end_time, sport_id: r.sport_id, rating: r.rating, activity_id: r.activity_id, accepted_at: r.accepted_at, sport: recSport)
-            finalRecommendations.append(finalRecommendation)
+            if recSport?.name != "HealthKit" {
+                let finalRecommendation: Recommendation = Recommendation(id: r.id, type: r.type, created_at: r.created_at, start_time: r.start_time, end_time: r.end_time, sport_id: r.sport_id, rating: r.rating, activity_id: r.activity_id, accepted_at: r.accepted_at, sport: recSport)
+                finalRecommendations.append(finalRecommendation)
+            }
         }
         
         self.recommendations.send(finalRecommendations)

@@ -27,7 +27,10 @@ class SportRecommendationCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     
     // MARK: Variables
-    var cellButton = PassthroughSubject<Bool, Never>()
+    var acceptAction : (()->())?
+    var rejectAction : (()->())?
+
+//    var cellButton = PassthroughSubject<Bool, Never>()
     var viewModel: SportRecommendationCellViewModel? {
         didSet {
             self.title.text = viewModel?.sport?.name
@@ -48,11 +51,11 @@ class SportRecommendationCell: UITableViewCell {
     
     @objc func acceptTapped(_ sender: UITapGestureRecognizer) {
         FeedbackManager.sendFeedbackNotification(.success)
-        cellButton.send(true)
+        acceptAction?()
     }
     
     @objc func rejectTapped(_ sender: UITapGestureRecognizer) {
         FeedbackManager.sendFeedbackNotification(.warning)
-        cellButton.send(false)
+        rejectAction?()
     }
 }

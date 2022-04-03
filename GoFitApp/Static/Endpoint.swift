@@ -42,6 +42,23 @@ extension Endpoint {
 
         return url.absoluteString
     }
+    
+    var weatherURL: String {
+        var components = URLComponents()
+        
+        components.scheme = "https"
+        components.host = "api.openweathermap.org"
+        components.path = "/" + path
+        components.queryItems = queryItems
+
+        guard let url = components.url else {
+            preconditionFailure(
+                "Invalid URL components: \(components)"
+            )
+        }
+
+        return url.absoluteString
+    }
 }
 
 extension Endpoint {
@@ -91,5 +108,15 @@ extension Endpoint {
     
     static func recommendationUpdate(id: Int64) -> Self {
         Endpoint(path: "api/recommendation/\(id)")
+    }
+    
+    static func weatherAPI(lat: Double, long: Double) -> Self {
+        Endpoint(path: "data/2.5/onecall", queryItems: [
+            URLQueryItem(name: "lat", value: String(lat)),
+            URLQueryItem(name: "lon", value: String(long)),
+            URLQueryItem(name: "appid", value: Constants.weatherKey),
+            URLQueryItem(name: "exclude", value: "minutely,current,daily,alerts"),
+            URLQueryItem(name: "units", value: "metric")
+        ])
     }
 }

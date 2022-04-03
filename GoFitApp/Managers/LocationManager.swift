@@ -13,10 +13,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager: CLLocationManager
     private let healthKitManager: HealthKitManager
-    private var lastLocation: CLLocation?
     private var lastAltitude: Double!
     private var route: [CLLocation]
     
+    public var lastLocation: CLLocation?
     public var traveledDistance = CurrentValueSubject<Double, Never>(0.0)
     public var currentAltitude = CurrentValueSubject<Double, Never>(0.0)
     public var elevationGained = CurrentValueSubject<Double, Never>(0.0)
