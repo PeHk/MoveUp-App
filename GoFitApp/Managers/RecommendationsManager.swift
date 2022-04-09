@@ -14,16 +14,21 @@ import Alamofire
 class RecommendationsManager {
     
     // MARK: Variables
-    var formatter: DateFormatter {
+    private var formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH"
         return formatter
+    }
+    
+    private var currentHourIndex: Int {
+        allDayHours.firstIndex(where: { $0.hour == formatter.string(from: Date())}) ?? 0
     }
     
     private var subscription = Set<AnyCancellable>()
     private var workouts: [HKWorkout] = []
     private var activeTimes = PassthroughSubject<[(String, Int)], Never>()
     private var events = PassthroughSubject<[EKEvent], Never>()
+    private var allDayHours: [(hour: String, weights: [Float])] = []
     
     fileprivate let eventStore: EKEventStore
     fileprivate let activityManager: ActivityManager
@@ -41,6 +46,8 @@ class RecommendationsManager {
         self.eventStore = EKEventStore()
         self.locationManager = LocationManager(dependencyContainer)
         
+        initializeHourArray()
+        
         requestAccess()
         setupWorkouts()
         fetchWeather()
@@ -50,6 +57,16 @@ class RecommendationsManager {
                 print(times, events)
             }
             .store(in: &subscription)
+        
+        print(allDayHours)
+    }
+    
+    private func initializeHourArray() {
+        for hour in 0...23 {
+            hour < 10 ?
+            allDayHours.append((hour: "0" + String(hour), weights: [1, 1])) :
+            allDayHours.append((hour: String(hour), weights: [1, 1]))
+        }
     }
     
     // MARK: Extract times
@@ -108,9 +125,6 @@ class RecommendationsManager {
     // MARK: Fetch weather
     private func fetchWeather() {
         if let coordinates = self.locationManager.lastLocation?.coordinate, self.networkMonitor.isReachable {
-            
-            print(Endpoint.weatherAPI(lat: coordinates.latitude, long: coordinates.longitude).weatherURL)
-            
             let weatherPublisher: AnyPublisher<DataResponse<WeatherResource, NetworkError>, Never> = self.networkManager.request(Endpoint.weatherAPI(lat: coordinates.latitude, long: coordinates.longitude).weatherURL, method: .get, withInterceptor: false)
             
             weatherPublisher
@@ -118,9 +132,14 @@ class RecommendationsManager {
                     if dataResponse.error == nil {
                         if let weather = dataResponse.value {
                             for hour in weather.hourly {
-                                print(Date(timeIntervalSince1970: hour.dt + weather.timezone_offset))
+                                let timeStamp = Date(timeIntervalSince1970: hour.dt + weather.timezone_offset)
+                                let arrIndex = self.allDayHours.firstIndex(where: { $0.hour == self.formatter.string(from: timeStamp)})
+                                
+                                if arrIndex != nil, let weatherHour = hour.weather.first {
+                                    self.allDayHours[arrIndex!].weights[0] = Helpers.getWeatherCoef(weatherID: weatherHour.id).0
+                                }
                             }
-//                            print(weather)
+                            print(self.allDayHours)
                         }
                     } else {
                         print("Error", dataResponse.error)

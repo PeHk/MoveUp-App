@@ -22,6 +22,7 @@ struct Validators {
 enum WorkoutType: String {
     case outdoor = "Outdoor"
     case indoor = "Indoor"
+    case both = "Both"
 }
 
 class Helpers {
@@ -144,5 +145,26 @@ class Helpers {
         let coeficient: Int = locations.count / maximumCount
         
         return locations.enumerated().compactMap { index, element in index % coeficient != 0 ? nil : element }
+    }
+    
+    public static func getWeatherCoef(weatherID: Int) -> (Float, WorkoutType) {
+        switch weatherID {
+        case 800: // Clear
+            return (1.1, .both)
+        case 801...899: // Cloudy
+            return (1.05, .both)
+        case 700...799: // Atmosphere
+            return (1.05, .both)
+        case 600...699: // Snow codes
+            return (0.97, .indoor)
+        case 500...599: // Rain codes
+            return (0.96, .indoor)
+        case 300...399: // Drizzle codes
+            return (0.97, .indoor)
+        case 200...299: // Storm codes
+            return (0.95, .indoor)
+        default:
+            return (1, .both)
+        }
     }
 }
