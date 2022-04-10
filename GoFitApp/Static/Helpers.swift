@@ -150,7 +150,7 @@ class Helpers {
     public static func getWeatherCoef(weatherID: Int) -> (Float, WorkoutType) {
         switch weatherID {
         case 800: // Clear
-            return (1.1, .both)
+            return (1.1, .outdoor)
         case 801...899: // Cloudy
             return (1.05, .both)
         case 700...799: // Atmosphere

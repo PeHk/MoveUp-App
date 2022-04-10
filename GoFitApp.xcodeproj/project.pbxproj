@@ -153,6 +153,7 @@
 		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
 		E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92E278B1505003DE96D /* ActivityManager.swift */; };
 		E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */; };
+		E1B1972B280355E900117117 /* FloatingPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B1972A280355E900117117 /* FloatingPoint+Extension.swift */; };
 		E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
 		E1BCA2FC275E3C7C00FC67D5 /* ValidatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F8275E3C7C00FC67D5 /* ValidatorsTests.swift */; };
@@ -366,6 +367,7 @@
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
+		E1B1972A280355E900117117 /* FloatingPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extension.swift"; sourceTree = "<group>"; };
 		E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityHistoryDetail+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		E1BCA2EE275E3C4000FC67D5 /* GoFitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpRequestModelTests.swift; sourceTree = "<group>"; };
@@ -876,6 +878,7 @@
 				E181F0DE27EF22F200B74D62 /* Double+Extension.swift */,
 				E1FD7A0F27F8961200BB6FDC /* TimeInterval+Extensions.swift */,
 				E1F7B0DB2801E17B00001F83 /* Date+Extensions.swift */,
+				E1B1972A280355E900117117 /* FloatingPoint+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1320,6 +1323,7 @@
 				E1A788CE276B5E58007C406E /* GoalsDetailCoordinator.swift in Sources */,
 				E10AA3FD271DB42C0096B032 /* SecondaryButton.swift in Sources */,
 				E13B447E27206DBF0062C44B /* ActivityViewController.swift in Sources */,
+				E1B1972B280355E900117117 /* FloatingPoint+Extension.swift in Sources */,
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
 				E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */,
 				E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */,
