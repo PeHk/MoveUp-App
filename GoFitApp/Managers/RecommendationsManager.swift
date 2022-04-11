@@ -17,7 +17,7 @@ struct HourWeight {
     var weights: Weights
     var finalWeight: Float
     var type: WorkoutType
-    var sports: Set<String>
+    var sports: Set<SportWeights>
 }
 
 struct Weights {
@@ -29,7 +29,12 @@ struct Weights {
 struct HistoryWeights {
     var hour: String
     var count: Float
-    var sports: Set<String>
+    var sports: Set<SportWeights>
+}
+
+struct SportWeights: Equatable, Hashable {
+    var sport: String
+    var weight: Float
 }
 
 class RecommendationsManager {
@@ -108,7 +113,11 @@ class RecommendationsManager {
         for workout in workouts {
             let index = tmpTimes.firstIndex(where: { $0.hour == formatter.string(from: workout.startDate) })
             if let index = index {
-                tmpTimes[index].sports.insert(workout.workoutActivityType.name)
+                tmpTimes[index].sports.insert(
+                    SportWeights(
+                        sport: workout.workoutActivityType.name,
+                        weight: 1.1)
+                )
             }
         }
         
@@ -181,7 +190,7 @@ extension RecommendationsManager {
                     weights: Weights(weather: 1, calendar: 1, history: 1),
                     finalWeight: 1,
                     type: .both,
-                    sports: Set()
+                    sports: Set<SportWeights>()
                 )
             )
         }
@@ -249,3 +258,6 @@ extension RecommendationsManager {
         }
     }
 }
+
+
+// TODO: WINTER / SUMMER
