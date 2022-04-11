@@ -150,19 +150,29 @@ class Helpers {
     public static func getWeatherCoef(weatherID: Int) -> (Float, WorkoutType) {
         switch weatherID {
         case 800: // Clear
-            return (1.1, .outdoor)
-        case 801...899: // Cloudy
+            return (1.2, .outdoor)
+        case 701, 801...899: // Cloudy, Mist
+            return (1.1, .both)
+        case 741: // Fog
             return (1.05, .both)
+        case 781, 762: // Tornado, Ash
+            return (0.5, .indoor)
         case 700...799: // Atmosphere
-            return (1.05, .both)
-        case 600...699: // Snow codes
-            return (0.97, .indoor)
-        case 500...599: // Rain codes
-            return (0.96, .indoor)
-        case 300...399: // Drizzle codes
-            return (0.97, .indoor)
+            return (1, .both)
+        case 600: // Light snow codes
+            return (0.9, .both)
+        case 601...699: // Snow codes
+            return (0.8, .indoor)
+        case 500: // Light rain codes
+            return (0.85, .both)
+        case 501...599: // Rain codes
+            return (0.8, .indoor)
+        case 300: // Light drizzle codes
+            return (0.9, .both)
+        case 301...399: // Drizzle codes
+            return (0.85, .indoor)
         case 200...299: // Storm codes
-            return (0.95, .indoor)
+            return (0.8, .indoor)
         default:
             return (1, .both)
         }

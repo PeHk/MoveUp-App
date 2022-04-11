@@ -69,10 +69,24 @@ class RecommendationsManager {
 
         Publishers.Zip3(activeTimes, events, weatherLock)
             .sink { [weak self] times, events, weatherLock in
-//                self?.evaluateEvents(events: events)
+                self?.evaluateEvents(events: events)
                 self?.evaluateHistory(history: times)
+                self?.calculateProbability()
+                self?.helperFunction()
             }
             .store(in: &subscription)
+    }
+    
+    // MARK: Final probability
+    private func calculateProbability() {
+        var arr = allDayHours.value
+        
+        for (index, hour) in arr.enumerated() {
+            let coef = hour.weights.history * hour.weights.weather * hour.weights.calendar
+            arr[index].finalWeight = coef
+        }
+        
+        allDayHours.send(arr)
     }
     
     // MARK: Extract times
@@ -148,6 +162,7 @@ class RecommendationsManager {
 }
 
 extension RecommendationsManager {
+    // MARK: Initialization
     private func initializeHourArray() {
         var arr: [HourWeight] = []
         let timestamp = Date().nearestHour()
@@ -164,6 +179,7 @@ extension RecommendationsManager {
         allDayHours.send(arr)
     }
     
+    // MARK: Request Access
     private func requestAccess() {
         eventStore.requestAccess(to: .event) { (granted, error) in
             if granted {
@@ -177,14 +193,16 @@ extension RecommendationsManager {
     // MARK: Events evaluation
     private func evaluateEvents(events: [EKEvent]) {
         var arr = self.allDayHours.value
-        
         for event in events {
             if let start = event.startDate, let end = event.endDate {
-                
-                print("Start date:", formatter.string(from: start), start)
-                print("End date:", formatter.string(from: end), end)
+                for (index, hour) in arr.enumerated() {
+                    if start <= hour.timestamp && end >= hour.timestamp {
+                        arr[index].weights.calendar = 0.8
+                    }
+                }
             }
         }
+        allDayHours.send(arr)
     }
     
     // MARK: History evaluation
@@ -215,6 +233,7 @@ extension RecommendationsManager {
         for item in allDayHours.value {
             print(item.timestamp.formatted())
             print(item.weights)
+            print(item.finalWeight)
         }
     }
 }
