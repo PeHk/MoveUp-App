@@ -15,4 +15,9 @@ extension Date {
 
         return localDate
     }
+    
+    func nearestHour() -> Date {
+        return Date(timeIntervalSinceReferenceDate:
+                        (timeIntervalSinceReferenceDate / 3600.0).rounded(.toNearestOrEven) * 3600.0)
+    }
 }

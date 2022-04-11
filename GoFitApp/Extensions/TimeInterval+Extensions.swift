@@ -15,4 +15,8 @@ extension TimeInterval {
     static func year() -> Double {
         31536000
     }
+    
+    static func hour() -> Double {
+        3600
+    }
 }

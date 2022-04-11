@@ -13,7 +13,7 @@ import Alamofire
 import CombineExt
 
 struct HourWeight {
-    var hour: String
+    var timestamp: Date
     var weights: Weights
     var finalWeight: Float
     var type: WorkoutType
@@ -38,11 +38,7 @@ class RecommendationsManager {
         formatter.dateFormat = "HH"
         return formatter
     }
-    
-    private var currentHourIndex: Int {
-        allDayHours.value.firstIndex(where: { $0.hour == formatter.string(from: Date())}) ?? 0
-    }
-    
+
     private var subscription = Set<AnyCancellable>()
     private var workouts: [HKWorkout] = []
     private var activeTimes = PassthroughSubject<[HistoryWeights], Never>()
@@ -67,16 +63,14 @@ class RecommendationsManager {
         self.locationManager = LocationManager(dependencyContainer)
         
         initializeHourArray()
-        
         requestAccess()
         setupWorkouts()
         fetchWeather()
-        
+
         Publishers.Zip3(activeTimes, events, weatherLock)
             .sink { [weak self] times, events, weatherLock in
-                self?.evaluateEvents(events: events)
+//                self?.evaluateEvents(events: events)
                 self?.evaluateHistory(history: times)
-//                print(times, events, self?.allDayHours.value)
             }
             .store(in: &subscription)
     }
@@ -129,15 +123,15 @@ class RecommendationsManager {
         if let coordinates = self.locationManager.lastLocation?.coordinate, self.networkMonitor.isReachable {
             var arr = self.allDayHours.value
             let weatherPublisher: AnyPublisher<DataResponse<WeatherResource, NetworkError>, Never> = self.networkManager.request(Endpoint.weatherAPI(lat: coordinates.latitude, long: coordinates.longitude).weatherURL, method: .get, withInterceptor: false)
-            
+
             weatherPublisher
                 .sink { [weak self] dataResponse in
                     if dataResponse.error == nil {
                         if let weather = dataResponse.value {
                             for hour in weather.hourly {
-                                let timeStamp = Date(timeIntervalSince1970: hour.dt + weather.timezone_offset)
-                                let arrIndex = arr.firstIndex(where: { $0.hour == self?.formatter.string(from: timeStamp)})
-                                
+                                let timeStamp = Date(timeIntervalSince1970: hour.dt)
+                                let arrIndex = arr.firstIndex(where: { $0.timestamp == timeStamp})
+
                                 if arrIndex != nil, let weatherHour = hour.weather.first {
                                     arr[arrIndex!].weights.weather = Helpers.getWeatherCoef(weatherID: weatherHour.id).0
                                     arr[arrIndex!].type = Helpers.getWeatherCoef(weatherID: weatherHour.id).1
@@ -156,10 +150,16 @@ class RecommendationsManager {
 extension RecommendationsManager {
     private func initializeHourArray() {
         var arr: [HourWeight] = []
+        let timestamp = Date().nearestHour()
         for hour in 0...23 {
-            hour < 10 ?
-            arr.append(HourWeight(hour: "0" + String(hour), weights: Weights(weather: 1, calendar: 1, history: 1), finalWeight: 1, type: .both)) :
-            arr.append(HourWeight(hour: String(hour), weights: Weights(weather: 1, calendar: 1, history: 1), finalWeight: 1, type: .both))
+            arr.append(
+                HourWeight(
+                    timestamp: timestamp.addingTimeInterval(.hour() * Double(hour)),
+                    weights: Weights(weather: 1, calendar: 1, history: 1),
+                    finalWeight: 1,
+                    type: .both
+                )
+            )
         }
         allDayHours.send(arr)
     }
@@ -174,16 +174,20 @@ extension RecommendationsManager {
         }
     }
     
+    // MARK: Events evaluation
     private func evaluateEvents(events: [EKEvent]) {
+        var arr = self.allDayHours.value
+        
         for event in events {
             if let start = event.startDate, let end = event.endDate {
                 
-                print("Start date:", formatter.string(from: start))
-                print("End date:", formatter.string(from: end))
+                print("Start date:", formatter.string(from: start), start)
+                print("End date:", formatter.string(from: end), end)
             }
         }
     }
     
+    // MARK: History evaluation
     private func evaluateHistory(history: [HistoryWeights]) {
         let maximum = history.max(by: { (a, b) -> Bool in
             a.count < b.count
@@ -191,19 +195,26 @@ extension RecommendationsManager {
         let minimum = history.min(by: { (a, b) -> Bool in
             a.count < b.count
         })
-        
+
         guard let maximum = maximum, let minimum = minimum else {
             return
         }
-        
+
         var arr = allDayHours.value
         
         arr.enumerated().forEach { (index, value) in
-            if let historyObj = history.first(where: { $0.hour == value.hour }) {
+            if let historyObj = history.first(where: { $0.hour == formatter.string(from: value.timestamp) }) {
                 arr[index].weights.history = historyObj.count.converting(from: minimum.count...maximum.count, to: 1...2)
             }
         }
-        
+
         allDayHours.send(arr)
+    }
+    
+    private func helperFunction() {
+        for item in allDayHours.value {
+            print(item.timestamp.formatted())
+            print(item.weights)
+        }
     }
 }
