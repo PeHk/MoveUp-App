@@ -17,6 +17,7 @@ struct HourWeight {
     var weights: Weights
     var finalWeight: Float
     var type: WorkoutType
+    var sports: Set<String>
 }
 
 struct Weights {
@@ -28,6 +29,7 @@ struct Weights {
 struct HistoryWeights {
     var hour: String
     var count: Float
+    var sports: Set<String>
 }
 
 class RecommendationsManager {
@@ -99,16 +101,22 @@ class RecommendationsManager {
         }
         
         for time in countedSet {
-            let tmp = HistoryWeights(hour: time as? String ?? "", count: Float(countedSet.count(for: time)))
+            let tmp = HistoryWeights(hour: time as? String ?? "", count: Float(countedSet.count(for: time)), sports: [])
             tmpTimes.append(tmp)
         }
         
+        for workout in workouts {
+            let index = tmpTimes.firstIndex(where: { $0.hour == formatter.string(from: workout.startDate) })
+            if let index = index {
+                tmpTimes[index].sports.insert(workout.workoutActivityType.name)
+            }
+        }
+        
         tmpTimes = tmpTimes.sorted(by: { $0.count > $1.count })
-
         self.activeTimes.send(tmpTimes)
     }
     
-    // MARK: Setup
+    // MARK: Load workouts
     private func setupWorkouts() {
         self.healthkitManager.getWorkoutsByTimeInterval()
             .sink { completion in
@@ -172,7 +180,8 @@ extension RecommendationsManager {
                     timestamp: timestamp.addingTimeInterval(.hour() * Double(hour)),
                     weights: Weights(weather: 1, calendar: 1, history: 1),
                     finalWeight: 1,
-                    type: .both
+                    type: .both,
+                    sports: Set()
                 )
             )
         }
@@ -223,6 +232,7 @@ extension RecommendationsManager {
         arr.enumerated().forEach { (index, value) in
             if let historyObj = history.first(where: { $0.hour == formatter.string(from: value.timestamp) }) {
                 arr[index].weights.history = historyObj.count.converting(from: minimum.count...maximum.count, to: 1...2)
+                arr[index].sports = historyObj.sports
             }
         }
 
@@ -231,9 +241,11 @@ extension RecommendationsManager {
     
     private func helperFunction() {
         for item in allDayHours.value {
+            print("----------")
             print(item.timestamp.formatted())
             print(item.weights)
             print(item.finalWeight)
+            print(item.sports)
         }
     }
 }
