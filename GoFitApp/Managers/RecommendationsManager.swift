@@ -12,12 +12,19 @@ import HealthKit
 import Alamofire
 import CombineExt
 
+enum WeatherType {
+    case summer
+    case winter
+    case both
+}
+
 struct HourWeight {
     var timestamp: Date
     var weights: Weights
     var finalWeight: Float
     var type: WorkoutType
     var sports: Set<SportWeights>
+    var weatherType: WeatherType
 }
 
 struct Weights {
@@ -33,7 +40,7 @@ struct HistoryWeights {
 }
 
 struct SportWeights: Equatable, Hashable {
-    var sport: String
+    var sport: Sport
     var weight: Float
 }
 
@@ -59,6 +66,8 @@ class RecommendationsManager {
     fileprivate let networkManager: NetworkManager
     fileprivate let locationManager: LocationManager
     fileprivate let networkMonitor: NetworkMonitor
+    fileprivate let userManager: UserManager
+    fileprivate let sportManager: SportManager
     
     // MARK: Init
     init(_ dependencyContainer: DependencyContainer) {
@@ -66,6 +75,8 @@ class RecommendationsManager {
         self.healthkitManager = dependencyContainer.healthKitManager
         self.networkManager = dependencyContainer.networkManager
         self.networkMonitor = dependencyContainer.networkMonitor
+        self.sportManager = dependencyContainer.sportManager
+        self.userManager = dependencyContainer.userManager
         self.eventStore = EKEventStore()
         self.locationManager = LocationManager(dependencyContainer)
         
@@ -79,6 +90,7 @@ class RecommendationsManager {
                 self?.evaluateEvents(events: events)
                 self?.evaluateHistory(history: times)
                 self?.calculateProbability()
+                self?.evaluateAndClearSports()
                 self?.helperFunction()
             }
             .store(in: &subscription)
@@ -98,6 +110,7 @@ class RecommendationsManager {
     
     // MARK: Extract times
     private func extractTimes(workouts: [HKWorkout]) {
+        let sports = sportManager.currentSports.value
         var tmpTimes: [HistoryWeights] = []
         let countedSet = NSCountedSet()
 
@@ -112,10 +125,11 @@ class RecommendationsManager {
         
         for workout in workouts {
             let index = tmpTimes.firstIndex(where: { $0.hour == formatter.string(from: workout.startDate) })
-            if let index = index {
+            let sport = sports.first(where: { $0.healthKitType?.hkWorkoutActivityType == workout.workoutActivityType })
+            if let index = index, let sport = sport {
                 tmpTimes[index].sports.insert(
                     SportWeights(
-                        sport: workout.workoutActivityType.name,
+                        sport: sport,
                         weight: 1.1)
                 )
             }
@@ -163,9 +177,15 @@ class RecommendationsManager {
                                 let timeStamp = Date(timeIntervalSince1970: hour.dt)
                                 let arrIndex = arr.firstIndex(where: { $0.timestamp == timeStamp})
 
-                                if arrIndex != nil, let weatherHour = hour.weather.first {
+                                if arrIndex != nil, let weatherHour = hour.weather.first, let temp = hour.temp {
                                     arr[arrIndex!].weights.weather = Helpers.getWeatherCoef(weatherID: weatherHour.id).0
                                     arr[arrIndex!].type = Helpers.getWeatherCoef(weatherID: weatherHour.id).1
+
+                                    if temp < 7 {
+                                        arr[arrIndex!].weatherType = .winter
+                                    } else if temp > 7 {
+                                        arr[arrIndex!].weatherType = .summer
+                                    }
                                 }
                             }
                             self?.allDayHours.send(arr)
@@ -190,7 +210,8 @@ extension RecommendationsManager {
                     weights: Weights(weather: 1, calendar: 1, history: 1),
                     finalWeight: 1,
                     type: .both,
-                    sports: Set<SportWeights>()
+                    sports: Set<SportWeights>(),
+                    weatherType: .both
                 )
             )
         }
@@ -254,10 +275,33 @@ extension RecommendationsManager {
             print(item.timestamp.formatted())
             print(item.weights)
             print(item.finalWeight)
+            print(item.weatherType)
             print(item.sports)
         }
     }
+    
+    // MARK: Clear and evaluate sports
+    private func evaluateAndClearSports() {
+        let favourites: [Sport]? = userManager.currentUser.value?.favourite_sports?.toArray()
+        var arr = allDayHours.value
+        
+        guard let favourites = favourites else {
+            return
+        }
+        
+        for (hourIndex, hour) in arr.enumerated() {
+            var sports = hour.sports.array
+    
+            for (sportIndex, sport) in sports.enumerated() {
+                let isFavourite = favourites.firstIndex(where: {  $0 == sport.sport })
+                if isFavourite != nil {
+                    sports[sportIndex].weight = 1.2
+                }
+            }
+            
+            arr[hourIndex].sports = Set(sports)
+        }
+        
+        allDayHours.send(arr)
+    }
 }
-
-
-// TODO: WINTER / SUMMER

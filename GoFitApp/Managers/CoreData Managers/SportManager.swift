@@ -57,6 +57,7 @@ class SportManager {
                 sport.met = newSport.met
                 sport.healthKitType = newSport.health_kit_type
                 sport.type = newSport.type
+                sport.weather = newSport.weather
             }
         }
         
@@ -75,6 +76,7 @@ class SportManager {
             currSport.healthKitType = sportToUpdate.health_kit_type
             currSport.met = sportToUpdate.met
             currSport.type = sportToUpdate.type
+            currSport.weather = sportToUpdate.weather
         }
         
         return coreDataStore
@@ -97,6 +99,7 @@ class SportManager {
                     sports[i].met = sportToUpdate.met
                     sports[i].healthKitType = sportToUpdate.health_kit_type
                     sports[i].type = sportToUpdate.type
+                    sports[i].weather = sportToUpdate.weather
                 }
             } else {
                 action = {
@@ -106,6 +109,7 @@ class SportManager {
                     sport.met = sportToUpdate.met
                     sport.healthKitType = sportToUpdate.health_kit_type
                     sport.type = sportToUpdate.type
+                    sport.weather = sportToUpdate.weather
                 }
             }
         }

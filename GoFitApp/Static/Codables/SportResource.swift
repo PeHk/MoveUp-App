@@ -14,6 +14,7 @@ struct SportResource: Codable {
     let created_at: String
     let health_kit_type: String
     let type: String
+    let weather: String
 }
 
 struct SportUpdateResource: Codable {
