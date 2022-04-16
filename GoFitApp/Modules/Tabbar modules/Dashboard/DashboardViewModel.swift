@@ -40,6 +40,7 @@ class DashboardViewModel: ViewModelProtocol {
                 if loading {
                     self.state.send(.loading)
                 }
+                self.downloadNewSports()
                 self.checkRecommendations()
             } else {
                 self.tableLoading.send(false)
@@ -292,4 +293,67 @@ class DashboardViewModel: ViewModelProtocol {
     func createSportRecommendationCellViewModel(recommendation: Recommendation) -> SportRecommendationCellViewModel {
         SportRecommendationCellViewModel(type: recommendation.type, sport: recommendation.sport)
     }
+}
+
+extension DashboardViewModel {
+    // MARK: Download new sports
+    private func downloadNewSports() {
+        let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+            Endpoint.sports.url,
+            method: .get
+        )
+        
+        sportsPublisher
+            .sink { dataResponse in
+                if dataResponse.error == nil {
+                    if let newSports = dataResponse.value {
+                        self.saveNewSports(sports: newSports)
+                    }
+                }
+            }
+            .store(in: &subscription)
+    }
+    
+    private func saveNewSports(sports: [SportResource]) {
+        let currentSports = self.sportManager.currentSports.value
+        
+        for sport in sports {
+            if let dbSport = currentSports.first(where: {$0.id == sport.id}) {
+                if dbSport.name != sport.name || dbSport.met != sport.met || dbSport.type != sport.type || dbSport.healthKitType != sport.health_kit_type || dbSport.weather != sport.weather {
+                    self.sportManager.updateOneSport(sportToUpdate: sport, currSport: dbSport)
+                        .sink { _ in
+                            ()
+                        } receiveValue: { _ in
+                            ()
+                        }
+                        .store(in: &subscription)
+                }
+            } else {
+                self.sportManager.saveSports(newSports: [sport])
+                    .sink { _ in
+                        ()
+                    } receiveValue: { _ in
+                        ()
+                    }
+                    .store(in: &subscription)
+            }
+        }
+        
+        for sport in currentSports {
+            let isIn = sports.contains(where: { $0.id == sport.id })
+            if !isIn || sport.name == "HealthKit" {
+                self.sportManager.hideSports(sport: sport)
+                    .sink { _ in
+                        ()
+                    } receiveValue: { _ in
+                        ()
+                    }
+                    .store(in: &subscription)
+            }
+        }
+        
+            
+        self.sportManager.fetchCurrentSports()
+    }
+
 }

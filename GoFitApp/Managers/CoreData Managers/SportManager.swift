@@ -37,6 +37,7 @@ class SportManager {
     // MARK: Get sports
     private func getSports() -> AnyPublisher<CoreDataFetchResultsPublisher<Sport>.Output, NetworkError> {
         let request = NSFetchRequest<Sport>(entityName: Sport.entityName)
+        request.predicate = NSPredicate(format: "isHidden != true")
         
         return coreDataStore
             .publicher(fetch: request)
@@ -114,6 +115,20 @@ class SportManager {
             }
         }
         
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Hide sports
+    public func hideSports(sport: Sport) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        var action: Action = {
+            sport.isHidden = true
+        }
+    
         return coreDataStore
             .publicher(save: action)
             .mapError({ error in

@@ -48,6 +48,8 @@ class ActivityManager {
         activities = activities.sorted(by: { Helpers.getTimeFromDate(from: $0.end_date ?? Date()) > Helpers.getTimeFromDate(from: $1.end_date ?? Date())
         })
         
+        activities = activities.filter({ $0.sport?.isHidden != true })
+        
         if activities.count < 3 {
             for activity in activities {
                 if let sport = activity.sport {

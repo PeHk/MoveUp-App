@@ -23,6 +23,10 @@ enum WorkoutType: String {
     case outdoor = "Outdoor"
     case indoor = "Indoor"
     case both = "Both"
+    
+    var name: String {
+        "\(self)"
+    }
 }
 
 class Helpers {

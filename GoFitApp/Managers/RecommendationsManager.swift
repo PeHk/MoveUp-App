@@ -16,6 +16,20 @@ enum WeatherType {
     case summer
     case winter
     case both
+    
+    var name: String {
+        "\(self)"
+    }
+
+}
+
+enum RecommendationType {
+    case sport
+    case activity
+    
+    var name: String {
+        "\(self)".capitalizingFirstLetter()
+    }
 }
 
 struct HourWeight {
@@ -60,6 +74,8 @@ class RecommendationsManager {
     private var weatherLock = PassthroughSubject<Bool, Never>()
     private var allDayHours = CurrentValueSubject<[HourWeight], Never>([])
     
+    public var recommendation = CurrentValueSubject<[RecommendationResource], Never>([])
+    
     fileprivate let eventStore: EKEventStore
     fileprivate let activityManager: ActivityManager
     fileprivate let healthkitManager: HealthKitManager
@@ -91,7 +107,8 @@ class RecommendationsManager {
                 self?.evaluateHistory(history: times)
                 self?.calculateProbability()
                 self?.evaluateAndClearSports()
-                self?.helperFunction()
+                self?.generateFinalRecommendation()
+//                self?.helperFunction()
             }
             .store(in: &subscription)
     }
@@ -276,13 +293,17 @@ extension RecommendationsManager {
             print(item.weights)
             print(item.finalWeight)
             print(item.weatherType)
-            print(item.sports)
+            for sport in item.sports.array {
+                print(sport.sport.name)
+                print(sport.weight)
+            }
         }
     }
     
     // MARK: Clear and evaluate sports
     private func evaluateAndClearSports() {
         let favourites: [Sport]? = userManager.currentUser.value?.favourite_sports?.toArray()
+        let allSports: [Sport] = sportManager.currentSports.value
         var arr = allDayHours.value
         
         guard let favourites = favourites else {
@@ -293,15 +314,49 @@ extension RecommendationsManager {
             var sports = hour.sports.array
     
             for (sportIndex, sport) in sports.enumerated() {
-                let isFavourite = favourites.firstIndex(where: {  $0 == sport.sport })
+                let isFavourite = favourites.firstIndex(where: { $0 == sport.sport })
                 if isFavourite != nil {
                     sports[sportIndex].weight = 1.2
                 }
+            }
+            
+            for sport in allSports {
+                let alreadyCreated = sports.firstIndex(where: { $0.sport == sport })
+                if alreadyCreated == nil {
+                    sports.append(SportWeights(sport: sport, weight: 1.0))
+                }
+            }
+
+            sports = sports.filter({ $0.sport.weather?.lowercased() == arr[hourIndex].weatherType.name || $0.sport.weather?.lowercased() == WeatherType.both.name })
+            
+            if arr[hourIndex].type != .both {
+                sports = sports.filter({ $0.sport.type?.lowercased() == arr[hourIndex].type.name.lowercased() })
             }
             
             arr[hourIndex].sports = Set(sports)
         }
         
         allDayHours.send(arr)
+    }
+    
+    private func generateFinalRecommendation() {
+        var arr = allDayHours.value
+        var items: [HourWeight] = []
+        var rec: [RecommendationResource] = []
+        arr = arr.sorted(by: { $0.finalWeight > $1.finalWeight })
+        
+        if arr.count > 3 {
+            items = Array(arr[0...2])
+        } else {
+            items = arr
+        }
+        
+        for item in items {
+            let sortedSports = item.sports.array.sorted(by: { $0.weight > $1.weight })
+            if sortedSports.count > 2 {
+                let selectedSport = sortedSports[Int.random(in: 0...1)]
+                print(RecommendationResource(id: 666, type: RecommendationType.activity.name, created_at: Date().ISO8601Format(), start_time: item.timestamp.ISO8601Format(), end_time: item.timestamp.addingTimeInterval(.hour()).ISO8601Format(), sport_id: selectedSport.sport.id, rating: nil, activity_id: nil, accepted_at: nil))
+            }
+        }
     }
 }

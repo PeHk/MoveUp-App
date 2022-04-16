@@ -17,4 +17,12 @@ public extension String {
         let plainData = data(using: .utf8)
         return plainData?.base64EncodedString()
     }
+    
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }

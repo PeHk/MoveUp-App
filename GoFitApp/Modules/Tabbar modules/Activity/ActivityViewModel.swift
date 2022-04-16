@@ -25,7 +25,6 @@ class ActivityViewModel: ViewModelProtocol {
         switch action {
         case .checkActivities:
             if networkMonitor.isReachable {
-                self.downloadNewSports()
                 self.checkActivities()
             }
         }
@@ -157,52 +156,6 @@ class ActivityViewModel: ViewModelProtocol {
             .store(in: &subscription)
     }
     
-    // MARK: Download new sports
-    private func downloadNewSports() {
-        let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
-            Endpoint.sports.url,
-            method: .get
-        )
-        
-        sportsPublisher
-            .sink { dataResponse in
-                if dataResponse.error == nil {
-                    if let newSports = dataResponse.value {
-                        self.saveNewSports(sports: newSports)
-                    }
-                }
-            }
-            .store(in: &subscription)
-    }
-    
-    private func saveNewSports(sports: [SportResource]) {
-        let currentSports = self.sportsManager.currentSports.value
-        
-        for sport in sports {
-            if let dbSport = currentSports.first(where: {$0.id == sport.id}) {
-                if dbSport.name != sport.name || dbSport.met != sport.met || dbSport.type != sport.type || dbSport.healthKitType != sport.health_kit_type {
-                    self.sportsManager.updateOneSport(sportToUpdate: sport, currSport: dbSport)
-                        .sink { _ in
-                            ()
-                        } receiveValue: { _ in
-                            ()
-                        }
-                        .store(in: &subscription)
-                }
-            } else {
-                self.sportsManager.saveSports(newSports: [sport])
-                    .sink { _ in
-                        ()
-                    } receiveValue: { _ in
-                        ()
-                    }
-                    .store(in: &subscription)
-            }
-        }
-        
-        self.sportsManager.fetchCurrentSports()
-    }
-
     // MARK: ViewModels
     func createActivityHistoryCellViewModel(activity: Activity) -> ActivityHistoryCellViewModel {
         ActivityHistoryCellViewModel(name: activity.name ?? "None", duration: activity.duration, calories: activity.calories, external: activity.externalType)
