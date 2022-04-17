@@ -3,6 +3,11 @@ import Foundation
 import UIKit
 import Alamofire
 
+struct RecommendationArray {
+    var recommendedActivity: ActivityRecommendation?
+    var recommendedSport: Recommendation?
+}
+
 class DashboardViewModel: ViewModelProtocol {
     
     // MARK: - Enums
@@ -75,7 +80,7 @@ class DashboardViewModel: ViewModelProtocol {
     var tableLoading = CurrentValueSubject<Bool, Never>(true)
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
-    var recommendations = CurrentValueSubject<[Recommendation], Never>([])
+    var recommendations = CurrentValueSubject<[RecommendationArray], Never>([])
     var presentDoneAlert = CurrentValueSubject<Bool, Never>(false)
     
     var configuration: Configuration
@@ -196,15 +201,22 @@ class DashboardViewModel: ViewModelProtocol {
     // MARK: Process recommendations
     private func processRecommendations(recommendations: [RecommendationResource]) {
         let sports = sportManager.currentSports.value
-        var finalRecommendations: [Recommendation] = []
+        var finalRecommendations: [RecommendationArray] = []
         
         for r in recommendations {
             let recSport = sports.first(where: {$0.id == r.sport_id })
             
             if recSport?.name != "HealthKit" {
                 let finalRecommendation: Recommendation = Recommendation(id: r.id, type: r.type, created_at: r.created_at, start_time: r.start_time, end_time: r.end_time, sport_id: r.sport_id, rating: r.rating, activity_id: r.activity_id, accepted_at: r.accepted_at, sport: recSport)
-                finalRecommendations.append(finalRecommendation)
+                let rec = RecommendationArray(recommendedActivity: nil, recommendedSport: finalRecommendation)
+                finalRecommendations.append(rec)
             }
+        }
+
+        let activities = self.recommendationsManager.recommendation.value
+        
+        for activity in activities {
+            finalRecommendations.append(RecommendationArray(recommendedActivity: activity, recommendedSport: nil))
         }
         
         self.recommendations.send(finalRecommendations)
@@ -293,6 +305,10 @@ class DashboardViewModel: ViewModelProtocol {
     func createSportRecommendationCellViewModel(recommendation: Recommendation) -> SportRecommendationCellViewModel {
         SportRecommendationCellViewModel(type: recommendation.type, sport: recommendation.sport)
     }
+    
+    func createActivityRecommendationCellViewModel(recommendation: ActivityRecommendation) -> ActivityRecommendationViewModel {
+        ActivityRecommendationViewModel(created_at: recommendation.created_at ?? Date(), start_time: recommendation.start_time ?? Date(), end_time: recommendation.end_time ?? Date(), sport: recommendation.sport)
+    }
 }
 
 extension DashboardViewModel {
@@ -352,7 +368,6 @@ extension DashboardViewModel {
             }
         }
         
-            
         self.sportManager.fetchCurrentSports()
     }
 

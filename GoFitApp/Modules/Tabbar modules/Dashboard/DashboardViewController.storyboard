@@ -141,7 +141,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="9Eg-z5-sqV">
-                            <rect key="frame" x="0.0" y="462.99999999999994" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="639" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="backgroundColor"/>
                         </view>
@@ -275,6 +275,48 @@
                                     <outlet property="acceptButton" destination="nQs-ae-43k" id="jCE-wQ-Ved"/>
                                     <outlet property="rejectButton" destination="YzZ-fj-HtM" id="Jmk-OF-7tm"/>
                                     <outlet property="title" destination="e8S-4c-mkf" id="7ke-9d-YiT"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityRecommendationCell" rowHeight="176" id="dtM-G3-FhG" customClass="ActivityRecommendationCell" customModule="GoFitApp" customModuleProvider="target">
+                                <rect key="frame" x="16" y="445" width="343" height="176"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dtM-G3-FhG" id="pNo-aF-Q9A">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="176"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New recommendation of activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7q-wU-g8J">
+                                            <rect key="frame" x="15" y="15" width="313" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="1LI-mI-gge"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ogr-vs-ZpH">
+                                            <rect key="frame" x="15" y="35" width="313" height="126"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDN-eb-goG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="126"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Ogr-vs-ZpH" secondAttribute="trailing" constant="15" id="9PZ-Yb-zD4"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ogr-vs-ZpH" secondAttribute="bottom" constant="15" id="IR9-gm-FoR"/>
+                                        <constraint firstItem="a7q-wU-g8J" firstAttribute="top" secondItem="pNo-aF-Q9A" secondAttribute="top" constant="15" id="Jke-qH-O1C"/>
+                                        <constraint firstAttribute="trailing" secondItem="a7q-wU-g8J" secondAttribute="trailing" constant="15" id="UyN-zf-vCT"/>
+                                        <constraint firstItem="Ogr-vs-ZpH" firstAttribute="top" secondItem="a7q-wU-g8J" secondAttribute="bottom" constant="5" id="XsM-aL-KW8"/>
+                                        <constraint firstItem="a7q-wU-g8J" firstAttribute="leading" secondItem="pNo-aF-Q9A" secondAttribute="leading" constant="15" id="k5H-G0-Jqd"/>
+                                        <constraint firstItem="Ogr-vs-ZpH" firstAttribute="leading" secondItem="pNo-aF-Q9A" secondAttribute="leading" constant="15" id="k73-wJ-5VQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="DDN-eb-goG" id="Wjs-kz-rRa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

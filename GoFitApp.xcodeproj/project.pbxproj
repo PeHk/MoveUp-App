@@ -153,6 +153,9 @@
 		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
 		E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92E278B1505003DE96D /* ActivityManager.swift */; };
 		E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */; };
+		E1B0EED1280C28B0001749D2 /* RecommendationCoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED0280C28B0001749D2 /* RecommendationCoreManager.swift */; };
+		E1B0EED4280C35B8001749D2 /* ActivityRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED3280C35B8001749D2 /* ActivityRecommendationCell.swift */; };
+		E1B0EED6280C3642001749D2 /* ActivityRecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED5280C3642001749D2 /* ActivityRecommendationViewModel.swift */; };
 		E1B1972B280355E900117117 /* FloatingPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B1972A280355E900117117 /* FloatingPoint+Extension.swift */; };
 		E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */; };
 		E1BCA2FB275E3C7C00FC67D5 /* SignUpRequestModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BCA2F7275E3C7C00FC67D5 /* SignUpRequestModelTests.swift */; };
@@ -368,6 +371,9 @@
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
+		E1B0EED0280C28B0001749D2 /* RecommendationCoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCoreManager.swift; sourceTree = "<group>"; };
+		E1B0EED3280C35B8001749D2 /* ActivityRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecommendationCell.swift; sourceTree = "<group>"; };
+		E1B0EED5280C3642001749D2 /* ActivityRecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecommendationViewModel.swift; sourceTree = "<group>"; };
 		E1B1972A280355E900117117 /* FloatingPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Extension.swift"; sourceTree = "<group>"; };
 		E1BC6A272792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityHistoryDetail+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		E1BCA2EE275E3C4000FC67D5 /* GoFitAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoFitAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -552,6 +558,7 @@
 				E134E93727525E9900453781 /* UserManager.swift */,
 				E1111F1D2768F64100B10529 /* SportManager.swift */,
 				E1AAD92E278B1505003DE96D /* ActivityManager.swift */,
+				E1B0EED0280C28B0001749D2 /* RecommendationCoreManager.swift */,
 			);
 			path = "CoreData Managers";
 			sourceTree = "<group>";
@@ -600,6 +607,7 @@
 		E13B447027206DBF0062C44B /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E1B0EED2280C2D94001749D2 /* DashboardActivityCell */,
 				E12F8D3A27E73E4B00BA05CE /* DashboardSportCell */,
 				E13B447127206DBF0062C44B /* DashboardViewController.swift */,
 				E13B447227206DBF0062C44B /* DashboardViewModel.swift */,
@@ -929,6 +937,15 @@
 				E1A788D1276B637C007C406E /* GoalsDetailViewController+TableView.swift */,
 			);
 			path = GoalsDetail;
+			sourceTree = "<group>";
+		};
+		E1B0EED2280C2D94001749D2 /* DashboardActivityCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1B0EED3280C35B8001749D2 /* ActivityRecommendationCell.swift */,
+				E1B0EED5280C3642001749D2 /* ActivityRecommendationViewModel.swift */,
+			);
+			path = DashboardActivityCell;
 			sourceTree = "<group>";
 		};
 		E1BCA2EF275E3C4000FC67D5 /* GoFitAppTests */ = {
@@ -1331,6 +1348,7 @@
 				E1E51083274BFFEA00C9C266 /* NetworkManager.swift in Sources */,
 				E12E6BAB274FC872009B211C /* RegistrationManager.swift in Sources */,
 				E11FAAC52757762C0075F74D /* ProfileDetailViewController.swift in Sources */,
+				E1B0EED1280C28B0001749D2 /* RecommendationCoreManager.swift in Sources */,
 				E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */,
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
@@ -1340,6 +1358,7 @@
 				E1111F1B2768DBEB00B10529 /* ActivityPickerCoordinator.swift in Sources */,
 				E1CB6087275793D500E4F39D /* FavouriteSportsDetailViewController.swift in Sources */,
 				E12F9869276BAA6300C71B68 /* UIAlertViewController+Extensions.swift in Sources */,
+				E1B0EED4280C35B8001749D2 /* ActivityRecommendationCell.swift in Sources */,
 				E153BCC0276A6F360093D05E /* ActivityPickerViewController+TableView.swift in Sources */,
 				E1E51080274BFE5300C9C266 /* Endpoint.swift in Sources */,
 				E1EBC143271DCEAB009E9939 /* DetailsViewModel.swift in Sources */,
@@ -1360,6 +1379,7 @@
 				E16609BF271CA39D0077DF6E /* ViewModelProtocol.swift in Sources */,
 				E1BC6A282792D1790069FA62 /* ActivityHistoryDetail+MapViewDelegate.swift in Sources */,
 				E10AA403271DB7F30096B032 /* LoginViewController.swift in Sources */,
+				E1B0EED6280C3642001749D2 /* ActivityRecommendationViewModel.swift in Sources */,
 				E181F0DB27EF146300B74D62 /* RatingView.swift in Sources */,
 				E166099A271C9F4B0077DF6E /* GoFitApp.xcdatamodeld in Sources */,
 				E19ABA1B2753C2FE004E6FDC /* FavouriteSportsViewController.swift in Sources */,

@@ -30,7 +30,6 @@ class SportRecommendationCell: UITableViewCell {
     var acceptAction : (()->())?
     var rejectAction : (()->())?
 
-//    var cellButton = PassthroughSubject<Bool, Never>()
     var viewModel: SportRecommendationCellViewModel? {
         didSet {
             self.title.text = viewModel?.sport?.name

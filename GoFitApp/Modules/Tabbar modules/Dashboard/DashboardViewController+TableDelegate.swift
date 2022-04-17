@@ -15,27 +15,58 @@ extension DashboardViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: SportRecommendationCell.reuseIdentifier(), for: indexPath) as? SportRecommendationCell {
-            
-            let recommendation = viewModel.recommendations.value[indexPath.row]
-            
-            let cellViewModel = viewModel.createSportRecommendationCellViewModel(recommendation: recommendation)
-            
-            cell.viewModel = cellViewModel
-            
-            cell.acceptAction = { [weak self] () in
-                self?.viewModel.handleRecommendation(recommendation: recommendation, state: true)
+        let val: RecommendationArray = viewModel.recommendations.value[indexPath.row]
+        
+        if val.recommendedActivity == nil && val.recommendedSport != nil {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SportRecommendationCell.reuseIdentifier(), for: indexPath) as? SportRecommendationCell {
+                
+                guard let recommendation = val.recommendedSport else {
+                    fatalError("Unexpected kind!")
+                }
+                
+                let cellViewModel = viewModel.createSportRecommendationCellViewModel(recommendation: recommendation)
+                
+                cell.viewModel = cellViewModel
+                
+                cell.acceptAction = { [weak self] () in
+                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: true)
+                }
+                
+                cell.rejectAction = { [weak self] () in
+                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: false)
+                }
+                
+                return cell
             }
-            
-            cell.rejectAction = { [weak self] () in
-                self?.viewModel.handleRecommendation(recommendation: recommendation, state: false)
+            else {
+                fatalError("Unexpected kind!")
             }
-            
-            return cell
-        }
-        else {
+        } else if val.recommendedActivity != nil && val.recommendedSport == nil {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: ActivityRecommendationCell.reuseIdentifier(), for: indexPath) as? ActivityRecommendationCell {
+                
+                guard let recommendation = val.recommendedActivity else {
+                    fatalError("Unexpected kind!")
+                }
+                
+                let cellViewModel = viewModel.createActivityRecommendationCellViewModel(recommendation: recommendation)
+                
+                cell.viewModel = cellViewModel
+                
+//                cell.acceptAction = { [weak self] () in
+//                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: true)
+//                }
+//                
+//                cell.rejectAction = { [weak self] () in
+//                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: false)
+//                }
+                
+                return cell
+            }
+        } else {
             fatalError("Unexpected kind!")
         }
+        
+        fatalError("Unexpected kind!")
     }
 }
 
