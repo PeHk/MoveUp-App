@@ -103,7 +103,7 @@ class RecommendationsManager {
         fetchCurrentRecommendations()
         
         recommendation.sink { [weak self] recommendations in
-            if recommendations.count == 0 {
+            if recommendations.count == 9 {
                 self?.initializeHourArray()
                 self?.requestAccess()
                 self?.setupWorkouts()

@@ -64,6 +64,7 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.startLoading()
         
         tableView.emptyDataSetView { [weak self] view in

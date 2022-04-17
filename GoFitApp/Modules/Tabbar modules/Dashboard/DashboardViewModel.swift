@@ -219,6 +219,8 @@ class DashboardViewModel: ViewModelProtocol {
             finalRecommendations.append(RecommendationArray(recommendedActivity: activity, recommendedSport: nil))
         }
         
+        finalRecommendations.shuffle()
+        
         self.recommendations.send(finalRecommendations)
         self.tableLoading.send((false))
         self.isLoading.send(false)

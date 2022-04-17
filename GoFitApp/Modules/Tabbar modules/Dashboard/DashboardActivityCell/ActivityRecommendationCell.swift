@@ -10,11 +10,23 @@ import UIKit
 
 class ActivityRecommendationCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var startAt: UILabel!
+    @IBOutlet weak var endAt: UILabel!
+    
+
     var viewModel: ActivityRecommendationViewModel? {
         didSet {
-            name.text = viewModel?.sport?.name
-            print(viewModel?.start_time)
-            print(viewModel?.end_time)
+            if let viewModel = viewModel, let sport = viewModel.sport {
+                name.text = sport.name
+                startAt.text = viewModel.start_time.formatted(date: .numeric, time: .shortened)
+                endAt.text = viewModel.end_time.formatted() 
+            }
+//            name.text = viewModel?.sport?.name
+//            print(viewModel?.sport?.healthKitType)
+//            print(viewModel?.sport?.name)
+//            print(viewModel?.start_time)
+//            print(viewModel?.end_time)
+//            print("Created at: ", viewModel?.created_at)
         }
     }
     

@@ -17,7 +17,11 @@ extension RecommendationsManager {
             .sink { completion in
                 return
             } receiveValue: { recommendations in
-                self.recommendation.send(recommendations)
+                if recommendations.count >= 3 {
+                    self.recommendation.send(Array(recommendations[0...2]))
+                } else {
+                    self.recommendation.send(recommendations)
+                }
             }
             .store(in: &subscription)
     }
@@ -52,19 +56,18 @@ extension RecommendationsManager {
             .eraseToAnyPublisher()
     }
     
-    private func getRecommendationObject(data: RecommendationResource) -> ActivityRecommendation {
-        let recommendation: ActivityRecommendation = self.coreDataStore.createEntity()
-        recommendation.created_at = Helpers.getDateFromString(from: data.created_at)
-        
-        if let start = data.start_time, let end = data.end_time {
-            recommendation.end_time = Helpers.getDateFromString(from: end)
-            recommendation.start_time = Helpers.getDateFromString(from: start)
-        }
-    
+    private func getRecommendationObject(data: RecommendationResource) -> ActivityRecommendation? {
         if let sport = self.sportManager.currentSports.value.first(where: { $0.id == data.sport_id }) {
+            let recommendation: ActivityRecommendation = self.coreDataStore.createEntity()
+            recommendation.created_at = Helpers.getDateFromString(from: data.created_at)
+            
+            if let start = data.start_time, let end = data.end_time {
+                recommendation.end_time = Helpers.getDateFromString(from: end)
+                recommendation.start_time = Helpers.getDateFromString(from: start)
+            }
             recommendation.sport = sport
-        }
-        
-        return recommendation
+            
+            return recommendation
+        } else { return nil }
     }
 }
