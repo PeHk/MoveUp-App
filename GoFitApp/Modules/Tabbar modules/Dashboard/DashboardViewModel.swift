@@ -49,6 +49,7 @@ class DashboardViewModel: ViewModelProtocol {
                 self.checkRecommendations()
             } else {
                 self.tableLoading.send(false)
+                self.recommendationsLock.send(())
             }
         case .ratingReceived(let rating, let rec):
             self.handleRating(rating: rating, recommendation: rec)
@@ -80,8 +81,11 @@ class DashboardViewModel: ViewModelProtocol {
     var tableLoading = CurrentValueSubject<Bool, Never>(true)
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
-    var recommendations = CurrentValueSubject<[RecommendationArray], Never>([])
     var presentDoneAlert = CurrentValueSubject<Bool, Never>(false)
+    
+    var recommendationsLock = PassthroughSubject<Void, Never>()
+    var recommendations = CurrentValueSubject<[RecommendationArray], Never>([])
+    var onlineRecommendations = CurrentValueSubject<[Recommendation], Never>([])
     
     var configuration: Configuration
     var subscription = Set<AnyCancellable>()
@@ -143,6 +147,30 @@ class DashboardViewModel: ViewModelProtocol {
                 self.refreshValues()
             }
             .store(in: &subscription)
+        
+        self.recommendationsManager.recommendation.zip(self.recommendationsLock)
+            .sink { activities, _ in
+                var finalRecommendations: [RecommendationArray] = []
+                let onlineRecommendations = self.onlineRecommendations.value
+                
+                for activity in activities {
+                    if activity.sport != nil {
+                        finalRecommendations.append(RecommendationArray(recommendedActivity: activity, recommendedSport: nil))
+                    }
+                }
+                
+                for onlineRecommendation in onlineRecommendations {
+                    finalRecommendations.append(RecommendationArray(recommendedActivity: nil, recommendedSport: onlineRecommendation))
+                }
+                
+                finalRecommendations.shuffle()
+                
+                self.recommendations.send(finalRecommendations)
+                self.tableLoading.send((false))
+                self.isLoading.send(false)
+                self.presentDoneAlert.send(false)
+            }
+            .store(in: &subscription)
     }
     
     internal func initializeView() {
@@ -181,6 +209,7 @@ class DashboardViewModel: ViewModelProtocol {
     
     private func checkRecommendations() {
         self.tableLoading.send(true)
+        self.recommendationsManager.fetchCurrentRecommendations()
         
         let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
             Endpoint.recommendation.url,
@@ -189,8 +218,8 @@ class DashboardViewModel: ViewModelProtocol {
         
         recommendationsPublisher
             .sink { dataResponse in
-                if let error = dataResponse.error {
-                    print("Recommendations error:", error)
+                if let _ = dataResponse.error {
+                    self.recommendationsLock.send(())
                 } else {
                     self.processRecommendations(recommendations: dataResponse.value!)
                 }
@@ -201,30 +230,19 @@ class DashboardViewModel: ViewModelProtocol {
     // MARK: Process recommendations
     private func processRecommendations(recommendations: [RecommendationResource]) {
         let sports = sportManager.currentSports.value
-        var finalRecommendations: [RecommendationArray] = []
+        var finalRecommendations: [Recommendation] = []
         
         for r in recommendations {
             let recSport = sports.first(where: {$0.id == r.sport_id })
             
             if recSport?.name != "HealthKit" {
                 let finalRecommendation: Recommendation = Recommendation(id: r.id, type: r.type, created_at: r.created_at, start_time: r.start_time, end_time: r.end_time, sport_id: r.sport_id, rating: r.rating, activity_id: r.activity_id, accepted_at: r.accepted_at, sport: recSport)
-                let rec = RecommendationArray(recommendedActivity: nil, recommendedSport: finalRecommendation)
-                finalRecommendations.append(rec)
+                finalRecommendations.append(finalRecommendation)
             }
         }
-
-        let activities = self.recommendationsManager.recommendation.value
         
-        for activity in activities {
-            finalRecommendations.append(RecommendationArray(recommendedActivity: activity, recommendedSport: nil))
-        }
-        
-        finalRecommendations.shuffle()
-        
-        self.recommendations.send(finalRecommendations)
-        self.tableLoading.send((false))
-        self.isLoading.send(false)
-        self.presentDoneAlert.send(false)
+        self.onlineRecommendations.send(finalRecommendations)
+        self.recommendationsLock.send(())
     }
     
     // MARK: Handle recommendation

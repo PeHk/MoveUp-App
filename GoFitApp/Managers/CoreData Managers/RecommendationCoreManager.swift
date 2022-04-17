@@ -27,7 +27,7 @@ extension RecommendationsManager {
     }
     
     // MARK: Get activities
-    private func getRecommendations() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
+    public func getRecommendations() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
         let request = NSFetchRequest<ActivityRecommendation>(entityName: ActivityRecommendation.entityName)
         let sort = NSSortDescriptor(key: "created_at", ascending: false)
         request.sortDescriptors = [sort]
@@ -41,7 +41,7 @@ extension RecommendationsManager {
     }
     
     // MARK: Save activity
-    public func saveRecommendations(newRecommendations: [RecommendationResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+    public func saveRecommendations(newRecommendations: [ActivityRecommendationResource]) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
         let action: Action = {
             for recommendation in newRecommendations {
                 let _ = self.getRecommendationObject(data: recommendation)
@@ -56,18 +56,12 @@ extension RecommendationsManager {
             .eraseToAnyPublisher()
     }
     
-    private func getRecommendationObject(data: RecommendationResource) -> ActivityRecommendation? {
-        if let sport = self.sportManager.currentSports.value.first(where: { $0.id == data.sport_id }) {
-            let recommendation: ActivityRecommendation = self.coreDataStore.createEntity()
-            recommendation.created_at = Helpers.getDateFromString(from: data.created_at)
-            
-            if let start = data.start_time, let end = data.end_time {
-                recommendation.end_time = Helpers.getDateFromString(from: end)
-                recommendation.start_time = Helpers.getDateFromString(from: start)
-            }
-            recommendation.sport = sport
-            
-            return recommendation
-        } else { return nil }
+    private func getRecommendationObject(data: ActivityRecommendationResource) -> ActivityRecommendation {
+        let recommendation: ActivityRecommendation = self.coreDataStore.createEntity()
+        recommendation.created_at = data.created_at
+        recommendation.start_time = data.start_time
+        recommendation.end_time = data.end_time
+        recommendation.sport = data.sport
+        return recommendation
     }
 }

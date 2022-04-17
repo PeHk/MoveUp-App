@@ -100,18 +100,28 @@ class RecommendationsManager {
         self.eventStore = EKEventStore()
         self.locationManager = LocationManager(dependencyContainer)
         
-        fetchCurrentRecommendations()
+        self.requestAccess()
         
-        recommendation.sink { [weak self] recommendations in
-            if recommendations.count == 9 {
-                self?.initializeHourArray()
-                self?.requestAccess()
-                self?.setupWorkouts()
-                self?.fetchWeather()
+        self.getRecommendations()
+            .sink { _ in
+                ()
+            } receiveValue: { [weak self] recommendations in
+                if recommendations.count > 0 {
+                    let newest = recommendations[0]
+                    let delta = Date().timeIntervalSince(newest.created_at ?? Date().addingTimeInterval(-.threeHours() - .hour()))
+                    if delta > .threeHours() {
+                        self?.initializeHourArray()
+                        self?.setupWorkouts()
+                        self?.fetchWeather()
+                    } else {
+                        self?.fetchCurrentRecommendations()
+                    }
+                } else {
+                    self?.recommendation.send([])
+                }
             }
-        }
-        .store(in: &subscription)
-                
+            .store(in: &subscription)
+
         Publishers.Zip3(activeTimes, events, weatherLock)
             .sink { [weak self] times, events, weatherLock in
                 self?.evaluateEvents(events: events)
@@ -172,6 +182,7 @@ class RecommendationsManager {
             .sink { completion in
                 if case .failure(let error) = completion {
                     print("Activity time error:", error)
+                    self.extractTimes(workouts: [])
                 }
             } receiveValue: { workouts in
                 self.workouts = workouts
@@ -221,6 +232,8 @@ class RecommendationsManager {
                     } else { self?.weatherLock.send(false) }
                 }
                 .store(in: &subscription)
+        } else {
+            self.weatherLock.send(false)
         }
     }
 }
@@ -352,7 +365,7 @@ extension RecommendationsManager {
     private func generateFinalRecommendation() {
         var arr = allDayHours.value
         var items: [HourWeight] = []
-        var rec: [RecommendationResource] = []
+        var activities: [ActivityRecommendationResource] = []
         arr = arr.sorted(by: { $0.finalWeight > $1.finalWeight })
         
         if arr.count > 3 {
@@ -365,18 +378,17 @@ extension RecommendationsManager {
             let sortedSports = item.sports.array.sorted(by: { $0.weight > $1.weight })
             if sortedSports.count > 2 {
                 let selectedSport = sortedSports[Int.random(in: 0...1)]
-                let res = RecommendationResource(id: 999, type: RecommendationType.activity.name, created_at: Date().ISO8601Format(), start_time: item.timestamp.ISO8601Format(), end_time: item.timestamp.addingTimeInterval(.hour()).ISO8601Format(), sport_id: selectedSport.sport.id, rating: nil, activity_id: nil, accepted_at: nil)
-                rec.append(res)
+                let activity = ActivityRecommendationResource(created_at: Date(), start_time: item.timestamp, end_time: item.timestamp.addingTimeInterval(.hour()), sport: selectedSport.sport)
+                activities.append(activity)
             }
         }
         
-        self.saveRecommendations(newRecommendations: rec)
+        self.saveRecommendations(newRecommendations: activities)
             .sink { _ in
                 ()
             } receiveValue: { [unowned self] _ in
                 self.fetchCurrentRecommendations()
             }
             .store(in: &subscription)
-
     }
 }

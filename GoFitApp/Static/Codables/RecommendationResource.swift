@@ -38,3 +38,10 @@ struct Recommendation {
     var accepted_at: String?
     var sport: Sport?
 }
+
+struct ActivityRecommendationResource {
+    var created_at: Date
+    var start_time: Date
+    var end_time: Date
+    var sport: Sport
+}

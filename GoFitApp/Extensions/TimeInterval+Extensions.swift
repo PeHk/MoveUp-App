@@ -19,4 +19,8 @@ extension TimeInterval {
     static func hour() -> Double {
         3600
     }
+    
+    static func threeHours() -> Double {
+        3600 * 3
+    }
 }
