@@ -148,10 +148,11 @@ class DashboardViewModel: ViewModelProtocol {
             }
             .store(in: &subscription)
         
-        self.recommendationsManager.recommendation.zip(self.recommendationsLock)
-            .sink { activities, _ in
+        recommendationsLock.zip(recommendationsManager.recommendationLock)
+            .sink { _, _ in
                 var finalRecommendations: [RecommendationArray] = []
                 let onlineRecommendations = self.onlineRecommendations.value
+                let activities = self.recommendationsManager.recommendation.value
                 
                 for activity in activities {
                     if activity.sport != nil {
@@ -209,7 +210,6 @@ class DashboardViewModel: ViewModelProtocol {
     
     private func checkRecommendations() {
         self.tableLoading.send(true)
-        self.recommendationsManager.fetchCurrentRecommendations()
         
         let recommendationsPublisher: AnyPublisher<DataResponse<[RecommendationResource], NetworkError>, Never> = self.networkManager.request(
             Endpoint.recommendation.url,
@@ -241,6 +241,7 @@ class DashboardViewModel: ViewModelProtocol {
             }
         }
         
+        self.recommendationsManager.fetchCurrentRecommendations()
         self.onlineRecommendations.send(finalRecommendations)
         self.recommendationsLock.send(())
     }

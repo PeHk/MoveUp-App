@@ -9,9 +9,29 @@ import Foundation
 import UIKit
 
 class ActivityRecommendationCell: UITableViewCell {
+    
+    // MARK: Outlets
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var dateAt: UILabel!
     @IBOutlet weak var timeAt: UILabel!
+    @IBOutlet weak var acceptButton: UIView! {
+        didSet {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(acceptTapped(_:)))
+            acceptButton.addGestureRecognizer(tap)
+            acceptButton.isUserInteractionEnabled = true
+        }
+    }
+    @IBOutlet weak var rejectButton: UIView! {
+        didSet {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(rejectTapped(_:)))
+            rejectButton.addGestureRecognizer(tap)
+            rejectButton.isUserInteractionEnabled = true
+        }
+    }
+    
+    // MARK: Variables
+    var acceptAction : (()->())?
+    var rejectAction : (()->())?
     
     var viewModel: ActivityRecommendationViewModel? {
         didSet {
@@ -35,4 +55,13 @@ class ActivityRecommendationCell: UITableViewCell {
         return "activityRecommendationCell"
     }
     
+    @objc func acceptTapped(_ sender: UITapGestureRecognizer) {
+        FeedbackManager.sendFeedbackNotification(.success)
+        acceptAction?()
+    }
+    
+    @objc func rejectTapped(_ sender: UITapGestureRecognizer) {
+        FeedbackManager.sendFeedbackNotification(.warning)
+        rejectAction?()
+    }
 }

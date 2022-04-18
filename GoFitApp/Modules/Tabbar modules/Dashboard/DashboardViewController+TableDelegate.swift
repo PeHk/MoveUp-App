@@ -68,20 +68,6 @@ extension DashboardViewController {
         
         fatalError("Unexpected kind!")
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        guard viewModel.recommendations.value.count >= indexPath.row else { return 0 }
-//        let val: RecommendationArray = viewModel.recommendations.value[indexPath.row]
-//        
-//        if val.recommendedActivity == nil && val.recommendedSport != nil {
-//            return 140
-//        } else if val.recommendedSport == nil && val.recommendedActivity != nil {
-//            return 205
-//        } else {
-//            return 0
-//        }
-//    }
-    
 }
 
 extension DashboardViewController {

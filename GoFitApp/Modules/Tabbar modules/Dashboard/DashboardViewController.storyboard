@@ -413,8 +413,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="acceptButton" destination="8IR-uc-p5t" id="vSd-XP-f6e"/>
                                     <outlet property="dateAt" destination="wdL-G0-hXD" id="SUs-kP-CNr"/>
                                     <outlet property="name" destination="DDN-eb-goG" id="Wjs-kz-rRa"/>
+                                    <outlet property="rejectButton" destination="uCN-ev-ELX" id="YSb-vZ-1xZ"/>
                                     <outlet property="timeAt" destination="faE-7z-Du9" id="bOW-nm-RjV"/>
                                 </connections>
                             </tableViewCell>

@@ -76,6 +76,7 @@ class RecommendationsManager {
     private var allDayHours = CurrentValueSubject<[HourWeight], Never>([])
     
     public var recommendation = CurrentValueSubject<[ActivityRecommendation], Never>([])
+    public var recommendationLock = PassthroughSubject<Void, Never>()
     
     fileprivate let eventStore: EKEventStore
     fileprivate let activityManager: ActivityManager
@@ -84,6 +85,7 @@ class RecommendationsManager {
     fileprivate let locationManager: LocationManager
     fileprivate let networkMonitor: NetworkMonitor
     fileprivate let userManager: UserManager
+    fileprivate let notificationManager: NotificationManager
     
     let sportManager: SportManager
     let coreDataStore: CoreDataStore
@@ -97,6 +99,7 @@ class RecommendationsManager {
         self.sportManager = dependencyContainer.sportManager
         self.coreDataStore = dependencyContainer.coreDataStore
         self.userManager = dependencyContainer.userManager
+        self.notificationManager = dependencyContainer.notificationManager
         self.eventStore = EKEventStore()
         self.locationManager = LocationManager(dependencyContainer)
         
@@ -117,7 +120,7 @@ class RecommendationsManager {
                         self?.fetchCurrentRecommendations()
                     }
                 } else {
-                    self?.recommendation.send([])
+                    self?.recommendationLock.send(())
                 }
             }
             .store(in: &subscription)
@@ -129,6 +132,7 @@ class RecommendationsManager {
                 self?.calculateProbability()
                 self?.evaluateAndClearSports()
                 self?.generateFinalRecommendation()
+                self?.notificationManager.sendLocalNotification(title: "New recommendations waiting for you!", subtitle: "Look at the new recommended activities made just for you!", timeInterval: .NHours(n: 20))
             }
             .store(in: &subscription)
     }

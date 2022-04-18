@@ -23,4 +23,12 @@ extension TimeInterval {
     static func threeHours() -> Double {
         3600 * 3
     }
+    
+    static func fiveHours() -> Double {
+        3600 * 5
+    }
+    
+    static func NHours(n: Double) -> Double {
+        3600 * n
+    }
 }

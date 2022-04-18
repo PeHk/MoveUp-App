@@ -153,6 +153,7 @@
 		E1AAD92D278AFBCC003DE96D /* ActivityResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92C278AFBCC003DE96D /* ActivityResource.swift */; };
 		E1AAD92F278B1505003DE96D /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD92E278B1505003DE96D /* ActivityManager.swift */; };
 		E1AAD931278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AAD930278B1B41003DE96D /* ActivityViewController+TableViewDelegate.swift */; };
+		E1B04C19280DA40B0085B701 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B04C18280DA40B0085B701 /* NotificationManager.swift */; };
 		E1B0EED1280C28B0001749D2 /* RecommendationCoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED0280C28B0001749D2 /* RecommendationCoreManager.swift */; };
 		E1B0EED4280C35B8001749D2 /* ActivityRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED3280C35B8001749D2 /* ActivityRecommendationCell.swift */; };
 		E1B0EED6280C3642001749D2 /* ActivityRecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0EED5280C3642001749D2 /* ActivityRecommendationViewModel.swift */; };
@@ -371,6 +372,7 @@
 		E1ABEC1A2760DEC200AC1420 /* GoFitApp-UITestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UITestPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1B2760DF9E00AC1420 /* GoFitApp-UnitTestsPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-UnitTestsPlan.xctestplan"; sourceTree = "<group>"; };
 		E1ABEC1C2760DFD200AC1420 /* GoFitApp-MainTestApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GoFitApp-MainTestApp.xctestplan"; sourceTree = "<group>"; };
+		E1B04C18280DA40B0085B701 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		E1B0EED0280C28B0001749D2 /* RecommendationCoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCoreManager.swift; sourceTree = "<group>"; };
 		E1B0EED3280C35B8001749D2 /* ActivityRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecommendationCell.swift; sourceTree = "<group>"; };
 		E1B0EED5280C3642001749D2 /* ActivityRecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRecommendationViewModel.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				E10B294C2791DD2000E551CB /* LocationManager.swift */,
 				E164812927BCE4770011F0D4 /* NetworkMonitor.swift */,
 				E1A0FABB27F86DAC00DC8A3E /* RecommendationsManager.swift */,
+				E1B04C18280DA40B0085B701 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1351,6 +1354,7 @@
 				E1B0EED1280C28B0001749D2 /* RecommendationCoreManager.swift in Sources */,
 				E177513127552A1400C9917F /* ProfileViewController+TableView.swift in Sources */,
 				E12E6BAD274FCBD4009B211C /* NetworkManager+CookieStorage.swift in Sources */,
+				E1B04C19280DA40B0085B701 /* NotificationManager.swift in Sources */,
 				E13B446527206D290062C44B /* SetActiveMinutesViewController.swift in Sources */,
 				E13B447A27206DBF0062C44B /* DashboardViewController.swift in Sources */,
 				E10B294D2791DD2000E551CB /* LocationManager.swift in Sources */,

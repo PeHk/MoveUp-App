@@ -19,8 +19,10 @@ extension RecommendationsManager {
             } receiveValue: { recommendations in
                 if recommendations.count >= 3 {
                     self.recommendation.send(Array(recommendations[0...2]))
+                    self.recommendationLock.send(())
                 } else {
                     self.recommendation.send(recommendations)
+                    self.recommendationLock.send(())
                 }
             }
             .store(in: &subscription)
