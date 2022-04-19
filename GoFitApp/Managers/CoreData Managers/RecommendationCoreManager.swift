@@ -64,6 +64,47 @@ extension RecommendationsManager {
         recommendation.start_time = data.start_time
         recommendation.end_time = data.end_time
         recommendation.sport = data.sport
+        recommendation.uuid = UUID()
         return recommendation
     }
+    
+    // MARK: Delete sports
+    public func deleteRecommendations() -> AnyPublisher<CoreDataDeleteModelPublisher.Output, NetworkError> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: ActivityRecommendation.entityName)
+        request.predicate = NSPredicate(format: "created_at != nil")
+        
+        self.recommendation.send([])
+        
+        return coreDataStore
+            .publicher(delete: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    public func updateSyncRecommendations(rec: [ActivityRecommendation]) {
+        for r in rec {
+            updateSync(recommendation: r).sink { _ in
+                ()
+            } receiveValue: { _ in
+                ()
+            }
+            .store(in: &subscription)
+        }
+    }
+    
+    private func updateSync(recommendation: ActivityRecommendation) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let action: Action = {
+            recommendation.alreadySent = true
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
 }

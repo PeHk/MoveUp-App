@@ -333,6 +333,28 @@ class DashboardViewModel: ViewModelProtocol {
 }
 
 extension DashboardViewModel {
+    private func syncLocalRecommendations(recommendations: [ActivityRecommendation]) {
+        if networkMonitor.isReachable {
+            let recommendationsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+                Endpoint.recommendation.url,
+                method: .post,
+                parameters: [:]
+            )
+            
+            recommendationsPublisher
+                .sink { dataResponse in
+                    if dataResponse.error == nil {
+                        if dataResponse.value != nil {
+                            self.recommendationsManager.updateSyncRecommendations(rec: recommendations)
+                        }
+                    }
+                }
+                .store(in: &subscription)
+        }
+        
+    }
+    
+    
     // MARK: Download new sports
     private func downloadNewSports() {
         let sportsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
