@@ -20,7 +20,6 @@ enum WeatherType {
     var name: String {
         "\(self)"
     }
-
 }
 
 enum RecommendationType {
@@ -112,7 +111,7 @@ class RecommendationsManager {
                 if recommendations.count > 0 {
                     let newest = recommendations[0]
                     let delta = Date().timeIntervalSince(newest.created_at ?? Date().addingTimeInterval(-.threeHours() - .hour()))
-                    if delta > .threeHours() {
+                    if delta > 10000 {
                         self?.initializeHourArray()
                         self?.setupWorkouts()
                         self?.fetchWeather()
@@ -120,7 +119,9 @@ class RecommendationsManager {
                         self?.fetchCurrentRecommendations()
                     }
                 } else {
-                    self?.recommendationLock.send(())
+                    self?.initializeHourArray()
+                    self?.setupWorkouts()
+                    self?.fetchWeather()
                 }
             }
             .store(in: &subscription)
@@ -132,7 +133,7 @@ class RecommendationsManager {
                 self?.calculateProbability()
                 self?.evaluateAndClearSports()
                 self?.generateFinalRecommendation()
-                self?.notificationManager.sendLocalNotification(title: "New recommendations waiting for you!", subtitle: "Look at the new recommended activities made just for you!", timeInterval: .NHours(n: 20))
+                self?.notificationManager.sendLocalNotification(title: "New recommendations!", subtitle: "Look at the new recommended activities made just for you! 🧐", timeInterval: .NHours(n: 20))
             }
             .store(in: &subscription)
     }

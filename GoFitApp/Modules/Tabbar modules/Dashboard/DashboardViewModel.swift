@@ -18,7 +18,9 @@ class DashboardViewModel: ViewModelProtocol {
         case checkRecommendations(withLoading: Bool)
         case showAlert(title: String, message: String)
         case presentRatingView(recommendation: Recommendation)
+        case presentActivityRating(recommendation: ActivityRecommendation)
         case ratingReceived(rating: Int, recommendation: Recommendation)
+        case activityRatingReceived(rating: Int, recommendation: ActivityRecommendation)
     }
     
     enum Step {
@@ -53,6 +55,8 @@ class DashboardViewModel: ViewModelProtocol {
             }
         case .ratingReceived(let rating, let rec):
             self.handleRating(rating: rating, recommendation: rec)
+        case.activityRatingReceived(let rating, let rec):
+            self.handleActivityRating(rating: rating, recommendation: rec)
         default:
             break
         }
@@ -82,6 +86,7 @@ class DashboardViewModel: ViewModelProtocol {
     var steps = CurrentValueSubject<Double, Never>(0)
     var calories = CurrentValueSubject<Double, Never>(0)
     var presentDoneAlert = CurrentValueSubject<Bool, Never>(false)
+    var presentActivityAlert = CurrentValueSubject<Bool, Never>(false)
     
     var recommendationsLock = PassthroughSubject<Void, Never>()
     var recommendations = CurrentValueSubject<[RecommendationArray], Never>([])
@@ -166,6 +171,16 @@ class DashboardViewModel: ViewModelProtocol {
                 
                 finalRecommendations.shuffle()
                 
+                self.recommendationsManager.getAllUsynced()
+                    .sink { _ in
+                        ()
+                    } receiveValue: { unsynced in
+                        if unsynced.count > 0 {
+                            self.syncLocalRecommendations(recommendations: unsynced)
+                        }
+                    }
+                    .store(in: &self.subscription)
+                
                 self.recommendations.send(finalRecommendations)
                 self.tableLoading.send((false))
                 self.isLoading.send(false)
@@ -246,10 +261,47 @@ class DashboardViewModel: ViewModelProtocol {
         self.recommendationsLock.send(())
     }
     
+    // MARK: Handle activity
+    public func handleActivityRecommendation(recommendation: ActivityRecommendation, state: Bool) {
+        if self.networkMonitor.isReachable, let uuid = recommendation.uuid?.uuidString {
+            self.state.send(.loading)
+            
+            let acceptancePublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
+                Endpoint.activityUpdate.url,
+                method: .put,
+                parameters: ["type": 2, "acceptance": state, "uuid": uuid]
+            )
+            
+            acceptancePublisher
+                .sink { dataResponse in
+                    if dataResponse.error != nil {
+                        if state {
+                            self.action.send(.presentActivityRating(recommendation: recommendation))
+                        } else {
+                            self.updateActivityRecommendation(recommendation, rating: 0)
+                        }
+                    } else {
+                        if state {
+                            self.action.send(.presentActivityRating(recommendation: recommendation))
+                        } else {
+                            self.updateActivityRecommendation(recommendation, rating: 0, sent: true)
+                        }
+                    }
+                }
+                .store(in: &subscription)
+        } else {
+            if state {
+                self.action.send(.presentActivityRating(recommendation: recommendation))
+            } else {
+                self.updateActivityRecommendation(recommendation, rating: 0)
+            }
+        }
+    }
     // MARK: Handle recommendation
     public func handleRecommendation(recommendation: Recommendation, state: Bool) {
         if self.networkMonitor.isReachable {
             self.state.send(.loading)
+            
             let acceptancePublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
                 Endpoint.recommendationUpdate(id: recommendation.id).url,
                 method: .put,
@@ -272,6 +324,31 @@ class DashboardViewModel: ViewModelProtocol {
                 .store(in: &subscription)
         } else {
             self.action.send(.showAlert(title: "No internet connection", message: "Please connect your device to the internet to continue!"))
+        }
+    }
+    
+    // MARK: Activity rating
+    private func handleActivityRating(rating: Int, recommendation: ActivityRecommendation) {
+        if self.networkMonitor.isReachable, let uuid = recommendation.uuid?.uuidString {
+            self.state.send(.loading)
+            let ratingPublisher: AnyPublisher<DataResponse<RecommendationResource, NetworkError>, Never> = self.networkManager.request(
+                Endpoint.activityUpdate.url,
+                method: .put,
+                parameters: ["type": 1, "rating": rating, "uuid": uuid]
+            )
+            
+            ratingPublisher
+                .sink { dataResponse in
+                    if dataResponse.error != nil {
+                        self.updateActivityRecommendation(recommendation, rating: Double(rating), sent: false)
+                    } else {
+                        self.updateActivityRecommendation(recommendation, rating: Double(rating), sent: true, with: true)
+                        self.presentActivityAlert.send(true)
+                    }
+                }
+                .store(in: &subscription)
+        } else {
+            self.updateActivityRecommendation(recommendation, rating: Double(rating), sent: false)
         }
     }
     
@@ -335,14 +412,17 @@ class DashboardViewModel: ViewModelProtocol {
 extension DashboardViewModel {
     private func syncLocalRecommendations(recommendations: [ActivityRecommendation]) {
         if networkMonitor.isReachable {
-            let recommendationsPublisher: AnyPublisher<DataResponse<[SportResource], NetworkError>, Never> = self.networkManager.request(
+            
+            print(Helpers.getJSON(arr: recommendations))
+            let recommendationsPublisher: AnyPublisher<DataResponse<EmptySuccessResponse, NetworkError>, Never> = self.networkManager.request(
                 Endpoint.recommendation.url,
                 method: .post,
-                parameters: [:]
+                parameters: Helpers.getJSON(arr: recommendations)
             )
             
             recommendationsPublisher
                 .sink { dataResponse in
+                    print("Prisla data response", dataResponse.value, dataResponse.error)
                     if dataResponse.error == nil {
                         if dataResponse.value != nil {
                             self.recommendationsManager.updateSyncRecommendations(rec: recommendations)
@@ -414,4 +494,23 @@ extension DashboardViewModel {
         self.sportManager.fetchCurrentSports()
     }
 
+}
+
+extension DashboardViewModel {
+    private func updateActivityRecommendation(_ rec: ActivityRecommendation, rating: Double, sent: Bool = false, with: Bool = false) {
+        self.recommendationsManager.updateRecommendation(rec: rec, rating: rating, sent: sent)
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    self.state.send(.error(error))
+                }
+            } receiveValue: { _ in
+                self.recommendationsManager.fetchCurrentRecommendations()
+                if !with {
+                    self.action.send(.checkRecommendations(withLoading: false))
+                } else {
+                    self.checkRecommendations()
+                }
+            }
+            .store(in: &self.subscription)
+    }
 }

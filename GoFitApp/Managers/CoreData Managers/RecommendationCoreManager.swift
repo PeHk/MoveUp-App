@@ -32,7 +32,25 @@ extension RecommendationsManager {
     public func getRecommendations() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
         let request = NSFetchRequest<ActivityRecommendation>(entityName: ActivityRecommendation.entityName)
         let sort = NSSortDescriptor(key: "created_at", ascending: false)
+        let acceptPred = NSPredicate(format: "accepted_at == nil")
+        let datePred = NSPredicate(format: "start_time > %@", NSDate())
+        let andPredicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.and, subpredicates: [acceptPred, datePred])
+        request.predicate = andPredicate
+
+
         request.sortDescriptors = [sort]
+        
+        return coreDataStore
+            .publicher(fetch: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    public func getAllUsynced() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
+        let request = NSFetchRequest<ActivityRecommendation>(entityName: ActivityRecommendation.entityName)
+        request.predicate = NSPredicate(format: "alreadySent != true")
         
         return coreDataStore
             .publicher(fetch: request)
@@ -47,6 +65,24 @@ extension RecommendationsManager {
         let action: Action = {
             for recommendation in newRecommendations {
                 let _ = self.getRecommendationObject(data: recommendation)
+            }
+        }
+        
+        return coreDataStore
+            .publicher(save: action)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: Update activity rating
+    public func updateRecommendation(rec: ActivityRecommendation, rating: Double, sent: Bool = false) -> AnyPublisher<CoreDataSaveModelPublisher.Output, NetworkError> {
+        let action: Action = {
+            rec.accepted_at = Date()
+            rec.rating = rating
+            if sent {
+                rec.alreadySent = sent
             }
         }
         

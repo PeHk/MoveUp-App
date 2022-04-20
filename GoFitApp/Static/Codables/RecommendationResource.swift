@@ -45,3 +45,6 @@ struct ActivityRecommendationResource {
     var end_time: Date
     var sport: Sport
 }
+
+struct EmptySuccessResponse: Codable {
+}

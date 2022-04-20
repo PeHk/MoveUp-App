@@ -52,13 +52,13 @@ extension DashboardViewController {
                 
                 cell.viewModel = cellViewModel
                 
-//                cell.acceptAction = { [weak self] () in
-//                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: true)
-//                }
-//                
-//                cell.rejectAction = { [weak self] () in
-//                    self?.viewModel.handleRecommendation(recommendation: recommendation, state: false)
-//                }
+                cell.acceptAction = { [weak self] () in
+                    self?.viewModel.handleActivityRecommendation(recommendation: recommendation, state: true)
+                }
+                
+                cell.rejectAction = { [weak self] () in
+                    self?.viewModel.handleActivityRecommendation(recommendation: recommendation, state: false)
+                }
                 
                 return cell
             }

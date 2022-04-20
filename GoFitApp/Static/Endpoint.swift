@@ -110,6 +110,10 @@ extension Endpoint {
         Endpoint(path: "api/recommendation/\(id)")
     }
     
+    static var activityUpdate: Self {
+        Endpoint(path: "api/recommendation")
+    }
+    
     static func weatherAPI(lat: Double, long: Double) -> Self {
         Endpoint(path: "data/2.5/onecall", queryItems: [
             URLQueryItem(name: "lat", value: String(lat)),

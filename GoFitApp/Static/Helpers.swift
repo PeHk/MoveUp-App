@@ -182,3 +182,46 @@ class Helpers {
         }
     }
 }
+
+extension Helpers {
+    static func getJSON(arr: [ActivityRecommendation]) -> [String: Any] {
+        var dict = [
+            "array": []
+        ]
+        
+        for item in arr {
+            dict["array"]?.append(self.getObject(obj: item))
+        }
+        
+        return dict
+    }
+    
+    static private func getObject(obj: ActivityRecommendation) -> [String: Any] {
+        if let start_time = obj.start_time, let end_time = obj.end_time, let sport_id = obj.sport?.id, let created_at = obj.created_at, let uuid = obj.uuid {
+            
+            var dict = [
+                "type": "Activity" as Any,
+                "start_time": start_time.ISO8601Format()
+                as Any,
+                "end_time": end_time.ISO8601Format() as Any,
+                "sport_id": sport_id as Any,
+                "created_at": created_at.ISO8601Format() as Any,
+                "uuid": uuid.uuidString as Any
+            ]
+            
+            
+            if obj.rating > -1 {
+                dict["rating"] = obj.rating as Any
+            }
+            
+            if obj.accepted_at != nil {
+                dict["accepted_at"] = obj.accepted_at!.ISO8601Format() as Any
+            }
+            
+            return dict
+                
+        } else {
+            return [:]
+        }
+    }
+}

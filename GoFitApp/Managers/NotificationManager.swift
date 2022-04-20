@@ -27,7 +27,7 @@ class NotificationManager {
     public func sendLocalNotification(title: String, subtitle: String, timeInterval: TimeInterval, repeats: Bool = false, sound: UNNotificationSound = .default) {
         let content = UNMutableNotificationContent()
         content.title = title
-        content.subtitle = subtitle
+        content.body = subtitle
         content.sound = sound
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: repeats)

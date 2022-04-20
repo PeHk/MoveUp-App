@@ -126,6 +126,8 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
                     AlertManager.showAlert(title: title, message: message, over: self)
                 case .presentRatingView(let recommendation):
                     self.presentRatingView(recommendation: recommendation)
+                case .presentActivityRating(let recommendation):
+                    self.presentActivityRatingView(recommendation: recommendation)
                 default:
                     break
                 }
@@ -136,6 +138,14 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
             .sink { state in
                 if state {
                     self.showSPAlert()
+                }
+            }
+            .store(in: &subscription)
+        
+        viewModel.presentActivityAlert
+            .sink { state in
+                if state {
+                    self.showActivityAlert()
                 }
             }
             .store(in: &subscription)
@@ -162,8 +172,36 @@ class DashboardViewController: BaseTableViewController, EmptyDataSetSource, Cont
         }
     }
     
+    // MARK: Activity rating view
+    private func presentActivityRatingView(recommendation: ActivityRecommendation) {
+        if let keyWindow = UIApplication.shared.connectedScenes.flatMap({ ($0 as? UIWindowScene)?.windows ?? [] }).first(where: { $0.isKeyWindow }) {
+            
+            if keyWindow.subviews.contains(where: {($0 as? RatingView) != nil}) {
+                return
+            }
+            
+            let ratingView = RatingView()
+            ratingView.frame = keyWindow.bounds
+            keyWindow.addSubview(ratingView)
+            
+            ratingView.rating
+                .sink { rating in
+                    self.viewModel.action.send(.activityRatingReceived(rating: rating, recommendation: recommendation))
+                    ratingView.removeFromSuperview()
+                }
+                .store(in: &subscription)
+        }
+    }
+    
     private func showSPAlert() {
         let spView = SPIndicatorView(title: "Sport added to favourites", preset: .done)
+        spView.presentSide = .top
+        spView.tintColor = Asset.primary.color
+        spView.present(duration: 4, haptic: .success)
+    }
+    
+    private func showActivityAlert() {
+        let spView = SPIndicatorView(title: "Activity recorded", preset: .done)
         spView.presentSide = .top
         spView.tintColor = Asset.primary.color
         spView.present(duration: 4, haptic: .success)

@@ -18,7 +18,7 @@
         <attribute name="alreadySent" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="end_time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="-1" usesScalarValueType="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" inverseName="recommendations" inverseEntity="Sport"/>
@@ -57,7 +57,7 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-1327.50244140625" positionY="-65.82945251464838" width="128" height="194"/>
-        <element name="ActivityRecommendation" positionX="-520.816162109375" positionY="159.4473876953125" width="128" height="163"/>
+        <element name="ActivityRecommendation" positionX="-520.816162109375" positionY="159.4473876953125" width="128" height="149"/>
         <element name="BioData" positionX="-40.561279296875" positionY="-162.7366638183593" width="128" height="148"/>
         <element name="Sport" positionX="-1020.956237792969" positionY="12.572021484375" width="128" height="193"/>
         <element name="User" positionX="-312.5907592773438" positionY="-175.103500366211" width="128" height="164"/>
