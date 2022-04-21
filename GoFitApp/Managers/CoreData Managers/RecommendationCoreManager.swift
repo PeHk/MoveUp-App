@@ -48,9 +48,22 @@ extension RecommendationsManager {
             .eraseToAnyPublisher()
     }
     
+    public func getAllSortedRecommendations() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
+        let request = NSFetchRequest<ActivityRecommendation>(entityName: ActivityRecommendation.entityName)
+        let sort = NSSortDescriptor(key: "created_at", ascending: false)
+        request.sortDescriptors = [sort]
+        
+        return coreDataStore
+            .publicher(fetch: request)
+            .mapError({ error in
+            .init(initialError: nil, backendError: nil, error)
+            })
+            .eraseToAnyPublisher()
+    }
+    
     public func getAllUsynced() -> AnyPublisher<CoreDataFetchResultsPublisher<ActivityRecommendation>.Output, NetworkError> {
         let request = NSFetchRequest<ActivityRecommendation>(entityName: ActivityRecommendation.entityName)
-        request.predicate = NSPredicate(format: "alreadySent != true")
+        request.predicate = NSPredicate(format: "alreadySent == false")
         
         return coreDataStore
             .publicher(fetch: request)

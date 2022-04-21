@@ -15,6 +15,8 @@ extension BackupDetailViewController {
             switch indexPath.row {
             case 0:
                 cell.detailTextLabel?.text = "\(viewModel.backupDate)"
+            case 1:
+                cell.detailTextLabel?.text = viewModel.countOfRec
             default:
                 break
             }

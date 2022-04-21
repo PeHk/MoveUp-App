@@ -104,14 +104,14 @@ class RecommendationsManager {
         
         self.requestAccess()
         
-        self.getRecommendations()
+        self.getAllSortedRecommendations()
             .sink { _ in
                 ()
             } receiveValue: { [weak self] recommendations in
                 if recommendations.count > 0 {
                     let newest = recommendations[0]
                     let delta = Date().timeIntervalSince(newest.created_at ?? Date().addingTimeInterval(-.threeHours() - .hour()))
-                    if delta > 10000 {
+                    if delta > .threeHours() {
                         self?.initializeHourArray()
                         self?.setupWorkouts()
                         self?.fetchWeather()

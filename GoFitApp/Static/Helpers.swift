@@ -211,7 +211,7 @@ extension Helpers {
             
             
             if obj.rating > -1 {
-                dict["rating"] = obj.rating as Any
+                dict["rating"] = Int(obj.rating) as Any
             }
             
             if obj.accepted_at != nil {

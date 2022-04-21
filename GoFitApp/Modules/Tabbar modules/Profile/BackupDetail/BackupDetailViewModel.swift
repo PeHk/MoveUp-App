@@ -50,10 +50,12 @@ class BackupDetailViewModel: ViewModelProtocol {
     var isLoading = CurrentValueSubject<Bool, Never>(false)
     var reloadTableView = PassthroughSubject<Bool, Never>()
     var backupDate: String = "Not yet"
+    var countOfRec: String = "0"
     
     fileprivate let userDefaultsManager: UserDefaultsManager
     fileprivate let networkManager: NetworkManager
     fileprivate let activityManager: ActivityManager
+    fileprivate let recommendationManager: RecommendationsManager
     
     var subscription = Set<AnyCancellable>()
     
@@ -62,6 +64,7 @@ class BackupDetailViewModel: ViewModelProtocol {
         self.userDefaultsManager = dependencyContainer.userDefaultsManager
         self.networkManager = dependencyContainer.networkManager
         self.activityManager = dependencyContainer.activityManager
+        self.recommendationManager = dependencyContainer.recommendationsManager
         
         action.sink(receiveValue: { [weak self] action in
             self?.processAction(action)
@@ -74,6 +77,15 @@ class BackupDetailViewModel: ViewModelProtocol {
             .store(in: &subscription)
         
         self.getBackupDate()
+        
+        self.recommendationManager.getAllUsynced()
+            .sink { _ in
+                ()
+            } receiveValue: { rec in
+                self.countOfRec = "\(rec.count)"
+            }
+            .store(in: &subscription)
+
     }
     
     internal func initializeView() {

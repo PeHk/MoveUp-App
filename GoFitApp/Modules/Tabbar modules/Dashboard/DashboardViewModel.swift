@@ -168,9 +168,7 @@ class DashboardViewModel: ViewModelProtocol {
                 for onlineRecommendation in onlineRecommendations {
                     finalRecommendations.append(RecommendationArray(recommendedActivity: nil, recommendedSport: onlineRecommendation))
                 }
-                
-                finalRecommendations.shuffle()
-                
+                                
                 self.recommendationsManager.getAllUsynced()
                     .sink { _ in
                         ()
@@ -412,8 +410,6 @@ class DashboardViewModel: ViewModelProtocol {
 extension DashboardViewModel {
     private func syncLocalRecommendations(recommendations: [ActivityRecommendation]) {
         if networkMonitor.isReachable {
-            
-            print(Helpers.getJSON(arr: recommendations))
             let recommendationsPublisher: AnyPublisher<DataResponse<EmptySuccessResponse, NetworkError>, Never> = self.networkManager.request(
                 Endpoint.recommendation.url,
                 method: .post,
@@ -422,7 +418,6 @@ extension DashboardViewModel {
             
             recommendationsPublisher
                 .sink { dataResponse in
-                    print("Prisla data response", dataResponse.value, dataResponse.error)
                     if dataResponse.error == nil {
                         if dataResponse.value != nil {
                             self.recommendationsManager.updateSyncRecommendations(rec: recommendations)
@@ -431,7 +426,6 @@ extension DashboardViewModel {
                 }
                 .store(in: &subscription)
         }
-        
     }
     
     
